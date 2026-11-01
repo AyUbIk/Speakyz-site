@@ -2,6 +2,7 @@ name: Deploy to Cloudflare
 on:
   push:
     branches: [main]
+    paths: ['src/worker.js']
   workflow_dispatch:
 jobs:
   deploy:
@@ -12,3 +13,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy src/worker.js --name speakyz-api --compatibility-date 2025-01-01
