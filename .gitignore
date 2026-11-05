@@ -1,0 +1,5 @@
+dist/
+# Ключи Firebase никогда не загружайте в GitHub
+*firebase-adminsdk*.json
+serviceAccount*.json
+.env
