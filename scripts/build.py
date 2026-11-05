@@ -109,6 +109,10 @@ def seo_page(html, base, path):
         f'<script type="application/ld+json">{ld_json}</script>',
     ])
     import re
+    # убираем старые мета-теги соцсетей, canonical и JSON-LD (в т. ч. заглушки «ВАШ-ДОМЕН»), чтобы не было дублей
+    html = re.sub(r'<meta\s+(?:property="og:|name="twitter:)[^>]*>\s*', "", html)
+    html = re.sub(r'<link\s+rel="canonical"[^>]*>\s*', "", html)
+    html = re.sub(r'<script type="application/ld\+json">[\s\S]*?</script>\s*', "", html)
     out = re.sub(r"<title>[\s\S]*?</title>", lambda m: f"<title>{esc(title)}</title>", html, count=1)
     out = re.sub(r'<meta name="description" content="[^"]*">', lambda m: f'<meta name="description" content="{esc(desc)}">', out, count=1)
     return out.replace("</head>", head + "\n</head>", 1)
