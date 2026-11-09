@@ -67,7 +67,7 @@ h3{font:800 clamp(1.8rem,3.4vw,2.6rem)/1 var(--d);letter-spacing:-.035em;margin:
 .badge text{font:800 19px var(--d);letter-spacing:3px;fill:#000}
 .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;padding:0 16px;max-width:1240px;margin:0 auto}
 .tile{color:#fff;position:relative;overflow:hidden;border-radius:32px;padding:clamp(24px,4vw,44px);min-height:440px;display:flex;flex-direction:column;justify-content:flex-start;gap:6px;grid-column:span 3;will-change:transform,opacity}
-.tile.a{grid-column:span 4}.tile.b2{grid-column:span 2}#teachers .tile[data-g="O"]::after{display:none}.tile.full{grid-column:span 6;min-height:340px}
+.tile.a{grid-column:span 4}.tile.b2{grid-column:span 2}.tile.full{grid-column:span 6;min-height:340px}
 .tile p{margin:0 0 18px;max-width:24em;font-size:1.15rem}
 .tile ul{margin:0 0 20px;padding-left:1.1em}.tile .btn{align-self:flex-start;margin-top:auto;position:relative;z-index:1}
 .tile::after{content:attr(data-g);position:absolute;right:-.04em;bottom:-.2em;font:800 clamp(9rem,22vw,17rem)/1 var(--d);letter-spacing:-.06em;opacity:.16;pointer-events:none}
@@ -638,7 +638,7 @@ html[data-theme="dark"] .cb,html[data-theme="dark"] .cbm{--cbbg:#1C1C1E;--cbtx:#
 <script>try{if(sessionStorage.getItem("szs"))document.documentElement.className+=" szl-off"}catch(e){}</script>
 <script>try{var _t=localStorage.getItem("sz_theme");if(_t!=="dark"&&_t!=="light")_t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",_t)}catch(e){}</script>
 <noscript><style>#szl{display:none}</style></noscript>
-<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" href="favicon.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
 <script>(function(){var p=location.pathname.replace(/^\/+|\/+$/g,"");if(p&&!location.hash&&/^(courses|ielts|teachers|schedule|shop|test|practice|teacher|mock|tools|university|progress|profile|arena|contact)$/.test(p))history.replaceState(null,"","/"+p+"#"+p)})()</script></head>
 <body>
 <div id="szl" aria-hidden="true"><div class="szlc"><div class="szlg"></div><div class="szlt">Speakyz</div><div class="szlb"><b></b></div></div></div>
@@ -648,6 +648,7 @@ html[data-theme="dark"] .cb,html[data-theme="dark"] .cbm{--cbbg:#1C1C1E;--cbtx:#
 <span style="flex:1"></span>
 <div class="glang" id="glang" role="group" aria-label="Site language"><button type="button" data-g="ru" aria-pressed="true">RU</button><button type="button" data-g="uz">UZ</button><button type="button" data-g="en">EN</button></div>
 <button type="button" class="szth" id="szTheme" aria-label="Dark theme" aria-pressed="false"><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.2 8.2 0 1 0 10.2 10.2Z"/></svg></button>
+<button type="button" class="szth szacc" id="szAcc" aria-label="Account"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20c.9-3.6 3.8-5.4 7.2-5.4s6.3 1.8 7.2 5.4"/></svg><b></b></button>
 <a class="btn y hcta" href="https://t.me/speakyz_lern_english_bot">Free lesson</a>
 </div></header>
 <div class="menu-backdrop" id="menuBackdrop"></div>
@@ -713,8 +714,8 @@ html[data-theme="dark"] .cb,html[data-theme="dark"] .cbm{--cbbg:#1C1C1E;--cbtx:#
   <p class="lead" style="margin:0">Not sure? <a href="#profile" style="color:var(--bl);font-weight:700">Fill in a one-minute profile</a> and we will match you with a teacher.</p></div>
  <div class="wrap" id="szMy"></div>
  <div class="tiles">
-  <div class="tile yl" data-zoom data-s="speaking ielts" data-g="O"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Founder and teacher</span><h3>Mr. Ozod</h3><p>I can help you prepare for IELTS and strengthen your overall English proficiency.</p><p>My strongest skills are Speaking and Writing. I focus on effective communication, developing well-structured ideas, expanding vocabulary, and expressing thoughts clearly and accurately.</p><p>I believe successful language learning requires consistency, a structured approach, and attention to detail. My methods are practical, goal-oriented, and focused on steady improvement.</p><p>Whether you are preparing for IELTS or developing your English foundation, I can help you improve your skills with a clear direction.</p><div class="str"><i>Speaking</i><i>Writing</i><i>IELTS</i><i>Structured approach</i></div><a class="btn" style="background:#000" data-tg="ozod" href="https://t.me/speakyz_lern_english_bot?start=t_ozod">Message Ozod on Telegram</a></div>
-  <div class="tile bl" data-zoom data-s="listening ielts" data-g="K"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Teacher</span><h3>Mr. Komron</h3><p>I'm Komron Suvonov, your English teacher. I can help you prepare for IELTS and improve your overall English proficiency.</p><p>My strongest skill is Listening. I pay particular attention to understanding spoken English, different accents, speech patterns, and detail recognition.</p><p>I believe effective language learning requires structure, consistency, and a clear understanding of how English works. My approach is practical, focused, and built around measurable progress.</p><p>Whether you are preparing for IELTS or strengthening your English foundation, I can help you develop your skills with a clear direction.</p><div class="str"><i>Listening</i><i>IELTS</i><i>Structured approach</i></div><a class="btn y" data-tg="kamron" href="https://t.me/speakyz_lern_english_bot?start=t_komron">Message Komron on Telegram</a></div>
+  <div class="tile b2 yl" data-zoom data-s="speaking ielts" data-g="O"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Founder and teacher</span><h3>Mr. Ozod</h3><p>I can help you prepare for IELTS and strengthen your overall English proficiency.</p><p>My strongest skills are Speaking and Writing. I focus on effective communication, developing well-structured ideas, expanding vocabulary, and expressing thoughts clearly and accurately.</p><p>I believe successful language learning requires consistency, a structured approach, and attention to detail. My methods are practical, goal-oriented, and focused on steady improvement.</p><p>Whether you are preparing for IELTS or developing your English foundation, I can help you improve your skills with a clear direction.</p><div class="str"><i>Speaking</i><i>Writing</i><i>IELTS</i><i>Structured approach</i></div><a class="btn" style="background:#000" data-tg="ozod" href="https://t.me/speakyz_lern_english_bot?start=t_ozod">Message Ozod on Telegram</a></div>
+  <div class="tile a bl" data-zoom data-s="listening ielts" data-g="K"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Teacher</span><h3>Mr. Komron</h3><p>I'm Komron Suvonov, your English teacher. I can help you prepare for IELTS and improve your overall English proficiency.</p><p>My strongest skill is Listening. I pay particular attention to understanding spoken English, different accents, speech patterns, and detail recognition.</p><p>I believe effective language learning requires structure, consistency, and a clear understanding of how English works. My approach is practical, focused, and built around measurable progress.</p><p>Whether you are preparing for IELTS or strengthening your English foundation, I can help you develop your skills with a clear direction.</p><div class="str"><i>Listening</i><i>IELTS</i><i>Structured approach</i></div><a class="btn y" data-tg="kamron" href="https://t.me/speakyz_lern_english_bot?start=t_komron">Message Komron on Telegram</a></div>
   <div class="tile cr" data-zoom data-s="speaking listening grammar" data-g="F"><span class="bm">Best match</span><span class="tl"><i class="ic ic-practice"></i>Speaking and listening</span><h3>Ms. Farangiz</h3><p>I’m Farangiz Khaidarova! Your English support is just one message away. Feel free to reach out anytime, and I’ll get back to you ASAP!</p><p>Want to improve your speaking and listening skills? I’m right here to help!</p><p>I’ll support you not only with grammar but also with broadening your worldview. And remember, English isn’t just about grammar — it’s also about how you see the world and recognize opportunities!</p><div class="str"><i>Speaking</i><i>Listening</i><i>Grammar</i><i>Broader worldview</i></div><a class="btn y" data-tg="farangiz" href="https://t.me/speakyz_lern_english_bot?start=t_farangiz">Message Farangiz on Telegram</a></div>
   <div class="tile k" data-zoom data-s="speaking discussion" data-g="L"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Teacher</span><h3>Ms. Laziza</h3><p>I’m Laziza Kuandikova!</p><p>A friendly and energetic English teacher with strong speaking and public speaking skills. I enjoy making lessons interactive and engaging, helping students improve their fluency, pronunciation and confidence. I encourage students to express their ideas, think critically, participate actively and never be afraid of making mistakes.</p><div class="str"><i>Speaking</i><i>Public speaking</i><i>Pronunciation</i><i>Confidence</i></div><a class="btn y" data-tg="laziza" href="https://t.me/speakyz_lern_english_bot?start=t_laziza">Message Laziza on Telegram</a></div>
   <div class="tile bl" data-zoom data-s="ielts" data-g="A"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Teacher</span><h3>Ms. Amalie</h3><p>My goal is to make even the trickiest questions easy to comprehend and solve, and to help you achieve the score you want.</p><p>Together, we will find the techniques that suit you best and track your progress.</p><div class="str"><i>IELTS</i><i>Question techniques</i><i>Progress tracking</i></div><a class="btn y" data-tg="amalie" href="https://t.me/speakyz_lern_english_bot?start=t_amalie">Message Amalie on Telegram</a></div>
@@ -842,6 +843,7 @@ html[data-theme="dark"] .cb,html[data-theme="dark"] .cbm{--cbbg:#1C1C1E;--cbtx:#
  <div class="tc" id="pgChartBox"><h3 id="pgChartT"></h3><div id="pgChart"></div></div>
  <div class="tc"><h3 id="pgListT"></h3><div id="pgList"></div></div>
  <button class="btn g" type="button" id="pgClear" style="color:#1D1D1F"></button>
+ <div id="szAcct2" style="margin-top:24px"></div>
 </div></section></div>
 
 <div class="page" id="arena"><section class="sec"><div class="wrap">
@@ -882,6 +884,7 @@ html[data-theme="dark"] .cb,html[data-theme="dark"] .cbm{--cbbg:#1C1C1E;--cbtx:#
  <div class="slang" role="group" aria-label="Language"><button type="button" data-pl="ru" aria-pressed="true">RU</button><button type="button" data-pl="uz">UZ</button><button type="button" data-pl="en">EN</button></div>
  <h1 style="font-size:clamp(2.4rem,6vw,4.4rem)" id="mpH">Мини-профиль</h1>
  <p class="lead" style="margin-top:18px" id="mpP"></p>
+ <div id="szAcct" style="margin-top:24px"></div>
  <div id="mpBox" style="margin-top:24px"><noscript>JavaScript is required.</noscript></div>
  <div id="szMy2" style="margin-top:24px"></div>
 </div></section></div>
@@ -902,12 +905,12 @@ html[data-theme="dark"] .cb,html[data-theme="dark"] .cbm{--cbbg:#1C1C1E;--cbtx:#
   <details><summary>Do you prepare for IELTS from zero?</summary><p>We build a plan from your current level to your target band. Tell us both when you message us.</p></details></div></section>
 </div>
 <div class="page lt" id="privacy"><section class="sec"><div class="wrap pv">
-<h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Политика конфиденциальности</h1><p>Редакция от 8 ноября 2026 г.</p>
+<h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Политика конфиденциальности</h1><p>Редакция от 9 ноября 2026 г.</p>
 <h2>Кто мы</h2><p>ООО «SPEAKYZ» (далее — Speakyz), сайт speakyz.uz. Связаться с нами по вопросам данных: <a href="tel:+998971115070">+998 97 111-50-70</a>, <a href="tel:+998881115070">+998 88 111-50-70</a> или в Telegram <a href="https://t.me/speakyz_admin" data-tg="admin">@speakyz_admin</a>.</p>
-<h2>Какие данные мы получаем</h2><ul><li>Заявка: имя и контакт (телефон или Telegram), которые вы отправляете сами.</li><li>Отзыв: имя и текст, если вы его оставляете.</li><li>Профиль для преподавателя: только если вы сами выберете преподавателя и поставите согласие. Преподаватель увидит имя, цели, уровень, удобное время, контакт (если вы его указали) и результаты тестов. Кнопка «Отключиться и удалить данные» стирает профиль и уроки.</li><li>Тренажёры с ИИ (экзаменатор, Speaking, Writing): ваши текстовые ответы и голосовые записи, которые вы отправляете для проверки.</li><li>Технические данные: анонимный идентификатор браузера и результаты ваших тестов, чтобы показывать прогресс.</li><li>В памяти вашего браузера (localStorage) хранятся язык сайта, мини-профиль, история пробников и серия «Слова дня». Их можно удалить в настройках браузера.</li></ul>
+<h2>Какие данные мы получаем</h2><ul><li>Заявка: имя и контакт (телефон или Telegram), которые вы отправляете сами.</li><li>Отзыв: имя и текст, если вы его оставляете.</li><li>Профиль для преподавателя: только если вы сами выберете преподавателя и поставите согласие. Преподаватель увидит имя, цели, уровень, удобное время, контакт (если вы его указали) и результаты тестов. Кнопка «Отключиться и удалить данные» стирает профиль и уроки.</li><li>Тренажёры с ИИ (экзаменатор, Speaking, Writing): ваши текстовые ответы и голосовые записи, которые вы отправляете для проверки.</li><li>Аккаунт (по желанию): email и пароль для входа обрабатывает Google Firebase Authentication, пароль нам не передаётся и у нас не хранится. Мы храним идентификатор аккаунта и результаты ваших тестов, чтобы синхронизировать прогресс между устройствами. Кнопка «Удалить аккаунт и мои данные» стирает аккаунт, профиль, уроки и результаты.</li><li>Технические данные: анонимный идентификатор браузера (если вы не вошли в аккаунт) и результаты ваших тестов, чтобы показывать прогресс.</li><li>В памяти вашего браузера (localStorage) хранятся язык сайта, мини-профиль, история пробников и серия «Слова дня». Их можно удалить в настройках браузера.</li></ul>
 <h2>Зачем</h2><p>Чтобы связаться с вами, записать на занятия, проверить ваши ответы и показать прогресс. Мы не используем данные для рекламы и не продаём их.</p>
 <h2>Кому передаются данные</h2><p>Запросы с сайта проходят через наш сервер на платформе Cloudflare. Для проверки ответов в ИИ-тренажёрах тексты и голосовые записи обрабатываются подключённым к нашему серверу сервисом ИИ. Переписка по заявкам идёт через Telegram. Аналитику и рекламные пиксели мы не используем.</p>
-<h2>Где хранятся данные</h2><p>Заявки, отзывы и прогресс хранятся в облачной базе данных Google Firebase (Firestore). Серверы этих сервисов находятся за пределами Республики Узбекистан.</p>
+<h2>Где хранятся данные</h2><p>Заявки, отзывы и прогресс хранятся в облачной базе данных Google Firebase (Firestore), а вход в аккаунт обеспечивает Google Firebase Authentication. Серверы этих сервисов находятся за пределами Республики Узбекистан.</p>
 <h2>Срок хранения и ваши права</h2><p>Данные хранятся, пока они нужны для связи и обучения. Вы можете запросить доступ к своим данным, исправление или удаление, написав нам по контактам выше.</p>
 <h2>Изменения</h2><p>Если политика изменится, новая редакция появится на этой странице.</p>
 </div></section></div>
@@ -1767,15 +1770,22 @@ function killRec(){if(curRec){curRec.abort();curRec=null}}
 /* ================= MOCK TESTS (Reading / Listening) ================= */
 var mTab='reading',mBox=$('#mBox'),mReadIdx=0,mLisIdx=0;
 function saveProgress(kind,title,score,total,band){
+  var uid='';try{uid=(window.SZA&&SZA.uid())||''}catch(e){}
   var row={ts:Date.now(),kind:kind,title:title,score:score,total:total,band:band};
+  if(uid)row.acc=uid;
   try{var k='sz_progress',a=JSON.parse(localStorage.getItem(k)||'[]');
     a.push(row);
     if(a.length>200)a=a.slice(a.length-200);
     localStorage.setItem(k,JSON.stringify(a))}catch(e){}
-  /* копия в базу данных сервера (анонимный id браузера, без имени) */
-  try{var cid=localStorage.getItem('sz_cid');
-    if(!cid){cid=((window.crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2,12))).replace(/[^A-Za-z0-9-]/g,'').slice(0,64);localStorage.setItem('sz_cid',cid)}
-    fetch((window.SZ_API||'')+'/api/progress/'+encodeURIComponent(cid),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:String(kind||'test').slice(0,40),data:row})}).catch(function(){})}catch(e){}}
+  function send(id,tok){var h={'Content-Type':'application/json'};if(tok)h.Authorization='Bearer '+tok;
+    return fetch((window.SZ_API||'')+'/api/progress/'+encodeURIComponent(id),{method:'POST',headers:h,body:JSON.stringify({kind:String(kind||'test').slice(0,40),data:row})}).catch(function(){})}
+  /* копия в базу данных сервера: в аккаунт (с токеном) или под анонимным id браузера, без имени */
+  try{
+    if(uid){SZA.token().then(function(tok){if(tok)send(uid,tok)}).catch(function(){})}
+    else{var cid=localStorage.getItem('sz_cid');
+      if(!cid){cid=((window.crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2,12))).replace(/[^A-Za-z0-9-]/g,'').slice(0,64);localStorage.setItem('sz_cid',cid)}
+      send(cid,'')}
+  }catch(e){}}
 function quiz(cfg,pre,kind){
   var d=U[L];mBox.textContent='';
   var intro=el('div','pass');intro.appendChild(el('h3','',cfg.title));intro.appendChild(el('p','',pre));
@@ -2078,13 +2088,14 @@ var T={
 ru:{h:"Мой прогресс",p:"История ваших пробников Reading и Listening, сохранённая в этом браузере.",chartT:"Band по неделям",listT:"История попыток",clear:"Очистить историю",empty:"Пока нет ни одной попытки. Пройдите пробник во вкладке «Mock tests».",col:["Дата","Тип","Текст","Балл","Band"],local:"Данные хранятся только в этом браузере на этом устройстве и никуда не отправляются.",confirm:"Удалить всю историю? Это нельзя отменить."},
 uz:{h:"Mening progressim",p:"Reading va Listening sinov testlaringiz tarixi, shu brauzerda saqlanadi.",chartT:"Haftalar bo\u02BByicha Band",listT:"Urinishlar tarixi",clear:"Tarixni tozalash",empty:"Hali birorta urinish yo\u02BBq. \u00ABMock tests\u00BB bo\u02BBlimida sinov testini topshiring.",col:["Sana","Turi","Matn","Ball","Band"],local:"Ma\u02BBlumotlar faqat shu brauzerda, shu qurilmada saqlanadi va hech qayerga yuborilmaydi.",confirm:"Butun tarixni o\u02BBchirishni xohlaysizmi? Buni bekor qilib bo\u02BBlmaydi."},
 en:{h:"My progress",p:"Your Reading and Listening mock-test history, saved in this browser.",chartT:"Band over the weeks",listT:"Attempt history",clear:"Clear history",empty:"No attempts yet. Take a mock test on the \u201CMock tests\u201D tab.",col:["Date","Type","Text","Score","Band"],local:"Data is stored only in this browser on this device and is never sent anywhere.",confirm:"Delete all history? This cannot be undone."}};
+var SY={ru:'Вы вошли в аккаунт: история синхронизируется между вашими устройствами.',uz:'Siz akkauntga kirgansiz: tarix qurilmalaringiz oʻrtasida sinxronlanadi.',en:'You are signed in: your history syncs between your devices.'};
 var $=function(s){return document.querySelector(s)};
 var L='ru';try{var sv=localStorage.getItem('sz_lang');if(T[sv])L=sv;else{var n=(navigator.language||'ru').slice(0,2);if(T[n])L=n}}catch(e){}
 function load(){try{return JSON.parse(localStorage.getItem('sz_progress')||'[]')}catch(e){return[]}}
 function weekKey(ts){var d=new Date(ts),onejan=new Date(d.getFullYear(),0,1);var wk=Math.ceil((((d-onejan)/864e5)+onejan.getDay()+1)/7);return d.getFullYear()+'-W'+wk}
 function render(){
   var d=T[L],data=load();
-  $('#pgH').textContent=d.h;$('#pgP').textContent=d.p+' '+d.local;$('#pgChartT').textContent=d.chartT;$('#pgListT').textContent=d.listT;$('#pgClear').textContent=d.clear;
+  $('#pgH').textContent=d.h;$('#pgP').textContent=d.p+' '+((window.SZA&&SZA.uid())?SY[L]:d.local);$('#pgChartT').textContent=d.chartT;$('#pgListT').textContent=d.listT;$('#pgClear').textContent=d.clear;
   [].forEach.call(document.querySelectorAll('[data-gl]'),function(x){x.setAttribute('aria-pressed',x.dataset.gl===L)});
   var cb=$('#pgChart'),lb=$('#pgList');cb.innerHTML='';lb.innerHTML='';
   if(!data.length){cb.innerHTML='';var p=document.createElement('p');p.className='note';p.textContent=d.empty;lb.appendChild(p);$('#pgChartBox').style.display='none';return}
@@ -2110,6 +2121,7 @@ function render(){
 }
 [].forEach.call(document.querySelectorAll('[data-gl]'),function(x){x.addEventListener('click',function(){L=x.dataset.gl;try{localStorage.setItem('sz_lang',L)}catch(e){}render()})});
 addEventListener('hashchange',function(){if(location.hash==='#progress')render()});
+addEventListener('szprogress',render);
 $('#pgClear').addEventListener('click',function(){if(confirm(T[L].confirm)){try{localStorage.removeItem('sz_progress')}catch(e){}render()}});
 render();
 })();
@@ -3460,23 +3472,205 @@ if(g){g.addEventListener('click',function(){setTimeout(label,0)});
  addEventListener('resize',pos);addEventListener('load',pos);if(d.fonts&&d.fonts.ready)d.fonts.ready.then(pos)}
 })();
 </script>
+<style>
+.szacc b{display:none;grid-area:1/1;font:800 .92rem/1 var(--d,inherit);color:#FFD60A}
+.szacc.on svg{display:none}.szacc.on b{display:block}.szacc.on{border-color:rgba(255,214,10,.55)}
+.cbm form{margin:0}.cbm p a{color:inherit;text-decoration:underline}
+.cbm .szdng{background:#E5311B;color:#fff}
+@media(max-width:480px){header .hcta{display:none}}
+@media(max-width:400px){header .in{gap:5px;padding:0 10px}.glang button{padding:8px 7px}.hbtn{flex:none}}
+</style>
+<script>
+/* auth.js: вход и регистрация через Firebase Authentication (email + пароль), REST без SDK */
+(function(){
+var LS="sz_auth";
+var T={
+ru:{login:"Войти",signup:"Регистрация",logout:"Выйти",loginT:"Вход",signupT:"Создать аккаунт",resetT:"Сброс пароля",
+why:"Аккаунт нужен для синхронизации прогресса между устройствами и для кабинета ученика. Тесты, калькуляторы и чат работают и без входа.",
+email:"Email",pass:"Пароль",go:"Войти",mk:"Создать аккаунт",forgot:"Забыли пароль?",noAcc:"Нет аккаунта? Зарегистрироваться",haveAcc:"Уже есть аккаунт? Войти",
+rstP:"Укажите email: мы пришлём ссылку для создания нового пароля.",rstGo:"Отправить ссылку",rstOk:"Если этот адрес зарегистрирован, мы отправили письмо со ссылкой. Проверьте и папку «Спам».",back:"Назад ко входу",
+c1:"Я согласен(на) на хранение моих данных (email и результаты тестов) в соответствии с ",c2:"Политикой конфиденциальности",c3:"",needC:"Нужно согласие на хранение данных",
+eUsed:"Этот email уже зарегистрирован. Попробуйте войти.",eBad:"Неверный email или пароль.",eWeak:"Слабый пароль. Используйте не меньше 8 символов, лучше буквы и цифры.",eShort:"Пароль должен быть не короче 8 символов.",eEmail:"Проверьте адрес email.",eMany:"Слишком много попыток. Подождите немного и попробуйте снова.",eNet:"Не удалось связаться с сервером. Проверьте интернет и попробуйте позже.",eOff:"Вход пока не настроен. Попробуйте позже.",eDis:"Аккаунт отключён. Напишите нам в Telegram.",eGen:"Что-то пошло не так. Попробуйте ещё раз.",eRe:"Нужно войти заново: введите пароль ещё раз.",
+accH:"Аккаунт",accOff:"Вы не вошли. Войдите, чтобы результаты тестов сохранялись на всех ваших устройствах и можно было выбрать преподавателя.",accOn:"Вы вошли как",accSync:"Результаты тестов синхронизируются между вашими устройствами.",syncNow:"Синхронизировать",synced:"Готово: прогресс обновлён.",moveBtn:"Перенести данные с этого устройства",
+del:"Удалить аккаунт и мои данные",delH:"Удалить аккаунт?",delP:"Аккаунт, профиль ученика, уроки и результаты тестов на сервере будут удалены безвозвратно. Для подтверждения введите пароль.",delGo:"Удалить навсегда",cancel:"Отмена",delDone:"Аккаунт и данные удалены.",delPart:"Данные удалены, но сам аккаунт удалить не удалось. Нажмите «Удалить навсегда» ещё раз.",
+lkH:"Перенести данные в аккаунт?",lkP:"На этом устройстве есть данные без аккаунта: результаты тестов и, возможно, профиль ученика. Перенести их в ваш аккаунт? Мы спросим только один раз.",lkYes:"Перенести",lkNo:"Не переносить",lkDone:"Данные перенесены в аккаунт.",lkHas:"В аккаунте уже есть данные, поэтому перенос не нужен.",lkNone:"Переносить нечего.",
+close:"Закрыть",aria:"Аккаунт"},
+uz:{login:"Kirish",signup:"Roʻyxatdan oʻtish",logout:"Chiqish",loginT:"Kirish",signupT:"Akkaunt yaratish",resetT:"Parolni tiklash",
+why:"Akkaunt natijalarni qurilmalar oʻrtasida sinxronlash va oʻquvchi kabineti uchun kerak. Testlar, kalkulyatorlar va chat kirmasdan ham ishlaydi.",
+email:"Email",pass:"Parol",go:"Kirish",mk:"Akkaunt yaratish",forgot:"Parolni unutdingizmi?",noAcc:"Akkauntingiz yoʻqmi? Roʻyxatdan oʻting",haveAcc:"Akkauntingiz bormi? Kirish",
+rstP:"Emailni kiriting: yangi parol yaratish uchun havola yuboramiz.",rstGo:"Havola yuborish",rstOk:"Agar bu manzil roʻyxatdan oʻtgan boʻlsa, havola bilan xat yubordik. «Spam» papkasini ham tekshiring.",back:"Kirishga qaytish",
+c1:"",c2:"Maxfiylik siyosatiga",c3:" muvofiq email va test natijalarimni saqlashga roziman",needC:"Maʻlumotlarni saqlashga rozilik kerak",
+eUsed:"Bu email allaqachon roʻyxatdan oʻtgan. Kirishga urinib koʻring.",eBad:"Email yoki parol notoʻgʻri.",eWeak:"Parol juda oddiy. Kamida 8 belgi ishlating, harf va raqamlar bilan yaxshiroq.",eShort:"Parol kamida 8 belgidan iborat boʻlishi kerak.",eEmail:"Email manzilini tekshiring.",eMany:"Urinishlar juda koʻp. Biroz kutib, qayta urinib koʻring.",eNet:"Serverga ulanib boʻlmadi. Internetni tekshirib, keyinroq urinib koʻring.",eOff:"Kirish hozircha sozlanmagan. Keyinroq urinib koʻring.",eDis:"Akkaunt oʻchirilgan. Telegramda bizga yozing.",eGen:"Xatolik yuz berdi. Qayta urinib koʻring.",eRe:"Qaytadan kiring: parolni yana kiriting.",
+accH:"Akkaunt",accOff:"Siz kirmagansiz. Test natijalaringiz barcha qurilmalarda saqlanishi va oʻqituvchi tanlash uchun kiring.",accOn:"Siz kirdingiz:",accSync:"Test natijalari qurilmalaringiz oʻrtasida sinxronlanadi.",syncNow:"Sinxronlash",synced:"Tayyor: natijalar yangilandi.",moveBtn:"Shu qurilmadagi maʻlumotlarni koʻchirish",
+del:"Akkauntni va maʻlumotlarimni oʻchirish",delH:"Akkaunt oʻchirilsinmi?",delP:"Akkaunt, oʻquvchi profili, darslar va serverdagi test natijalari butunlay oʻchiriladi. Tasdiqlash uchun parolni kiriting.",delGo:"Butunlay oʻchirish",cancel:"Bekor qilish",delDone:"Akkaunt va maʻlumotlar oʻchirildi.",delPart:"Maʻlumotlar oʻchirildi, lekin akkauntning oʻzini oʻchirib boʻlmadi. «Butunlay oʻchirish»ni yana bosing.",
+lkH:"Maʻlumotlar akkauntga koʻchirilsinmi?",lkP:"Bu qurilmada akkauntsiz maʻlumotlar bor: test natijalari va, ehtimol, oʻquvchi profili. Ularni akkauntingizga koʻchiraylikmi? Faqat bir marta soʻraymiz.",lkYes:"Koʻchirish",lkNo:"Koʻchirmaslik",lkDone:"Maʻlumotlar akkauntga koʻchirildi.",lkHas:"Akkauntda allaqachon maʻlumotlar bor, koʻchirish shart emas.",lkNone:"Koʻchiriladigan narsa yoʻq.",
+close:"Yopish",aria:"Akkaunt"},
+en:{login:"Sign in",signup:"Sign up",logout:"Sign out",loginT:"Sign in",signupT:"Create an account",resetT:"Reset password",
+why:"An account is for syncing your progress between devices and for the student cabinet. Tests, calculators and the chat work without signing in.",
+email:"Email",pass:"Password",go:"Sign in",mk:"Create account",forgot:"Forgot your password?",noAcc:"No account yet? Sign up",haveAcc:"Already have an account? Sign in",
+rstP:"Enter your email and we will send a link to set a new password.",rstGo:"Send link",rstOk:"If this address is registered, we have sent an email with a link. Check your spam folder too.",back:"Back to sign in",
+c1:"I agree to the storage of my data (email and test results) under the ",c2:"Privacy Policy",c3:"",needC:"Consent to data storage is required",
+eUsed:"This email is already registered. Try signing in.",eBad:"Wrong email or password.",eWeak:"Weak password. Use at least 8 characters, ideally letters and numbers.",eShort:"The password must be at least 8 characters.",eEmail:"Check the email address.",eMany:"Too many attempts. Wait a little and try again.",eNet:"Could not reach the server. Check your connection and try later.",eOff:"Sign-in is not set up yet. Try again later.",eDis:"This account is disabled. Message us on Telegram.",eGen:"Something went wrong. Please try again.",eRe:"Please sign in again: enter your password once more.",
+accH:"Account",accOff:"You are not signed in. Sign in to keep your test results on all your devices and to choose a teacher.",accOn:"Signed in as",accSync:"Your test results sync between your devices.",syncNow:"Sync now",synced:"Done: progress updated.",moveBtn:"Move data from this device",
+del:"Delete account and my data",delH:"Delete your account?",delP:"Your account, student profile, lessons and test results on the server will be deleted permanently. Enter your password to confirm.",delGo:"Delete forever",cancel:"Cancel",delDone:"Account and data deleted.",delPart:"Your data is deleted, but the account itself could not be removed. Press “Delete forever” again.",
+lkH:"Move your data to the account?",lkP:"This device holds data saved without an account: test results and possibly a student profile. Move it to your account? We ask only once.",lkYes:"Move it",lkNo:"Don’t move",lkDone:"Data moved to your account.",lkHas:"Your account already has data, so nothing needs to be moved.",lkNone:"Nothing to move.",
+close:"Close",aria:"Account"}};
+function lg(){try{var v=localStorage.getItem("sz_lang");if(v==="ru"||v==="uz"||v==="en")return v}catch(e){}var n=(navigator.language||"ru").slice(0,2);return n==="uz"||n==="en"?n:"ru"}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function $(s){return document.querySelector(s)}
+function jget(k){try{return JSON.parse(localStorage.getItem(k)||"null")}catch(e){return null}}
+
+/* ---------- сессия ---------- */
+var S=jget(LS);if(!(S&&S.rt&&S.uid))S=null;
+function save(s){S=s;try{if(s)localStorage.setItem(LS,JSON.stringify(s));else localStorage.removeItem(LS)}catch(e){}}
+var subs=[];
+function onChange(f){subs.push(f)}
+function emit(){subs.forEach(function(f){try{f()}catch(e){}});paintAll()}
+function anonId(){try{return localStorage.getItem("sz_cid")||""}catch(e){return ""}}
+function fail(code,status){var e=new Error(code);e.code=code;e.status=status||0;return e}
+function readJson(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok){var m=String((j.error&&j.error.message)||j.error||"");var c=/API key/i.test(m)?"API_KEY":(m.split(/[\s:]/)[0]||("HTTP_"+r.status));throw fail(c,r.status)}return j})}
+function net(e){if(e&&e.code)throw e;throw fail("NET")}
+var KEY=null;
+function cfg(){if(KEY)return Promise.resolve(KEY);return fetch((window.SZ_API||"")+"/api/auth/config").then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||!j.apiKey)throw fail("OFF",r.status);KEY=j.apiKey;return KEY})}).catch(net)}
+function idt(method,body,hdr){return cfg().then(function(k){var h={"Content-Type":"application/json"};if(hdr)for(var x in hdr)h[x]=hdr[x];return fetch("https://identitytoolkit.googleapis.com/v1/accounts:"+method+"?key="+encodeURIComponent(k),{method:"POST",headers:h,body:JSON.stringify(body)}).then(readJson)}).catch(net)}
+function refresh(s){return cfg().then(function(k){return fetch("https://securetoken.googleapis.com/v1/token?key="+encodeURIComponent(k),{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:"grant_type=refresh_token&refresh_token="+encodeURIComponent(s.rt)}).then(readJson)}).catch(net).then(function(j){var n={rt:j.refresh_token||s.rt,idt:j.id_token,exp:Date.now()+(Number(j.expires_in)||3600)*1000,uid:j.user_id||s.uid,email:s.email};save(n);return n})}
+var DEAD=["TOKEN_EXPIRED","USER_DISABLED","USER_NOT_FOUND","INVALID_REFRESH_TOKEN","INVALID_GRANT_TYPE","MISSING_REFRESH_TOKEN"];
+var pend=null;
+/* свежий idToken: обновляется заранее, за 2 минуты до конца срока */
+function token(){if(!S)return Promise.resolve(null);if(S.exp-Date.now()>120000)return Promise.resolve(S.idt);if(pend)return pend;
+ pend=refresh(S).then(function(s){return s.idt}).catch(function(e){if(DEAD.indexOf(e.code)>=0){signedOut();return null}return S&&S.exp>Date.now()?S.idt:null}).then(function(v){pend=null;return v});return pend}
+function dropAccRows(){try{var a=JSON.parse(localStorage.getItem("sz_progress")||"[]");var b=a.filter(function(r){return !r.acc});if(b.length!==a.length)localStorage.setItem("sz_progress",JSON.stringify(b))}catch(e){}}
+function signedOut(){save(null);dropAccRows();try{window.dispatchEvent(new Event("szprogress"))}catch(e){}emit()}
+function startSession(j){save({rt:j.refreshToken,idt:j.idToken,exp:Date.now()+(Number(j.expiresIn)||3600)*1000,uid:j.localId,email:j.email||""});emit();return S}
+function errText(e){var t=T[lg()],c=e&&e.code;
+ if(c==="EMAIL_EXISTS")return t.eUsed;
+ if(c==="INVALID_LOGIN_CREDENTIALS"||c==="INVALID_PASSWORD"||c==="EMAIL_NOT_FOUND"||c==="MISSING_PASSWORD")return t.eBad;
+ if(c==="WEAK_PASSWORD")return t.eWeak;
+ if(c==="INVALID_EMAIL"||c==="MISSING_EMAIL")return t.eEmail;
+ if(c==="TOO_MANY_ATTEMPTS_TRY_LATER")return t.eMany;
+ if(c==="USER_DISABLED")return t.eDis;
+ if(c==="NET")return t.eNet;
+ if(c==="OFF"||c==="API_KEY"||c==="OPERATION_NOT_ALLOWED")return t.eOff;
+ if(c==="CREDENTIAL_TOO_OLD_LOGIN_AGAIN")return t.eRe;
+ return t.eGen}
+
+/* ---------- запросы к нашему серверу ---------- */
+function apiWith(path,body,tok){var o={headers:{}};if(body!==undefined){o.method="POST";o.headers["Content-Type"]="application/json";o.body=JSON.stringify(body)}if(tok)o.headers.Authorization="Bearer "+tok;
+ return fetch((window.SZ_API||"")+"/api/"+path,o).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok){var e=new Error(j.error||("http_"+r.status));e.status=r.status;throw e}return j})},function(){throw fail("NET")})}
+function api(path,body){return token().then(function(tok){return apiWith(path,body,tok)})}
+
+/* ---------- синхронизация прогресса ---------- */
+function pull(){if(!S)return Promise.resolve(0);var uid=S.uid;
+ return api("progress/"+encodeURIComponent(uid)).then(function(rows){if(!S||S.uid!==uid||!Array.isArray(rows))return 0;
+  var local=[];try{local=JSON.parse(localStorage.getItem("sz_progress")||"[]")}catch(e){}if(!Array.isArray(local))local=[];
+  var seen={};local.forEach(function(r){seen[r.ts+"|"+r.kind]=1});var add=0;
+  rows.forEach(function(x){var d=x&&x.data;if(!d||typeof d.ts!=="number"||typeof d.band!=="number"||typeof d.score!=="number"||typeof d.total!=="number")return;
+   var kind=String(d.kind||x.kind||"").slice(0,40),k=d.ts+"|"+kind;if(seen[k])return;seen[k]=1;
+   local.push({ts:d.ts,kind:kind,title:String(d.title||"").slice(0,200),score:d.score,total:d.total,band:d.band,acc:uid});add++});
+  if(add){local.sort(function(a,b){return a.ts-b.ts});try{localStorage.setItem("sz_progress",JSON.stringify(local.slice(-200)))}catch(e){}try{window.dispatchEvent(new Event("szprogress"))}catch(e){}}
+  return add})}
+
+/* ---------- окна ---------- */
+var OPEN=null;
+function closeM(){if(OPEN){var o=OPEN;OPEN=null;o.o.remove();document.body.style.overflow="";document.removeEventListener("keydown",o.k);try{if(o.f)o.f.focus()}catch(e){}if(o.cb)o.cb()}}
+function modal(onClose){closeM();var t=T[lg()],o=el("div","cbo"),m=el("div","cbm");m.setAttribute("role","dialog");m.setAttribute("aria-modal","true");
+ var x=el("button","btn g cbx",t.close);x.type="button";x.onclick=function(){closeM()};m.appendChild(x);o.appendChild(m);o.onclick=function(e){if(e.target===o)closeM()};
+ var k=function(e){if(e.key==="Escape")closeM()};document.addEventListener("keydown",k);document.body.appendChild(o);document.body.style.overflow="hidden";
+ OPEN={o:o,k:k,f:document.activeElement,cb:onClose};x.focus();return{m:m,x:x}}
+function field(f,label,type,ac){var l=el("label","",label),i=el("input");i.type=type;i.autocomplete=ac;i.maxLength=type==="email"?120:100;if(type==="email")i.setAttribute("inputmode","email");l.appendChild(i);f.appendChild(l);return i}
+var MAIL=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function openAuth(view,pre){var w=modal(),m=w.m;show(view||"login",pre||"");
+ function clear(){m.textContent="";m.appendChild(w.x)}
+ function show(v,mail){var t=T[lg()];clear();
+  m.appendChild(el("h3","",v==="signup"?t.signupT:v==="reset"?t.resetT:t.loginT));
+  m.appendChild(el("p","cbmu",v==="reset"?t.rstP:t.why));
+  var f=el("form");f.noValidate=true;
+  var em=field(f,t.email,"email","email");em.value=mail||"";
+  var pw=null;if(v!=="reset")pw=field(f,t.pass,"password",v==="signup"?"new-password":"current-password");
+  var cb=null;
+  if(v==="signup"){var ck=el("label","cbk");cb=el("input");cb.type="checkbox";ck.appendChild(cb);var sp=el("span");sp.appendChild(document.createTextNode(t.c1));var a=el("a","",t.c2);a.href="#privacy";a.onclick=function(){closeM()};sp.appendChild(a);sp.appendChild(document.createTextNode(t.c3));ck.appendChild(sp);f.appendChild(ck)}
+  var st=el("p","cbst er");st.setAttribute("role","status");f.appendChild(st);
+  var go=el("button","btn",v==="signup"?t.mk:v==="reset"?t.rstGo:t.go);go.type="submit";f.appendChild(go);
+  function sw(label,to){var b=el("button","btn g",label);b.type="button";b.onclick=function(){show(to,em.value)};f.appendChild(b)}
+  if(v==="login"){sw(t.forgot,"reset");sw(t.noAcc,"signup")}else if(v==="signup")sw(t.haveAcc,"login");else sw(t.back,"login");
+  f.onsubmit=function(e){e.preventDefault();st.className="cbst er";st.textContent="";var mail=em.value.trim();
+   if(!MAIL.test(mail)){st.textContent=t.eEmail;return}
+   if(v==="reset"){go.disabled=true;idt("sendOobCode",{requestType:"PASSWORD_RESET",email:mail},{"X-Firebase-Locale":lg()}).then(function(){return 1},function(er){if(er.code==="EMAIL_NOT_FOUND")return 1;throw er}).then(function(){st.className="cbst ok";st.textContent=t.rstOk}).catch(function(er){go.disabled=false;st.textContent=errText(er)});return}
+   if(!pw.value){st.textContent=t.eBad;return}
+   if(v==="signup"){if(pw.value.length<8){st.textContent=t.eShort;return}if(!cb.checked){st.textContent=t.needC;return}}
+   go.disabled=true;
+   idt(v==="signup"?"signUp":"signInWithPassword",{email:mail,password:pw.value,returnSecureToken:true}).then(function(j){startSession(j);closeM();afterLogin()}).catch(function(er){go.disabled=false;st.textContent=errText(er)})};
+  m.appendChild(f);em.focus()}}
+
+/* ---------- перенос анонимных данных (один раз) ---------- */
+function localHas(){try{var a=JSON.parse(localStorage.getItem("sz_progress")||"[]");if(a.some(function(r){return !r.acc}))return true}catch(e){}try{if(localStorage.getItem("sz_profile")||localStorage.getItem("sz_level"))return true}catch(e){}return false}
+function setRec(cid,s){try{localStorage.setItem("sz_link",JSON.stringify({cid:cid,status:s,uid:S?S.uid:""}))}catch(e){}}
+function canMove(){var c=anonId(),r=jget("sz_link");return!!(S&&c&&localHas()&&!(r&&r.cid===c))}
+function askLink(cid){return new Promise(function(done){var t=T[lg()],decided=false;
+ var w=modal(function(){if(!decided)setRec(cid,"skip");done()}),m=w.m;
+ m.appendChild(el("h3","",t.lkH));m.appendChild(el("p","",t.lkP));
+ var st=el("p","cbst er");st.setAttribute("role","status");m.appendChild(st);
+ var yes=el("button","btn",t.lkYes),no=el("button","btn g",t.lkNo);yes.type=no.type="button";m.appendChild(yes);m.appendChild(no);
+ no.onclick=function(){closeM()};
+ yes.onclick=function(){yes.disabled=no.disabled=true;st.textContent="";
+  api("link",{cid:cid}).then(function(j){decided=true;setRec(cid,"done");try{localStorage.removeItem("sz_cid")}catch(e){}var mv=j.moved||{};
+   st.className="cbst ok";st.textContent=(mv.student||mv.progress||mv.lessons)?t.lkDone:t.lkNone;setTimeout(closeM,1400)})
+  .catch(function(e){if(e.status===409){decided=true;setRec(cid,"skip");st.className="cbst ok";st.textContent=t.lkHas;setTimeout(closeM,1600);return}
+   yes.disabled=no.disabled=false;st.textContent=errText(e.code?e:fail("NET"))})}})}
+function afterLogin(){var c=anonId();var p=canMove()?askLink(c).then(pull):pull();return p.catch(function(){}).then(paintAll)}
+
+/* ---------- удаление аккаунта ---------- */
+function openDelete(){var t=T[lg()],w=modal(),m=w.m;
+ m.appendChild(el("h3","",t.delH));m.appendChild(el("p","",t.delP));
+ var f=el("form"),pw=field(f,t.pass,"password","current-password");
+ var st=el("p","cbst er");st.setAttribute("role","status");f.appendChild(st);
+ var go=el("button","btn szdng",t.delGo);go.type="submit";var no=el("button","btn g",t.cancel);no.type="button";no.onclick=function(){closeM()};f.appendChild(go);f.appendChild(no);m.appendChild(f);pw.focus();
+ f.onsubmit=function(e){e.preventDefault();st.textContent="";if(!pw.value){st.textContent=t.eBad;return}go.disabled=true;var fresh="";
+  idt("signInWithPassword",{email:S.email,password:pw.value,returnSecureToken:true}).then(function(j){fresh=j.idToken;return apiWith("account/delete",{},fresh)})
+  .then(function(){return idt("delete",{idToken:fresh}).then(null,function(er){er.partial=true;throw er})})
+  .then(function(){try{localStorage.removeItem("sz_link")}catch(e){}signedOut();closeM();var d=modal();d.m.appendChild(el("p","cbst ok",T[lg()].delDone))})
+  .catch(function(er){go.disabled=false;st.textContent=er.partial?t.delPart:errText(er.code?er:fail("NET"))})}}
+
+/* ---------- кнопка в шапке и карточка аккаунта ---------- */
+function paintHead(){var b=$("#szAcc");if(!b)return;var t=T[lg()];b.classList.toggle("on",!!S);b.setAttribute("aria-label",S?t.aria+": "+S.email:t.login);b.title=S?S.email:t.login;var i=b.querySelector("b");if(i)i.textContent=S?(S.email||"?").charAt(0).toUpperCase():""}
+function card(h){var t=T[lg()];h.textContent="";var c=el("div","cb cbc");c.appendChild(el("h3","",t.accH));
+ function btn(label,cls,fn){var b=el("button","btn "+cls,label);b.type="button";b.onclick=fn;c.appendChild(b);return b}
+ if(!S){c.appendChild(el("p","cbmu",t.accOff));btn(t.login,"",function(){openAuth("login")});btn(t.signup,"g",function(){openAuth("signup")})}
+ else{var p=el("p");p.appendChild(document.createTextNode(t.accOn+" "));p.appendChild(el("b","",S.email));c.appendChild(p);c.appendChild(el("p","cbmu",t.accSync));
+  var st=el("p","cbst ok");st.setAttribute("role","status");
+  btn(t.syncNow,"g",function(){st.className="cbst ok";st.textContent="";pull().then(function(){st.textContent=t.synced}).catch(function(e){st.className="cbst er";st.textContent=errText(e.code?e:fail("NET"))})});
+  if(canMove())btn(t.moveBtn,"g",function(){askLink(anonId()).then(pull).catch(function(){}).then(paintAll)});
+  btn(t.logout,"g",function(){signedOut()});btn(t.del,"g",openDelete);c.appendChild(st)}
+ h.appendChild(c)}
+function paintAll(){paintHead();["szAcct","szAcct2"].forEach(function(id){var h=document.getElementById(id);if(h)card(h)})}
+
+window.SZA={uid:function(){return S?S.uid:""},email:function(){return S?S.email:""},token:token,open:function(v){openAuth(v||"login")},onChange:onChange,anonId:anonId,pull:pull};
+var hb=$("#szAcc");if(hb)hb.addEventListener("click",function(){if(S)location.hash="#profile";else openAuth("login")});
+document.addEventListener("click",function(e){var n=e.target;if(n&&n.closest&&n.closest(".slang,#glang"))setTimeout(paintAll,0)});
+setInterval(function(){if(S&&S.exp-Date.now()<300000)token()},60000);
+document.addEventListener("visibilitychange",function(){if(!document.hidden&&S)token()});
+paintAll();
+if(S)token().then(function(tk){if(tk)pull().catch(function(){})});
+})();
+</script>
 <script>
 /* cabinet.js: профиль преподавателя для учеников, кабинет преподавателя (ученики, цели, расписание) */
 (function(){
 var T={
-ru:{prof:"Профиль",my:"Мой преподаватель",myEmpty:"Откройте профиль преподавателя и выберите его: он увидит ваши цели и назначит уроки.",pick:"Выбрать преподавателя",lessons:"Мои уроки",noL:"Уроков пока нет. Преподаватель добавит расписание.",tz:"Время указано по Ташкенту.",choose:"Выбрать моим преподавателем",yours:"Ваш преподаватель",send:"Отправить",upd:"Обновить мои данные",off:"Отключиться и удалить данные",offQ:"Отключиться от преподавателя? Ваши данные и уроки будут удалены.",shH:"Что увидит преподаватель",shP:"Только то, что показано ниже, и результаты ваших тестов. Отключиться можно в любой момент: данные и уроки удалятся.",shE:"Профиль пока пустой. Заполните «Мини-профиль», чтобы преподаватель видел ваши цели.",nm:"Как вас зовут",ct:"Контакт (Telegram или телефон)",cs:"Я согласен(на) передать эти данные преподавателю",needN:"Укажите имя",needC:"Нужно согласие",done:"Готово. Преподаватель увидит ваш профиль.",close:"Закрыть",err:"Не удалось связаться с сервером. Попробуйте позже.",tg:"Написать в Telegram",
+ru:{needAcc:"Чтобы выбрать преподавателя и видеть уроки, войдите в аккаунт.",login:"Войти",prof:"Профиль",my:"Мой преподаватель",myEmpty:"Откройте профиль преподавателя и выберите его: он увидит ваши цели и назначит уроки.",pick:"Выбрать преподавателя",lessons:"Мои уроки",noL:"Уроков пока нет. Преподаватель добавит расписание.",tz:"Время указано по Ташкенту.",choose:"Выбрать моим преподавателем",yours:"Ваш преподаватель",send:"Отправить",upd:"Обновить мои данные",off:"Отключиться и удалить данные",offQ:"Отключиться от преподавателя? Ваши данные и уроки будут удалены.",shH:"Что увидит преподаватель",shP:"Только то, что показано ниже, и результаты ваших тестов. Отключиться можно в любой момент: данные и уроки удалятся.",shE:"Профиль пока пустой. Заполните «Мини-профиль», чтобы преподаватель видел ваши цели.",nm:"Как вас зовут",ct:"Контакт (Telegram или телефон)",cs:"Я согласен(на) передать эти данные преподавателю",needN:"Укажите имя",needC:"Нужно согласие",done:"Готово. Преподаватель увидит ваш профиль.",close:"Закрыть",err:"Не удалось связаться с сервером. Попробуйте позже.",tg:"Написать в Telegram",
 tLogin:"Я преподаватель",tT:"Кабинет преподавателя",tWho:"Преподаватель",tKey:"Личный ключ",tIn:"Войти",tOut:"Выйти",badK:"Неверный ключ",lock:"Слишком много попыток. Подождите 10 минут.",nos:"Кабинет ещё не настроен на сервере.",
 tabS:"Ученики",tabL:"Расписание",noS:"Учеников пока нет. Они появятся, когда выберут вас на карточке преподавателя.",back:"Назад",nextL:"Ближайший урок",none:"нет",
 goal:"Цель",lvl:"Уровень",band:"Целевой IELTS",exam:"Дата экзамена",left:"дн. до экзамена",cur:"Текущие баллы",gaps:"Что даётся труднее",hrs:"Часов в неделю",time:"Удобное время",days:"Удобные дни",fmt:"Формат",about:"О себе",why:"Зачем английский",ints:"Интересы",note:"Пожелания",contact:"Контакт",city:"Город",age:"Возраст",occ:"Занятие",nat:"Родной язык",
 goals:{speaking:"Разговорный",ielts:"IELTS",grammar:"Грамматика",vocab:"Слова",other:"Другое"},times:{Morning:"Утро",Afternoon:"День",Evening:"Вечер"},fmts:{Any:"Любой",Offline:"Офлайн",Online:"Онлайн"},
 rslt:"Результаты тестов",noP:"Тестов пока нет",addL:"Добавить урок",date:"Дата",tm:"Время",dur:"Минут",stu:"Ученик",topic:"Тема урока",add:"Добавить",del:"Удалить",delQ:"Удалить урок?",today:"Сегодня",tomo:"Завтра",up:"Ближайшие уроки",noU:"Ближайших уроков нет",bad:"Проверьте дату и время",added:"Урок добавлен",wd:["вс","пн","вт","ср","чт","пт","сб"],mo:["янв","фев","мар","апр","мая","июн","июл","авг","сен","окт","ноя","дек"]},
-uz:{prof:"Profil",my:"Mening oʻqituvchim",myEmpty:"Oʻqituvchi profilini oching va tanlang: u maqsadlaringizni koʻradi va darslarni belgilaydi.",pick:"Oʻqituvchini tanlash",lessons:"Mening darslarim",noL:"Hozircha dars yoʻq. Oʻqituvchi jadval qoʻshadi.",tz:"Vaqt Toshkent boʻyicha.",choose:"Oʻqituvchim qilib tanlash",yours:"Sizning oʻqituvchingiz",send:"Yuborish",upd:"Maʻlumotlarimni yangilash",off:"Uzish va maʻlumotlarni oʻchirish",offQ:"Oʻqituvchidan uzilasizmi? Maʻlumotlar va darslar oʻchiriladi.",shH:"Oʻqituvchi nimani koʻradi",shP:"Faqat quyida koʻrsatilganlar va test natijalaringiz. Istalgan payt uzish mumkin: maʻlumotlar va darslar oʻchadi.",shE:"Profil hozircha boʻsh. Oʻqituvchi maqsadlaringizni koʻrishi uchun «Mini-profil»ni toʻldiring.",nm:"Ismingiz",ct:"Aloqa (Telegram yoki telefon)",cs:"Bu maʻlumotlarni oʻqituvchiga berishga roziman",needN:"Ismingizni yozing",needC:"Rozilik kerak",done:"Tayyor. Oʻqituvchi profilingizni koʻradi.",close:"Yopish",err:"Serverga ulanib boʻlmadi. Keyinroq urinib koʻring.",tg:"Telegramda yozish",
+uz:{needAcc:"Oʻqituvchi tanlash va darslarni koʻrish uchun akkauntga kiring.",login:"Kirish",prof:"Profil",my:"Mening oʻqituvchim",myEmpty:"Oʻqituvchi profilini oching va tanlang: u maqsadlaringizni koʻradi va darslarni belgilaydi.",pick:"Oʻqituvchini tanlash",lessons:"Mening darslarim",noL:"Hozircha dars yoʻq. Oʻqituvchi jadval qoʻshadi.",tz:"Vaqt Toshkent boʻyicha.",choose:"Oʻqituvchim qilib tanlash",yours:"Sizning oʻqituvchingiz",send:"Yuborish",upd:"Maʻlumotlarimni yangilash",off:"Uzish va maʻlumotlarni oʻchirish",offQ:"Oʻqituvchidan uzilasizmi? Maʻlumotlar va darslar oʻchiriladi.",shH:"Oʻqituvchi nimani koʻradi",shP:"Faqat quyida koʻrsatilganlar va test natijalaringiz. Istalgan payt uzish mumkin: maʻlumotlar va darslar oʻchadi.",shE:"Profil hozircha boʻsh. Oʻqituvchi maqsadlaringizni koʻrishi uchun «Mini-profil»ni toʻldiring.",nm:"Ismingiz",ct:"Aloqa (Telegram yoki telefon)",cs:"Bu maʻlumotlarni oʻqituvchiga berishga roziman",needN:"Ismingizni yozing",needC:"Rozilik kerak",done:"Tayyor. Oʻqituvchi profilingizni koʻradi.",close:"Yopish",err:"Serverga ulanib boʻlmadi. Keyinroq urinib koʻring.",tg:"Telegramda yozish",
 tLogin:"Men oʻqituvchiman",tT:"Oʻqituvchi kabineti",tWho:"Oʻqituvchi",tKey:"Shaxsiy kalit",tIn:"Kirish",tOut:"Chiqish",badK:"Kalit notoʻgʻri",lock:"Urinishlar koʻp. 10 daqiqa kuting.",nos:"Kabinet serverda hali sozlanmagan.",
 tabS:"Oʻquvchilar",tabL:"Jadval",noS:"Hozircha oʻquvchi yoʻq. Ular sizni tanlaganda paydo boʻladi.",back:"Orqaga",nextL:"Eng yaqin dars",none:"yoʻq",
 goal:"Maqsad",lvl:"Daraja",band:"IELTS maqsadi",exam:"Imtihon sanasi",left:"kun qoldi",cur:"Hozirgi ballar",gaps:"Qiyin tomonlari",hrs:"Haftada soat",time:"Qulay vaqt",days:"Qulay kunlar",fmt:"Format",about:"Oʻzi haqida",why:"Nega ingliz tili",ints:"Qiziqishlar",note:"Istaklar",contact:"Aloqa",city:"Shahar",age:"Yosh",occ:"Mashgʻulot",nat:"Ona tili",
 goals:{speaking:"Nutq",ielts:"IELTS",grammar:"Grammatika",vocab:"Lugʻat",other:"Boshqa"},times:{Morning:"Ertalab",Afternoon:"Kunduzi",Evening:"Kechqurun"},fmts:{Any:"Farqi yoʻq",Offline:"Oflayn",Online:"Onlayn"},
 rslt:"Test natijalari",noP:"Hozircha test yoʻq",addL:"Dars qoʻshish",date:"Sana",tm:"Vaqt",dur:"Daqiqa",stu:"Oʻquvchi",topic:"Dars mavzusi",add:"Qoʻshish",del:"Oʻchirish",delQ:"Dars oʻchirilsinmi?",today:"Bugun",tomo:"Ertaga",up:"Yaqin darslar",noU:"Yaqin darslar yoʻq",bad:"Sana va vaqtni tekshiring",added:"Dars qoʻshildi",wd:["yak","dush","sesh","chor","pay","jum","shan"],mo:["yan","fev","mar","apr","may","iyn","iyl","avg","sen","okt","noy","dek"]},
-en:{prof:"Profile",my:"My teacher",myEmpty:"Open a teacher's profile and choose them: they will see your goals and set your lessons.",pick:"Choose a teacher",lessons:"My lessons",noL:"No lessons yet. Your teacher will add the schedule.",tz:"Times are Tashkent time.",choose:"Choose as my teacher",yours:"Your teacher",send:"Send",upd:"Update my data",off:"Disconnect and delete my data",offQ:"Disconnect from this teacher? Your data and lessons will be deleted.",shH:"What the teacher will see",shP:"Only what is shown below and your test results. You can disconnect at any time: your data and lessons are deleted.",shE:"Your profile is empty. Fill in the Mini-profile so the teacher can see your goals.",nm:"Your name",ct:"Contact (Telegram or phone)",cs:"I agree to share this data with the teacher",needN:"Enter your name",needC:"Consent is required",done:"Done. The teacher will see your profile.",close:"Close",err:"Could not reach the server. Try again later.",tg:"Message on Telegram",
+en:{needAcc:"Sign in to choose a teacher and see your lessons.",login:"Sign in",prof:"Profile",my:"My teacher",myEmpty:"Open a teacher's profile and choose them: they will see your goals and set your lessons.",pick:"Choose a teacher",lessons:"My lessons",noL:"No lessons yet. Your teacher will add the schedule.",tz:"Times are Tashkent time.",choose:"Choose as my teacher",yours:"Your teacher",send:"Send",upd:"Update my data",off:"Disconnect and delete my data",offQ:"Disconnect from this teacher? Your data and lessons will be deleted.",shH:"What the teacher will see",shP:"Only what is shown below and your test results. You can disconnect at any time: your data and lessons are deleted.",shE:"Your profile is empty. Fill in the Mini-profile so the teacher can see your goals.",nm:"Your name",ct:"Contact (Telegram or phone)",cs:"I agree to share this data with the teacher",needN:"Enter your name",needC:"Consent is required",done:"Done. The teacher will see your profile.",close:"Close",err:"Could not reach the server. Try again later.",tg:"Message on Telegram",
 tLogin:"I am a teacher",tT:"Teacher cabinet",tWho:"Teacher",tKey:"Personal key",tIn:"Sign in",tOut:"Sign out",badK:"Wrong key",lock:"Too many attempts. Wait 10 minutes.",nos:"The cabinet is not set up on the server yet.",
 tabS:"Students",tabL:"Schedule",noS:"No students yet. They appear when they choose you on your teacher card.",back:"Back",nextL:"Next lesson",none:"none",
 goal:"Goal",lvl:"Level",band:"IELTS target",exam:"Exam date",left:"days to the exam",cur:"Current scores",gaps:"Hardest for them",hrs:"Hours per week",time:"Convenient time",days:"Convenient days",fmt:"Format",about:"About",why:"Why English",ints:"Interests",note:"Wishes",contact:"Contact",city:"City",age:"Age",occ:"Occupation",nat:"Native language",
@@ -3488,9 +3682,10 @@ function lg(){try{var v=localStorage.getItem("sz_lang");if(v==="ru"||v==="uz"||v
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function $(s){return document.querySelector(s)}
 function tk(){return new Date(Date.now()+18e6).toISOString().slice(0,16)}
-function cid(){try{var c=localStorage.getItem("sz_cid");if(!c){c=((window.crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2,12))).replace(/[^A-Za-z0-9-]/g,"").slice(0,64);localStorage.setItem("sz_cid",c)}return c}catch(e){return ""}}
+function cid(){return(window.SZA&&SZA.uid())||""}
 function call(path,body){var o=body===undefined?{}:{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)};
- return fetch((window.SZ_API||"")+"/api/"+path,o).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok){var e=new Error(j.error||("http_"+r.status));e.status=r.status;throw e}return j})})}
+ var tp=window.SZA&&path.indexOf("teacher/")!==0?SZA.token():Promise.resolve(null);
+ return tp.then(function(tok){if(tok){o.headers=o.headers||{};o.headers.Authorization="Bearer "+tok}return fetch((window.SZ_API||"")+"/api/"+path,o)}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok){var e=new Error(j.error||("http_"+r.status));e.status=r.status;throw e}return j})})}
 function dlab(s,t){var d=s.slice(0,10),n=tk().slice(0,10);if(d===n)return t.today;var tm=new Date(Date.parse(n+"T00:00:00Z")+864e5).toISOString().slice(0,10);if(d===tm)return t.tomo;var p=d.split("-"),w=new Date(Date.UTC(+p[0],+p[1]-1,+p[2])).getUTCDay();return t.wd[w]+", "+(+p[2])+" "+t.mo[+p[1]-1]}
 function lineText(l,t){return dlab(l.start,t)+", "+l.start.slice(11)+" · "+l.duration+" min · "+(t.fmts[l.format]||l.format)}
 function lessonLi(l,t,right,who){var li=el("li",l.start<tk()?"past":""),d=el("div");d.appendChild(el("b","",lineText(l,t)));var sub=[who,l.topic].filter(Boolean).join(" · ");if(sub){d.appendChild(el("div","cbmu",sub))}li.appendChild(d);if(right)li.appendChild(right);return li}
@@ -3509,10 +3704,11 @@ function rows(p,t){var r=[];function a(k,v){if(v&&String(v).length)r.push([t[k],
 function dl(r){var d=el("dl","cbd");r.forEach(function(x){d.appendChild(el("dt","",x[0]));d.appendChild(el("dd","",x[1]))});return d}
 
 /* ---------- ученик ---------- */
-function loadStudent(){var c=cid();if(!c)return Promise.resolve();return call("students/"+encodeURIComponent(c)).then(function(j){ST={ok:true,linked:!!j.linked,teacher:j.teacher||"",lessons:j.lessons||[],err:false}}).catch(function(){ST.err=true}).then(paintStudent)}
+function loadStudent(){var c=cid();if(!c){ST={ok:true,anon:true,linked:false,teacher:"",lessons:[],err:false};paintStudent();return Promise.resolve()}return call("students/"+encodeURIComponent(c)).then(function(j){ST={ok:true,anon:false,linked:!!j.linked,teacher:j.teacher||"",lessons:j.lessons||[],err:false}}).catch(function(){ST.err=true}).then(paintStudent)}
 function paintStudent(){["szMy","szMy2"].forEach(function(id){var h=document.getElementById(id);if(h)drawStudent(h)})}
 function drawStudent(h){var t=T[lg()];h.textContent="";var c=el("div","cb cbc");c.appendChild(el("h3","",t.my));
  if(ST.err&&!ST.ok){c.appendChild(el("p","cbmu",t.err));h.appendChild(c);return}
+ if(ST.anon){c.appendChild(el("p","cbmu",t.needAcc));var bl=el("button","btn",t.login);bl.type="button";bl.onclick=function(){SZA.open("login")};c.appendChild(bl);h.appendChild(c);return}
  if(!ST.linked){c.appendChild(el("p","cbmu",t.myEmpty));var b=el("a","btn",t.pick);b.href="#teachers";c.appendChild(b);h.appendChild(c);return}
  var nm=NAMES[ST.teacher]||ST.teacher,hd=el("div","cbhd");hd.style.paddingRight="0";var av=el("div","cbav",nm.split(" ").pop().charAt(0));hd.appendChild(av);var tx=el("div");tx.appendChild(el("b","",nm));tx.appendChild(el("div","cbmu",t.yours));hd.appendChild(tx);c.appendChild(hd);
  var b1=el("button","btn",t.prof);b1.type="button";b1.onclick=function(){openPlaque(ST.teacher)};var b2=el("button","btn g",t.upd);b2.type="button";b2.onclick=function(){openPlaque(ST.teacher,true)};c.appendChild(b1);c.appendChild(b2);
@@ -3527,7 +3723,7 @@ function openPlaque(slug,form){var tile=null;[].forEach.call(document.querySelec
  if(tile){var tg=el("div","cbtg");[].forEach.call(tile.querySelectorAll(".str i"),function(i){tg.appendChild(el("i","",i.textContent))});m.appendChild(tg);[].forEach.call(tile.querySelectorAll(":scope > p"),function(p){m.appendChild(el("p","",p.textContent))})}
  var mine=ST.linked&&ST.teacher===slug;
  if(mine){m.appendChild(el("p","cbst ok","✓ "+t.yours));var ls=ST.lessons.filter(function(l){return l.teacher===slug});if(ls.length){m.appendChild(el("h4","",t.lessons));var ul=el("ul","cbls");ls.forEach(function(l){ul.appendChild(lessonLi(l,t,null,""))});m.appendChild(ul)}}
- var b=el("button","btn",mine?t.upd:t.choose);b.type="button";b.onclick=function(){openPlaque(slug,true)};m.appendChild(b);
+ var b=el("button","btn",mine?t.upd:t.choose);b.type="button";b.onclick=function(){if(!cid()){closeM();SZA.open("login");return}openPlaque(slug,true)};if(!cid())m.appendChild(el("p","cbmu",t.needAcc));m.appendChild(b);
  var a=tile&&tile.querySelector("a[href^=\"https://t.me\"]");if(a){var l=el("a","btn g",t.tg);l.href=a.href;l.target="_blank";l.rel="noopener";m.appendChild(l)}}
 function shareForm(m,slug){var t=T[lg()],p=myProfile();m.appendChild(el("h3","",t.shH));m.appendChild(el("p","cbmu",t.shP));
  var lb=el("label","",t.nm),nm=el("input");nm.maxLength=60;nm.value=p.name||"";lb.appendChild(nm);m.appendChild(lb);var lc=el("label","",t.ct),ct=el("input");ct.maxLength=100;lc.appendChild(ct);m.appendChild(lc);
@@ -3557,7 +3753,7 @@ function paintTeacher(msg){var h=$("#szCab");if(!h)return;var t=T[lg()],s=sess()
 function nextOf(id){var n=tk();return TD.lessons.filter(function(l){return l.studentId===id&&l.start>=n})[0]}
 function nm(id){var s=TD.students.filter(function(x){return x.id===id})[0];return s?(s.profile.name||"?"):"?"}
 function tList(c,t){if(!TD.students.length){c.appendChild(el("p","cbmu",t.noS));return}var g=el("div","cbl");
- TD.students.forEach(function(s){var p=s.profile,b=el("button","cbs");b.type="button";b.appendChild(el("span","cbav",(p.name||"?").charAt(0).toUpperCase()));var d=el("span");d.appendChild(el("b","",p.name||"?"));d.appendChild(el("small","",[p.lvl,p.band?"IELTS "+p.band:(t.goals[p.goal]||"")].filter(Boolean).join(" · ")||"—"));var n=nextOf(s.id);d.appendChild(el("small","",t.nextL+": "+(n?dlab(n.start,t)+", "+n.start.slice(11):t.none)));b.appendChild(d);b.onclick=function(){TD.sel=s.id;TD.prog=null;paintTeacher();call("progress/"+encodeURIComponent(s.id)).then(function(r){TD.prog=r;if(TD.sel===s.id)paintTeacher()}).catch(function(){TD.prog=[];if(TD.sel===s.id)paintTeacher()})};g.appendChild(b)});c.appendChild(g)}
+ TD.students.forEach(function(s){var p=s.profile,b=el("button","cbs");b.type="button";b.appendChild(el("span","cbav",(p.name||"?").charAt(0).toUpperCase()));var d=el("span");d.appendChild(el("b","",p.name||"?"));d.appendChild(el("small","",[p.lvl,p.band?"IELTS "+p.band:(t.goals[p.goal]||"")].filter(Boolean).join(" · ")||"—"));var n=nextOf(s.id);d.appendChild(el("small","",t.nextL+": "+(n?dlab(n.start,t)+", "+n.start.slice(11):t.none)));b.appendChild(d);b.onclick=function(){TD.sel=s.id;TD.prog=null;paintTeacher();tcall("progress",{studentId:s.id}).then(function(r){TD.prog=r.rows||[];if(TD.sel===s.id)paintTeacher()}).catch(function(){TD.prog=[];if(TD.sel===s.id)paintTeacher()})};g.appendChild(b)});c.appendChild(g)}
 function tStudent(c,t){var s=TD.students.filter(function(x){return x.id===TD.sel})[0];if(!s){TD.sel=null;return tList(c,t)}
  var bk=el("button","btn g","← "+t.back);bk.type="button";bk.onclick=function(){TD.sel=null;paintTeacher()};c.appendChild(bk);
  var hd=el("div","cbhd");hd.style.paddingRight="0";hd.appendChild(el("div","cbav",(s.profile.name||"?").charAt(0).toUpperCase()));hd.appendChild(el("h3","",s.profile.name||"?"));c.appendChild(hd);c.appendChild(dl(rows(s.profile,t)));
@@ -3577,7 +3773,7 @@ function lessonForm(c,t,fixed){c.appendChild(el("h4","",t.addL));var f=el("div",
  b.onclick=function(){var id=fixed||(sel&&sel.value);if(!id||!d.value||!tm.value){paintTeacher("!"+t.bad);return}b.disabled=true;
   tcall("lessons",{action:"add",studentId:id,start:d.value+"T"+tm.value,duration:+du.value,format:fm.value,topic:tp.value}).then(tload).then(function(){paintTeacher("+"+t.added)}).catch(function(e){b.disabled=false;paintTeacher("!"+(e.status===400?t.bad:t.err))})}}
 
-function init(){tileButtons();paintStudent();paintTeacher();if(sess())tload().then(function(){paintTeacher()}).catch(function(){paintTeacher()});loadStudent()}
+function init(){if(window.SZA)SZA.onChange(function(){ST={ok:false,anon:false,linked:false,teacher:"",lessons:[],err:false};loadStudent()});tileButtons();paintStudent();paintTeacher();if(sess())tload().then(function(){paintTeacher()}).catch(function(){paintTeacher()});loadStudent()}
 var g=document.getElementById("glang");if(g)g.addEventListener("click",function(){setTimeout(function(){tileButtons();paintStudent();paintTeacher()},0)});
 addEventListener("hashchange",function(){if(location.hash==="#teachers"||location.hash==="#profile")loadStudent()});
 init();
