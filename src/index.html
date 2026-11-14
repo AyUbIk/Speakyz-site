@@ -3561,9 +3561,9 @@ if(f0)window.fetch=function(u){var url=typeof u==='string'?u:(u&&u.url)||'',tr=!
  return p};
 /* course cards: animated details + staggered bullet list */
 var FX={'Hi':'<div class="fxw"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>','7.5':'<div class="fxr"><i></i><i></i><i></i><b></b></div>','1:1':'<div class="fxl"><i></i><u></u><i></i><b></b></div>'};
-var io=!RM&&'IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('szv');io.unobserve(e.target)}})},{threshold:.25}):null;
+var ioT=!RM&&'IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('szv');ioT.unobserve(e.target)}})},{threshold:.25}):null;
 $$('.tile').forEach(function(t){var g=t.getAttribute('data-g');if(g){var f=d.createElement('div');f.className='szfx';f.setAttribute('aria-hidden','true');f.innerHTML='<span class="fxo"></span>'+(FX[g]||'');t.insertBefore(f,t.firstChild)}
- $$('li',t).forEach(function(li,i){li.style.setProperty('--i',i)});if(io){t.classList.add('szq');io.observe(t)}});
+ $$('li',t).forEach(function(li,i){li.style.setProperty('--i',i)});if(ioT){t.classList.add('szq');ioT.observe(t)}});
 })();
 
 </script>
