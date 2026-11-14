@@ -757,7 +757,7 @@ window.szLite=function(on){try{localStorage.setItem("sz_lite",on?"1":"0")}catch(
   <div class="tile b2 yl" data-zoom data-g="Hi"><span class="tl"><i class="ic ic-practice"></i>Speaking</span><h3>Speaking club</h3><p data-sl="d_club">Малые группы, где вы говорите весь урок. Ошибки исправляются на месте.</p><ul><li data-sl="fc1"></li><li data-sl="fc2"></li><li data-sl="fc3"></li><li data-sl="fc4"></li></ul><div class="pr"><b>330 000</b><span data-sl="u_sum">сум</span><span data-sl="u_month">в месяц</span></div><a class="btn" style="background:#000" data-sl="order" href="https://t.me/speakyz_lern_english_bot?start=club">Заказать</a></div>
   <div class="tile b2 cr" data-zoom data-g="7.5"><span class="tl"><i class="ic ic-ielts"></i>IELTS</span><h3>IELTS</h3><p data-sl="d_ielts">Все четыре части экзамена, пробные тесты и разбор баллов.</p><ul><li data-sl="fi1"></li><li data-sl="fi2"></li><li data-sl="fi3"></li><li data-sl="fi4"></li></ul><div class="pr"><b>900 000</b><span data-sl="u_sum">сум</span><span data-sl="u_month">в месяц</span></div><a class="btn y" data-sl="order" href="https://t.me/speakyz_lern_english_bot?start=ielts">Заказать</a></div>
   <div class="tile a k" data-zoom data-g="1:1"><span class="tl"><i class="ic ic-user"></i>1 : 1</span><h3 data-sl="n_ind">Индивидуальные уроки</h3><p data-sl="d_ind">Личный преподаватель и план под вашу цель и график.</p><ul><li data-sl="fn1"></li><li data-sl="fn2"></li><li data-sl="fn3"></li><li data-sl="fn4"></li></ul><div class="pr"><b>1 500 000</b><span data-sl="u_sum">сум</span><span data-sl="u_lesson">за месяц</span></div><a class="btn y" data-sl="order" href="https://t.me/speakyz_lern_english_bot?start=individual">Заказать</a></div>
-  <div class="tile b2 bl" data-zoom data-g="IELTS+"><span class="tl"><i class="ic ic-ielts"></i>Premium</span><h3 data-sl="sub_n">Подписка IELTS</h3><p data-sl="sub_d">Всё для балла 7+ в одном месяце: преподаватель, ИИ и материалы.</p><ul><li data-sl="sub_1">Занятия с преподавателем</li><li data-sl="sub_2">ИИ-экзаменатор и ИИ-учитель</li><li data-sl="sub_3">Мок-тесты и практика с разбором</li><li data-sl="sub_4">Все материалы курса</li></ul><div class="pr"><b>1 600 000</b><span data-sl="u_sum">сум</span><span data-sl="u_lesson">за месяц</span></div><a class="btn y" data-sl="order" href="https://t.me/speakyz_lern_english_bot?start=subscription">Заказать</a><button type="button" class="szsubcode" data-szsub data-sl="sub_code">У меня есть код</button></div>
+  <div id="szShopPlans" style="display:contents"></div>
     <div class="tile a bl" data-zoom><div class="cover cv-w" aria-hidden="true"><span>WRITING</span><i>8.0</i><span>Speakyz</span></div><span class="tl"><i class="ic ic-courses"></i>PDF</span><h3>Writing 8.0</h3><p data-sl="d_wr">Критерии, образцы Task 1 и Task 2 уровня 8.0, 30 заданий и план на 30 дней. Формат PDF.</p><ul><li data-sl="fw1"></li><li data-sl="fw2"></li><li data-sl="fw3"></li><li data-sl="fw4"></li></ul><div class="pr"><b>100 000</b><span data-sl="u_sum">сум</span><span data-sl="u_pdf">PDF</span></div><a class="btn y" data-sl="order" href="https://t.me/speakyz_lern_english_bot?start=writing">Заказать</a></div>
   <div class="tile b2 cr" data-zoom><div class="cover cv-r" aria-hidden="true"><span>READING</span><i>8.0</i><span>Speakyz</span></div><span class="tl"><i class="ic ic-courses"></i>PDF</span><h3>Reading 8.0</h3><p data-sl="d_rd">Стратегии, 12 типов вопросов, три практических текста с ключами и объяснениями. Формат PDF.</p><ul><li data-sl="fr1"></li><li data-sl="fr2"></li><li data-sl="fr3"></li><li data-sl="fr4"></li></ul><div class="pr"><b>100 000</b><span data-sl="u_sum">сум</span><span data-sl="u_pdf">PDF</span></div><a class="btn y" data-sl="order" href="https://t.me/speakyz_lern_english_bot?start=reading">Заказать</a></div>
   <div class="tile b2 yl" data-zoom><div class="cover cv-g sm" aria-hidden="true"><span>GRAMMAR</span><i>A1–C2</i><span>Speakyz</span></div><span class="tl"><i class="ic ic-courses"></i>PDF</span><h3>Super Grammar and Vocab</h3><p data-sl="d_gr">Грамматика и слова от A1 до C2: правила, примеры, упражнения и ключи. Формат PDF.</p><ul><li data-sl="fg1"></li><li data-sl="fg2"></li><li data-sl="fg3"></li><li data-sl="fg4"></li></ul><div class="pr"><b>100 000</b><span data-sl="u_sum">сум</span><span data-sl="u_pdf">PDF</span></div><a class="btn" style="background:#000" data-sl="order" href="https://t.me/speakyz_lern_english_bot?start=grammar">Заказать</a></div>
@@ -1842,6 +1842,7 @@ function quiz(cfg,pre,kind){
   var intro=el('div','pass');intro.appendChild(el('h3','',cfg.title));intro.appendChild(el('p','',pre));
   var go=el('button','btn',d.start);go.type='button';intro.appendChild(go);mBox.appendChild(intro);
   go.onclick=function(){
+    if(window.SZS&&kind&&!go.dataset.ok){go.disabled=true;SZS.attempt(kind).then(function(r){go.disabled=false;if(r.ok){go.dataset.ok='1';go.onclick()}});return}go.dataset.ok='';
     mBox.textContent='';var bar=el('div','mt');bar.appendChild(el('b','',cfg.title));var tm=el('span','tm');bar.appendChild(tm);
     var sub=el('button','btn y',d.submit);sub.type='button';bar.appendChild(sub);mBox.appendChild(bar);
     var plays=2,synth=window.speechSynthesis;
@@ -2136,9 +2137,9 @@ render();
 /* progress.js */
 (function(){
 var T={
-ru:{h:"Мой прогресс",p:"История ваших пробников Reading и Listening, сохранённая в этом браузере.",chartT:"Band по неделям",listT:"История попыток",clear:"Очистить историю",empty:"Пока нет ни одной попытки. Пройдите пробник во вкладке «Mock tests».",col:["Дата","Тип","Текст","Балл","Band"],local:"Данные хранятся только в этом браузере на этом устройстве и никуда не отправляются.",confirm:"Удалить всю историю? Это нельзя отменить."},
-uz:{h:"Mening progressim",p:"Reading va Listening sinov testlaringiz tarixi, shu brauzerda saqlanadi.",chartT:"Haftalar bo\u02BByicha Band",listT:"Urinishlar tarixi",clear:"Tarixni tozalash",empty:"Hali birorta urinish yo\u02BBq. \u00ABMock tests\u00BB bo\u02BBlimida sinov testini topshiring.",col:["Sana","Turi","Matn","Ball","Band"],local:"Ma\u02BBlumotlar faqat shu brauzerda, shu qurilmada saqlanadi va hech qayerga yuborilmaydi.",confirm:"Butun tarixni o\u02BBchirishni xohlaysizmi? Buni bekor qilib bo\u02BBlmaydi."},
-en:{h:"My progress",p:"Your Reading and Listening mock-test history, saved in this browser.",chartT:"Band over the weeks",listT:"Attempt history",clear:"Clear history",empty:"No attempts yet. Take a mock test on the \u201CMock tests\u201D tab.",col:["Date","Type","Text","Score","Band"],local:"Data is stored only in this browser on this device and is never sent anywhere.",confirm:"Delete all history? This cannot be undone."}};
+ru:{h:"Мой прогресс",p:"История ваших пробников Reading и Listening, сохранённая в этом браузере.",chartT:"Динамика баллов",listT:"История попыток",clear:"Очистить историю",empty:"Пока нет ни одной попытки. Пройдите пробник во вкладке «Mock tests».",col:["Дата","Тип","Текст","Балл","Band"],local:"Данные хранятся только в этом браузере на этом устройстве и никуда не отправляются.",confirm:"Удалить всю историю? Это нельзя отменить."},
+uz:{h:"Mening progressim",p:"Reading va Listening sinov testlaringiz tarixi, shu brauzerda saqlanadi.",chartT:"Ballar dinamikasi",listT:"Urinishlar tarixi",clear:"Tarixni tozalash",empty:"Hali birorta urinish yo\u02BBq. \u00ABMock tests\u00BB bo\u02BBlimida sinov testini topshiring.",col:["Sana","Turi","Matn","Ball","Band"],local:"Ma\u02BBlumotlar faqat shu brauzerda, shu qurilmada saqlanadi va hech qayerga yuborilmaydi.",confirm:"Butun tarixni o\u02BBchirishni xohlaysizmi? Buni bekor qilib bo\u02BBlmaydi."},
+en:{h:"My progress",p:"Your Reading and Listening mock-test history, saved in this browser.",chartT:"Score trend",listT:"Attempt history",clear:"Clear history",empty:"No attempts yet. Take a mock test on the \u201CMock tests\u201D tab.",col:["Date","Type","Text","Score","Band"],local:"Data is stored only in this browser on this device and is never sent anywhere.",confirm:"Delete all history? This cannot be undone."}};
 var SY={ru:'Вы вошли в аккаунт: история синхронизируется между вашими устройствами.',uz:'Siz akkauntga kirgansiz: tarix qurilmalaringiz oʻrtasida sinxronlanadi.',en:'You are signed in: your history syncs between your devices.'};
 var $=function(s){return document.querySelector(s)};
 var L='ru';try{var sv=localStorage.getItem('sz_lang');if(T[sv])L=sv;else{var n=(navigator.language||'ru').slice(0,2);if(T[n])L=n}}catch(e){}
@@ -2151,17 +2152,43 @@ function render(){
   var cb=$('#pgChart'),lb=$('#pgList');cb.innerHTML='';lb.innerHTML='';
   if(!data.length){cb.innerHTML='';var p=document.createElement('p');p.className='note';p.textContent=d.empty;lb.appendChild(p);$('#pgChartBox').style.display='none';return}
   $('#pgChartBox').style.display='';
-  var byWeek={};data.forEach(function(r){var k=weekKey(r.ts);(byWeek[k]=byWeek[k]||[]).push(r.band)});
-  var weeks=Object.keys(byWeek).sort();
-  var pts=weeks.map(function(k){var a=byWeek[k];return a.reduce(function(s,x){return s+x},0)/a.length});
-  var W=Math.max(320,Math.min(760,weeks.length*70)),H=220,PAD=34;
-  var svg='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;max-width:'+W+'px;height:auto" role="img">';
-  for(var g=0;g<=9;g+=3){var y=H-PAD-(g/9)*(H-2*PAD);svg+='<line x1="'+PAD+'" y1="'+y+'" x2="'+W+'" y2="'+y+'" stroke="#E3E3E8" stroke-width="1"/><text x="2" y="'+(y+4)+'" font-size="10" fill="#6E6E73">'+g+'</text>'}
-  var pathPts=pts.map(function(v,i){var x=PAD+(weeks.length>1?i/(weeks.length-1):0)*(W-PAD-10);var y=H-PAD-(v/9)*(H-2*PAD);return[x,y]});
-  var dAttr=pathPts.map(function(p,i){return(i===0?'M':'L')+p[0].toFixed(1)+' '+p[1].toFixed(1)}).join(' ');
-  svg+='<path d="'+dAttr+'" fill="none" stroke="#2A3CFF" stroke-width="2.5"/>';
-  pathPts.forEach(function(p,i){svg+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="4" fill="#FF4B2B"/><text x="'+p[0].toFixed(1)+'" y="'+H+'" font-size="9" fill="#6E6E73" text-anchor="middle">'+weeks[i].split('-W')[1]+'</text>'});
-  svg+='</svg>';cb.innerHTML=svg;
+  var CH={ru:{all:"Все",last:"Последний band",best:"Лучший",avg:"Средний",n:"Попыток",hint:"Нажмите на точку, чтобы увидеть детали",vs:"к прошлой попытке",first:"Первая попытка"},
+   uz:{all:"Hammasi",last:"Oxirgi band",best:"Eng yaxshi",avg:"Oʻrtacha",n:"Urinishlar",hint:"Tafsilot uchun nuqtani bosing",vs:"oldingisiga nisbatan",first:"Birinchi urinish"},
+   en:{all:"All",last:"Latest band",best:"Best",avg:"Average",n:"Attempts",hint:"Tap a point to see details",vs:"vs previous attempt",first:"First attempt"}}[L];
+  var UP="#1a9d4a",DN="#FF4B2B",FL="#8E8E93";
+  var kinds=[];data.forEach(function(r){if(kinds.indexOf(r.kind)<0)kinds.push(r.kind)});
+  var sel=(window.__pgKind&&kinds.indexOf(window.__pgKind)>=0)?window.__pgKind:'*';
+  var ser=data.filter(function(r){return sel==='*'||r.kind===sel}).sort(function(a,b){return a.ts-b.ts});
+  var n=ser.length,last=ser[n-1].band,prev=n>1?ser[n-2].band:null,best=0,sum=0;ser.forEach(function(r){best=Math.max(best,r.band);sum+=r.band});
+  var delta=prev==null?0:last-prev,fm=function(v){return(v>0?"+":v<0?"−":"")+Math.abs(v).toFixed(1)};
+  var col=function(v){return v>0.05?UP:v<-0.05?DN:FL};
+  if(kinds.length>1){var kb=document.createElement('div');kb.className='pgk';['*'].concat(kinds).forEach(function(k){var bt=document.createElement('button');bt.type='button';bt.textContent=k==='*'?CH.all:k;bt.setAttribute('aria-pressed',k===sel);bt.onclick=function(){window.__pgKind=k;render()};kb.appendChild(bt)});cb.appendChild(kb)}
+  var sm=document.createElement('div');sm.className='pgs';
+  var card=function(t,v,extra,c){var d=document.createElement('div');d.innerHTML='<span></span><b></b><i></i>';d.children[0].textContent=t;d.children[1].textContent=v;if(extra){d.children[2].textContent=extra;d.children[2].style.color=c}return d};
+  sm.appendChild(card(CH.last,last.toFixed(1),prev==null?CH.first:(delta>0.05?"▲ ":delta<-0.05?"▼ ":"= ")+fm(delta)+" "+CH.vs,col(delta)));
+  sm.appendChild(card(CH.best,best.toFixed(1)));sm.appendChild(card(CH.avg,(sum/n).toFixed(1)));sm.appendChild(card(CH.n,String(n)));cb.appendChild(sm);
+  var lo=Math.max(0,Math.floor(Math.min.apply(null,ser.map(function(r){return r.band}))-.5)),hi=Math.min(9,Math.ceil(best+.5));if(hi-lo<2){hi=Math.min(9,lo+2);lo=Math.max(0,hi-2)}
+  var W=640,Ht=260,pl=34,pr=16,pt=26,pb=30,gw=W-pl-pr,gh=Ht-pt-pb;
+  var X=function(i){return pl+(n>1?i/(n-1):.5)*gw},Y=function(v){return pt+(1-(v-lo)/(hi-lo))*gh};
+  var s='<svg viewBox="0 0 '+W+' '+Ht+'" role="img" aria-label="'+d.chartT+'" style="width:100%;height:auto;display:block;overflow:visible"><defs><linearGradient id="pgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A3CFF" stop-opacity=".22"/><stop offset="1" stop-color="#2A3CFF" stop-opacity="0"/></linearGradient></defs>';
+  for(var g=lo;g<=hi;g++){var gy=Y(g);s+='<line x1="'+pl+'" y1="'+gy+'" x2="'+(W-pr)+'" y2="'+gy+'" stroke="currentColor" stroke-opacity=".12"/><text x="'+(pl-8)+'" y="'+(gy+4)+'" text-anchor="end" font-size="11" fill="currentColor" fill-opacity=".55">'+g+'</text>'}
+  if(n>1){var ap='M'+X(0)+' '+Y(ser[0].band);ser.forEach(function(r,i){ap+=' L'+X(i).toFixed(1)+' '+Y(r.band).toFixed(1)});ap+=' L'+X(n-1)+' '+(Ht-pb)+' L'+X(0)+' '+(Ht-pb)+'Z';s+='<path d="'+ap+'" fill="url(#pgG)"/>'}
+  for(var i=1;i<n;i++){var x1=X(i-1),y1=Y(ser[i-1].band),x2=X(i),y2=Y(ser[i].band),len=Math.ceil(Math.hypot(x2-x1,y2-y1))+2;s+='<line class="pgseg" x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" stroke="'+col(ser[i].band-ser[i-1].band)+'" stroke-width="3.5" stroke-linecap="round" style="--l:'+len+';animation-delay:'+(i*.07).toFixed(2)+'s"/>'}
+  var step=Math.ceil(n/6);
+  ser.forEach(function(r,i){var x=X(i),y=Y(r.band),dl=i?r.band-ser[i-1].band:0,c=i?col(dl):"#2A3CFF",big=i===n-1;
+   s+='<circle class="pgdot" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(big?6.5:4.5)+'" fill="'+c+'" stroke="var(--pgbg,#fff)" stroke-width="2.5" style="animation-delay:'+(.2+i*.07).toFixed(2)+'s"/>';
+   if(i&&(n<=12||big))s+='<text x="'+x.toFixed(1)+'" y="'+(y-(dl>=0?12:-20)).toFixed(1)+'" text-anchor="middle" font-size="11" font-weight="700" fill="'+c+'">'+fm(dl)+'</text>';
+   if(i%step===0||big)s+='<text x="'+x.toFixed(1)+'" y="'+(Ht-8)+'" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity=".55">'+new Date(r.ts).toLocaleDateString(L==='en'?'en-GB':L==='uz'?'uz-UZ':'ru-RU',{day:'2-digit',month:'2-digit'})+'</text>';
+   s+='<circle class="pghit" data-i="'+i+'" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="16" fill="transparent" tabindex="0" role="button" aria-label="'+r.band.toFixed(1)+'"/>'});
+  s+='</svg>';
+  var wrap=document.createElement('div');wrap.className='pgw';wrap.innerHTML=s+'<div class="pgtip" hidden></div>';cb.appendChild(wrap);
+  var hint=document.createElement('p');hint.className='note';hint.textContent=CH.hint;cb.appendChild(hint);
+  var tip=wrap.querySelector('.pgtip');
+  function show(i){var r=ser[i],dl=i?r.band-ser[i-1].band:0;tip.hidden=false;tip.innerHTML='<b></b><span></span><i></i>';tip.children[0].textContent=r.band.toFixed(1)+' band';tip.children[1].textContent=new Date(r.ts).toLocaleDateString()+' · '+(r.kind||'')+' · '+(r.score!=null?r.score+'/'+r.total:'');
+   if(i){tip.children[2].textContent=(dl>0.05?"▲ ":dl<-0.05?"▼ ":"= ")+fm(dl);tip.children[2].style.color=col(dl)}
+   }
+  [].forEach.call(wrap.querySelectorAll('.pghit'),function(h){var f=function(){show(+h.dataset.i)};h.addEventListener('click',f);h.addEventListener('focus',f);h.addEventListener('mouseenter',f)});
+  show(n-1);
   var tbl=document.createElement('table');tbl.style.cssText='width:100%;border-collapse:collapse';
   var thead=document.createElement('tr');d.col.forEach(function(c){var th=document.createElement('th');th.textContent=c;th.style.cssText='text-align:left;padding:8px 10px;border-bottom:2px solid #1D1D1F;font-size:.82rem';thead.appendChild(th)});tbl.appendChild(thead);
   data.slice().reverse().forEach(function(r){var tr=document.createElement('tr');
@@ -3606,14 +3633,42 @@ var L={ru:['Тёмная тема','Светлая тема'],uz:['Qorongʻi mav
 function lang(){var v='ru';try{v=localStorage.getItem('sz_lang')||v}catch(e){}return L[v]?v:'ru'}
 function cur(){return h.getAttribute('data-theme')==='dark'?'dark':'light'}
 var b=d.getElementById('szTheme');if(!b)return;
+/* клякса: кадры маски (чернильное пятно растёт из кнопки темы) рисуются один раз и кэшируются */
+var INK=null;
+function ink(){
+ if(INK)return INK;
+ var N=28,S=384,c=d.createElement('canvas');c.width=c.height=S;var g=c.getContext('2d'),seed=11,i,j,k;
+ function rnd(){seed=seed*16807%2147483647;return(seed-1)/2147483646}
+ var Hm=[],sa=0;for(k=0;k<8;k++){var a=1/(1+k*.5);sa+=a;Hm.push({f:2+k*2+((rnd()*3)|0),p:rnd()*6.283,a:a,s:(rnd()-.5)*2})}
+ var Dr=[];for(k=0;k<70;k++)Dr.push({an:rnd()*6.283,d:1.04+rnd()*.34,r:.004+rnd()*rnd()*.03,t0:.04+rnd()*.5});
+ var fr=[];
+ for(i=0;i<N;i++){
+  var t=i/(N-1),e=1-Math.pow(1-t,2.3),R=.04+.62*e,amp=.3*Math.pow(1-t,.7)+.05;
+  g.clearRect(0,0,S,S);g.fillStyle='#000';
+  if(i===N-1)g.fillRect(0,0,S,S);
+  else{
+   g.beginPath();
+   for(j=0;j<=240;j++){var th=j/240*6.2832,v=0;for(k=0;k<8;k++)v+=Hm[k].a*Math.cos(Hm[k].f*th+Hm[k].p+Hm[k].s*t*2.2);
+    var rr0=R*(1+amp*v/sa)*S,px=S/2+Math.cos(th)*rr0,py=S/2+Math.sin(th)*rr0;j?g.lineTo(px,py):g.moveTo(px,py)}
+   g.closePath();g.fill();
+   var fade=1-Math.min(1,Math.max(0,(t-.55)/.35));
+   if(fade>0)for(k=0;k<Dr.length;k++){var dd=Dr[k];if(t<dd.t0)continue;var rr=dd.r*fade*S*(.4+Math.min(1,(t-dd.t0)*3));if(rr<.6)continue;var dist=R*dd.d*S;g.beginPath();g.arc(S/2+Math.cos(dd.an)*dist,S/2+Math.sin(dd.an)*dist,rr,0,6.2832);g.fill()}
+  }
+  fr.push('url("'+c.toDataURL('image/png')+'")');
+ }
+ INK=fr;return INK}
+if(!RM&&d.startViewTransition){(window.requestIdleCallback||function(f){setTimeout(f,1500)})(function(){try{ink()}catch(e){}})}
 function label(){var t=L[lang()],s=cur()==='dark'?t[1]:t[0];b.setAttribute('aria-label',s);b.title=s;b.setAttribute('aria-pressed',String(cur()==='dark'))}
 function apply(t){h.setAttribute('data-theme',t);try{localStorage.setItem('sz_theme',t)}catch(e){}label()}
 b.addEventListener('click',function(){
  var next=cur()==='dark'?'light':'dark';
  if(d.startViewTransition&&!RM){
-  var r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,R=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+  var r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,Rf=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y)),F=Math.ceil(Rf*2.02),fr=ink();
+  h.style.setProperty('--szinkp',(x-F/2)+'px '+(y-F/2)+'px');h.style.setProperty('--szinks',F+'px '+F+'px');h.style.setProperty('--szink0',fr[0]);h.classList.add('szink');
+  var fin=function(){h.classList.remove('szink')};
   var vt=d.startViewTransition(function(){apply(next)});
-  vt.ready.then(function(){h.animate({clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+R+'px at '+x+'px '+y+'px)']},{duration:750,easing:'cubic-bezier(.22,1,.36,1)',pseudoElement:'::view-transition-new(root)'})}).catch(function(){});
+  vt.ready.then(function(){h.animate({maskImage:fr,webkitMaskImage:fr},{duration:950,easing:'linear',fill:'forwards',pseudoElement:'::view-transition-new(root)'})}).catch(fin);
+  vt.finished.then(fin,fin);
  }else{
   if(!RM){h.classList.add('szx');setTimeout(function(){h.classList.remove('szx')},800)}
   apply(next)}
@@ -4613,7 +4668,7 @@ html[data-theme="dark"] #tbk{--bg:#0E1420; --surface:#151D2C; --fg:#E6EAF2; --mu
     <li><b>8</b><span>тем Writing Task 1</span></li>
     <li><b>20</b><span>тем Speaking</span></li>
     <li><b>21</b><span>тем Reading</span></li>
-    <li><b>2724</b><span>слов и фраз</span></li>
+    <li><b>3000+</b><span>слов и фраз</span></li>
   </ul>
 </div>
 
@@ -5491,71 +5546,243 @@ html[data-theme="dark"] .szsv .szsb{color:#8FA0FF}
 @keyframes szsvF{from{opacity:0}}@keyframes szsvU{from{opacity:0;transform:translateY(18px) scale(.97)}}
 @keyframes szsvS{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}@keyframes szsvP{50%{transform:scale(1.03)}}
 @media(prefers-reduced-motion:reduce){.szsv,.szsv *{animation:none!important}}
+
+/* sub v3: тарифы, таймер лимита, тост, читалка */
+.szsv>div.szwide{max-width:940px}
+.szpg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 12px}
+@media(max-width:760px){.szpg{grid-template-columns:1fr}}
+.szpl{display:flex;flex-direction:column;padding:16px;border-radius:22px;background:rgba(127,127,127,.09);box-shadow:inset 0 0 0 1.5px rgba(127,127,127,.18)}
+.szpl.cur{box-shadow:inset 0 0 0 2px #2A3CFF}
+.szpl h4{margin:0 0 4px;font:800 1.15rem var(--d)}
+.szpl .szpd{margin:0 0 10px;font-size:.88rem;opacity:.75;line-height:1.35}
+.szpl .szspr{margin:0 0 10px;flex-wrap:wrap}.szpl .szspr b{font-size:1.6rem}.szpl .szspr span{font-size:.82rem}
+.szpl ul{margin:0 0 14px;gap:6px}.szpl li{font-size:.86rem}
+.szpl .szbuy{margin-top:auto;display:block;text-align:center;text-decoration:none;background:#2A3CFF;color:#fff;border-radius:99px;padding:12px 16px;font:800 .95rem var(--b);transition:transform .2s}
+.szpl .szbuy:active{transform:scale(.97)}
+.szfree{margin:2px 2px 6px;font-size:.84rem;opacity:.7}
+.szhv{margin:10px 2px 8px;font:800 .95rem var(--d)}
+.szcd{margin:0 0 16px;padding:16px;border-radius:20px;background:rgba(255,75,43,.1);box-shadow:inset 0 0 0 1px rgba(255,75,43,.3);text-align:center}
+.szcd b{display:block;font:800 2.4rem/1 var(--d);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.szcd.done{background:rgba(26,157,74,.1);box-shadow:inset 0 0 0 1px rgba(26,157,74,.35)}
+.szcd.done b{color:#1a9d4a}
+.szcd .szcont{margin-top:8px;height:42px;border:0;border-radius:99px;background:#2A3CFF;color:#fff;padding:0 22px;font:800 .95rem var(--b);cursor:pointer}
+.szlt{position:fixed;left:50%;bottom:22px;z-index:10080;max-width:calc(100vw - 32px);transform:translate(-50%,16px);opacity:0;pointer-events:none;background:#1D1D1F;color:#fff;padding:11px 18px;border-radius:99px;font:700 .88rem/1.3 var(--b);text-align:center;box-shadow:0 12px 36px rgba(0,0,0,.35);transition:opacity .3s,transform .3s}
+.szlt.on{opacity:1;transform:translate(-50%,0)}
+html[data-theme="dark"] .szlt{background:#F5F5F7;color:#0B0B0E}
+.szact{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.szact button{height:40px;border:1.5px solid rgba(127,127,127,.4);border-radius:99px;background:transparent;color:inherit;padding:0 16px;font:700 .88rem var(--b);cursor:pointer}
+.szbk{display:grid;gap:8px;margin:10px 0}
+.szbr{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px 10px 16px;border-radius:16px;background:rgba(127,127,127,.09);font-weight:700}
+.szbr button{height:38px;border:0;border-radius:99px;background:#2A3CFF;color:#fff;padding:0 18px;font:800 .88rem var(--b);cursor:pointer}
+.szbr button:disabled{opacity:.45;cursor:default}
+.szrd{position:fixed;inset:0;z-index:10090;display:flex;flex-direction:column;background:#1b1b1f;color:#f2f2f2;-webkit-user-select:none;user-select:none}
+.szrh{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#111;box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.szrh b{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.szrn{font-size:.85rem;opacity:.7;font-variant-numeric:tabular-nums}
+.szrh button{height:36px;border:0;border-radius:99px;background:rgba(255,255,255,.14);color:#fff;padding:0 16px;font:700 .88rem var(--b);cursor:pointer}
+.szrb{flex:1;overflow:auto;padding:12px;-webkit-overflow-scrolling:touch}
+.szrp{max-width:900px;margin:0 auto 12px;background:#fff;border-radius:4px;box-shadow:0 6px 24px rgba(0,0,0,.4);overflow:hidden}
+.szrp canvas{display:block}
+.szrm{text-align:center;opacity:.8;padding:40px 16px 12px}
+.szrb .szsb{display:block;text-align:center;color:#8FA0FF;font-weight:700;padding:8px}
+/* клякса при смене темы */
+html.szink::view-transition-new(root){-webkit-mask-image:var(--szink0);mask-image:var(--szink0);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:var(--szinks);mask-size:var(--szinks);-webkit-mask-position:var(--szinkp);mask-position:var(--szinkp)}
+@media(prefers-reduced-motion:reduce){.szlt{transition:none}}
 </style>
 <script>
-/* sub.js: подписка IELTS. Код вводится в кабинете или в окне доступа; проверка и срок хранятся на сервере */
+/* sub.js: тарифы Speakyz (Книги / Личный учитель / Семейный), коды, лимит бесплатных попыток, чтение книг.
+   Срок, тариф и счётчики попыток хранятся на сервере; здесь только показ и подсказки. */
 (function(){
-var PREM=["mock","practice","teacher","arena"],KEY="sz_sub",TG="https://t.me/speakyz_lern_english_bot?start=subscription";
-var X={ru:{badge:"Premium",t:"Подписка IELTS",p:"Эта часть открывается по подписке. Введите код, который вы получили при оплате.",f:["Занятия с преподавателем","ИИ-экзаменатор и свободный разговор","ИИ-учитель","Мок-тесты и практика с разбором","Все материалы курса"],price:"1 600 000",sum:"сум",mo:"в месяц",ph:"Ваш код",go:"Активировать",buy:"Заказать подписку",bad:"Неверный код. Проверьте и попробуйте снова.",rate:"Слишком много попыток. Подождите 10 минут.",net:"Нет связи. Попробуйте ещё раз.",ok:"Готово! Доступ открыт.",until:"Подписка активна до",none:"Нет подписки",cardP:"Введите код, чтобы открыть ИИ, мок-тесты и практику.",cardT:"Подписка IELTS",close:"Закрыть",srv:"Сервер временно недоступен."},
-uz:{badge:"Premium",t:"IELTS obunasi",p:"Bu boʻlim obuna bilan ochiladi. Toʻlovdan keyin olingan kodni kiriting.",f:["Oʻqituvchi bilan darslar","AI-ekzaminator va erkin suhbat","AI-oʻqituvchi","Mock testlar va tahlilli mashq","Kursning barcha materiallari"],price:"1 600 000",sum:"soʻm",mo:"oyiga",ph:"Kodingiz",go:"Faollashtirish",buy:"Obunani buyurtma qilish",bad:"Kod notoʻgʻri. Tekshirib, qayta urining.",rate:"Juda koʻp urinish. 10 daqiqa kuting.",net:"Aloqa yoʻq. Qayta urinib koʻring.",ok:"Tayyor! Kirish ochildi.",until:"Obuna amal qiladi:",none:"Obuna yoʻq",cardP:"AI, mock testlar va mashqlarni ochish uchun kodni kiriting.",cardT:"IELTS obunasi",close:"Yopish",srv:"Server vaqtincha mavjud emas."},
-en:{badge:"Premium",t:"IELTS subscription",p:"This part is part of the subscription. Enter the code you received when you paid.",f:["Lessons with a teacher","AI examiner and free conversation","AI teacher","Mock tests and practice with feedback","All course materials"],price:"1,600,000",sum:"UZS",mo:"per month",ph:"Your code",go:"Activate",buy:"Order the subscription",bad:"Wrong code. Check it and try again.",rate:"Too many attempts. Wait 10 minutes.",net:"No connection. Try again.",ok:"Done! Access is open.",until:"Subscription active until",none:"No subscription",cardP:"Enter your code to unlock AI, mock tests and practice.",cardT:"IELTS subscription",close:"Close",srv:"The server is temporarily unavailable."}};
+var KEY="sz_sub",TG="https://t.me/speakyz_lern_english_bot?start=",PDFJS="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+var PL=[["books","250 000","bl"],["personal","2 000 000","yl"],["family","2 200 000","cr"]];
+var BK=[["speaking","Speaking 8.0"],["writing","Writing 8.0"],["reading","Reading 8.0"],["listening","Listening 8.0"],["grammar","Super Grammar and Vocab"]];
+var X={
+ru:{t:"Подписка Speakyz",p:"Любой тариф открывает весь сайт без лимитов на 30 дней. Выберите подходящий или введите код.",sum:"сум",days:"30 дней",buy:"Купить",have:"Уже есть код?",ph:"Ваш код",go:"Активировать",
+ bad:"Неверный код. Проверьте и попробуйте снова.",used:"Этот код уже активирован на вашем аккаунте.",full:"Этот код уже подключён к максимальному числу аккаунтов.",busy:"Не получилось, попробуйте ещё раз.",rate:"Слишком много попыток. Подождите 10 минут.",net:"Нет связи. Попробуйте ещё раз.",srv:"Сервер временно недоступен.",ok:"Готово! Доступ открыт.",
+ until:"активен до",close:"Закрыть",free:"Без подписки: {n} попыток на каждое упражнение, затем пауза {h} ч.",
+ pn:{books:"Книги",personal:"Личный учитель",family:"Семейный"},
+ pd:{books:"Все книги Speakyz и полный доступ к сайту",personal:"Занятия с личным преподавателем и весь сайт",family:"Личный учитель для семьи: один код на 3 аккаунта"},
+ pf:{books:["Все книги Speakyz в формате PDF","ИИ, мок-тесты, практика и Банк тем без лимитов"],personal:["Занятия с личным преподавателем","ИИ, мок-тесты, практика и Банк тем без лимитов"],family:["Всё из тарифа «Личный учитель»","Один код подключается к 3 аккаунтам","ИИ, мок-тесты, практика и Банк тем без лимитов"]},
+ lockB:"Лимит",lockT:"Попытки закончились",lockP:"«{k}»: бесплатные попытки использованы. Они обновятся через",lockDone:"Попытки обновились. Можно продолжать.",cont:"Продолжить",
+ left:"Осталось попыток: {l} из {n}",last:"Это была последняя попытка. Новые через {t}",
+ kinds:{speaking:"Практика Speaking",writing:"Практика Writing",t_free:"ИИ-учитель: свободный чат",t_grammar:"ИИ-учитель: грамматика",t_speaking:"ИИ-учитель: разговор",talk:"Разговор с Alex",arena:"ИИ-экзаменатор",reading:"Мок-тест Reading",listening:"Мок-тест Listening"},
+ cardT:"Ваш тариф",choose:"Выбрать тариф",lib:"Мои книги",libT:"Книги Speakyz",read:"Читать",soon:"Скоро",nobk:"Книги пока не загружены на сайт. Мы пришлём всю папку в Telegram.",tgb:"Получить в Telegram",bkErr:"Не удалось открыть книгу. Попробуйте ещё раз.",pg:"Стр."},
+uz:{t:"Speakyz obunasi",p:"Har qanday tarif 30 kun davomida butun saytni limitsiz ochadi. Mosini tanlang yoki kodni kiriting.",sum:"soʻm",days:"30 kun",buy:"Sotib olish",have:"Kodingiz bormi?",ph:"Kodingiz",go:"Faollashtirish",
+ bad:"Kod notoʻgʻri. Tekshirib, qayta urining.",used:"Bu kod sizning akkauntingizda allaqachon faollashtirilgan.",full:"Bu kod akkauntlarning maksimal soniga ulangan.",busy:"Chiqmadi, qayta urinib koʻring.",rate:"Juda koʻp urinish. 10 daqiqa kuting.",net:"Aloqa yoʻq. Qayta urinib koʻring.",srv:"Server vaqtincha mavjud emas.",ok:"Tayyor! Kirish ochildi.",
+ until:"amal qiladi:",close:"Yopish",free:"Obunasiz: har bir mashq uchun {n} ta urinish, keyin {h} soat tanaffus.",
+ pn:{books:"Kitoblar",personal:"Shaxsiy oʻqituvchi",family:"Oilaviy"},
+ pd:{books:"Speakyz kitoblari va butun saytga toʻliq kirish",personal:"Shaxsiy oʻqituvchi bilan darslar va butun sayt",family:"Oila uchun shaxsiy oʻqituvchi: bitta kod 3 ta akkauntga"},
+ pf:{books:["Speakyz kitoblarining hammasi PDF formatida","AI, mock testlar, mashqlar va Mavzular banki limitsiz"],personal:["Shaxsiy oʻqituvchi bilan darslar","AI, mock testlar, mashqlar va Mavzular banki limitsiz"],family:["«Shaxsiy oʻqituvchi» tarifidagi hamma narsa","Bitta kod 3 ta akkauntga ulanadi","AI, mock testlar, mashqlar va Mavzular banki limitsiz"]},
+ lockB:"Limit",lockT:"Urinishlar tugadi",lockP:"«{k}»: bepul urinishlar ishlatildi. Ular yangilanadi:",lockDone:"Urinishlar yangilandi. Davom etishingiz mumkin.",cont:"Davom etish",
+ left:"Qolgan urinishlar: {l} / {n}",last:"Bu oxirgi urinish edi. Yangilari {t} dan keyin",
+ kinds:{speaking:"Speaking mashqi",writing:"Writing mashqi",t_free:"AI-oʻqituvchi: erkin suhbat",t_grammar:"AI-oʻqituvchi: grammatika",t_speaking:"AI-oʻqituvchi: gaplashish",talk:"Alex bilan suhbat",arena:"AI-ekzaminator",reading:"Reading mock testi",listening:"Listening mock testi"},
+ cardT:"Sizning tarifingiz",choose:"Tarifni tanlash",lib:"Kitoblarim",libT:"Speakyz kitoblari",read:"Oʻqish",soon:"Tez orada",nobk:"Kitoblar hali saytga yuklanmagan. Butun jildni Telegramda yuboramiz.",tgb:"Telegramda olish",bkErr:"Kitobni ochib boʻlmadi. Qayta urinib koʻring.",pg:"Bet"},
+en:{t:"Speakyz subscription",p:"Any plan unlocks the whole site with no limits for 30 days. Pick one or enter your code.",sum:"UZS",days:"30 days",buy:"Buy",have:"Already have a code?",ph:"Your code",go:"Activate",
+ bad:"Wrong code. Check it and try again.",used:"This code is already active on your account.",full:"This code is already linked to the maximum number of accounts.",busy:"That did not work, please try again.",rate:"Too many attempts. Wait 10 minutes.",net:"No connection. Try again.",srv:"The server is temporarily unavailable.",ok:"Done! Access is open.",
+ until:"active until",close:"Close",free:"Without a subscription: {n} attempts for each exercise, then a {h} hour break.",
+ pn:{books:"Books",personal:"Personal teacher",family:"Family"},
+ pd:{books:"All Speakyz books and full access to the site",personal:"Lessons with a personal teacher and the whole site",family:"A personal teacher for the family: one code for 3 accounts"},
+ pf:{books:["All Speakyz books in PDF","AI, mock tests, practice and Topic Bank with no limits"],personal:["Lessons with a personal teacher","AI, mock tests, practice and Topic Bank with no limits"],family:["Everything in the Personal teacher plan","One code connects to 3 accounts","AI, mock tests, practice and Topic Bank with no limits"]},
+ lockB:"Limit",lockT:"Out of attempts",lockP:"“{k}”: the free attempts are used up. They renew in",lockDone:"Attempts are back. You can continue.",cont:"Continue",
+ left:"Attempts left: {l} of {n}",last:"That was the last attempt. New ones in {t}",
+ kinds:{speaking:"Speaking practice",writing:"Writing practice",t_free:"AI teacher: free chat",t_grammar:"AI teacher: grammar",t_speaking:"AI teacher: speaking",talk:"Chat with Alex",arena:"AI examiner",reading:"Reading mock test",listening:"Listening mock test"},
+ cardT:"Your plan",choose:"Choose a plan",lib:"My books",libT:"Speakyz books",read:"Read",soon:"Soon",nobk:"The books are not uploaded to the site yet. We will send the whole folder in Telegram.",tgb:"Get it in Telegram",bkErr:"Could not open the book. Please try again.",pg:"Page"}};
 function lg(){try{var v=localStorage.getItem("sz_lang");if(v==="ru"||v==="uz"||v==="en")return v}catch(e){}return"ru"}
 function T(){return X[lg()]}
+function f(s,o){return String(s).replace(/\{(\w+)\}/g,function(m,k){return o&&o[k]!=null?o[k]:""})}
 function uid(){return window.SZA&&SZA.uid?SZA.uid():""}
 function tk(){try{var s=JSON.parse(sessionStorage.getItem("sz_tk")||"null");return s&&s.t&&s.k?s:null}catch(e){return null}}
-var st={until:0,loaded:false};
-function rd(){st.until=0;try{var c=JSON.parse(localStorage.getItem(KEY)||"null");if(c&&c.uid&&c.uid===uid())st.until=+c.until||0}catch(e){}}
-function sv(){try{localStorage.setItem(KEY,JSON.stringify({uid:uid(),until:st.until}))}catch(e){}}
+var st={until:0,plan:"",limit:5,hours:3,loaded:false};
+function rd(){st.until=0;st.plan="";try{var c=JSON.parse(localStorage.getItem(KEY)||"null");if(c&&c.uid&&c.uid===uid()){st.until=+c.until||0;st.plan=c.plan||""}}catch(e){}}
+function sv(){try{localStorage.setItem(KEY,JSON.stringify({uid:uid(),until:st.until,plan:st.plan}))}catch(e){}}
 rd();
 function ok(){return !!tk()||st.until>Date.now()}
 function dt(ms){try{return new Date(ms).toLocaleDateString(lg()==="uz"?"uz-UZ":lg()==="en"?"en-GB":"ru-RU",{day:"numeric",month:"long",year:"numeric"})}catch(e){return new Date(ms).toISOString().slice(0,10)}}
-function load(){var u=uid();if(!u||!window.SZA)return Promise.resolve();
- return SZA.token().then(function(t){return t&&fetch((window.SZ_API||"")+"/api/subscription",{headers:{Authorization:"Bearer "+t}})}).then(function(r){return r&&r.ok?r.json():null}).then(function(d){if(d&&uid()===u){st.until=d.active?+d.until:0;st.loaded=true;sv();paint()}}).catch(function(){})}
-function redeem(code){return SZA.token().then(function(t){if(!t)return{e:"auth"};return fetch((window.SZ_API||"")+"/api/redeem",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+t},body:JSON.stringify({code:code})}).then(function(r){return r.json().catch(function(){return{}}).then(function(d){if(r.ok&&d.active){st.until=+d.until;st.loaded=true;sv();return{ok:1}}return{e:r.status===403?"bad":r.status===429?"rate":r.status>=500?"srv":"bad"}})})}).catch(function(){return{e:"net"}})}
+function hms(ms){var s=Math.max(0,Math.ceil(ms/1000)),h=Math.floor(s/3600),m=Math.floor(s%3600/60);s=s%60;return h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s}
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
-function form(parent,done){var t=T(),f=el("div","szsf"),i=el("input");i.type="text";i.placeholder=t.ph;i.autocomplete="off";i.autocapitalize="characters";i.spellcheck=false;i.maxLength=40;i.setAttribute("aria-label",t.ph);
+function api(p){return(window.SZ_API||"")+p}
+function apply(d){st.until=d.active?+d.until:0;st.plan=d.active?(d.plan||"personal"):"";if(d.limit)st.limit=+d.limit;if(d.hours)st.hours=+d.hours;st.loaded=true;sv()}
+function load(){var u=uid();if(!u||!window.SZA)return Promise.resolve();
+ return SZA.token().then(function(t){return t&&fetch(api("/api/subscription"),{headers:{Authorization:"Bearer "+t}})}).then(function(r){return r&&r.ok?r.json():null}).then(function(d){if(d&&uid()===u){apply(d);paint()}}).catch(function(){})}
+function redeem(code){return SZA.token().then(function(t){if(!t)return{e:"auth"};return fetch(api("/api/redeem"),{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+t},body:JSON.stringify({code:code})}).then(function(r){return r.json().catch(function(){return{}}).then(function(d){if(r.ok&&d.active){apply(d);return{ok:1}}
+  var e=d&&d.error;return{e:e==="code_used"?"used":e==="code_full"?"full":e==="busy"?"busy":r.status===429?"rate":r.status>=500?"srv":"bad"}})})}).catch(function(){return{e:"net"}})}
+
+/* ---------- попытки: сервер считает, здесь подсказки и окно с таймером ---------- */
+function attempt(kind){
+ if(ok()||!window.SZA||!uid())return Promise.resolve({ok:true});
+ return SZA.token().then(function(t){if(!t)return{ok:true};return fetch(api("/api/attempt"),{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+t},body:JSON.stringify({kind:kind})}).then(function(r){return r.json().catch(function(){return{}}).then(function(d){
+  if(r.status===429&&d.error==="limit"){lock(kind,d.resetAt);return{ok:false}}
+  if(r.ok&&typeof d.left==="number")toast({kind:kind,left:d.left,limit:d.limit,resetAt:d.resetAt});
+  return{ok:true}})})}).catch(function(){return{ok:true}})}
+var tt=null,tm=null;
+function toast(d){var t=T();if(!d)return;var m=(t.kinds[d.kind]?t.kinds[d.kind]+" · ":"")+(d.left>0?f(t.left,{l:d.left,n:d.limit||st.limit}):f(t.last,{t:hms((d.resetAt||0)-Date.now())}));
+ if(!tt){tt=el("div","szlt");tt.setAttribute("role","status");document.body.appendChild(tt)}
+ tt.textContent=m;tt.classList.remove("on");void tt.offsetWidth;tt.classList.add("on");clearTimeout(tm);tm=setTimeout(function(){tt.classList.remove("on")},d.left>0?3600:6000)}
+
+/* ---------- форма кода ---------- */
+function form(parent,done){var t=T(),fm=el("div","szsf"),i=el("input");i.type="text";i.placeholder=t.ph;i.autocomplete="off";i.autocapitalize="characters";i.spellcheck=false;i.maxLength=40;i.setAttribute("aria-label",t.ph);
  var b=el("button","",t.go);b.type="button";var m=el("p","szsm");m.setAttribute("role","status");
- function go(){var v=i.value.trim();if(!v){i.focus();return}b.disabled=true;f.classList.remove("er");m.className="szsm";m.textContent="…";
+ function go(){var v=i.value.trim();if(!v){i.focus();return}b.disabled=true;fm.classList.remove("er");m.className="szsm";m.textContent="…";
   redeem(v).then(function(r){b.disabled=false;if(r.ok){m.className="szsm ok";m.textContent=t.ok;try{navigator.vibrate&&navigator.vibrate(18)}catch(e){}paint();setTimeout(function(){done&&done()},650)}
-   else{f.classList.add("er");void f.offsetWidth;m.className="szsm er";m.textContent=r.e==="rate"?t.rate:r.e==="net"?t.net:r.e==="srv"?t.srv:t.bad;i.select()}})}
- b.onclick=go;i.addEventListener("keydown",function(e){if(e.key==="Enter")go()});i.addEventListener("input",function(){f.classList.remove("er")});
- f.appendChild(i);f.appendChild(b);parent.appendChild(f);parent.appendChild(m);return i}
-var open=null,want="";
+   else{fm.classList.add("er");void fm.offsetWidth;m.className="szsm er";m.textContent=t[r.e]||t.bad;i.select()}})}
+ b.onclick=go;i.addEventListener("keydown",function(e){if(e.key==="Enter")go()});i.addEventListener("input",function(){fm.classList.remove("er")});
+ fm.appendChild(i);fm.appendChild(b);parent.appendChild(fm);parent.appendChild(m);return i}
+
+/* ---------- карточки тарифов ---------- */
+function planCard(p,cls){var t=T(),c=el("div","szpl "+cls),pr=el("div","szspr");
+ c.appendChild(el("h4","",t.pn[p[0]]));c.appendChild(el("p","szpd",t.pd[p[0]]));
+ pr.appendChild(el("b","",p[1]));pr.appendChild(el("span","",t.sum+" · "+t.days));c.appendChild(pr);
+ var u=el("ul");t.pf[p[0]].forEach(function(s){u.appendChild(el("li","",s))});c.appendChild(u);
+ var a=el("a","szbuy",t.buy);a.href=TG+"sub_"+p[0];a.target="_blank";a.rel="noopener";c.appendChild(a);
+ if(st.plan===p[0]&&ok()){c.classList.add("cur")}
+ return c}
+/* тарифы в разделе «Книги и курсы» */
+function renderShop(){var h=document.getElementById("szShopPlans");if(!h)return;var t=T();h.textContent="";
+ PL.forEach(function(p){var c=el("div","tile b2 "+p[2]);c.setAttribute("data-zoom","");
+  var tl=el("span","tl");tl.appendChild(el("i","ic ic-ielts"));tl.appendChild(document.createTextNode(t.days));c.appendChild(tl);
+  c.appendChild(el("h3","",t.pn[p[0]]));c.appendChild(el("p","",t.pd[p[0]]));
+  var u=el("ul");t.pf[p[0]].forEach(function(s){u.appendChild(el("li","",s))});c.appendChild(u);
+  var pr=el("div","pr");pr.appendChild(el("b","",p[1]));pr.appendChild(el("span","",t.sum));pr.appendChild(el("span","",t.days));c.appendChild(pr);
+  var a=el("a",p[2]==="yl"?"btn":"btn y",t.buy);if(p[2]==="yl"){a.style.background="#000";a.style.color="#fff"}a.href=TG+"sub_"+p[0];a.target="_blank";a.rel="noopener";c.appendChild(a);
+  var b=el("button","szsubcode",t.have);b.type="button";b.setAttribute("data-szsub","");c.appendChild(b);
+  h.appendChild(c)})}
+
+/* ---------- окно: выбор тарифа или «попытки закончились» ---------- */
+var open=null,want="",cd=null;
 function go(w){if(!w)return;if(location.hash==="#"+w){try{dispatchEvent(new HashChangeEvent("hashchange"))}catch(e){}}else location.hash="#"+w}
-function close(){if(open){open.remove();open=null}document.removeEventListener("keydown",esc)}
+function close(){clearInterval(cd);cd=null;if(open){open.remove();open=null}document.removeEventListener("keydown",esc)}
 function esc(e){if(e.key==="Escape")close()}
-function paywall(n){if(open)return;want=n||"";var t=T(),o=el("div","szsv"),c=el("div");o.setAttribute("role","dialog");o.setAttribute("aria-modal","true");o.setAttribute("aria-label",t.t);
+function paywall(n,info){if(open){if(!info)return;close()}want=n||"";var t=T(),o=el("div","szsv"),c=el("div","szwide");o.setAttribute("role","dialog");o.setAttribute("aria-modal","true");o.setAttribute("aria-label",info?t.lockT:t.t);
  var x=el("button","szsx","×");x.type="button";x.setAttribute("aria-label",t.close);x.onclick=close;
- c.appendChild(x);c.appendChild(el("span","szsbd",t.badge));c.appendChild(el("h3","",t.t));c.appendChild(el("p","szsp",t.p));
- var u=el("ul");t.f.forEach(function(s){u.appendChild(el("li","",s))});c.appendChild(u);
- var pr=el("div","szspr");pr.appendChild(el("b","",t.price));pr.appendChild(el("span","",t.sum+" "+t.mo));c.appendChild(pr);
+ c.appendChild(x);c.appendChild(el("span","szsbd",info?t.lockB:"Premium"));c.appendChild(el("h3","",info?t.lockT:t.t));
+ c.appendChild(el("p","szsp",info?f(t.lockP,{k:t.kinds[info.kind]||""}):t.p));
+ if(info){var box=el("div","szcd"),num=el("b","",hms(info.resetAt-Date.now()));box.appendChild(num);c.appendChild(box);
+  var tick=function(){var ms=info.resetAt-Date.now();if(ms<=0){clearInterval(cd);box.classList.add("done");num.textContent="✓";var ok2=el("p","szsm ok",t.lockDone);box.appendChild(ok2);var cb=el("button","szcont",t.cont);cb.type="button";cb.onclick=close;box.appendChild(cb)}else num.textContent=hms(ms)};
+  cd=setInterval(tick,1000)}
+ var g=el("div","szpg");PL.forEach(function(p){g.appendChild(planCard(p,""))});c.appendChild(g);
+ c.appendChild(el("p","szfree",f(t.free,{n:st.limit,h:st.hours})));
+ c.appendChild(el("h5","szhv",t.have));
  var i=form(c,function(){var w=want;close();go(w)});
- var a=el("a","szsb",t.buy);a.href=TG;a.target="_blank";a.rel="noopener";c.appendChild(a);
  o.appendChild(c);o.addEventListener("click",function(e){if(e.target===o)close()});document.body.appendChild(o);open=o;document.addEventListener("keydown",esc);
  if(!uid()){close();if(window.SZA)SZA.open("choose");return}
- setTimeout(function(){try{i.focus({preventScroll:true})}catch(e){}},350);
- load().then(function(){if(open&&ok()){var w=want;close();go(w)}})}
-function mount(c){var t=T(),b=el("div","szsubc"+(ok()?" on":""));b.appendChild(el("h4","",t.cardT));
- if(ok()&&st.until>Date.now())b.appendChild(el("p","",t.until+" "+dt(st.until)));else b.appendChild(el("p","",t.cardP));
+ if(!info)setTimeout(function(){try{i.focus({preventScroll:true})}catch(e){}},350);
+ load().then(function(){if(open&&ok()&&!info){var w=want;close();go(w)}})}
+function lock(kind,resetAt){paywall("",{kind:kind,resetAt:+resetAt||Date.now()+10800000})}
+
+/* ---------- книги: список и читалка (PDF отдаёт сервер только по подписке) ---------- */
+function tokenFetch(path){return SZA.token().then(function(t){return fetch(api(path),{headers:t?{Authorization:"Bearer "+t}:{}})})}
+function library(){if(open)close();var t=T(),o=el("div","szsv"),c=el("div");o.setAttribute("role","dialog");o.setAttribute("aria-modal","true");
+ var x=el("button","szsx","×");x.type="button";x.onclick=close;c.appendChild(x);c.appendChild(el("h3","",t.libT));
+ var ul=el("div","szbk");c.appendChild(ul);var msg=el("p","szsm");c.appendChild(msg);
+ function row(b,avail){var r=el("div","szbr");r.appendChild(el("span","",b[1]));var bt=el("button","",avail?t.read:t.soon);bt.type="button";bt.disabled=!avail;if(avail)bt.onclick=function(){reader(b[0],b[1])};r.appendChild(bt);ul.appendChild(r)}
+ BK.forEach(function(b){row(b,false)});
+ tokenFetch("/api/books").then(function(r){return r.ok?r.json():null}).then(function(d){ul.textContent="";
+  if(!d||!d.items){BK.forEach(function(b){row(b,false)});msg.textContent=t.nobk;tgLink();return}
+  var any=false;BK.forEach(function(b){var it=d.items.filter(function(i){return i.id===b[0]})[0];var a=!!(it&&it.ok);any=any||a;row(b,a)});
+  if(!any){msg.textContent=t.nobk;tgLink()}}).catch(function(){ul.textContent="";BK.forEach(function(b){row(b,false)});msg.textContent=t.nobk;tgLink()});
+ function tgLink(){var a=el("a","szsb",t.tgb);a.href=TG+"books";a.target="_blank";a.rel="noopener";c.appendChild(a)}
+ o.appendChild(c);o.addEventListener("click",function(e){if(e.target===o)close()});document.body.appendChild(o);open=o;document.addEventListener("keydown",esc)}
+var pdfLib=null;
+function loadPdf(){if(window.pdfjsLib)return Promise.resolve(window.pdfjsLib);if(pdfLib)return pdfLib;
+ pdfLib=new Promise(function(res,rej){var s=document.createElement("script");s.src=PDFJS+"pdf.min.js";s.onload=function(){try{window.pdfjsLib.GlobalWorkerOptions.workerSrc=PDFJS+"pdf.worker.min.js";res(window.pdfjsLib)}catch(e){rej(e)}};s.onerror=function(){pdfLib=null;rej(new Error("pdfjs"))};document.head.appendChild(s)});return pdfLib}
+function reader(id,title){var t=T(),o=el("div","szrd"),hd=el("div","szrh"),ti=el("b","",title),pg=el("span","szrn"),cx=el("button","",t.close);cx.type="button";
+ hd.appendChild(ti);hd.appendChild(pg);hd.appendChild(cx);var body=el("div","szrb"),st2=el("p","szrm","…");body.appendChild(st2);o.appendChild(hd);o.appendChild(body);document.body.appendChild(o);document.body.style.overflow="hidden";
+ var obs=null;function shut(){if(obs)obs.disconnect();o.remove();document.body.style.overflow="";document.removeEventListener("keydown",k)}function k(e){if(e.key==="Escape")shut()}cx.onclick=shut;document.addEventListener("keydown",k);
+ o.addEventListener("contextmenu",function(e){e.preventDefault()});
+ tokenFetch("/api/books/"+id).then(function(r){if(!r.ok)throw new Error(String(r.status));return r.arrayBuffer()}).then(function(buf){return loadPdf().then(function(lib){return lib.getDocument({data:buf}).promise})}).then(function(pdf){
+  body.textContent="";var n=pdf.numPages,slots=[],cur=1;pg.textContent=t.pg+" 1 / "+n;
+  function draw(i,slot){if(slot.done)return;slot.done=true;pdf.getPage(i).then(function(p){var w=Math.max(280,Math.min(body.clientWidth-24,900)),v1=p.getViewport({scale:1}),sc=w/v1.width,dpr=Math.min(window.devicePixelRatio||1,2),v=p.getViewport({scale:sc*dpr});
+    var cv=document.createElement("canvas");cv.width=Math.floor(v.width);cv.height=Math.floor(v.height);cv.style.width="100%";cv.style.height="auto";slot.el.style.aspectRatio=(v1.width/v1.height)+"";
+    return p.render({canvasContext:cv.getContext("2d"),viewport:v}).promise.then(function(){slot.el.textContent="";slot.el.appendChild(cv)})}).catch(function(){slot.done=false})}
+  obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=+e.target.getAttribute("data-p");draw(i,slots[i-1]);if(e.intersectionRatio>.3){cur=i;pg.textContent=t.pg+" "+i+" / "+n}}})},{root:body,rootMargin:"900px 0px",threshold:[0,.3]});
+  for(var i=1;i<=n;i++){var d=el("div","szrp");d.setAttribute("data-p",i);d.style.aspectRatio="0.707";slots.push({el:d,done:false});body.appendChild(d);obs.observe(d)}
+ }).catch(function(e){var s=String(e&&e.message||"");st2.className="szrm";body.textContent="";var m=el("p","szrm",(s==="404"||s==="501")?t.nobk:t.bkErr);body.appendChild(m);if(s==="404"||s==="501"){var a=el("a","szsb",t.tgb);a.href=TG+"books";a.target="_blank";a.rel="noopener";body.appendChild(a)}})}
+
+/* ---------- карточка в кабинете ---------- */
+function mount(c){var t=T(),on=ok(),b=el("div","szsubc"+(on?" on":""));b.appendChild(el("h4","",t.cardT));
+ if(on&&st.until>Date.now())b.appendChild(el("p","",(t.pn[st.plan]?t.pn[st.plan]+" · ":"")+t.until+" "+dt(st.until)));else b.appendChild(el("p","",f(t.free,{n:st.limit,h:st.hours})));
+ var row=el("div","szact");var ch=el("button","",t.choose);ch.type="button";ch.onclick=function(){paywall("")};row.appendChild(ch);
+ if(on){var lb=el("button","",t.lib);lb.type="button";lb.onclick=library;row.appendChild(lb)}
+ b.appendChild(row);
  form(b,function(){if(window.SZA&&SZA.open)document.dispatchEvent(new Event("szsubchange"))});c.appendChild(b)}
 function paint(){try{document.dispatchEvent(new Event("szsubchange"))}catch(e){}}
-window.SZS={ok:ok,paywall:paywall,mount:mount,load:load,until:function(){return st.until}};
-var g=window.szGate;window.szGate=function(n){if(g&&!g(n))return false;if(PREM.indexOf(n)>=0&&!ok()){setTimeout(function(){paywall(n)},60);return false}return true};
+window.SZS={ok:ok,paywall:paywall,mount:mount,load:load,attempt:attempt,lock:lock,library:library,until:function(){return st.until}};
 document.addEventListener("click",function(e){var b=e.target&&e.target.closest&&e.target.closest("[data-szsub]");if(b){e.preventDefault();paywall("")}});
-/* заголовки доступа для ИИ: токен ученика или ключ преподавателя; 402 открывает окно подписки */
+/* заголовки доступа для ИИ: токен ученика или ключ преподавателя; ответ «лимит» открывает окно с таймером */
 var of=window.fetch;
 window.fetch=function(u,o){var s=typeof u==="string"?u:(u&&u.url)||"";if(!/\/api\/(chat|transcribe)(\?|$)/.test(s)||!of)return of.apply(this,arguments);
  var self=this,args=arguments;
  var hp=tk()?Promise.resolve({"X-Teacher":tk().t,"X-Teacher-Key":tk().k}):(window.SZA?SZA.token().then(function(t){return t?{Authorization:"Bearer "+t}:{}}).catch(function(){return{}}):Promise.resolve({}));
  return hp.then(function(h){o=o||{};var cur=o.headers||{};if(typeof Headers!=="undefined"&&cur instanceof Headers){var m={};cur.forEach(function(v,k){m[k]=v});cur=m}
-  o=Object.assign({},o,{headers:Object.assign({},cur,h)});return of.call(window,u,o)}).then(function(r){if(r&&r.status===402&&!tk()){st.until=0;sv();paywall(PREM.indexOf((location.hash||"").slice(1))>=0?(location.hash||"").slice(1):"")}return r})};
-document.addEventListener("szsubchange",function(){document.querySelectorAll("#szAcct,#szAcct2").forEach(function(h){var c=h.querySelector(".szsubc");if(c&&window.SZA&&h.firstChild){var n=h.querySelector(".szsubc");var nb=el("div");mount(nb);if(nb.firstChild&&n.parentNode)n.parentNode.replaceChild(nb.firstChild,n)}})});
+  o=Object.assign({},o,{headers:Object.assign({},cur,h)});return of.call(window,u,o)}).then(function(r){
+  if(r&&!tk()){
+   if(r.status===429)r.clone().json().then(function(d){if(d&&d.error==="limit")lock(d.kind,d.resetAt)}).catch(function(){});
+   else if(r.ok)r.clone().json().then(function(d){if(d&&typeof d.left==="number")toast(d)}).catch(function(){})}
+  return r})};
+document.addEventListener("szsubchange",function(){renderShop();document.querySelectorAll("#szAcct,#szAcct2").forEach(function(h){var c=h.querySelector(".szsubc");if(c&&window.SZA&&h.firstChild){var n=h.querySelector(".szsubc");var nb=el("div");mount(nb);if(nb.firstChild&&n.parentNode)n.parentNode.replaceChild(nb.firstChild,n)}})});
+document.addEventListener("click",function(e){if(e.target&&e.target.closest&&e.target.closest("[data-sl-l],[data-ml],[data-tl],#glang"))setTimeout(renderShop,80)});
 addEventListener("szauth",function(){rd();load()});
+renderShop();
 if(uid())setTimeout(load,1200);
 })();
 </script>
-<div id="szbuild" style="text-align:center;font:500 11px/1 var(--b,sans-serif);opacity:.4;padding:18px 0 24px">build 13.11.26-b</div>
-<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "edf770c3d9034475907106cb83a56f68"}'>
-</script><!-- End Cloudflare Web Analytics -->
+<div id="szbuild" style="text-align:center;font:500 11px/1 var(--b,sans-serif);opacity:.4;padding:18px 0 24px">build 14.11.26-a</div>
+<style id="szpg">
+#progress .tc{--pgbg:#fff}html[data-theme="dark"] #progress .tc{--pgbg:#1c1c1e}
+.pgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:0 0 18px}
+.pgs>div{padding:14px 16px;border-radius:20px;background:rgba(127,127,127,.09);animation:szFade .4s both}
+.pgs b{display:block;font:800 1.9rem/1.05 var(--d);letter-spacing:-.03em;margin:4px 0 2px}.pgs span{font-size:.78rem;opacity:.65;font-weight:700}.pgs i{font-style:normal;font-size:.78rem;font-weight:800}
+.pgk{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.pgk button{border:1.5px solid rgba(127,127,127,.35);background:transparent;color:inherit;border-radius:99px;padding:8px 16px;font:700 .88rem var(--b);cursor:pointer;transition:all .2s}
+.pgk button[aria-pressed="true"]{background:#2A3CFF;border-color:#2A3CFF;color:#fff}
+.pgw{position:relative}
+.pgseg{stroke-dasharray:var(--l);stroke-dashoffset:var(--l);animation:pgD .55s cubic-bezier(.22,1,.36,1) forwards}
+.pgdot{transform-box:fill-box;transform-origin:center;animation:pgP .4s cubic-bezier(.22,1,.36,1) both}
+.pghit{cursor:pointer;outline:0}.pghit:focus-visible{stroke:#2A3CFF;stroke-width:2}
+.pgtip{margin-top:10px;background:rgba(42,60,255,.1);box-shadow:inset 0 0 0 1px rgba(42,60,255,.25);border-radius:16px;padding:10px 14px;font-size:.85rem;line-height:1.35;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;animation:szFade .25s both}
+.pgtip b{font:800 1.1rem var(--d)}.pgtip span{opacity:.8}.pgtip i{font-style:normal;font-weight:800;margin-left:6px}
+@keyframes pgD{to{stroke-dashoffset:0}}@keyframes pgP{from{opacity:0;transform:scale(.3)}}
+@media(prefers-reduced-motion:reduce){.pgseg,.pgdot{animation:none;stroke-dashoffset:0}}
+</style>
 </body>
 </html>
