@@ -642,9 +642,9 @@ html[data-theme="dark"] .cb,html[data-theme="dark"] .cbm{--cbbg:#1C1C1E;--cbtx:#
 
 <script>(function(){try{var d=document.documentElement,n=navigator,c=n.connection||{},ls=null,lite=false;
 try{ls=localStorage.getItem("sz_lite")}catch(e){}
-var small=matchMedia("(pointer:coarse),(max-width:900px)").matches;
-if(c.saveData||/(^|-)2g|3g/.test(c.effectiveType||"")||(c.downlink&&c.downlink<1.5)||(c.rtt&&c.rtt>450)||/[?&]lite=1/.test(location.search))lite=true;
-if(small)lite=true;
+/* lite: только вручную (?lite=1 или szLite(true)) либо если браузер не умеет overflow:clip (sticky-герой сломался бы) */
+try{if(!(window.CSS&&CSS.supports&&CSS.supports("overflow","clip")))lite=true}catch(e){}
+if(/[?&]lite=1/.test(location.search))lite=true;
 if(ls==="1")lite=true;if(ls==="0")lite=false;
 if(lite)d.className+=" lite";
 try{var _si=window.setInterval;window.setInterval=function(f,t){if(typeof f!=="function")return _si.apply(window,arguments);var a=[].slice.call(arguments,2);return _si.call(window,function(){if(document.hidden)return;f.apply(null,a)},t)}}catch(e){}
@@ -4254,9 +4254,9 @@ html.lite *{scroll-behavior:auto!important}
 <script>/* frame-rate guard: if the first second after load runs below ~30 fps, switch to lite mode */
 (function(){var d=document.documentElement;if(d.classList.contains("lite"))return;var ls;try{ls=localStorage.getItem("sz_lite")}catch(e){}if(ls==="0")return;
 function go(){var t0=0,last=0,n=0,sum=0;function f(t){if(last){var dt=t-last;if(dt<500){sum+=dt;n++}}last=t;
- if(n<45&&t-t0<2200){requestAnimationFrame(f)}else if(n>=20&&sum/n>27){d.classList.add("lite")}}
+ if(n<60&&t-t0<3500){requestAnimationFrame(f)}else if(n>=40&&sum/n>55&&!document.hidden&&(window.scrollY||0)<80){d.classList.add("lite")}}
  requestAnimationFrame(function(t){t0=t;f(t)})}
-function start(){setTimeout(go,1200)}
+function start(){setTimeout(go,2500)}
 if(document.readyState==="complete")start();else addEventListener("load",start)})();
 </script>
 
@@ -4278,7 +4278,6 @@ html.lite *{transition-duration:.15s!important}
 </style>
 <script>(function(){var d=document,r=d.documentElement;
 d.addEventListener("visibilitychange",function(){r.classList.toggle("szhid",d.hidden)});
-try{var c=navigator.connection;if(c&&c.addEventListener)c.addEventListener("change",function(){var ls;try{ls=localStorage.getItem("sz_lite")}catch(e){}if(ls==="0")return;if(c.saveData||/(^|-)2g|3g/.test(c.effectiveType||"")||(c.downlink&&c.downlink<1.5))r.classList.add("lite")})}catch(e){}
 if("serviceWorker"in navigator&&location.protocol==="https:")addEventListener("load",function(){setTimeout(function(){navigator.serviceWorker.register("sw.js").catch(function(){})},2500)})})();
 </script>
 <style id="szauthcss">
