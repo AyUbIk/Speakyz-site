@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Speakyz: выдача кодов</title>
+<script src="config.js"></script>
+<style>
+:root{color-scheme:light dark}
+body{font:16px/1.4 system-ui,sans-serif;max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.5rem;margin:0 0 4px}p.s{opacity:.65;margin:0 0 20px;font-size:.9rem}
+label{display:block;margin:12px 0 4px;font-weight:700;font-size:.85rem}
+input,select,button,textarea{font:inherit;width:100%;box-sizing:border-box;padding:11px 12px;border-radius:12px;border:1.5px solid #8884;background:transparent;color:inherit}
+button{background:#2A3CFF;color:#fff;border:0;font-weight:800;margin-top:14px;cursor:pointer}button.g{background:#8883;color:inherit}
+.row{display:flex;gap:10px}.row>*{flex:1}
+pre{white-space:pre-wrap;background:#8882;border-radius:12px;padding:12px;font-size:1.05rem;letter-spacing:.04em;user-select:all}
+table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px}td,th{padding:6px 4px;border-bottom:1px solid #8883;text-align:left}
+.e{color:#e5484d;margin-top:10px;font-weight:700}
+</style></head><body>
+<h1>Коды и ученики</h1><p class="s">Код показывается один раз: скопируйте и отправьте ученику после оплаты. В базе хранится только его хеш.</p>
+<label>Ваше имя из TEACHER_KEYS</label><input id="who" value="ozod" autocomplete="off">
+<label>Ваш личный ключ</label><input id="key" type="password" autocomplete="off">
+<div class="row"><div><label>Тариф</label><select id="plan"><option value="books">Книги · 250 000 · до 3 аккаунтов</option><option value="personal">Личный учитель · 2 000 000 · до 3 аккаунтов</option></select></div>
+<div><label>Сколько кодов</label><input id="count" type="number" min="1" max="50" value="1"></div></div>
+<label>Пометка (кому, необязательно)</label><input id="note" maxlength="80" placeholder="например: Азиза, 14.11">
+<button id="mk">Создать коды</button><button id="ls" class="g">Показать выданные</button><button id="us" class="g">Ученики (все зарегистрированные)</button>
+<div id="out"></div>
+<script>
+var $=function(i){return document.getElementById(i)};
+function call(b,p){var base=(window.SZ_API||"").replace(/\/+$/,"");return fetch(base+"/api/admin/"+(p||"codes"),{method:"POST",headers:{"Content-Type":"application/json","X-Teacher":$("who").value.trim().toLowerCase(),"X-Teacher-Key":$("key").value},body:JSON.stringify(b)}).then(function(r){return r.json().then(function(d){if(!r.ok)throw new Error(r.status===403?"Неверное имя или ключ":(d.error||r.status));return d})})}
+function err(e){$("out").innerHTML='<p class="e"></p>';$("out").firstChild.textContent=String(e.message||e)}
+$("mk").onclick=function(){call({plan:$("plan").value,count:+$("count").value||1,note:$("note").value}).then(function(d){var t=d.codes.join("\n");$("out").innerHTML="<pre></pre><button class='g' id='cp'>Скопировать</button>";$("out").firstChild.textContent=t;$("cp").onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(t);this.textContent="Скопировано"}}).catch(err)};
+$("ls").onclick=function(){call({action:"list"}).then(function(d){var n={books:"Книги",personal:"Личный учитель",},h="<table><tr><th>Тариф</th><th>Код</th><th>Занято</th><th>Пометка</th></tr>";d.codes.forEach(function(c){h+="<tr><td></td><td></td><td></td><td></td></tr>"});$("out").innerHTML=h+"</table>";var tr=$("out").querySelectorAll("tr");d.codes.forEach(function(c,i){var td=tr[i+1].children;td[0].textContent=n[c.plan]||c.plan;td[1].textContent="…"+c.hint;td[2].textContent=c.used+" из "+c.max;td[3].textContent=c.note||""})}).catch(err)};
+$("us").onclick=function(){call({},"users").then(function(d){var P={books:"Книги",personal:"Личный учитель",},D=function(t){return t?new Date(t).toLocaleDateString("ru-RU",{day:"2-digit",month:"2-digit"}):""};$("out").innerHTML="<p><b></b></p><table><tr><th>Почта</th><th>Имя</th><th>Вошёл</th><th>Тариф</th><th>Учитель</th></tr></table>";$("out").querySelector("b").textContent="Всего: "+d.total+" · с подпиской: "+d.paid;var t=$("out").querySelector("table");d.users.forEach(function(u){var r=t.insertRow();[u.email||"(почта появится после следующего входа)",u.name,D(u.firstAt)+(u.lastAt?" / "+D(u.lastAt):""),u.plan?(P[u.plan]||u.plan)+" до "+D(u.until):"",u.teacher?u.teacher+(u.status&&u.status!=="accepted"?" ("+u.status+")":""):""].forEach(function(x){r.insertCell().textContent=x})})}).catch(err)};
+</script></body></html>
