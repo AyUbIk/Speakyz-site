@@ -655,7 +655,21 @@ window.szLite=function(on){try{localStorage.setItem("sz_lite",on?"1":"0")}catch(
 <script>try{var _t=localStorage.getItem("sz_theme");if(_t!=="dark"&&_t!=="light")_t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",_t)}catch(e){}</script>
 <noscript><style>#szl{display:none}</style></noscript>
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
-<script>(function(){var p=location.pathname.replace(/^\/+|\/+$/g,"");if(p&&!location.hash&&/^(courses|ielts|teachers|schedule|shop|test|practice|teacher|mock|tools|university|progress|profile|arena|contact)$/.test(p))history.replaceState(null,"","/"+p+"#"+p)})()</script></head>
+<script>(function(){var p=location.pathname.replace(/^\/+|\/+$/g,"");if(p&&!location.hash&&/^(courses|ielts|teachers|schedule|shop|test|practice|teacher|mock|tools|university|progress|profile|arena|contact)$/.test(p))history.replaceState(null,"","/"+p+"#"+p)})()</script><style>
+body.mock-on #szt,body.mock-on #szk,body.mock-on #szb,body.mock-on #szl,body.mock-on #tcAv{display:none!important}
+#mVariant button{border-radius:18px;padding:16px 0;min-width:64px;font-weight:800;box-shadow:0 10px 26px -12px rgba(42,60,255,.55)}
+</style>
+<style>
+#profile .pfthbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
+#profile .pfthbar button{border:0;border-radius:99px;padding:8px 14px;font-weight:700;background:rgba(255,255,255,.75);color:#1D1D1F;cursor:pointer;margin:0;width:auto}
+#profile .pfthbar button[aria-pressed=true]{background:#2A3CFF;color:#fff}
+.pfth-flowers .pfpane,.pfth-flowers .pfhd{background-image:url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' width='160' height='160'%3E%3Cg fill='%23ffb6c1' opacity='.55'%3E%3Ccircle cx='24' cy='22' r='7'%2F%3E%3Ccircle cx='34' cy='16' r='7'%2F%3E%3Ccircle cx='34' cy='28' r='7'%2F%3E%3Ccircle cx='14' cy='16' r='7'%2F%3E%3Ccircle cx='14' cy='28' r='7'%2F%3E%3C%2Fg%3E%3Ccircle cx='24' cy='22' r='4' fill='%23ffe066'%2F%3E%3Cg fill='%23ff8fb1' opacity='.4'%3E%3Ccircle cx='112' cy='96' r='6'%2F%3E%3Ccircle cx='120' cy='90' r='6'%2F%3E%3Ccircle cx='120' cy='102' r='6'%2F%3E%3Ccircle cx='104' cy='90' r='6'%2F%3E%3Ccircle cx='104' cy='102' r='6'%2F%3E%3C%2Fg%3E%3Ccircle cx='112' cy='96' r='3' fill='%23ffe066'%2F%3E%3C%2Fsvg%3E");background-repeat:repeat}
+.pfth-stars .pfpane,.pfth-stars .pfhd{background-image:url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' width='160' height='160'%3E%3Cg fill='%23ffd60a' opacity='.5'%3E%3Cpolygon points='30%2C8 35%2C22 50%2C22 38%2C31 42%2C46 30%2C37 18%2C46 22%2C31 10%2C22 25%2C22'%2F%3E%3Cpolygon points='122%2C82 125%2C91 135%2C91 127%2C97 130%2C106 122%2C100 114%2C106 117%2C97 109%2C91 119%2C91' transform='scale%28.7%29 translate%2860%2C40%29'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");background-repeat:repeat}
+.pfth-ocean .pfpane,.pfth-ocean .pfhd{background-image:url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' width='160' height='160'%3E%3Cg fill='none' stroke='%232A3CFF' stroke-opacity='.25' stroke-width='2'%3E%3Ccircle cx='30' cy='30' r='10'%2F%3E%3Ccircle cx='30' cy='30' r='18'%2F%3E%3Ccircle cx='120' cy='110' r='12'%2F%3E%3Ccircle cx='120' cy='110' r='22'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");background-repeat:repeat}
+.pfth-minimal .pfpane,.pfth-minimal .pfhd{background-image:none}
+.pfth-flowers .pfpane{border-radius:20px}
+</style>
+</head>
 <body>
 <div id="szl" aria-hidden="true"><div class="szlc"><div class="szlg"></div><div class="szlt">Speakyz</div><div class="szlb"><b></b></div></div></div>
 <header><div class="in">
@@ -732,11 +746,10 @@ window.szLite=function(on){try{localStorage.setItem("sz_lite",on?"1":"0")}catch(
  <div class="tiles">
   <div class="tile b2 yl" data-zoom data-s="speaking ielts" data-g="O"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Founder and teacher</span><h3>Mr. Ozod</h3><p>I can help you prepare for IELTS and strengthen your overall English proficiency.</p><p>My strongest skills are Speaking and Writing. I focus on effective communication, developing well-structured ideas, expanding vocabulary, and expressing thoughts clearly and accurately.</p><p>I believe successful language learning requires consistency, a structured approach, and attention to detail. My methods are practical, goal-oriented, and focused on steady improvement.</p><p>Whether you are preparing for IELTS or developing your English foundation, I can help you improve your skills with a clear direction.</p><div class="str"><i>Speaking</i><i>Writing</i><i>IELTS</i><i>Structured approach</i></div><a class="btn" style="background:#000" data-tg="ozod" href="https://t.me/speakyz_lern_english_bot?start=t_ozod">Message Ozod on Telegram</a></div>
   <div class="tile a bl" data-zoom data-s="listening ielts" data-g="K"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Teacher</span><h3>Mr. Komron</h3><p>I'm Komron Suvonov, your English teacher. I can help you prepare for IELTS and improve your overall English proficiency.</p><p>My strongest skill is Listening. I pay particular attention to understanding spoken English, different accents, speech patterns, and detail recognition.</p><p>I believe effective language learning requires structure, consistency, and a clear understanding of how English works. My approach is practical, focused, and built around measurable progress.</p><p>Whether you are preparing for IELTS or strengthening your English foundation, I can help you develop your skills with a clear direction.</p><div class="str"><i>Listening</i><i>IELTS</i><i>Structured approach</i></div><a class="btn y" data-tg="kamron" href="https://t.me/speakyz_lern_english_bot?start=t_komron">Message Komron on Telegram</a></div>
-  <div class="tile cr" data-zoom data-s="speaking listening grammar" data-g="F"><span class="bm">Best match</span><span class="tl"><i class="ic ic-practice"></i>Speaking and listening</span><h3>Ms. Farangiz</h3><p>I’m Farangiz Khaidarova! Your English support is just one message away. Feel free to reach out anytime, and I’ll get back to you ASAP!</p><p>Want to improve your speaking and listening skills? I’m right here to help!</p><p>I’ll support you not only with grammar but also with broadening your worldview. And remember, English isn’t just about grammar — it’s also about how you see the world and recognize opportunities!</p><div class="str"><i>Speaking</i><i>Listening</i><i>Grammar</i><i>Broader worldview</i></div><a class="btn y" data-tg="farangiz" href="https://t.me/speakyz_lern_english_bot?start=t_farangiz">Message Farangiz on Telegram</a></div>
   <div class="tile k" data-zoom data-s="speaking discussion" data-g="L"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Teacher</span><h3>Ms. Laziza</h3><p>I’m Laziza Kuandikova!</p><p>A friendly and energetic English teacher with strong speaking and public speaking skills. I enjoy making lessons interactive and engaging, helping students improve their fluency, pronunciation and confidence. I encourage students to express their ideas, think critically, participate actively and never be afraid of making mistakes.</p><div class="str"><i>Speaking</i><i>Public speaking</i><i>Pronunciation</i><i>Confidence</i></div><a class="btn y" data-tg="laziza" href="https://t.me/speakyz_lern_english_bot?start=t_laziza">Message Laziza on Telegram</a></div>
   <div class="tile bl" data-zoom data-s="ielts" data-g="A"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Teacher</span><h3>Ms. Amalie</h3><p>My goal is to make even the trickiest questions easy to comprehend and solve, and to help you achieve the score you want.</p><p>Together, we will find the techniques that suit you best and track your progress.</p><div class="str"><i>IELTS</i><i>Question techniques</i><i>Progress tracking</i></div><a class="btn y" data-tg="amalie" href="https://t.me/speakyz_lern_english_bot?start=t_amalie">Message Amalie on Telegram</a></div>
   <div class="tile yl" data-zoom data-s="ielts" data-g="Y"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Teacher</span><h3>Ms. Yasmine</h3><p>I will make your preparation for your IELTS exam less complicated and more effective by using my special studying guides!</p><p>I’ll help you understand complex writing and reading questions by breaking down every single detail of the task.</p><div class="str"><i>IELTS</i><i>Writing</i><i>Reading</i><i>Study guides</i></div><a class="btn" style="background:#000" data-tg="yasmine" href="https://t.me/speakyz_lern_english_bot?start=t_yasmine">Message Yasmine on Telegram</a></div>
-  <div class="tile cr" data-zoom data-s="speaking" data-g="M"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Teacher</span><h3>Ms. Melisa</h3><p>Speaking teacher at Speakyz.</p><p>Message Melisa on Telegram to book a lesson.</p><div class="str"><i>Speaking</i></div><a class="btn y" data-tg="melisa" href="https://t.me/speakyz_lern_english_bot?start=t_melisa">Message Melisa on Telegram</a></div>
+  <div class="tile cr" data-zoom data-s="speaking" data-g="M"><span class="bm">Best match</span><span class="tl"><i class="ic ic-teachers"></i>Teacher</span><h3>Ms. Melisa</h3><p>A current student at Interhouse Lyceum, working as a teaching assistant alongside an experienced IELTS instructor with a Speaking band score of 8.5. Having participated in various courses and debates, I have developed an understanding of different methodologies and techniques for improving performance across all four IELTS components. My own IELTS Speaking mock test results have ranged from Band 7.5 to 8.0.</p><div class="str"><i>Speaking</i></div><a class="btn y" data-tg="melisa" href="https://t.me/speakyz_lern_english_bot?start=t_melisa">Message Melisa on Telegram</a></div>
  </div>
  <div class="wrap" id="szCab" style="margin-top:32px"></div></section></div>
 
@@ -745,7 +758,7 @@ window.szLite=function(on){try{localStorage.setItem("sz_lite",on?"1":"0")}catch(
  <div class="tile k" style="min-height:0;grid-column:auto" id="sf">
   <b>Course</b><div class="chips" data-k="Course"><label><input type="radio" name="c" value="Speaking club" checked><span>Speaking club</span></label><label><input type="radio" name="c" value="IELTS"><span>IELTS</span></label><label><input type="radio" name="c" value="Individual lessons"><span>Individual</span></label></div>
   
-  <b>Teacher</b><div class="chips" data-k="Teacher"><label><input type="radio" name="tr" value="Any teacher" checked><span>Any</span></label><label><input type="radio" name="tr" value="Mr. Ozod"><span>Ozod</span></label><label><input type="radio" name="tr" value="Mr. Komron"><span>Komron</span></label><label><input type="radio" name="tr" value="Ms. Farangiz"><span>Farangiz</span></label><label><input type="radio" name="tr" value="Ms. Laziza"><span>Laziza</span></label><label><input type="radio" name="tr" value="Ms. Amalie"><span>Amalie</span></label><label><input type="radio" name="tr" value="Ms. Yasmine"><span>Yasmine</span></label><label><input type="radio" name="tr" value="Ms. Melisa"><span>Melisa</span></label></div>
+  <b>Teacher</b><div class="chips" data-k="Teacher"><label><input type="radio" name="tr" value="Any teacher" checked><span>Any</span></label><label><input type="radio" name="tr" value="Mr. Ozod"><span>Ozod</span></label><label><input type="radio" name="tr" value="Mr. Komron"><span>Komron</span></label><label><input type="radio" name="tr" value="Ms. Laziza"><span>Laziza</span></label><label><input type="radio" name="tr" value="Ms. Amalie"><span>Amalie</span></label><label><input type="radio" name="tr" value="Ms. Yasmine"><span>Yasmine</span></label><label><input type="radio" name="tr" value="Ms. Melisa"><span>Melisa</span></label></div>
   <b>Time</b><div class="chips" data-k="Time"><label><input type="radio" name="t" value="Morning" checked><span>Morning</span></label><label><input type="radio" name="t" value="Afternoon"><span>Afternoon</span></label><label><input type="radio" name="t" value="Evening"><span>Evening</span></label></div>
   <textarea class="msg" id="msg" readonly aria-label="Your message"></textarea>
    <input class="msg" id="ldN" style="min-height:0" maxlength="100" autocomplete="name" aria-label="Name">
@@ -1022,7 +1035,7 @@ addEventListener("hashchange",check);[].forEach.call(root.querySelectorAll("[dat
 <footer><div class="wrap"><span>© Speakyz<br><a href="tel:+998971115070">+998 97 111-50-70</a> · <a href="tel:+998881115070">+998 88 111-50-70</a> · 24/7</span><nav aria-label="Pages"><a href="#courses">Курсы</a><a href="#ielts">IELTS</a><a href="#teachers">Преподаватели</a><a href="#about">О школе</a><a href="#schedule">Расписание</a><a href="#shop">Книги</a><a href="#contact">Контакты</a><a href="#privacy">Конфиденциальность</a></nav><nav aria-label="Social"><a href="https://www.instagram.com/speakyz_engl">Instagram</a><a href="https://youtube.com/@speakyz">YouTube</a><a href="https://t.me/SpeakyzEnglish">Telegram channel</a></nav></div></footer><script>
 /* telegram.js */
 /* TELEGRAM ACCOUNTS. Fill in usernames (with or without @, or a full t.me link). Empty = falls back to the bot. */
-var SZ_TG={ozod:"Dream110111",kamron:"ssvvnnvv",farangiz:"khaiiva",laziza:"risbekovnass",amalie:"flounymoonlight",yasmine:"awesomessauce",melisa:"millradj",support:"speakyz_admin",manager:"speakyz_admin",admin:"speakyz_admin"};
+var SZ_TG={ozod:"Dream110111",kamron:"ssvvnnvv",laziza:"risbekovnass",amalie:"flounymoonlight",yasmine:"awesomessauce",melisa:"millradj",support:"speakyz_admin",manager:"speakyz_admin",admin:"speakyz_admin"};
 var SZ_BOT="https://t.me/speakyz_lern_english_bot";
 window.szTg=function(k,fb){var v=(SZ_TG[k]||"").trim();if(!v)return fb||SZ_BOT;v=v.replace(/^https?:\/\/(t\.me|telegram\.me)\//,"").replace(/^@/,"");return /^[A-Za-z0-9_]{4,}$/.test(v)?"https://t.me/"+v:(fb||SZ_BOT)};
 (function(){var L={ru:{support:"Поддержка",manager:"Менеджер",admin:"Админ"},uz:{support:"Yordam",manager:"Menejer",admin:"Admin"},en:{support:"Support",manager:"Manager",admin:"Admin"}};
@@ -1227,7 +1240,7 @@ en:{h:"Mini-profile",p:"One minute: tell us your goal and your time, and we will
 var $=function(s){return document.querySelector(s)};
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 var L="ru";try{var sv=localStorage.getItem("sz_lang");if(P[sv])L=sv;else{var n=(navigator.language||"ru").slice(0,2);if(P[n])L=n}}catch(e){}
-var TEACH=["Mr. Ozod","Mr. Komron","Ms. Farangiz","Ms. Laziza","Ms. Amalie","Ms. Yasmine","Ms. Melisa"];
+var TEACH=["Mr. Ozod","Mr. Komron","Ms. Laziza","Ms. Amalie","Ms. Yasmine","Ms. Melisa"];
 var LV=["A1","A2","B1","B2","C1","C2"];
 function load(){try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){return{}}}
 var S=load();
@@ -1402,7 +1415,7 @@ function build(){
   var d=P[L],x=X[L],b=$("#mpBox");b.textContent="";
   $("#mpH").textContent=x.h;$("#mpP").textContent=x.p;
   [].forEach.call(document.querySelectorAll("[data-pl]"),function(e){e.setAttribute("aria-pressed",e.dataset.pl===L)});
-  var hd=el("div","pfhd");hd.id="pfHead";b.appendChild(hd);
+  var hd=el("div","pfhd");hd.id="pfHead";b.appendChild(hd);pfThemeBar(b);
   var nav=el("div","pftabs");nav.setAttribute("role","tablist");
   x.tabs.forEach(function(t,i){var bt=el("button","",t);bt.type="button";bt.setAttribute("role","tab");bt.setAttribute("aria-selected",i===TAB);bt.onclick=function(){TAB=i;build()};nav.appendChild(bt)});
   b.appendChild(nav);
@@ -1414,6 +1427,21 @@ function build(){
 addEventListener("hashchange",function(){if(location.hash==="#profile"){try{var lv=JSON.parse(localStorage.getItem("sz_level")||"null");if(lv&&lv.l&&(S.auto||!S.lvl)){var v=lv.l.replace("+","").slice(0,2);if(LV.indexOf(v)>=0){S.lvl=v;S.auto=true}}}catch(e){}build()}});
 addEventListener("szauth",function(){pullProfile()});
 addEventListener("hashchange",function(){if(location.hash==="#profile")pullProfile()});
+/* ---------- decorative profile themes (saved per browser) ---------- */
+var PF_THEMES=[["flowers","Цветы"],["stars","Звёзды"],["ocean","Океан"],["minimal","Минимал"]];
+function pfTheme(){try{var t=localStorage.getItem("sz_pf_theme");return PF_THEMES.some(function(x){return x[0]===t})?t:"flowers"}catch(e){return"flowers"}}
+function pfThemeBar(b){
+  var cur=pfTheme();
+  PF_THEMES.forEach(function(t){b.classList.remove("pfth-"+t[0])});
+  b.classList.add("pfth-"+cur);
+  var bar=el("div","pfthbar");bar.setAttribute("role","group");bar.setAttribute("aria-label","Оформление");
+  PF_THEMES.forEach(function(t){
+    var bt=el("button","",t[1]);bt.type="button";bt.setAttribute("aria-pressed",String(t[0]===cur));
+    bt.onclick=function(){try{localStorage.setItem("sz_pf_theme",t[0])}catch(e){}build()};
+    bar.appendChild(bt);
+  });
+  b.appendChild(bar);
+}
 window.SZP={get:function(){return S},done:function(){return !!(S.name&&S.goal&&S.gaps&&S.gaps.length&&S.str&&S.str.length)},set:function(o){for(var k in o)S[k]=o[k];save();try{build()}catch(e){}},sync:pullProfile};
 build();
 })();
@@ -1673,6 +1701,567 @@ qs:[{t:"tf",q:"The nursery started with more than twenty frames.",a:1},
 {title:"The Floating Schools of Basin Lake",mins:15,paras:["Every year the rainy season floods large areas around Basin Lake, and for up to five months many children cannot walk to school. In 2011 an architect named Samir Rahman responded by converting old cargo boats into floating classrooms. Each boat carries about thirty pupils and is powered by solar panels on the roof.", "A typical day begins at eight, when the boat collects children from villages along the shore. Lessons include the national curriculum as well as practical subjects such as water safety and vegetable growing on floating gardens. The boats also carry small libraries, which are open to adults in the evenings.", "The project is funded mainly by donations, but running costs are low because the solar panels remove the need for fuel. The biggest difficulty has been finding qualified teachers willing to live on the water. To solve this, the organisation now trains graduates from the local villages, who already know the community.", "Since the first boat was launched, the number of schools has grown to 22, and the programme has been copied in two other countries. Rahman insists the model is not a permanent solution: 'The real goal is to build roads and schools that survive floods. Until then, the boats keep children learning.'"],qs:[{"t": "tf", "q": "The boats are powered by diesel engines.", "a": 1}, {"t": "tf", "q": "Adults can use the boat libraries.", "a": 0}, {"t": "tf", "q": "Rahman believes the boats are the best long-term answer.", "a": 1}, {"t": "tf", "q": "The programme has been copied in more than five countries.", "a": 1}, {"t": "mc", "q": "Why can children not walk to school during the rainy season?", "o": ["Roads are closed by snow", "Areas are flooded", "Teachers are on holiday"], "a": 1}, {"t": "mc", "q": "What has been the biggest difficulty?", "o": ["Funding", "Finding teachers willing to live on the water", "Repairing the boats"], "a": 1}, {"t": "mc", "q": "How does the organisation solve the teacher problem?", "o": ["It trains local graduates", "It pays higher salaries", "It reduces lessons"], "a": 0}, {"t": "fill", "q": "Each boat carries about ____ pupils.", "a": ["30", "thirty"]}, {"t": "fill", "q": "Lessons begin at ____.", "a": ["8", "eight", "8 00", "8am", "8 am", "eight oclock", "8 oclock"]}, {"t": "fill", "q": "There are now ____ floating schools.", "a": ["22", "twenty two", "twenty-two", "twentytwo"]}]},
 {title:"Reading the Mind of a Chess Computer",mins:15,paras:["In 1997 a computer defeated the world chess champion for the first time, and many people predicted that the game would lose its appeal. The opposite happened. Today more people play chess than ever before, and the best human players use computers every day to prepare.", "Early chess programs worked by brute force: they examined millions of positions per second and chose the move with the best score. A newer generation, developed in the 2010s, taught itself by playing millions of games against itself. These programs often make moves that seem strange to humans, such as sacrificing a piece early in the game, yet the moves turn out to be correct many moves later.", "Grandmasters say that studying such moves has changed the way they think. Ideas once considered bad style, such as pushing a side pawn early, are now common. Interestingly, the average age at which players reach grandmaster level has fallen from about 22 to about 17, which many attribute to computer training.", "Not everyone is pleased. Some coaches fear that young players memorise computer lines without understanding them, and cheating in online games has become a serious problem. Tournament organisers now use special software to compare a player's moves with those of the strongest engines."],qs:[{"t": "tf", "q": "A computer first beat the world champion in the 1990s.", "a": 0}, {"t": "tf", "q": "Chess has become less popular since computers improved.", "a": 1}, {"t": "tf", "q": "Older chess programs learned by playing against themselves.", "a": 1}, {"t": "tf", "q": "Computer chess programs are used by amateur players only.", "a": 2}, {"t": "mc", "q": "The newer programs often", "o": ["avoid unusual moves", "make moves that look strange to humans", "copy grandmasters"], "a": 1}, {"t": "mc", "q": "What has happened to the age at which players become grandmasters?", "o": ["It has risen", "It has fallen", "It has stayed the same"], "a": 1}, {"t": "mc", "q": "Some coaches are worried that young players", "o": ["do not study enough", "memorise lines without understanding", "play too slowly"], "a": 1}, {"t": "fill", "q": "Early programs examined millions of ____ per second.", "a": ["positions"]}, {"t": "fill", "q": "The average age for reaching grandmaster level is now about ____.", "a": ["17", "seventeen"]}, {"t": "fill", "q": "Organisers use special ____ to detect cheating.", "a": ["software"]}]}
 ];
+/* Listening batch 1: 10 tests, audio text matches questions (validated) */
+var LISS_BATCH1 = [
+ {
+  "title": "Library membership",
+  "mins": 6,
+  "text": "Good afternoon, Central Library. Hi, I'd like to become a member. Certainly. Could I have your full name? It's Tomas Reyes. Thank you. And your address? Flat twelve, Oak Street. Lovely. Membership is free for residents, but you need one form of ID. Is a passport okay? Yes, a passport is fine. You can borrow up to eight books at a time, and they are due back after three weeks. If you return a book late, the fine is twenty pence per day. Can I renew books online? Yes, through our website, but only once. Great, thanks. Your card will be ready in five minutes at the desk on the ground floor.",
+  "qs": [
+   {
+    "t": "fill",
+    "q": "Surname: ____",
+    "a": [
+     "reyes"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Flat number: ____",
+    "a": [
+     "12",
+     "twelve"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Maximum number of books: ____",
+    "a": [
+     "8",
+     "eight"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Loan period (weeks): ____",
+    "a": [
+     "3",
+     "three"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Fine per day (pence): ____",
+    "a": [
+     "20",
+     "twenty"
+    ]
+   },
+   {
+    "t": "mc",
+    "q": "Where will the card be collected?",
+    "o": [
+     "Upstairs office",
+     "Ground floor desk",
+     "Online"
+    ],
+    "a": 1
+   }
+  ]
+ },
+ {
+  "title": "Bike rental",
+  "mins": 6,
+  "text": "Hello, I'd like to hire a bike for the day. Sure. We have city bikes and mountain bikes. The city bike costs fifteen pounds for the day, and the mountain bike costs twenty-five. I'll take a city bike, please. Good. Do you need a helmet? Helmets are free, but we need a deposit of fifty pounds, which you get back when you return the bike. What time do you close? We close at six, but bikes must be back by five thirty if you want the deposit back in cash. Can I leave it at another branch? Yes, we have one by the station, but a late return costs an extra five pounds.",
+  "qs": [
+   {
+    "t": "mc",
+    "q": "Which bike did the customer choose?",
+    "o": [
+     "City bike",
+     "Mountain bike",
+     "Electric bike"
+    ],
+    "a": 0
+   },
+   {
+    "t": "fill",
+    "q": "Daily price (£): ____",
+    "a": [
+     "15",
+     "fifteen"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Deposit (£): ____",
+    "a": [
+     "50",
+     "fifty"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Latest return time for cash deposit: ____",
+    "a": [
+     "5:30",
+     "five thirty",
+     "5 30",
+     "half past five"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Other branch is located by the: ____",
+    "a": [
+     "station",
+     "the station"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Late return charge (£): ____",
+    "a": [
+     "5",
+     "five"
+    ]
+   }
+  ]
+ },
+ {
+  "title": "Dental appointment",
+  "mins": 6,
+  "text": "Riverside Dental, how can I help? Hi, I need an appointment for a check-up. Of course. Are you a new patient? No, I was here last year with Dr Hughes. Wonderful. We have a free slot on Thursday the twelfth at half past nine, or Friday the thirteenth at two in the afternoon. Friday please. Great, the appointment will take about forty minutes. Please bring your insurance card. Also, the waiting room has moved to the first floor. Thank you, see you on Friday.",
+  "qs": [
+   {
+    "t": "fill",
+    "q": "Dentist's name: Dr ____",
+    "a": [
+     "hughes"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Day of the appointment: ____",
+    "a": [
+     "friday",
+     "friday the thirteenth",
+     "thirteenth"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Time: ____",
+    "a": [
+     "2 pm",
+     "2pm",
+     "two pm",
+     "two in the afternoon",
+     "2:00"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Duration (minutes): ____",
+    "a": [
+     "40",
+     "forty"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Document to bring: ____ card",
+    "a": [
+     "insurance"
+    ]
+   },
+   {
+    "t": "mc",
+    "q": "Where is the waiting room now?",
+    "o": [
+     "Ground floor",
+     "First floor",
+     "Second floor"
+    ],
+    "a": 1
+   }
+  ]
+ },
+ {
+  "title": "Car hire",
+  "mins": 6,
+  "text": "Hello, I booked a car for three days under the name Lena Schmidt. Yes, I see it. A small hatchback, is that right? That's right. The total is one hundred and twenty pounds. Is insurance included? Basic insurance is included, but full cover costs an extra fifteen pounds per day. I'll take the full cover. Fine. Do you need a child seat? No, thank you. Please return the car with a full tank of fuel, otherwise we charge a refuelling fee of forty pounds. The car is in bay seven in the car park.",
+  "qs": [
+   {
+    "t": "fill",
+    "q": "Surname: ____",
+    "a": [
+     "schmidt"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Number of days: ____",
+    "a": [
+     "3",
+     "three"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Total price (£): ____",
+    "a": [
+     "120",
+     "one hundred and twenty",
+     "one hundred twenty"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Full insurance cost per day (£): ____",
+    "a": [
+     "15",
+     "fifteen"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Refuelling fee (£): ____",
+    "a": [
+     "40",
+     "forty"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Bay number: ____",
+    "a": [
+     "7",
+     "seven"
+    ]
+   }
+  ]
+ },
+ {
+  "title": "Spanish course enrolment",
+  "mins": 6,
+  "text": "Hi, I'd like to enrol on the Spanish course for beginners. Great. The beginner course is on Tuesdays and Thursdays, from six to eight thirty in the evening. It starts on the twentieth of January and lasts ten weeks. The fee is one hundred and eighty pounds, but you can pay in two instalments. Can I pay by card? Yes. Do I need a textbook? You can buy the printed book here for twelve pounds, or use the free online version. I'll use the online one. Good. Classes are in room twelve on the top floor.",
+  "qs": [
+   {
+    "t": "fill",
+    "q": "Start date: ____ of January",
+    "a": [
+     "20",
+     "twentieth",
+     "the twentieth"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Course length (weeks): ____",
+    "a": [
+     "10",
+     "ten"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Fee (£): ____",
+    "a": [
+     "180",
+     "one hundred and eighty",
+     "one hundred eighty"
+    ]
+   },
+   {
+    "t": "mc",
+    "q": "How will the student get the textbook?",
+    "o": [
+     "Buy the printed book",
+     "Use the free online version",
+     "Borrow it from the library"
+    ],
+    "a": 1
+   },
+   {
+    "t": "fill",
+    "q": "Room number: ____",
+    "a": [
+     "12",
+     "twelve"
+    ]
+   }
+  ]
+ },
+ {
+  "title": "Museum guided tour",
+  "mins": 6,
+  "text": "Good morning, is there a guided tour today? Yes, at eleven, and another at two thirty. The eleven o'clock tour lasts ninety minutes and begins in the Egyptian Gallery. How many people are coming? There are six of us. Six is fine, tours are limited to twelve people. Is there a price for adults? Students pay four pounds, adults pay seven. We'll take six adult tickets. Is photography allowed? Only without flash, and not in the temporary exhibition. Please meet the guide at the information desk about ten minutes before.",
+  "qs": [
+   {
+    "t": "fill",
+    "q": "Tour start time: ____ o'clock",
+    "a": [
+     "11",
+     "eleven"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Tour length (minutes): ____",
+    "a": [
+     "90",
+     "ninety"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Starting gallery: ____ Gallery",
+    "a": [
+     "egyptian"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Number of tickets: ____",
+    "a": [
+     "6",
+     "six"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Adult ticket price (£): ____",
+    "a": [
+     "7",
+     "seven"
+    ]
+   },
+   {
+    "t": "mc",
+    "q": "Where should the group meet the guide?",
+    "o": [
+     "Main entrance",
+     "Information desk",
+     "Cafe"
+    ],
+    "a": 1
+   }
+  ]
+ },
+ {
+  "title": "Gym membership",
+  "mins": 6,
+  "text": "Hi, I'm interested in a membership. We have monthly and annual options. Monthly is forty-five pounds, and annual is four hundred and ninety pounds, which saves about sixty pounds. Is there a joining fee? Yes, a one-off payment of twenty pounds. Could I try a free session? Of course, a free induction session is included with every membership, and you can book it online. What are the weekend hours? Saturday and Sunday from eight until eight. I'd like the annual membership. Great, please bring photo ID to the desk on Monday.",
+  "qs": [
+   {
+    "t": "mc",
+    "q": "Which membership did the customer choose?",
+    "o": [
+     "Monthly",
+     "Annual",
+     "Weekly"
+    ],
+    "a": 1
+   },
+   {
+    "t": "fill",
+    "q": "Monthly price (£): ____",
+    "a": [
+     "45",
+     "forty five",
+     "forty-five"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Annual price (£): ____",
+    "a": [
+     "490",
+     "four hundred and ninety"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Joining fee (£): ____",
+    "a": [
+     "20",
+     "twenty"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Weekend closing time: ____ pm",
+    "a": [
+     "8",
+     "eight"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Document to bring: ____",
+    "a": [
+     "photo id"
+    ]
+   }
+  ]
+ },
+ {
+  "title": "Lost property",
+  "mins": 6,
+  "text": "Hello, I think I left my umbrella on the number fourteen bus yesterday. What colour is it? It's black with a yellow handle. Did you lose anything else? Yes, a small brown wallet, but I don't know if you have that. What time was the bus? Around six fifteen in the evening. Our lost property office is open Monday to Friday, nine to five. Please bring a description and a photo if you have one. Items are kept for thirty days. Okay, thanks.",
+  "qs": [
+   {
+    "t": "fill",
+    "q": "Bus number: ____",
+    "a": [
+     "14",
+     "fourteen"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Colour of the handle: ____",
+    "a": [
+     "yellow"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Time the bus left: ____ pm",
+    "a": [
+     "6:15",
+     "6.15",
+     "six fifteen",
+     "quarter past six",
+     "615"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Items are kept for ____ days",
+    "a": [
+     "30",
+     "thirty"
+    ]
+   },
+   {
+    "t": "mc",
+    "q": "What else did the caller lose?",
+    "o": [
+     "A phone",
+     "A wallet",
+     "A set of keys"
+    ],
+    "a": 1
+   }
+  ]
+ },
+ {
+  "title": "Hotel check-in",
+  "mins": 6,
+  "text": "Hello, I have a reservation under Kim. Yes, Mr Kim, a double room for two nights. We have you on the third floor, room three-oh-four. Breakfast is included and served from seven until ten thirty. Is there parking? Yes, but it costs twelve pounds per night, and you need to book it in advance. Wi-Fi is free. Can I get a late check-out? Check-out is at eleven, but you can request a late check-out until one, for ten pounds. Here is your key card.",
+  "qs": [
+   {
+    "t": "fill",
+    "q": "Surname: Mr ____",
+    "a": [
+     "kim"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Number of nights: ____",
+    "a": [
+     "2",
+     "two"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Room number: ____",
+    "a": [
+     "304",
+     "three-oh-four",
+     "three oh four"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Breakfast ends at: ____",
+    "a": [
+     "10:30",
+     "10 30",
+     "half past ten",
+     "ten thirty"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Parking cost per night (£): ____",
+    "a": [
+     "12",
+     "twelve"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Late check-out fee (£): ____",
+    "a": [
+     "10",
+     "ten"
+    ]
+   }
+  ]
+ },
+ {
+  "title": "Flat viewing",
+  "mins": 6,
+  "text": "Hi, I'm calling about the flat on Park Road. It's still available. It has two bedrooms, one bathroom and a balcony. The rent is nine hundred pounds a month, plus bills. Is it furnished? Partly, the kitchen and the living room, but not the bedrooms. Can I view it on Friday? Friday is possible at four, or Saturday morning at ten. Saturday at ten, please. Please bring two forms of ID and proof of income. And the deposit? It's one month's rent. Great, I'll see you then.",
+  "qs": [
+   {
+    "t": "fill",
+    "q": "Number of bedrooms: ____",
+    "a": [
+     "2",
+     "two"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Monthly rent (£): ____",
+    "a": [
+     "900",
+     "nine hundred"
+    ]
+   },
+   {
+    "t": "mc",
+    "q": "Which rooms are furnished?",
+    "o": [
+     "Kitchen and living room",
+     "Bedrooms only",
+     "The whole flat"
+    ],
+    "a": 0
+   },
+   {
+    "t": "fill",
+    "q": "Viewing day and time: ____ at ten",
+    "a": [
+     "saturday"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Deposit: ____ rent",
+    "a": [
+     "one month's",
+     "one month",
+     "a month's"
+    ]
+   },
+   {
+    "t": "fill",
+    "q": "Number of ID forms to bring: ____",
+    "a": [
+     "2",
+     "two"
+    ]
+   }
+  ]
+ }
+];
 var LISS=[{title:"Workshop booking",mins:8,
 text:"Good morning, Riverside Community Centre. Hello, I would like to join the photography workshop you advertised. Of course. The workshop runs on Saturdays, starting at ten o'clock and finishing at one. It costs thirty-five pounds, and that includes all materials. Is there a student discount? Yes, students pay twenty-five pounds, but you need to bring your card. Great. Where is it held? In Room Four, on the second floor, next to the cafe. If you arrive early, please do not use the main entrance because it is closed for repairs. Use the side door on Mill Lane. And do I need my own camera? Not necessarily. We have six cameras to borrow, but they go quickly, so reserve one. The teacher is Ms Okafor, and she suggests wearing comfortable shoes, because the group will walk to the river for the second half. Perfect. My name is Daria Petrov, that is P, E, T, R, O, V. Thank you, Ms Petrov. The next workshop starts on the fourteenth of March.",
 qs:[
@@ -1745,7 +2334,7 @@ qs:[{t:"fill",q:"Language chosen: ____",a:["spanish"]},
 {t:"fill",q:"Room number: ____",a:["12","twelve"]},
 {t:"fill",q:"Surname: ____",a:["bennett"]}]},
 {title:"Museum guided tour",mins:8,
-text:"Welcome to the Harbour Maritime Museum. I will tell you a few things before we begin. The tour lasts about ninety minutes and we will visit four galleries. First is the Exploration gallery on the ground floor, where you can see the original ship's compass. After that we go up to the first floor for the Trade gallery, which has a collection of old maps. Please do not use flash photography in the maps room, as the light damages them. The third gallery is the Navy gallery, and it is the only one with a talk by a former sailor at eleven thirty. We finish in the Children's gallery, where there are hands-on activities. There is a cafe on the second floor which closes at four, and the gift shop is next to the exit. If anyone needs a wheelchair, please ask at the front desk. Tickets are twelve pounds for adults and seven for children, and under fives are free.",
+text:"Welcome to the Harbour Maritime Museum. I will tell you a few things before we begin. The tour lasts about ninety minutes and we will visit four galleries. First is the Exploration gallery on the ground floor, where you can see the original ship's compass. After that we go up to the first floor for the Trade gallery, which has a collection of old maps. Please do not use flash photography in the maps room, as the light damages them. The third gallery is the Navy gallery, and it is the only one with a talk by a former sailor at eleven thirty. We finish in the Children's gallery, where there are hands-on activities. There is a cafe on the second floor which closes at four, and the gift shop is next to the exit. If anyone needs a wheelchair, please ask at the front desk. Tickets are twelve pounds for adults and seven for children, and children under five are free.",
 qs:[{t:"fill",q:"Tour length: about ____ minutes",a:["90","ninety"]},
 {t:"fill",q:"Number of galleries: ____",a:["4","four"]},
 {t:"mc",q:"What can be seen in the Exploration gallery?",o:["Old maps","The original ship's compass","Navy uniforms"],a:1},
@@ -1772,6 +2361,7 @@ qs:[{t:"fill",q:"Flat location: Cedar ____",a:["road","rd"]},
 {title:"A lecture on urban gardens",mins:8,text:"Today I would like to talk about urban gardens, which have become increasingly popular in many cities. First, why do people create them? Surveys show that the main reason, given by forty percent of participants, is to grow fresh food. The second reason is to meet neighbours. Only about ten percent say they do it to save money. Let me describe one project in Lisbon. It began in two thousand and fifteen on a disused car park, and today it has sixty-five plots. Each family pays just twelve euros a year. The garden is managed by a committee that meets every month. There have been some difficulties, however. The soil in cities is often polluted, so the group had to bring in clean soil, which cost about nine thousand euros. Water is another problem. They collect rainwater from the roof of a nearby school. In the next lecture we will look at rooftop gardens, so please read chapter six before then.",qs:[{"t": "fill", "q": "Main reason for creating gardens: to grow ____ food", "a": ["fresh"]}, {"t": "fill", "q": "Percentage who give the main reason: ____ percent", "a": ["40", "forty"]}, {"t": "fill", "q": "Percentage who want to save money: about ____ percent", "a": ["10", "ten"]}, {"t": "fill", "q": "The Lisbon project began in ____", "a": ["2015", "two thousand and fifteen", "two thousand fifteen"]}, {"t": "mc", "q": "The Lisbon garden was built on", "o": ["a former car park", "a school roof", "a farm"], "a": 0}, {"t": "fill", "q": "Number of plots: ____", "a": ["65", "sixty five", "sixty-five"]}, {"t": "fill", "q": "Yearly fee per family: ____ euros", "a": ["12", "twelve"]}, {"t": "fill", "q": "Clean soil cost about ____ euros", "a": ["9000", "nine thousand", "9 000", "9,000"]}, {"t": "fill", "q": "Read chapter ____ before the next lecture", "a": ["6", "six"]}]}
 ];
 
+LISS=LISS.concat(LISS_BATCH1);
 var SP1=[
 {t:"Home",q:["Do you live in a house or a flat?","What is your favourite room at home, and why?","Would you like to move to a different home in the future?"],ideas:["Say what type of home and who you live with","Give one thing you like and one thing you would change","Mention the neighbourhood: quiet, central, close to shops"],vocab:["spacious / cramped","a cosy corner","within walking distance","I'd love to upgrade to...","it has a lot of natural light"]},
 {t:"Food",q:["Do you like trying new food?","What did you eat yesterday?","Do you prefer eating at home or in restaurants?"],ideas:["Name one new dish you tried and how it tasted","Compare cooking at home with eating out: cost, time, atmosphere","Mention family recipes or national dishes"],vocab:["mouth-watering","a home-cooked meal","to be a picky eater","I'm keen on spicy food","it's an acquired taste"]},
@@ -1892,6 +2482,7 @@ function killRec(){if(curRec){curRec.abort();curRec=null}}
 /* ================= MOCK TESTS (Reading / Listening) ================= */
 var mTab='reading',mBox=$('#mBox'),mReadIdx=0,mLisIdx=0;
 function saveProgress(kind,title,score,total,band){
+  if(mockViolation){score=0;band=0;title=String(title||'')+' (нарушение режима)'}
   var uid='';try{uid=(window.SZA&&SZA.uid())||''}catch(e){}
   var row={ts:Date.now(),kind:kind,title:title,score:score,total:total,band:band};
   if(uid)row.acc=uid;
@@ -1918,7 +2509,7 @@ function quiz(cfg,pre,kind){
     var plays=2,synth=window.speechSynthesis;
     if(cfg.text){var ap=el('div','pass');var pb=el('button','btn',d.play);pb.type='button';var pc=el('span','',d.plays+': 2');pc.style.marginLeft='12px';
       ap.appendChild(pb);ap.appendChild(pc);if(!synth||!window.SpeechSynthesisUtterance)ap.appendChild(el('p','note',d.noAudio));
-      pb.onclick=function(){if(plays<=0||!synth)return;plays--;pc.textContent=d.plays+': '+plays;synth.cancel();var u=new SpeechSynthesisUtterance(cfg.text);u.lang='en-GB';u.rate=.92;synth.speak(u);if(plays<=0)pb.disabled=true};mBox.appendChild(ap)}
+      pb.onclick=function(){if(plays<=0||!synth)return;plays--;pc.textContent=d.plays+': '+plays;synth.cancel();var u=new SpeechSynthesisUtterance(cfg.text);u.lang='en-GB';u.rate=.92;var bvm=bestVoice('en');if(bvm)u.voice=bvm;synth.speak(u);if(plays<=0)pb.disabled=true};mBox.appendChild(ap)}
     else{var ps=el('div','pass');ps.appendChild(el('h3','',cfg.title));cfg.paras.forEach(function(x){ps.appendChild(el('p','',x))});mBox.appendChild(ps)}
     var cards=cfg.qs.map(function(q,i){
       var c=el('div','qc');c.appendChild(el('p','',(i+1)+'. '+q.q));var g=null;
@@ -1940,8 +2531,58 @@ function quiz(cfg,pre,kind){
       var ag=el('button','btn g',d.again);ag.type='button';ag.style.color='#1D1D1F';ag.onclick=renderMock;res.appendChild(ag);
       mBox.appendChild(res);res.scrollIntoView({behavior:'smooth',block:'start'})}
     sub.onclick=finish;countdown(cfg.mins*60,tm,finish)}}
+
+/* ---------- best free system voice ---------- */
+function bestVoice(lang){
+  var s=window.speechSynthesis;if(!s||!s.getVoices)return null;
+  var code=lang==='ru'?'ru':'en';
+  var vs=s.getVoices().filter(function(v){return(v.lang||'').toLowerCase().indexOf(code)===0});
+  if(!vs.length)return null;
+  var pref=[/natural/i,/neural/i,/online/i,/aria|jenny|guy|sonia|libby|ryan|natasha|dmitry|svetlana|google/i];
+  var best=null,bs=-1;
+  vs.forEach(function(v){var sc=0;pref.forEach(function(r,i){if(r.test(v.name))sc+=10-i});if(code==='en'&&/en-GB/i.test(v.lang))sc+=2;if(sc>bs){bs=sc;best=v}});
+  return best;
+}
+/* ---------- mock test lock: fullscreen, AI off, leave warning ---------- */
+var mockLive=false,mockViolation=false,mockT=null,mockLeft=30;
+function mockOverlay(){var w=document.getElementById('mWarn');if(!w){w=document.createElement('div');w.id='mWarn';w.setAttribute('role','alertdialog');w.style.cssText='position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.86);color:#fff;font:600 18px/1.45 system-ui,sans-serif;text-align:center';document.body.appendChild(w)}return w}
+function mockEnterFull(){var e=document.documentElement;try{if(e.requestFullscreen&&!document.fullscreenElement)e.requestFullscreen().catch(function(){})}catch(x){}}
+function mockShowWarn(){
+  var w=mockOverlay();w.style.display='flex';w.innerHTML='';
+  var box=document.createElement('div');box.style.maxWidth='440px';
+  box.innerHTML='<p style="font-size:22px;margin:0 0 10px">Вы вышли из полноэкранного режима</p><p style="margin:0 0 16px">Вернитесь в полный экран за <b id="mLeft">30</b> сек. Если не вернётесь, результат пробника будет 0.</p>';
+  var b=document.createElement('button');b.textContent='Вернуться в полный экран';
+  b.style.cssText='background:#2A3CFF;color:#fff;border:0;border-radius:12px;padding:12px 20px;font-weight:800;font-size:16px;cursor:pointer';
+  b.onclick=function(){mockEnterFull()};box.appendChild(b);w.appendChild(box);
+}
+function mockLeave(){
+  if(!mockLive||mockViolation||mockT)return;
+  mockLeft=30;mockShowWarn();
+  mockT=setInterval(function(){
+    mockLeft--;var l=document.getElementById('mLeft');if(l)l.textContent=mockLeft;
+    if(mockLeft<=0){clearInterval(mockT);mockT=null;mockViolation=true;
+      var w=mockOverlay();w.innerHTML='';var p=document.createElement('p');p.style.fontSize='20px';p.textContent='Пробник завершён. Результат 0 из-за выхода из полноэкранного режима.';w.appendChild(p);w.style.display='flex';
+      setTimeout(function(){w.style.display='none'},6000);
+    }
+  },1000);
+}
+function mockBack(){if(mockT&&!mockViolation){clearInterval(mockT);mockT=null;mockOverlay().style.display='none'}}
+function mockLock(on){
+  on=!!on;mockLive=on;
+  document.body.classList.toggle('mock-on',on);
+  if(on){mockEnterFull()}
+  else{
+    if(mockT){clearInterval(mockT);mockT=null}
+    mockOverlay().style.display='none';
+    if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(function(){});
+  }
+}
+document.addEventListener('fullscreenchange',function(){if(!mockLive)return;if(document.fullscreenElement)mockBack();else mockLeave()});
+document.addEventListener('visibilitychange',function(){if(!mockLive)return;if(document.hidden)mockLeave();else if(document.fullscreenElement)mockBack()});
+['copy','cut','paste','contextmenu'].forEach(function(ev){document.addEventListener(ev,function(e){if(mockLive)e.preventDefault()})});
+
 function renderMock(){
-  stopT();var d=U[L];
+  stopT();mockLock(location.hash==='#mock'&&(mTab==='reading'||mTab==='listening'));var d=U[L];
   $('#mH').textContent=d.mH;$('#mP').textContent=d.mP;$('#mNote').textContent=d.mNote;
   tabsRow($('#mTabs'),d.tabs,mTab,'mk',function(k){if(k==='writing'||k==='speaking'){pTab=k;location.hash='#practice';return}mTab=k;renderMock()});
   var mVar=$('#mVariant');
@@ -2022,7 +2663,7 @@ var tMode='free',tHist=[],tBusy=false,tVoice=false,tRc=null;
 var TM=$('#tcM'),TI=$('#tcI'),SR2=window.SpeechRecognition||window.webkitSpeechRecognition;
 function bubble(t,c){var b=el('div','am '+c);b.appendChild(el('span','',t));TM.appendChild(b);TM.scrollTop=TM.scrollHeight;
   if(c==='a'&&t!=='...'){var sp=el('button','sp','🔊');sp.type='button';sp.setAttribute('aria-label',U[L].tSpeak);sp.onclick=function(){speak(b.firstChild.textContent)};b.appendChild(sp)}return b}
-function speak(text){var s=window.speechSynthesis;if(!s||!window.SpeechSynthesisUtterance)return;s.cancel();var u=new SpeechSynthesisUtterance(text);u.lang=/[Ѐ-ӿ]/.test(text)?'ru-RU':'en-GB';u.rate=.95;
+function speak(text){var s=window.speechSynthesis;if(!s||!window.SpeechSynthesisUtterance)return;s.cancel();var u=new SpeechSynthesisUtterance(text);u.lang=/[Ѐ-ӿ]/.test(text)?'ru-RU':'en-GB';var bvs=bestVoice(/[Ѐ-ӿ]/.test(text)?'ru':'en');if(bvs)u.voice=bvs;u.rate=.95;
   var av=$('#tcAv');u.onstart=function(){av.classList.add('talk')};u.onend=u.onerror=function(){av.classList.remove('talk')};s.speak(u)}
 function tChips(){var s=$('#tcS');s.textContent='';if(tHist.length)return;U[L].tSug[tMode].forEach(function(t){var b=el('button','',t);b.type='button';b.onclick=function(){tSend(t)};s.appendChild(b)})}
 function tReset(){tHist=[];TM.textContent='';bubble(U[L].tHi[tMode],'a');tChips();var s=window.speechSynthesis;if(s)s.cancel()}
@@ -2054,7 +2695,7 @@ $('#tcMic').addEventListener('click',function(){
 function renderAll(){renderMock();renderPractice();renderTeacher();[].forEach.call(document.querySelectorAll('[data-ml]'),function(x){x.setAttribute('aria-pressed',x.dataset.ml===L)})}
 [].forEach.call(document.querySelectorAll('[data-ml]'),function(x){x.addEventListener('click',function(){setLang(x.dataset.ml);tHist=[];renderAll()})});
 addEventListener('hashchange',function(){
-  var h=location.hash||'';stopT();killRec();if(window.speechSynthesis)speechSynthesis.cancel();
+  var h=location.hash||'';stopT();killRec();if(h!=='#mock')mockLock(false);if(window.speechSynthesis)speechSynthesis.cancel();
   var nl=readLang();if(nl!==L){L=nl;tHist=[];renderAll()}
   else if(h==='#practice')renderPractice();
   if(h==='#teacher'&&!tHist.length)renderTeacher()});
@@ -2326,7 +2967,7 @@ var n=(location.hash||"").replace("#","");if(HUB[n])szSub(n);
 <script>
 /* translations.js */
 (function(){
-var RU={"Message Melisa on Telegram": "Написать Melisa в Telegram", "Speaking teacher at Speakyz.": "Преподаватель Speaking в Speakyz.", "Message Melisa on Telegram to book a lesson.": "Напишите Melisa в Telegram, чтобы записаться на урок.", "Message Komron on Telegram": "Написать Komron в Telegram", "Message Amalie on Telegram": "Написать Amalie в Telegram", "Message Yasmine on Telegram": "Написать Yasmine в Telegram", "IELTS": "IELTS", "Listening": "Listening", "Structured approach": "Чёткая структура", "Public speaking": "Публичные выступления", "Pronunciation": "Произношение", "Question techniques": "Техники решения заданий", "Progress tracking": "Отслеживание прогресса", "Writing": "Writing", "Reading": "Reading", "Study guides": "Учебные гайды", "I'm Komron Suvonov, your English teacher. I can help you prepare for IELTS and improve your overall English proficiency.": "Я Komron Suvonov, ваш преподаватель английского. Помогу подготовиться к IELTS и повысить общий уровень английского.", "My strongest skill is Listening. I pay particular attention to understanding spoken English, different accents, speech patterns, and detail recognition.": "Моя сильная сторона — Listening. Я уделяю особое внимание пониманию живой речи, разным акцентам, речевым моделям и умению улавливать детали.", "I believe effective language learning requires structure, consistency, and a clear understanding of how English works. My approach is practical, focused, and built around measurable progress.": "Я считаю, что для эффективного изучения языка нужны структура, регулярность и ясное понимание того, как устроен английский. Мой подход практичный, сфокусированный и построен вокруг измеримого прогресса.", "Whether you are preparing for IELTS or strengthening your English foundation, I can help you develop your skills with a clear direction.": "Готовитесь ли вы к IELTS или укрепляете базу английского, я помогу развивать навыки в понятном направлении.", "I’m Laziza Kuandikova!": "Я Laziza Kuandikova!", "A friendly and energetic English teacher with strong speaking and public speaking skills. I enjoy making lessons interactive and engaging, helping students improve their fluency, pronunciation and confidence. I encourage students to express their ideas, think critically, participate actively and never be afraid of making mistakes.": "Дружелюбный и энергичный преподаватель английского с сильными навыками speaking и публичных выступлений. Мне нравится делать уроки интерактивными и увлекательными, помогая студентам улучшать беглость речи, произношение и уверенность. Я поощряю студентов высказывать свои идеи, мыслить критически, активно участвовать и никогда не бояться ошибок.", "My goal is to make even the trickiest questions easy to comprehend and solve, and to help you achieve the score you want.": "Моя цель — сделать даже самые каверзные задания понятными и решаемыми и помочь вам получить нужный балл.", "Together, we will find the techniques that suit you best and track your progress.": "Вместе мы найдём техники, которые подходят именно вам, и будем отслеживать ваш прогресс.", "I will make your preparation for your IELTS exam less complicated and more effective by using my special studying guides!": "Я сделаю вашу подготовку к IELTS проще и эффективнее с помощью моих специальных учебных гайдов!", "I’ll help you understand complex writing and reading questions by breaking down every single detail of the task.": "Я помогу разобраться в сложных заданиях по writing и reading, разбирая каждую деталь задачи.", "Speak English out loud.": "Говорите по-английски вслух.", "Teacher": "Учитель", "You": "Вы", "Quick fix": "Быстрая правка", "Book your free first lesson": "Записаться на бесплатный первый урок", "See courses": "Смотреть курсы", "You do not learn to speak by reading rules. You learn by talking, getting corrected, and trying again. At Speakyz every lesson is built around that loop, with small groups, friendly teachers and zero fear of mistakes.": "Говорить не учатся по учебнику с правилами. Говорить учатся, когда говорят, получают исправления и пробуют снова. В Speakyz каждый урок построен вокруг этого круга: малые группы, дружелюбные преподаватели и никакого страха перед ошибками.", "Speak.": "Говорите.", "Fix.": "Исправляйте.", "Repeat.": "Повторяйте.", "Three ways to learn.": "Три способа учиться.", "Pick the format that fits your goal. All of them start with a free lesson.": "Выберите формат под вашу цель. Любой начинается с бесплатного урока.", "Free first course": "Бесплатный первый курс", "Small groups where talking is the lesson.": "Малые группы, где сам урок — это разговор.", "Learn more": "Подробнее", "Exam": "Экзамен", "All four parts, mock tests, feedback.": "Все четыре части, пробные тесты, обратная связь.", "One teacher, one student": "Один преподаватель, один ученик", "Individual lessons": "Индивидуальные уроки", "A plan built around your goal and your time.": "План под вашу цель и ваше время.", "How you start.": "Как начать.", "Take the free lesson": "Придите на бесплатный урок", "Message the Telegram bot and pick a time.": "Напишите нашему Telegram-боту и выберите время.", "Get your level and plan": "Узнайте уровень и получите план", "The teacher checks your speaking and recommends a course.": "Преподаватель проверит вашу речь и посоветует курс.", "Join your group": "Присоединяйтесь к группе", "Study online, from anywhere.": "Занимайтесь онлайн, откуда удобно.", "Ready to change how you speak?": "Готовы изменить свою речь?", "Start your free lesson": "Начать бесплатный урок", "Courses.": "Курсы.", "Not sure which one? Take the free lesson and we will place you.": "Не знаете, какой выбрать? Приходите на бесплатный урок, и мы подберём группу.", "For anyone who understands English but freezes when speaking.": "Для тех, кто понимает английский, но теряется, когда нужно говорить.", "Daily topics: work, travel, study, life": "Темы каждый день: работа, путешествия, учёба, жизнь", "Instant corrections": "Исправления сразу", "Online, from anywhere": "Онлайн, откуда удобно", "Register for free": "Записаться бесплатно", "For students aiming at a target band.": "Для тех, кто идёт к нужному баллу.", "All four parts": "Все четыре части", "Timed mock tests": "Пробные тесты на время", "See the program": "Смотреть программу", "Interview, work or relocation goals. Flexible time, fully online.": "Собеседование, работа или переезд. Гибкое время, полностью онлайн.", "Message us": "Напишите нам", "IELTS, part by part.": "IELTS по частям.", "Four skills. We train each one on its own, then together.": "Четыре навыка. Сначала тренируем каждый отдельно, потом вместе.", "Speaking": "Speaking (говорение)", "Three parts, one examiner. Full drills for fluency, vocabulary and pronunciation.": "Три части, один экзаменатор. Полная отработка беглости, лексики и произношения.", "Writing": "Writing (письмо)", "Task 1 and Task 2 with structure templates, corrected line by line.": "Task 1 и Task 2 с шаблонами структуры и разбором каждой строки.", "Listening": "Listening (аудирование)", "Exam-style audio, note-taking skills and the classic trap questions.": "Аудио в формате экзамена, навык записи и классические вопросы-ловушки.", "Reading": "Reading (чтение)", "Speed tactics for the 60-minute limit and every question type.": "Тактика скорости для лимита в 60 минут и все типы вопросов.", "Example path: band 4.5 to 7.5. Tell us your start and your target, and we build the plan.": "Пример пути: от 4.5 до 7.5. Назовите свой старт и цель, и мы построим план.", "Ask about IELTS": "Спросить про IELTS", "Your teachers.": "Ваши преподаватели.", "Friendly, direct and focused on making you talk. Choose a teacher and book a lesson with them.": "Дружелюбные, прямые и нацеленные на то, чтобы вы говорили. Выберите преподавателя и запишитесь к нему на урок.", "What do you want to improve?": "Что хотите улучшить?", "Grammar": "Грамматика", "Discussion and confidence": "Дискуссии и уверенность", "Show all": "Показать всех", "Not sure?": "Не уверены?", "Fill in a one-minute profile": "Заполните мини-профиль за минуту", "and we will match you with a teacher.": "и мы подберём вам преподавателя.", "Best match": "Лучший выбор", "Founder and teacher": "Основатель и преподаватель", "Created Speakyz. Keeps lessons light, funny and full of speaking.": "Создал Speakyz. Уроки у него лёгкие, весёлые и полные разговора.", "Light and funny lessons": "Лёгкие и весёлые уроки", "I can help you prepare for IELTS and strengthen your overall English proficiency.": "Я помогу вам подготовиться к IELTS и укрепить общий уровень английского.", "My strongest skills are Speaking and Writing. I focus on effective communication, developing well-structured ideas, expanding vocabulary, and expressing thoughts clearly and accurately.": "Мои сильные стороны — Speaking и Writing. Я делаю упор на эффективную коммуникацию, чёткую структуру мыслей, расширение словарного запаса и точное, ясное выражение идей.", "I believe successful language learning requires consistency, a structured approach, and attention to detail. My methods are practical, goal-oriented, and focused on steady improvement.": "Я считаю, что успех в изучении языка требует регулярности, структурного подхода и внимания к деталям. Мои методы практичны, нацелены на результат и ведут к стабильному прогрессу.", "Whether you are preparing for IELTS or developing your English foundation, I can help you improve your skills with a clear direction.": "Готовитесь ли вы к IELTS или укрепляете основу английского, я помогу вам развить навыки и двигаться в чётком направлении.", "Structured approach": "Структурный подход", "Writing": "Writing", "Message Ozod on Telegram": "Написать Ozod в Telegram", "Positive and sharp. Makes hard grammar stick.": "Позитивный и чёткий. Делает так, что сложная грамматика запоминается.", "Positive and sharp": "Позитивный и чёткий", "Message Kamron on Telegram": "Написать Kamron в Telegram", "Speaking and listening": "Speaking и listening", "I’m Farangiz Khaidarova! Your English support is just one message away. Feel free to reach out anytime, and I’ll get back to you ASAP!": "Я Farangiz Khaidarova! Помощь с английским всего в одном сообщении. Пишите в любое время, отвечу как можно скорее!", "Want to improve your speaking and listening skills? I’m right here to help!": "Хотите улучшить speaking и listening? Я здесь, чтобы помочь!", "I’ll support you not only with grammar but also with broadening your worldview. And remember, English isn’t just about grammar — it’s also about how you see the world and recognize opportunities!": "Я помогу не только с грамматикой, но и с расширением кругозора. И помните: английский — это не только грамматика, но и то, как вы видите мир и замечаете возможности!", "Broader worldview": "Широкий кругозор", "Message Farangiz on Telegram": "Написать Farangiz в Telegram", "Creative, supportive and open-minded. Makes lessons engaging through discussions and interactive activities, while inspiring students to think independently and express their ideas with confidence.": "Творческая, поддерживающая и открытая. Делает уроки увлекательными через дискуссии и интерактивные задания и вдохновляет учеников мыслить самостоятельно и уверенно выражать свои идеи.", "Discussions": "Дискуссии", "Interactive activities": "Интерактивные задания", "Confidence": "Уверенность", "Message Laziza on Telegram": "Написать Laziza в Telegram", "Pick your time.": "Выберите время.", "Choose what suits you. We confirm the exact group and time in Telegram.": "Выберите, что вам подходит. Точную группу и время мы подтвердим в Telegram.", "Course": "Курс", "Individual": "Индивидуально", "Format": "Формат", "Online": "Онлайн", "Any": "Любой", "Time": "Время", "Morning": "Утро", "Afternoon": "День", "Evening": "Вечер", "Copy message": "Скопировать сообщение", "Open Telegram": "Открыть Telegram", "Join us online, from anywhere.": "Присоединяйтесь онлайн, откуда удобно.", "Group and individual lessons on video": "Групповые и индивидуальные уроки по видеосвязи", "Support and manager": "Поддержка и менеджер", "Telegram bot": "Telegram-бот", "Channel": "Канал", "Questions.": "Вопросы.", "Is the first lesson really free?": "Первый урок правда бесплатный?", "Yes. Register through the Telegram bot and choose a time.": "Да. Запишитесь через Telegram-бота и выберите время.", "Can I study online?": "Можно учиться онлайн?", "Yes. Groups and individual lessons both run online.": "Да. И группы, и индивидуальные уроки проходят онлайн.", "I do not know my level. Is that a problem?": "Я не знаю свой уровень. Это проблема?", "No. The teacher checks your level in the first lesson and suggests a group.": "Нет. Преподаватель определит уровень на первом уроке и предложит группу.", "Do you prepare for IELTS from zero?": "Вы готовите к IELTS с нуля?", "We build a plan from your current level to your target band. Tell us both when you message us.": "Мы строим план от вашего нынешнего уровня до нужного балла. Назовите оба, когда напишете нам.", "Support": "Поддержка", "Manager": "Менеджер", "Telegram channel": "Telegram-канал", "Instagram": "Instagram", "Admin": "Админ"},UZ={"Message Melisa on Telegram": "Melisa ga Telegramda yozish", "Speaking teacher at Speakyz.": "Speakyzda Speaking o'qituvchisi.", "Message Melisa on Telegram to book a lesson.": "Darsga yozilish uchun Melisaga Telegramda yozing.", "Message Komron on Telegram": "Komron ga Telegramda yozish", "Message Amalie on Telegram": "Amalie ga Telegramda yozish", "Message Yasmine on Telegram": "Yasmine ga Telegramda yozish", "Structured approach": "Aniq tuzilma", "Public speaking": "Ommaviy nutq", "Pronunciation": "Talaffuz", "Question techniques": "Topshiriq yechish usullari", "Progress tracking": "Natijalarni kuzatish", "Study guides": "Oʻquv qoʻllanmalar", "I'm Komron Suvonov, your English teacher. I can help you prepare for IELTS and improve your overall English proficiency.": "Men Komron Suvonov, sizning ingliz tili oʻqituvchingizman. IELTSga tayyorlanishda va umumiy ingliz tili darajangizni oshirishda yordam beraman.", "My strongest skill is Listening. I pay particular attention to understanding spoken English, different accents, speech patterns, and detail recognition.": "Eng kuchli tomonim — Listening. Ogʻzaki nutqni tushunishga, turli aksentlarga, nutq shakllariga va tafsilotlarni ilg‘ab olishga alohida e’tibor beraman.", "I believe effective language learning requires structure, consistency, and a clear understanding of how English works. My approach is practical, focused, and built around measurable progress.": "Til oʻrganish samarali boʻlishi uchun tuzilma, izchillik va ingliz tili qanday ishlashini aniq tushunish kerak, deb hisoblayman. Yondashuvim amaliy, maqsadli va oʻlchanadigan natijaga qurilgan.", "Whether you are preparing for IELTS or strengthening your English foundation, I can help you develop your skills with a clear direction.": "IELTSga tayyorlanayotgan boʻlsangiz ham, ingliz tili asosini mustahkamlayotgan boʻlsangiz ham, koʻnikmalaringizni aniq yoʻnalishda rivojlantirishga yordam beraman.", "I’m Laziza Kuandikova!": "Men Laziza Kuandikovaman!", "A friendly and energetic English teacher with strong speaking and public speaking skills. I enjoy making lessons interactive and engaging, helping students improve their fluency, pronunciation and confidence. I encourage students to express their ideas, think critically, participate actively and never be afraid of making mistakes.": "Speaking va ommaviy nutq boʻyicha kuchli koʻnikmalarga ega, samimiy va gʻayratli ingliz tili oʻqituvchisi. Darslarni interaktiv va qiziqarli qilishni yaxshi koʻraman, oʻquvchilarning ravonligi, talaffuzi va ishonchini oshirishga yordam beraman. Oʻquvchilarni gʻoyalarini erkin bildirishga, tanqidiy fikrlashga, faol qatnashishga va xato qilishdan qoʻrqmaslikka undayman.", "My goal is to make even the trickiest questions easy to comprehend and solve, and to help you achieve the score you want.": "Maqsadim — eng murakkab savollarni ham tushunarli va yechiladigan qilish hamda siz istagan ballga erishishingizga yordam berish.", "Together, we will find the techniques that suit you best and track your progress.": "Birgalikda sizga eng mos usullarni topamiz va natijangizni kuzatib boramiz.", "I will make your preparation for your IELTS exam less complicated and more effective by using my special studying guides!": "Oʻzimning maxsus oʻquv qoʻllanmalarim yordamida IELTSga tayyorgarligingizni osonroq va samaraliroq qilaman!", "I’ll help you understand complex writing and reading questions by breaking down every single detail of the task.": "Murakkab writing va reading topshiriqlarini har bir tafsilotigacha tahlil qilib, tushunishingizga yordam beraman.", "Speak English out loud.": "Ingliz tilida ovoz chiqarib gapiring.", "Teacher": "Oʻqituvchi", "You": "Siz", "Quick fix": "Tezkor tuzatish", "Book your free first lesson": "Birinchi bepul darsga yozilish", "See courses": "Kurslarni koʻrish", "You do not learn to speak by reading rules. You learn by talking, getting corrected, and trying again. At Speakyz every lesson is built around that loop, with small groups, friendly teachers and zero fear of mistakes.": "Gapirishni qoidalarni oʻqib oʻrganib boʻlmaydi. Gapirishni gapirib, tuzatish olib va qayta urinib oʻrganiladi. Speakyz’da har bir dars shu aylanaga qurilgan: kichik guruhlar, samimiy oʻqituvchilar va xato qilishdan qoʻrqmaslik.", "Speak.": "Gapiring.", "Fix.": "Tuzating.", "Repeat.": "Takrorlang.", "Three ways to learn.": "Oʻqishning uch yoʻli.", "Pick the format that fits your goal. All of them start with a free lesson.": "Maqsadingizga mos formatni tanlang. Barchasi bepul dars bilan boshlanadi.", "Free first course": "Birinchi kurs bepul", "Small groups where talking is the lesson.": "Kichik guruhlar: darsning oʻzi — suhbat.", "Learn more": "Batafsil", "Exam": "Imtihon", "All four parts, mock tests, feedback.": "Toʻrtala qism, sinov testlari, fikr-mulohaza.", "One teacher, one student": "Bitta oʻqituvchi, bitta oʻquvchi", "Individual lessons": "Individual darslar", "A plan built around your goal and your time.": "Maqsad va vaqtingizga mos reja.", "How you start.": "Qanday boshlanadi.", "Take the free lesson": "Bepul darsga keling", "Message the Telegram bot and pick a time.": "Telegram-botimizga yozing va vaqtni tanlang.", "Get your level and plan": "Darajangizni bilib, reja oling", "The teacher checks your speaking and recommends a course.": "Oʻqituvchi nutqingizni tekshirib, kurs tavsiya qiladi.", "Join your group": "Guruhingizga qoʻshiling", "Study online, from anywhere.": "Onlayn oʻqing, qayerda boʻlsangiz ham.", "Ready to change how you speak?": "Nutqingizni oʻzgartirishga tayyormisiz?", "Start your free lesson": "Bepul darsni boshlash", "Courses.": "Kurslar.", "Not sure which one? Take the free lesson and we will place you.": "Qaysi birini tanlashni bilmayapsizmi? Bepul darsga keling, guruhni biz tanlaymiz.", "For anyone who understands English but freezes when speaking.": "Ingliz tilini tushunadigan, lekin gapirishda dovdirab qoladiganlar uchun.", "Daily topics: work, travel, study, life": "Kundalik mavzular: ish, sayohat, oʻqish, hayot", "Instant corrections": "Xatolar darhol tuzatiladi", "Online, from anywhere": "Onlayn, istalgan joydan", "Register for free": "Bepul yozilish", "For students aiming at a target band.": "Kerakli ballga intilayotganlar uchun.", "All four parts": "Toʻrtala qism", "Timed mock tests": "Vaqt bilan sinov testlari", "See the program": "Dasturni koʻrish", "Interview, work or relocation goals. Flexible time, fully online.": "Intervyu, ish yoki koʻchish maqsadlari. Qulay vaqt, toʻliq onlayn.", "Message us": "Bizga yozing", "IELTS, part by part.": "IELTS qismma-qism.", "Four skills. We train each one on its own, then together.": "Toʻrtta koʻnikma. Avval har birini alohida, keyin birga mashq qilamiz.", "Speaking": "Speaking (gapirish)", "Three parts, one examiner. Full drills for fluency, vocabulary and pronunciation.": "Uch qism, bitta imtihon oluvchi. Ravonlik, lugʻat va talaffuzni toʻliq mashq qilish.", "Writing": "Writing (yozish)", "Task 1 and Task 2 with structure templates, corrected line by line.": "Task 1 va Task 2: tuzilma shablonlari va har bir qatorni tuzatish.", "Listening": "Listening (tinlab tushunish)", "Exam-style audio, note-taking skills and the classic trap questions.": "Haqiqiy imtihon audiolari, yozib borish koʻnikmasi va klassik tuzoq savollar.", "Reading": "Reading (oʻqish)", "Speed tactics for the 60-minute limit and every question type.": "60 daqiqalik limit uchun tezlik taktikasi va barcha savol turlari.", "Example path: band 4.5 to 7.5. Tell us your start and your target, and we build the plan.": "Yoʻl namunasi: 4.5 dan 7.5 gacha. Boshlangʻich va maqsad ballingizni ayting, rejani biz tuzamiz.", "Ask about IELTS": "IELTS haqida soʻrash", "Your teachers.": "Sizning oʻqituvchilaringiz.", "Friendly, direct and focused on making you talk. Choose a teacher and book a lesson with them.": "Samimiy, ochiq va sizni gapirtirishga yoʻnaltirilgan. Oʻqituvchini tanlang va u bilan darsga yoziling.", "What do you want to improve?": "Nimani yaxshilamoqchisiz?", "Grammar": "Grammatika", "Discussion and confidence": "Munozara va ishonch", "Show all": "Hammasini koʻrsatish", "Not sure?": "Ishonchingiz komilmi?", "Fill in a one-minute profile": "Bir daqiqalik mini-profilni toʻldiring", "and we will match you with a teacher.": "va biz sizga oʻqituvchi tanlaymiz.", "Best match": "Eng mos", "Founder and teacher": "Asoschi va oʻqituvchi", "Created Speakyz. Keeps lessons light, funny and full of speaking.": "Speakyz’ni yaratgan. Darslari yengil, quvnoq va suhbatga boy.", "Light and funny lessons": "Yengil va quvnoq darslar", "I can help you prepare for IELTS and strengthen your overall English proficiency.": "Men sizga IELTS ga tayyorlanishda va umumiy ingliz tili darajangizni mustahkamlashda yordam bera olaman.", "My strongest skills are Speaking and Writing. I focus on effective communication, developing well-structured ideas, expanding vocabulary, and expressing thoughts clearly and accurately.": "Eng kuchli tomonlarim — Speaking va Writing. Men samarali muloqot, mantiqli tuzilgan fikrlar, lugʻat boyligini oshirish hamda fikrni aniq va toʻgʻri ifodalashga eʼtibor beraman.", "I believe successful language learning requires consistency, a structured approach, and attention to detail. My methods are practical, goal-oriented, and focused on steady improvement.": "Til oʻrganishdagi muvaffaqiyat izchillik, tizimli yondashuv va tafsilotlarga eʼtibor talab qiladi, deb hisoblayman. Mening usullarim amaliy, maqsadga yoʻnaltirilgan va barqaror rivojlanishga qaratilgan.", "Whether you are preparing for IELTS or developing your English foundation, I can help you improve your skills with a clear direction.": "IELTS ga tayyorlanayapsizmi yoki ingliz tilidagi poydevoringizni mustahkamlayapsizmi, men koʻnikmalaringizni aniq yoʻnalishda rivojlantirishga yordam bera olaman.", "Structured approach": "Tizimli yondashuv", "Writing": "Writing", "Message Ozod on Telegram": "Ozod ga Telegramda yozish", "Positive and sharp. Makes hard grammar stick.": "Ijobiy va aniq. Murakkab grammatikani yodda qoldiradi.", "Positive and sharp": "Ijobiy va aniq", "Message Kamron on Telegram": "Kamron ga Telegramda yozish", "Speaking and listening": "Speaking va listening", "I’m Farangiz Khaidarova! Your English support is just one message away. Feel free to reach out anytime, and I’ll get back to you ASAP!": "Men Farangiz Xaydarovaman! Ingliz tilidagi yordam bir xabar uzoqligida. Istalgan vaqtda yozing, imkon qadar tez javob beraman!", "Want to improve your speaking and listening skills? I’m right here to help!": "Speaking va listening koʻnikmalarini yaxshilamoqchimisiz? Yordam berishga tayyorman!", "I’ll support you not only with grammar but also with broadening your worldview. And remember, English isn’t just about grammar — it’s also about how you see the world and recognize opportunities!": "Men sizga nafaqat grammatika bilan, balki dunyoqarashingizni kengaytirishda ham yordam beraman. Esda tuting: ingliz tili faqat grammatika emas, u dunyoni qanday koʻrishingiz va imkoniyatlarni payqashingiz hamdir!", "Broader worldview": "Keng dunyoqarash", "Message Farangiz on Telegram": "Farangiz ga Telegramda yozish", "Creative, supportive and open-minded. Makes lessons engaging through discussions and interactive activities, while inspiring students to think independently and express their ideas with confidence.": "Ijodkor, qoʻllab-quvvatlovchi va ochiq fikrli. Darslarni munozara va interaktiv mashqlar orqali qiziqarli qiladi, oʻquvchilarni mustaqil fikrlashga va gʻoyalarini ishonch bilan bayon qilishga ilhomlantiradi.", "Discussions": "Munozaralar", "Interactive activities": "Interaktiv mashqlar", "Confidence": "Ishonch", "Message Laziza on Telegram": "Laziza ga Telegramda yozish", "Pick your time.": "Vaqtingizni tanlang.", "Choose what suits you. We confirm the exact group and time in Telegram.": "Oʻzingizga mosini tanlang. Aniq guruh va vaqtni Telegramda tasdiqlaymiz.", "Course": "Kurs", "Individual": "Individual", "Format": "Format", "Online": "Onlayn", "Any": "Farqi yoʻq", "Time": "Vaqt", "Morning": "Ertalab", "Afternoon": "Kunduzi", "Evening": "Kechqurun", "Copy message": "Xabarni nusxalash", "Open Telegram": "Telegramni ochish", "Join us online, from anywhere.": "Onlayn qoʻshiling, qayerda boʻlsangiz ham.", "Group and individual lessons on video": "Video orqali guruh va individual darslar", "Support and manager": "Yordam va menejer", "Telegram bot": "Telegram-bot", "Channel": "Kanal", "Questions.": "Savollar.", "Is the first lesson really free?": "Birinchi dars rostdan bepulmi?", "Yes. Register through the Telegram bot and choose a time.": "Ha. Telegram-bot orqali yoziling va vaqtni tanlang.", "Can I study online?": "Onlayn oʻqisam boʻladimi?", "Yes. Groups and individual lessons both run online.": "Ha. Guruh ham, individual darslar ham onlayn oʻtadi.", "I do not know my level. Is that a problem?": "Darajamni bilmayman. Bu muammomi?", "No. The teacher checks your level in the first lesson and suggests a group.": "Yoʻq. Oʻqituvchi darajangizni birinchi darsda aniqlab, guruh taklif qiladi.", "Do you prepare for IELTS from zero?": "IELTSga noldan tayyorlaysizlarmi?", "We build a plan from your current level to your target band. Tell us both when you message us.": "Hozirgi darajangizdan maqsad ballingizgacha reja tuzamiz. Bizga yozganda ikkalasini ham ayting.", "Support": "Yordam", "Manager": "Menejer", "Telegram channel": "Telegram-kanal", "Instagram": "Instagram", "Admin": "Admin"},WPEN="You do not learn to speak by reading rules. You learn by talking, getting corrected, and trying again. At Speakyz every lesson is built around that loop, with small groups, friendly teachers and zero fear of mistakes.";
+var RU={"Message Melisa on Telegram": "Написать Melisa в Telegram", "Speaking teacher at Speakyz.": "Преподаватель Speaking в Speakyz.", "Message Melisa on Telegram to book a lesson.": "Напишите Melisa в Telegram, чтобы записаться на урок.", "Message Komron on Telegram": "Написать Komron в Telegram", "Message Amalie on Telegram": "Написать Amalie в Telegram", "Message Yasmine on Telegram": "Написать Yasmine в Telegram", "IELTS": "IELTS", "Listening": "Listening", "Structured approach": "Чёткая структура", "Public speaking": "Публичные выступления", "Pronunciation": "Произношение", "Question techniques": "Техники решения заданий", "Progress tracking": "Отслеживание прогресса", "Writing": "Writing", "Reading": "Reading", "Study guides": "Учебные гайды", "I'm Komron Suvonov, your English teacher. I can help you prepare for IELTS and improve your overall English proficiency.": "Я Komron Suvonov, ваш преподаватель английского. Помогу подготовиться к IELTS и повысить общий уровень английского.", "My strongest skill is Listening. I pay particular attention to understanding spoken English, different accents, speech patterns, and detail recognition.": "Моя сильная сторона — Listening. Я уделяю особое внимание пониманию живой речи, разным акцентам, речевым моделям и умению улавливать детали.", "I believe effective language learning requires structure, consistency, and a clear understanding of how English works. My approach is practical, focused, and built around measurable progress.": "Я считаю, что для эффективного изучения языка нужны структура, регулярность и ясное понимание того, как устроен английский. Мой подход практичный, сфокусированный и построен вокруг измеримого прогресса.", "Whether you are preparing for IELTS or strengthening your English foundation, I can help you develop your skills with a clear direction.": "Готовитесь ли вы к IELTS или укрепляете базу английского, я помогу развивать навыки в понятном направлении.", "I’m Laziza Kuandikova!": "Я Laziza Kuandikova!", "A friendly and energetic English teacher with strong speaking and public speaking skills. I enjoy making lessons interactive and engaging, helping students improve their fluency, pronunciation and confidence. I encourage students to express their ideas, think critically, participate actively and never be afraid of making mistakes.": "Дружелюбный и энергичный преподаватель английского с сильными навыками speaking и публичных выступлений. Мне нравится делать уроки интерактивными и увлекательными, помогая студентам улучшать беглость речи, произношение и уверенность. Я поощряю студентов высказывать свои идеи, мыслить критически, активно участвовать и никогда не бояться ошибок.", "My goal is to make even the trickiest questions easy to comprehend and solve, and to help you achieve the score you want.": "Моя цель — сделать даже самые каверзные задания понятными и решаемыми и помочь вам получить нужный балл.", "Together, we will find the techniques that suit you best and track your progress.": "Вместе мы найдём техники, которые подходят именно вам, и будем отслеживать ваш прогресс.", "I will make your preparation for your IELTS exam less complicated and more effective by using my special studying guides!": "Я сделаю вашу подготовку к IELTS проще и эффективнее с помощью моих специальных учебных гайдов!", "I’ll help you understand complex writing and reading questions by breaking down every single detail of the task.": "Я помогу разобраться в сложных заданиях по writing и reading, разбирая каждую деталь задачи.", "Speak English out loud.": "Говорите по-английски вслух.", "Teacher": "Учитель", "You": "Вы", "Quick fix": "Быстрая правка", "Book your free first lesson": "Записаться на бесплатный первый урок", "See courses": "Смотреть курсы", "You do not learn to speak by reading rules. You learn by talking, getting corrected, and trying again. At Speakyz every lesson is built around that loop, with small groups, friendly teachers and zero fear of mistakes.": "Говорить не учатся по учебнику с правилами. Говорить учатся, когда говорят, получают исправления и пробуют снова. В Speakyz каждый урок построен вокруг этого круга: малые группы, дружелюбные преподаватели и никакого страха перед ошибками.", "Speak.": "Говорите.", "Fix.": "Исправляйте.", "Repeat.": "Повторяйте.", "Three ways to learn.": "Три способа учиться.", "Pick the format that fits your goal. All of them start with a free lesson.": "Выберите формат под вашу цель. Любой начинается с бесплатного урока.", "Free first course": "Бесплатный первый курс", "Small groups where talking is the lesson.": "Малые группы, где сам урок — это разговор.", "Learn more": "Подробнее", "Exam": "Экзамен", "All four parts, mock tests, feedback.": "Все четыре части, пробные тесты, обратная связь.", "One teacher, one student": "Один преподаватель, один ученик", "Individual lessons": "Индивидуальные уроки", "A plan built around your goal and your time.": "План под вашу цель и ваше время.", "How you start.": "Как начать.", "Take the free lesson": "Придите на бесплатный урок", "Message the Telegram bot and pick a time.": "Напишите нашему Telegram-боту и выберите время.", "Get your level and plan": "Узнайте уровень и получите план", "The teacher checks your speaking and recommends a course.": "Преподаватель проверит вашу речь и посоветует курс.", "Join your group": "Присоединяйтесь к группе", "Study online, from anywhere.": "Занимайтесь онлайн, откуда удобно.", "Ready to change how you speak?": "Готовы изменить свою речь?", "Start your free lesson": "Начать бесплатный урок", "Courses.": "Курсы.", "Not sure which one? Take the free lesson and we will place you.": "Не знаете, какой выбрать? Приходите на бесплатный урок, и мы подберём группу.", "For anyone who understands English but freezes when speaking.": "Для тех, кто понимает английский, но теряется, когда нужно говорить.", "Daily topics: work, travel, study, life": "Темы каждый день: работа, путешествия, учёба, жизнь", "Instant corrections": "Исправления сразу", "Online, from anywhere": "Онлайн, откуда удобно", "Register for free": "Записаться бесплатно", "For students aiming at a target band.": "Для тех, кто идёт к нужному баллу.", "All four parts": "Все четыре части", "Timed mock tests": "Пробные тесты на время", "See the program": "Смотреть программу", "Interview, work or relocation goals. Flexible time, fully online.": "Собеседование, работа или переезд. Гибкое время, полностью онлайн.", "Message us": "Напишите нам", "IELTS, part by part.": "IELTS по частям.", "Four skills. We train each one on its own, then together.": "Четыре навыка. Сначала тренируем каждый отдельно, потом вместе.", "Speaking": "Speaking (говорение)", "Three parts, one examiner. Full drills for fluency, vocabulary and pronunciation.": "Три части, один экзаменатор. Полная отработка беглости, лексики и произношения.", "Writing": "Writing (письмо)", "Task 1 and Task 2 with structure templates, corrected line by line.": "Task 1 и Task 2 с шаблонами структуры и разбором каждой строки.", "Listening": "Listening (аудирование)", "Exam-style audio, note-taking skills and the classic trap questions.": "Аудио в формате экзамена, навык записи и классические вопросы-ловушки.", "Reading": "Reading (чтение)", "Speed tactics for the 60-minute limit and every question type.": "Тактика скорости для лимита в 60 минут и все типы вопросов.", "Example path: band 4.5 to 7.5. Tell us your start and your target, and we build the plan.": "Пример пути: от 4.5 до 7.5. Назовите свой старт и цель, и мы построим план.", "Ask about IELTS": "Спросить про IELTS", "Your teachers.": "Ваши преподаватели.", "Friendly, direct and focused on making you talk. Choose a teacher and book a lesson with them.": "Дружелюбные, прямые и нацеленные на то, чтобы вы говорили. Выберите преподавателя и запишитесь к нему на урок.", "What do you want to improve?": "Что хотите улучшить?", "Grammar": "Грамматика", "Discussion and confidence": "Дискуссии и уверенность", "Show all": "Показать всех", "Not sure?": "Не уверены?", "Fill in a one-minute profile": "Заполните мини-профиль за минуту", "and we will match you with a teacher.": "и мы подберём вам преподавателя.", "Best match": "Лучший выбор", "Founder and teacher": "Основатель и преподаватель", "Created Speakyz. Keeps lessons light, funny and full of speaking.": "Создал Speakyz. Уроки у него лёгкие, весёлые и полные разговора.", "Light and funny lessons": "Лёгкие и весёлые уроки", "I can help you prepare for IELTS and strengthen your overall English proficiency.": "Я помогу вам подготовиться к IELTS и укрепить общий уровень английского.", "My strongest skills are Speaking and Writing. I focus on effective communication, developing well-structured ideas, expanding vocabulary, and expressing thoughts clearly and accurately.": "Мои сильные стороны — Speaking и Writing. Я делаю упор на эффективную коммуникацию, чёткую структуру мыслей, расширение словарного запаса и точное, ясное выражение идей.", "I believe successful language learning requires consistency, a structured approach, and attention to detail. My methods are practical, goal-oriented, and focused on steady improvement.": "Я считаю, что успех в изучении языка требует регулярности, структурного подхода и внимания к деталям. Мои методы практичны, нацелены на результат и ведут к стабильному прогрессу.", "Whether you are preparing for IELTS or developing your English foundation, I can help you improve your skills with a clear direction.": "Готовитесь ли вы к IELTS или укрепляете основу английского, я помогу вам развить навыки и двигаться в чётком направлении.", "Structured approach": "Структурный подход", "Writing": "Writing", "Message Ozod on Telegram": "Написать Ozod в Telegram", "Positive and sharp. Makes hard grammar stick.": "Позитивный и чёткий. Делает так, что сложная грамматика запоминается.", "Positive and sharp": "Позитивный и чёткий", "Message Kamron on Telegram": "Написать Kamron в Telegram", "Speaking and listening": "Speaking и listening", "Want to improve your speaking and listening skills? I’m right here to help!": "Хотите улучшить speaking и listening? Я здесь, чтобы помочь!", "I’ll support you not only with grammar but also with broadening your worldview. And remember, English isn’t just about grammar — it’s also about how you see the world and recognize opportunities!": "Я помогу не только с грамматикой, но и с расширением кругозора. И помните: английский — это не только грамматика, но и то, как вы видите мир и замечаете возможности!", "Broader worldview": "Широкий кругозор", "Creative, supportive and open-minded. Makes lessons engaging through discussions and interactive activities, while inspiring students to think independently and express their ideas with confidence.": "Творческая, поддерживающая и открытая. Делает уроки увлекательными через дискуссии и интерактивные задания и вдохновляет учеников мыслить самостоятельно и уверенно выражать свои идеи.", "Discussions": "Дискуссии", "Interactive activities": "Интерактивные задания", "Confidence": "Уверенность", "Message Laziza on Telegram": "Написать Laziza в Telegram", "Pick your time.": "Выберите время.", "Choose what suits you. We confirm the exact group and time in Telegram.": "Выберите, что вам подходит. Точную группу и время мы подтвердим в Telegram.", "Course": "Курс", "Individual": "Индивидуально", "Format": "Формат", "Online": "Онлайн", "Any": "Любой", "Time": "Время", "Morning": "Утро", "Afternoon": "День", "Evening": "Вечер", "Copy message": "Скопировать сообщение", "Open Telegram": "Открыть Telegram", "Join us online, from anywhere.": "Присоединяйтесь онлайн, откуда удобно.", "Group and individual lessons on video": "Групповые и индивидуальные уроки по видеосвязи", "Support and manager": "Поддержка и менеджер", "Telegram bot": "Telegram-бот", "Channel": "Канал", "Questions.": "Вопросы.", "Is the first lesson really free?": "Первый урок правда бесплатный?", "Yes. Register through the Telegram bot and choose a time.": "Да. Запишитесь через Telegram-бота и выберите время.", "Can I study online?": "Можно учиться онлайн?", "Yes. Groups and individual lessons both run online.": "Да. И группы, и индивидуальные уроки проходят онлайн.", "I do not know my level. Is that a problem?": "Я не знаю свой уровень. Это проблема?", "No. The teacher checks your level in the first lesson and suggests a group.": "Нет. Преподаватель определит уровень на первом уроке и предложит группу.", "Do you prepare for IELTS from zero?": "Вы готовите к IELTS с нуля?", "We build a plan from your current level to your target band. Tell us both when you message us.": "Мы строим план от вашего нынешнего уровня до нужного балла. Назовите оба, когда напишете нам.", "Support": "Поддержка", "Manager": "Менеджер", "Telegram channel": "Telegram-канал", "Instagram": "Instagram", "Admin": "Админ"},UZ={"Message Melisa on Telegram": "Melisa ga Telegramda yozish", "Speaking teacher at Speakyz.": "Speakyzda Speaking o'qituvchisi.", "Message Melisa on Telegram to book a lesson.": "Darsga yozilish uchun Melisaga Telegramda yozing.", "Message Komron on Telegram": "Komron ga Telegramda yozish", "Message Amalie on Telegram": "Amalie ga Telegramda yozish", "Message Yasmine on Telegram": "Yasmine ga Telegramda yozish", "Structured approach": "Aniq tuzilma", "Public speaking": "Ommaviy nutq", "Pronunciation": "Talaffuz", "Question techniques": "Topshiriq yechish usullari", "Progress tracking": "Natijalarni kuzatish", "Study guides": "Oʻquv qoʻllanmalar", "I'm Komron Suvonov, your English teacher. I can help you prepare for IELTS and improve your overall English proficiency.": "Men Komron Suvonov, sizning ingliz tili oʻqituvchingizman. IELTSga tayyorlanishda va umumiy ingliz tili darajangizni oshirishda yordam beraman.", "My strongest skill is Listening. I pay particular attention to understanding spoken English, different accents, speech patterns, and detail recognition.": "Eng kuchli tomonim — Listening. Ogʻzaki nutqni tushunishga, turli aksentlarga, nutq shakllariga va tafsilotlarni ilg‘ab olishga alohida e’tibor beraman.", "I believe effective language learning requires structure, consistency, and a clear understanding of how English works. My approach is practical, focused, and built around measurable progress.": "Til oʻrganish samarali boʻlishi uchun tuzilma, izchillik va ingliz tili qanday ishlashini aniq tushunish kerak, deb hisoblayman. Yondashuvim amaliy, maqsadli va oʻlchanadigan natijaga qurilgan.", "Whether you are preparing for IELTS or strengthening your English foundation, I can help you develop your skills with a clear direction.": "IELTSga tayyorlanayotgan boʻlsangiz ham, ingliz tili asosini mustahkamlayotgan boʻlsangiz ham, koʻnikmalaringizni aniq yoʻnalishda rivojlantirishga yordam beraman.", "I’m Laziza Kuandikova!": "Men Laziza Kuandikovaman!", "A friendly and energetic English teacher with strong speaking and public speaking skills. I enjoy making lessons interactive and engaging, helping students improve their fluency, pronunciation and confidence. I encourage students to express their ideas, think critically, participate actively and never be afraid of making mistakes.": "Speaking va ommaviy nutq boʻyicha kuchli koʻnikmalarga ega, samimiy va gʻayratli ingliz tili oʻqituvchisi. Darslarni interaktiv va qiziqarli qilishni yaxshi koʻraman, oʻquvchilarning ravonligi, talaffuzi va ishonchini oshirishga yordam beraman. Oʻquvchilarni gʻoyalarini erkin bildirishga, tanqidiy fikrlashga, faol qatnashishga va xato qilishdan qoʻrqmaslikka undayman.", "My goal is to make even the trickiest questions easy to comprehend and solve, and to help you achieve the score you want.": "Maqsadim — eng murakkab savollarni ham tushunarli va yechiladigan qilish hamda siz istagan ballga erishishingizga yordam berish.", "Together, we will find the techniques that suit you best and track your progress.": "Birgalikda sizga eng mos usullarni topamiz va natijangizni kuzatib boramiz.", "I will make your preparation for your IELTS exam less complicated and more effective by using my special studying guides!": "Oʻzimning maxsus oʻquv qoʻllanmalarim yordamida IELTSga tayyorgarligingizni osonroq va samaraliroq qilaman!", "I’ll help you understand complex writing and reading questions by breaking down every single detail of the task.": "Murakkab writing va reading topshiriqlarini har bir tafsilotigacha tahlil qilib, tushunishingizga yordam beraman.", "Speak English out loud.": "Ingliz tilida ovoz chiqarib gapiring.", "Teacher": "Oʻqituvchi", "You": "Siz", "Quick fix": "Tezkor tuzatish", "Book your free first lesson": "Birinchi bepul darsga yozilish", "See courses": "Kurslarni koʻrish", "You do not learn to speak by reading rules. You learn by talking, getting corrected, and trying again. At Speakyz every lesson is built around that loop, with small groups, friendly teachers and zero fear of mistakes.": "Gapirishni qoidalarni oʻqib oʻrganib boʻlmaydi. Gapirishni gapirib, tuzatish olib va qayta urinib oʻrganiladi. Speakyz’da har bir dars shu aylanaga qurilgan: kichik guruhlar, samimiy oʻqituvchilar va xato qilishdan qoʻrqmaslik.", "Speak.": "Gapiring.", "Fix.": "Tuzating.", "Repeat.": "Takrorlang.", "Three ways to learn.": "Oʻqishning uch yoʻli.", "Pick the format that fits your goal. All of them start with a free lesson.": "Maqsadingizga mos formatni tanlang. Barchasi bepul dars bilan boshlanadi.", "Free first course": "Birinchi kurs bepul", "Small groups where talking is the lesson.": "Kichik guruhlar: darsning oʻzi — suhbat.", "Learn more": "Batafsil", "Exam": "Imtihon", "All four parts, mock tests, feedback.": "Toʻrtala qism, sinov testlari, fikr-mulohaza.", "One teacher, one student": "Bitta oʻqituvchi, bitta oʻquvchi", "Individual lessons": "Individual darslar", "A plan built around your goal and your time.": "Maqsad va vaqtingizga mos reja.", "How you start.": "Qanday boshlanadi.", "Take the free lesson": "Bepul darsga keling", "Message the Telegram bot and pick a time.": "Telegram-botimizga yozing va vaqtni tanlang.", "Get your level and plan": "Darajangizni bilib, reja oling", "The teacher checks your speaking and recommends a course.": "Oʻqituvchi nutqingizni tekshirib, kurs tavsiya qiladi.", "Join your group": "Guruhingizga qoʻshiling", "Study online, from anywhere.": "Onlayn oʻqing, qayerda boʻlsangiz ham.", "Ready to change how you speak?": "Nutqingizni oʻzgartirishga tayyormisiz?", "Start your free lesson": "Bepul darsni boshlash", "Courses.": "Kurslar.", "Not sure which one? Take the free lesson and we will place you.": "Qaysi birini tanlashni bilmayapsizmi? Bepul darsga keling, guruhni biz tanlaymiz.", "For anyone who understands English but freezes when speaking.": "Ingliz tilini tushunadigan, lekin gapirishda dovdirab qoladiganlar uchun.", "Daily topics: work, travel, study, life": "Kundalik mavzular: ish, sayohat, oʻqish, hayot", "Instant corrections": "Xatolar darhol tuzatiladi", "Online, from anywhere": "Onlayn, istalgan joydan", "Register for free": "Bepul yozilish", "For students aiming at a target band.": "Kerakli ballga intilayotganlar uchun.", "All four parts": "Toʻrtala qism", "Timed mock tests": "Vaqt bilan sinov testlari", "See the program": "Dasturni koʻrish", "Interview, work or relocation goals. Flexible time, fully online.": "Intervyu, ish yoki koʻchish maqsadlari. Qulay vaqt, toʻliq onlayn.", "Message us": "Bizga yozing", "IELTS, part by part.": "IELTS qismma-qism.", "Four skills. We train each one on its own, then together.": "Toʻrtta koʻnikma. Avval har birini alohida, keyin birga mashq qilamiz.", "Speaking": "Speaking (gapirish)", "Three parts, one examiner. Full drills for fluency, vocabulary and pronunciation.": "Uch qism, bitta imtihon oluvchi. Ravonlik, lugʻat va talaffuzni toʻliq mashq qilish.", "Writing": "Writing (yozish)", "Task 1 and Task 2 with structure templates, corrected line by line.": "Task 1 va Task 2: tuzilma shablonlari va har bir qatorni tuzatish.", "Listening": "Listening (tinlab tushunish)", "Exam-style audio, note-taking skills and the classic trap questions.": "Haqiqiy imtihon audiolari, yozib borish koʻnikmasi va klassik tuzoq savollar.", "Reading": "Reading (oʻqish)", "Speed tactics for the 60-minute limit and every question type.": "60 daqiqalik limit uchun tezlik taktikasi va barcha savol turlari.", "Example path: band 4.5 to 7.5. Tell us your start and your target, and we build the plan.": "Yoʻl namunasi: 4.5 dan 7.5 gacha. Boshlangʻich va maqsad ballingizni ayting, rejani biz tuzamiz.", "Ask about IELTS": "IELTS haqida soʻrash", "Your teachers.": "Sizning oʻqituvchilaringiz.", "Friendly, direct and focused on making you talk. Choose a teacher and book a lesson with them.": "Samimiy, ochiq va sizni gapirtirishga yoʻnaltirilgan. Oʻqituvchini tanlang va u bilan darsga yoziling.", "What do you want to improve?": "Nimani yaxshilamoqchisiz?", "Grammar": "Grammatika", "Discussion and confidence": "Munozara va ishonch", "Show all": "Hammasini koʻrsatish", "Not sure?": "Ishonchingiz komilmi?", "Fill in a one-minute profile": "Bir daqiqalik mini-profilni toʻldiring", "and we will match you with a teacher.": "va biz sizga oʻqituvchi tanlaymiz.", "Best match": "Eng mos", "Founder and teacher": "Asoschi va oʻqituvchi", "Created Speakyz. Keeps lessons light, funny and full of speaking.": "Speakyz’ni yaratgan. Darslari yengil, quvnoq va suhbatga boy.", "Light and funny lessons": "Yengil va quvnoq darslar", "I can help you prepare for IELTS and strengthen your overall English proficiency.": "Men sizga IELTS ga tayyorlanishda va umumiy ingliz tili darajangizni mustahkamlashda yordam bera olaman.", "My strongest skills are Speaking and Writing. I focus on effective communication, developing well-structured ideas, expanding vocabulary, and expressing thoughts clearly and accurately.": "Eng kuchli tomonlarim — Speaking va Writing. Men samarali muloqot, mantiqli tuzilgan fikrlar, lugʻat boyligini oshirish hamda fikrni aniq va toʻgʻri ifodalashga eʼtibor beraman.", "I believe successful language learning requires consistency, a structured approach, and attention to detail. My methods are practical, goal-oriented, and focused on steady improvement.": "Til oʻrganishdagi muvaffaqiyat izchillik, tizimli yondashuv va tafsilotlarga eʼtibor talab qiladi, deb hisoblayman. Mening usullarim amaliy, maqsadga yoʻnaltirilgan va barqaror rivojlanishga qaratilgan.", "Whether you are preparing for IELTS or developing your English foundation, I can help you improve your skills with a clear direction.": "IELTS ga tayyorlanayapsizmi yoki ingliz tilidagi poydevoringizni mustahkamlayapsizmi, men koʻnikmalaringizni aniq yoʻnalishda rivojlantirishga yordam bera olaman.", "Structured approach": "Tizimli yondashuv", "Writing": "Writing", "Message Ozod on Telegram": "Ozod ga Telegramda yozish", "Positive and sharp. Makes hard grammar stick.": "Ijobiy va aniq. Murakkab grammatikani yodda qoldiradi.", "Positive and sharp": "Ijobiy va aniq", "Message Kamron on Telegram": "Kamron ga Telegramda yozish", "Speaking and listening": "Speaking va listening", "Want to improve your speaking and listening skills? I’m right here to help!": "Speaking va listening koʻnikmalarini yaxshilamoqchimisiz? Yordam berishga tayyorman!", "I’ll support you not only with grammar but also with broadening your worldview. And remember, English isn’t just about grammar — it’s also about how you see the world and recognize opportunities!": "Men sizga nafaqat grammatika bilan, balki dunyoqarashingizni kengaytirishda ham yordam beraman. Esda tuting: ingliz tili faqat grammatika emas, u dunyoni qanday koʻrishingiz va imkoniyatlarni payqashingiz hamdir!", "Broader worldview": "Keng dunyoqarash", "Creative, supportive and open-minded. Makes lessons engaging through discussions and interactive activities, while inspiring students to think independently and express their ideas with confidence.": "Ijodkor, qoʻllab-quvvatlovchi va ochiq fikrli. Darslarni munozara va interaktiv mashqlar orqali qiziqarli qiladi, oʻquvchilarni mustaqil fikrlashga va gʻoyalarini ishonch bilan bayon qilishga ilhomlantiradi.", "Discussions": "Munozaralar", "Interactive activities": "Interaktiv mashqlar", "Confidence": "Ishonch", "Message Laziza on Telegram": "Laziza ga Telegramda yozish", "Pick your time.": "Vaqtingizni tanlang.", "Choose what suits you. We confirm the exact group and time in Telegram.": "Oʻzingizga mosini tanlang. Aniq guruh va vaqtni Telegramda tasdiqlaymiz.", "Course": "Kurs", "Individual": "Individual", "Format": "Format", "Online": "Onlayn", "Any": "Farqi yoʻq", "Time": "Vaqt", "Morning": "Ertalab", "Afternoon": "Kunduzi", "Evening": "Kechqurun", "Copy message": "Xabarni nusxalash", "Open Telegram": "Telegramni ochish", "Join us online, from anywhere.": "Onlayn qoʻshiling, qayerda boʻlsangiz ham.", "Group and individual lessons on video": "Video orqali guruh va individual darslar", "Support and manager": "Yordam va menejer", "Telegram bot": "Telegram-bot", "Channel": "Kanal", "Questions.": "Savollar.", "Is the first lesson really free?": "Birinchi dars rostdan bepulmi?", "Yes. Register through the Telegram bot and choose a time.": "Ha. Telegram-bot orqali yoziling va vaqtni tanlang.", "Can I study online?": "Onlayn oʻqisam boʻladimi?", "Yes. Groups and individual lessons both run online.": "Ha. Guruh ham, individual darslar ham onlayn oʻtadi.", "I do not know my level. Is that a problem?": "Darajamni bilmayman. Bu muammomi?", "No. The teacher checks your level in the first lesson and suggests a group.": "Yoʻq. Oʻqituvchi darajangizni birinchi darsda aniqlab, guruh taklif qiladi.", "Do you prepare for IELTS from zero?": "IELTSga noldan tayyorlaysizlarmi?", "We build a plan from your current level to your target band. Tell us both when you message us.": "Hozirgi darajangizdan maqsad ballingizgacha reja tuzamiz. Bizga yozganda ikkalasini ham ayting.", "Support": "Yordam", "Manager": "Menejer", "Telegram channel": "Telegram-kanal", "Instagram": "Instagram", "Admin": "Admin"},WPEN="You do not learn to speak by reading rules. You learn by talking, getting corrected, and trying again. At Speakyz every lesson is built around that loop, with small groups, friendly teachers and zero fear of mistakes.";
 var D={ru:RU,uz:UZ};
 var IDS=["home","courses","ielts","teachers","schedule","contact"];
 function lang(){try{var v=localStorage.getItem("sz_lang");if(v==="ru"||v==="uz"||v==="en")return v}catch(e){}var n=(navigator.language||"ru").slice(0,2);return(n==="uz"||n==="en")?n:"ru"}
@@ -4096,8 +4737,8 @@ en:{choose:"Request this teacher",send:"Send request",done:"Details updated.",se
  book:"Book a lesson",bookP:"Suggest a time that suits you: the teacher will confirm or decline it.",bookGo:"Request a lesson",bookOk:"Request sent. The lesson appears in your schedule once it is confirmed.",stP:"Awaiting confirmation",stD:"Declined",cancelL:"Cancel",dismiss:"Remove",tooMany:"Too many unconfirmed requests (3 at most).",
  needVer:"Confirm your email to send a request: we sent a message when you signed up.",resend:"Send the email again",sentMail:"Email sent. Confirm your address and press “Send request” again.",dRecent:"You cannot write to this teacher again for {n} more days.",pending:"Awaiting reply"}};
 ["ru","uz","en"].forEach(function(l){for(var k in X[l])T[l][k]=X[l][k]});
-var NAMES={ozod:"Mr. Ozod",komron:"Mr. Komron",farangiz:"Ms. Farangiz",laziza:"Ms. Laziza",amalie:"Ms. Amalie",yasmine:"Ms. Yasmine",melisa:"Ms. Melisa"};
-var SLUG={ozod:"ozod",kamron:"komron",komron:"komron",farangiz:"farangiz",laziza:"laziza",amalie:"amalie",yasmine:"yasmine",melisa:"melisa"};
+var NAMES={ozod:"Mr. Ozod",komron:"Mr. Komron",laziza:"Ms. Laziza",amalie:"Ms. Amalie",yasmine:"Ms. Yasmine",melisa:"Ms. Melisa"};
+var SLUG={ozod:"ozod",kamron:"komron",komron:"komron",laziza:"laziza",amalie:"amalie",yasmine:"yasmine",melisa:"melisa"};
 (function(){var X={ru:{rsT:"Причина отказа (увидит ученик)",rs:{no_spots:"Нет свободных мест",level:"Не подходит уровень",contact:"Напишите нам в Telegram",other:"Другая причина"},decConf:"Отклонить",cancelD:"Отмена",rsL:"Причина: {r}",tAcc:"{n} принял(а) вашу заявку 🎉",tDec:"{n} ответил(а) на вашу заявку",newReq:"Новая заявка"},
 uz:{rsT:"Rad etish sababi (oʻquvchi koʻradi)",rs:{no_spots:"Boʻsh oʻrin yoʻq",level:"Daraja mos kelmaydi",contact:"Telegram orqali yozing",other:"Boshqa sabab"},decConf:"Rad etish",cancelD:"Bekor qilish",rsL:"Sabab: {r}",tAcc:"{n} arizangizni qabul qildi 🎉",tDec:"{n} arizangizga javob berdi",newReq:"Yangi ariza"},
 en:{rsT:"Reason (the student will see it)",rs:{no_spots:"No free spots",level:"Level doesn't fit",contact:"Please contact us on Telegram",other:"Other reason"},decConf:"Decline",cancelD:"Cancel",rsL:"Reason: {r}",tAcc:"{n} accepted your request 🎉",tDec:"{n} replied to your request",newReq:"New request"}};
@@ -5258,8 +5899,7 @@ window.szSync=sync;
 (function(){
 // Что любит учитель: заполняй реальными данными, пустое не показывается.
 var LOVES={
- ozod:{ru:[],uz:[],en:[]},komron:{ru:[],uz:[],en:[]},farangiz:{ru:[],uz:[],en:[]},
- laziza:{ru:[],uz:[],en:[]},amalie:{ru:[],uz:[],en:[]},yasmine:{ru:[],uz:[],en:[]},melisa:{ru:[],uz:[],en:[]}
+ ozod:{ru:[],uz:[],en:[]},komron:{ru:[],uz:[],en:[]},laziza:{ru:[],uz:[],en:[]},amalie:{ru:[],uz:[],en:[]},yasmine:{ru:[],uz:[],en:[]},melisa:{ru:[],uz:[],en:[]}
 };
 var UI={ru:{b:"Профиль",l:"Что любит",g:"Написать в Telegram",x:"Закрыть"},uz:{b:"Profil",l:"Nimalarni yoqtiradi",g:"Telegramda yozish",x:"Yopish"},en:{b:"Profile",l:"Loves",g:"Message on Telegram",x:"Close"}};
 function lang(){try{var v=localStorage.getItem("sz_lang");if(UI[v])return v}catch(e){}return "ru"}
