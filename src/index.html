@@ -645,7 +645,7 @@ try{ls=localStorage.getItem("sz_lite")}catch(e){}
 /* lite: только вручную (?lite=1 или szLite(true)) либо если браузер не умеет overflow:clip (sticky-герой сломался бы) */
 try{if(!(window.CSS&&CSS.supports&&CSS.supports("overflow","clip")))lite=true}catch(e){}
 if(/[?&]lite=1/.test(location.search))lite=true;
-try{if(ls===null||ls===undefined){if((window.matchMedia&&matchMedia("(pointer:coarse)").matches)||(navigator.hardwareConcurrency||8)<=6||(navigator.deviceMemory||8)<=4)lite=true}}catch(e){}
+try{if(ls===null||ls===undefined){if((navigator.hardwareConcurrency||8)<=2||(navigator.deviceMemory||8)<=2)lite=true}}catch(e){}
 if(ls==="1")lite=true;if(ls==="0")lite=false;
 if(lite)d.className+=" lite";
 try{var _si=window.setInterval;window.setInterval=function(f,t){if(typeof f!=="function")return _si.apply(window,arguments);var a=[].slice.call(arguments,2);return _si.call(window,function(){if(document.hidden)return;f.apply(null,a)},t)}}catch(e){}
@@ -5933,5 +5933,39 @@ d.addEventListener("click",function(e){if(e.target===d)d.close()});
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "edf770c3d9034475907106cb83a56f68"}'></script><!-- End Cloudflare Web Analytics -->
+<div id="szVerify" hidden style="position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,#2A3CFF,#1B2AB8);font-family:system-ui,-apple-system,Segoe UI,sans-serif">
+ <div style="max-width:420px;width:100%;background:#fff;color:#1D1D1F;border-radius:28px;padding:34px 28px;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);text-align:center">
+  <div style="width:72px;height:72px;margin:0 auto 18px;border-radius:50%;background:#FFD60A;display:flex;align-items:center;justify-content:center;font-size:36px">&#9993;</div>
+  <h2 id="szVt" style="margin:0 0 10px;font-size:24px;font-weight:800">Подтверждение почты</h2>
+  <p id="szVp" style="margin:0 0 24px;line-height:1.5;color:#515154">Нажмите кнопку, чтобы подтвердить адрес и защитить аккаунт Speakyz.</p>
+  <button id="szVb" type="button" style="width:100%;border:0;border-radius:16px;padding:15px;background:#2A3CFF;color:#fff;font-weight:800;font-size:16px;cursor:pointer">Подтвердить почту</button>
+  <a id="szVhome" href="/" style="display:none;margin-top:16px;color:#2A3CFF;font-weight:700;text-decoration:none">Вернуться на сайт</a>
+ </div>
+</div>
+<script>
+(function(){
+ var p=new URLSearchParams(location.search);
+ if(p.get("mode")!=="verifyEmail"||!p.get("oobCode")||!p.get("apiKey"))return;
+ var box=document.getElementById("szVerify"),btn=document.getElementById("szVb"),
+     t=document.getElementById("szVt"),tx=document.getElementById("szVp"),home=document.getElementById("szVhome");
+ box.hidden=false;
+ btn.onclick=function(){
+   btn.disabled=true;btn.textContent="Проверяем...";
+   fetch("https://identitytoolkit.googleapis.com/v1/accounts:update?key="+encodeURIComponent(p.get("apiKey")),
+     {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({oobCode:p.get("oobCode")})})
+   .then(function(r){if(!r.ok)throw new Error("bad");return r.json()})
+   .then(function(){
+     t.textContent="Почта подтверждена";
+     tx.textContent="Готово. Вернитесь на сайт и войдите в аккаунт.";
+     btn.style.display="none";home.style.display="inline-block";
+   })
+   .catch(function(){
+     t.textContent="Ссылка уже не работает";
+     tx.textContent="Ссылка устарела или уже использована. Запросите письмо подтверждения ещё раз на сайте.";
+     btn.style.display="none";home.style.display="inline-block";
+   });
+ };
+})();
+</script>
 </body>
 </html>
