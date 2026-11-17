@@ -5936,5 +5936,60 @@ d.addEventListener("click",function(e){if(e.target===d)d.close()});
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "edf770c3d9034475907106cb83a56f68"}'></script><!-- End Cloudflare Web Analytics -->
+<style>
+.glang,.slang,.mk,.pftabs,[role=tablist]{touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.glang{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.28);border-radius:99px;padding:3px;-webkit-backdrop-filter:blur(14px) saturate(1.6);backdrop-filter:blur(14px) saturate(1.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+#szGlass{position:fixed;left:0;top:0;z-index:100001;pointer-events:none;opacity:0;border-radius:99px;
+ background:linear-gradient(145deg,rgba(255,255,255,.42),rgba(255,255,255,.10) 55%,rgba(255,255,255,.28));
+ border:1px solid rgba(255,255,255,.65);
+ -webkit-backdrop-filter:blur(7px) saturate(2) brightness(1.12);backdrop-filter:blur(7px) saturate(2) brightness(1.12);
+ box-shadow:inset 0 1.5px 1px rgba(255,255,255,.9),inset 0 -10px 16px rgba(255,255,255,.14),0 10px 28px rgba(20,30,120,.32);
+ transition:transform .32s cubic-bezier(.34,1.56,.64,1),width .32s cubic-bezier(.34,1.56,.64,1),height .32s cubic-bezier(.34,1.56,.64,1),opacity .18s ease}
+#szGlass.on{opacity:1}
+</style>
+<div id="szGlass" aria-hidden="true"></div>
+<script>
+(function(){
+ var GROUPS=".glang,.slang,.mk,.pftabs,[role=tablist]",ITEM="button,[role=tab]";
+ var lens=document.getElementById("szGlass");
+ var g=null,start=null,hover=null,sx=0,sy=0,drag=false,hideT=null;
+ function item(el,grp){var b=el&&el.closest&&el.closest(ITEM);return b&&grp.contains(b)&&!b.disabled?b:null}
+ function place(b,grow){
+   var r=b.getBoundingClientRect(),k=grow?1.14:1;
+   var w=r.width*k+6,h=r.height*k+6;
+   lens.style.width=w+"px";lens.style.height=h+"px";
+   lens.style.transform="translate("+(r.left+r.width/2-w/2)+"px,"+(r.top+r.height/2-h/2)+"px)";
+ }
+ function show(b){clearTimeout(hideT);place(b,true);lens.classList.add("on")}
+ function hide(){clearTimeout(hideT);hideT=setTimeout(function(){lens.classList.remove("on")},120)}
+ document.addEventListener("pointerdown",function(e){
+   if(e.pointerType==="mouse"&&e.button!==0)return;
+   var grp=e.target.closest&&e.target.closest(GROUPS);if(!grp)return;
+   var b=item(e.target,grp);if(!b)return;
+   g=grp;start=b;hover=b;sx=e.clientX;sy=e.clientY;drag=false;show(b);
+ },true);
+ document.addEventListener("pointermove",function(e){
+   if(!g)return;
+   if(!drag&&Math.abs(e.clientX-sx)<6)return;
+   drag=true;
+   var el=document.elementFromPoint(e.clientX,g.getBoundingClientRect().top+g.getBoundingClientRect().height/2);
+   var b=item(el,g);
+   if(b&&b!==hover){hover=b;place(b,true);try{navigator.vibrate&&navigator.vibrate(8)}catch(x){}}
+ },true);
+ function finish(cancel){
+   if(!g)return;
+   var pick=hover,from=start,wasDrag=drag;
+   g=null;start=null;hover=null;drag=false;hide();
+   if(cancel||!wasDrag||!pick||pick===from)return;
+   function swallow(ev){ev.stopPropagation();ev.preventDefault()}
+   window.addEventListener("click",swallow,true);
+   setTimeout(function(){window.removeEventListener("click",swallow,true)},60);
+   pick.click();
+ }
+ document.addEventListener("pointerup",function(){finish(false)},true);
+ document.addEventListener("pointercancel",function(){finish(true)},true);
+ window.addEventListener("blur",function(){finish(true)});
+})();
+</script>
 </body>
 </html>
