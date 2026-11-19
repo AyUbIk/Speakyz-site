@@ -5289,7 +5289,7 @@ html[data-theme="dark"] #tbk{--tbink:#F2F2F2;--tbm:#A1A1A6;--tbline:rgba(255,255
 #tbk .tb-stats b{font-family:var(--d);font-weight:800;font-size:1.5rem;font-variant-numeric:tabular-nums;color:var(--tbbl)}
 #tbk .tb-stats span{color:var(--tbm);font-size:.85rem;font-family:var(--b)}
 
-#tbk .tb-bar{position:sticky;top:0;z-index:5;background:var(--tbbg);border-bottom:1px solid var(--tbline);
+#tbk .tb-bar{position:sticky;top:var(--h,64px);z-index:5;background:var(--tbbg);border-bottom:1px solid var(--tbline);
   display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;margin:0 -4px;padding-inline:4px}
 #tbk .tb-tabs{display:flex;gap:4px;min-width:0;flex-wrap:wrap}
 #tbk .tb-tab{font:700 .88rem var(--b);color:var(--tbm);background:none;border:0;border-radius:99px;padding:8px 14px;cursor:pointer;transition:background .2s,color .2s}
@@ -5365,7 +5365,7 @@ html[data-theme="dark"] #tbk{--tbink:#F2F2F2;--tbm:#A1A1A6;--tbline:rgba(255,255
 
 <div class="tb-wrap">
 <div class="tb-wrap">
-<header class="tb-top">
+<div class="tb-top">
   <p class="tb-kicker">Writing · Speaking · Reading · Словарь по темам</p>
   <h1>IELTS Topic Bank</h1>
   <p class="tb-lead">Частые темы Writing Task 1 и 2, Speaking и Reading, а для каждой темы слова, словосочетания, типичные вопросы и готовые фразы с переводом. Отмечайте выученное галочкой, прогресс сохранится в этом браузере.</p>
@@ -5376,7 +5376,7 @@ html[data-theme="dark"] #tbk{--tbink:#F2F2F2;--tbm:#A1A1A6;--tbline:rgba(255,255
     <li><b>21</b><span>тем Reading</span></li>
     <li><b>2700+</b><span>слов и фраз</span></li>
   </ul>
-</header>
+</div>
 
 <div class="tb-bar">
   <div class="tb-tabs" role="tablist" aria-label="Разделы">
@@ -6778,44 +6778,8 @@ window.szSync=sync;
 #tpDlg .tpl{display:flex;flex-wrap:wrap;gap:8px}#tpDlg .tpl i,#tpDlg .str i{font-style:normal;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.12);font-size:.85rem}
 #tpDlg .tpa{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.tpb{margin-top:10px;display:inline-block;cursor:pointer}
 </style>
-<dialog id="tpDlg" aria-labelledby="tpN"><div id="tpAv" aria-hidden="true"></div><h3 id="tpN"></h3><p class="tpr" id="tpR"></p><div id="tpB"></div><div id="tpLv" hidden><h4 id="tpLh"></h4><div class="tpl" id="tpLl"></div></div><div id="tpT"></div><div class="tpa"><a class="btn y" id="tpG" target="_blank" rel="noopener"></a><button type="button" class="btn g" id="tpX"></button></div></dialog>
-<script>
-(function(){
-// Что любит учитель: заполняй реальными данными, пустое не показывается.
-var LOVES={
- ozod:{ru:[],uz:[],en:[]},komron:{ru:[],uz:[],en:[]},laziza:{ru:[],uz:[],en:[]},amalie:{ru:[],uz:[],en:[]},yasmine:{ru:[],uz:[],en:[]},melisa:{ru:[],uz:[],en:[]}
-};
-var UI={ru:{b:"Профиль",l:"Что любит",g:"Написать в Telegram",x:"Закрыть"},uz:{b:"Profil",l:"Nimalarni yoqtiradi",g:"Telegramda yozish",x:"Yopish"},en:{b:"Profile",l:"Loves",g:"Message on Telegram",x:"Close"}};
-function lang(){try{var v=localStorage.getItem("sz_lang");if(UI[v])return v}catch(e){}return "ru"}
-var d=document.getElementById("tpDlg");if(!d||!d.showModal)return;
-function open(t){
- var l=lang(),a=t.querySelector("a[data-tg]"),slug=a?a.dataset.tg:"",u=UI[l];
- var h=t.querySelector("h3"),tl=t.querySelector(".tl");
- document.getElementById("tpN").textContent=h?h.textContent:"";var nm=(h?h.textContent:"").replace(/^(Ms\.|Mr\.)\s*/,"").trim();document.getElementById("tpAv").textContent=nm.charAt(0).toUpperCase();
- document.getElementById("tpR").textContent=tl?tl.textContent:"";
- var b=document.getElementById("tpB");b.innerHTML="";
- [].forEach.call(t.querySelectorAll(":scope > p"),function(p){var c=document.createElement("p");c.textContent=p.textContent;b.appendChild(c)});
- var s=t.querySelector(".str"),T=document.getElementById("tpT");T.innerHTML="";
- if(s){var w=document.createElement("div");w.className="str";w.innerHTML=s.innerHTML;T.appendChild(w)}
- var lv=(LOVES[slug]&&LOVES[slug][l])||[],box=document.getElementById("tpLv"),ll=document.getElementById("tpLl");ll.innerHTML="";
- lv.forEach(function(x){var i=document.createElement("i");i.textContent=x;ll.appendChild(i)});
- box.hidden=!lv.length;document.getElementById("tpLh").textContent=u.l;
- var g=document.getElementById("tpG");if(a){g.href=a.href;g.textContent=u.g;g.hidden=false}else g.hidden=true;
- document.getElementById("tpX").textContent=u.x;
- d.showModal();
-}
-document.getElementById("tpX").addEventListener("click",function(){d.close()});
-d.addEventListener("click",function(e){if(e.target===d)d.close()});
-[].forEach.call(document.querySelectorAll("#teachers .tile[data-g]"),function(t){
- var a=t.querySelector("a[data-tg]");if(!a)return;
- var bt=document.createElement("button");bt.type="button";bt.className="btn g tpb";bt.dataset.tpb="1";
- var set=function(){bt.textContent=UI[lang()].b};set();
- bt.addEventListener("click",function(){open(t)});
- a.parentNode.insertBefore(bt,a.nextSibling);
- var gl=document.getElementById("glang");if(gl)gl.addEventListener("click",function(){setTimeout(set,0)});
-});
-})();
-</script>
+
+
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "edf770c3d9034475907106cb83a56f68"}'></script><!-- End Cloudflare Web Analytics -->
 <style>
 .glang,.slang,.mk,.pftabs,.subnav,.chips,.acT,[role=tablist],[role=group],[role=radiogroup]{touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
