@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Speakyz — CRM</title>
+<script src="config.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{--k:#000;--w:#F5F5F7;--ink:#1D1D1F;--m:#86868B;--bl:#2A3CFF;--y:#FFD60A;--c:#FF4B2B;--panel:#141416;--line:rgba(255,255,255,.1);--d:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;--b:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--k);color:#fff;font:400 .95rem/1.5 var(--b);-webkit-font-smoothing:antialiased;min-height:100vh}
+h1,h2,h3{font-family:var(--d);font-weight:800;letter-spacing:-.02em;margin:0}
+button{font:600 .9rem var(--b);cursor:pointer;border:0;border-radius:10px;background:var(--bl);color:#fff;padding:9px 16px;transition:transform .15s,opacity .15s}
+button:hover{transform:scale(1.03)}button:disabled{opacity:.5;cursor:default;transform:none}
+button.gh{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line);color:#fff}
+button.danger{background:var(--c)}
+button.sm{padding:6px 12px;font-size:.82rem;border-radius:8px}
+input,select,textarea{font:500 .9rem var(--b);background:#1c1c1f;color:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 11px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--y);outline-offset:1px}
+a{color:#9db0ff}
+
+/* login */
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+#login .card{width:min(360px,100%);background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px}
+#login h1{font-size:1.5rem;margin-bottom:4px}
+#login p{color:var(--m);margin:0 0 20px;font-size:.88rem}
+#login label{display:block;font-size:.8rem;color:var(--m);margin:14px 0 6px}
+#login select,#login input{width:100%}
+#login button{width:100%;margin-top:20px;padding:12px}
+#loginErr{color:var(--c);font-size:.85rem;margin-top:12px;min-height:1.2em}
+
+/* app shell */
+#app{display:none;min-height:100vh}
+#app.on{display:flex}
+aside{width:220px;flex:none;background:#0b0b0d;border-right:1px solid var(--line);padding:20px 12px;display:flex;flex-direction:column;gap:2px;position:sticky;top:0;height:100vh}
+aside .brand{font-family:var(--d);font-weight:800;font-size:1.15rem;padding:8px 10px 20px;letter-spacing:-.02em}
+aside .who{color:var(--m);font-size:.78rem;padding:0 10px 14px}
+aside a{display:block;text-decoration:none;color:rgba(255,255,255,.78);font-weight:600;font-size:.92rem;padding:10px 12px;border-radius:10px;margin-bottom:2px}
+aside a:hover{background:rgba(255,255,255,.06);color:#fff}
+aside a.on{background:var(--bl);color:#fff}
+aside .sp{flex:1}
+main{flex:1;min-width:0;padding:28px 28px 60px;max-width:1200px}
+.sect{display:none}.sect.on{display:block}
+.head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.head h2{font-size:1.5rem}
+.kpi{color:var(--m);font-size:.85rem}
+.kpi b{color:#fff}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.toolbar input[type=search]{min-width:200px;flex:1}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th{text-align:left;color:var(--m);font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.03em;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:hover td{background:rgba(255,255,255,.03)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+.msg{max-width:260px;color:var(--m);white-space:pre-wrap}
+.pill{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.76rem;font-weight:600}
+.pill.new{background:rgba(42,60,255,.25);color:#9db0ff}
+.pill.contacted{background:rgba(255,214,10,.2);color:#FFD60A}
+.pill.trial{background:rgba(124,137,255,.22);color:#c3cbff}
+.pill.won{background:rgba(52,199,89,.22);color:#5fdd84}
+.pill.lost{background:rgba(255,75,43,.2);color:#ff8a70}
+.pill.accepted{background:rgba(52,199,89,.22);color:#5fdd84}
+.pill.pending{background:rgba(255,214,10,.2);color:#FFD60A}
+.pill.declined{background:rgba(255,75,43,.2);color:#ff8a70}
+.pill.active{background:rgba(52,199,89,.22);color:#5fdd84}
+.pill.inactive{background:rgba(255,255,255,.08);color:var(--m)}
+.note-inp{width:100%;min-width:140px;background:transparent;border:1px solid transparent;padding:6px 7px}
+.note-inp:hover,.note-inp:focus{border-color:var(--line);background:#1c1c1f}
+.empty{color:var(--m);padding:30px;text-align:center}
+.grant{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:18px}
+.grant h3{font-size:1rem;margin-bottom:12px}
+.grant .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.grant .row>*{flex:none}
+.toast{position:fixed;bottom:20px;right:20px;background:#1c1c1f;border:1px solid var(--line);color:#fff;padding:12px 18px;border-radius:12px;font-size:.86rem;opacity:0;transform:translateY(8px);transition:opacity .25s,transform .25s;pointer-events:none;z-index:50}
+.toast.on{opacity:1;transform:translateY(0)}
+.toast.err{border-color:var(--c);color:#ff8a70}
+@media (max-width:720px){
+  #app.on{flex-direction:column}
+  aside{position:static;width:auto;height:auto;flex-direction:row;overflow-x:auto;padding:10px;gap:6px}
+  aside .brand,aside .who,aside .sp{display:none}
+  aside a{white-space:nowrap;margin-bottom:0}
+  main{padding:18px 14px 50px}
+}
+</style>
+</head>
+<body>
+
+<div id="login">
+  <div class="card">
+    <h1>Speakyz CRM</h1>
+    <p>Вход по личному ключу преподавателя/админа</p>
+    <label for="lSlug">Имя</label>
+    <select id="lSlug">
+      <option value="ozod">ozod</option>
+      <option value="komron">komron</option>
+      <option value="farangiz">farangiz</option>
+      <option value="laziza">laziza</option>
+      <option value="amalie">amalie</option>
+      <option value="yasmine">yasmine</option>
+      <option value="melisa">melisa</option>
+    </select>
+    <label for="lKey">Ключ</label>
+    <input id="lKey" type="password" autocomplete="off" placeholder="личный ключ">
+    <button id="lBtn">Войти</button>
+    <div id="loginErr"></div>
+  </div>
+</div>
+
+<div id="app">
+  <aside>
+    <div class="brand">Speakyz CRM</div>
+    <div class="who" id="whoAmI"></div>
+    <a href="#" data-sec="leads" class="on">Лиды</a>
+    <a href="#" data-sec="students">Студенты</a>
+    <a href="#" data-sec="payments">Платежи</a>
+    <div class="sp"></div>
+    <a href="#" id="logoutBtn">Выйти</a>
+  </aside>
+  <main>
+
+    <section class="sect on" id="sec-leads">
+      <div class="head"><h2>Лиды</h2><span class="kpi" id="leadsKpi"></span></div>
+      <div class="toolbar">
+        <input type="search" id="leadsSearch" placeholder="Поиск по имени, контакту, курсу…">
+        <select id="leadsStatusFilter">
+          <option value="">Все статусы</option>
+          <option value="new">Новый</option>
+          <option value="contacted">Связались</option>
+          <option value="trial">Пробный урок</option>
+          <option value="won">Оплатил</option>
+          <option value="lost">Отказ</option>
+        </select>
+        <button class="gh sm" id="leadsRefresh">Обновить</button>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Дата</th><th>Имя</th><th>Контакт</th><th>Курс</th><th>Сообщение</th><th>Статус</th><th>Заметка</th><th></th></tr></thead>
+          <tbody id="leadsBody"></tbody>
+        </table>
+        <div class="empty" id="leadsEmpty" hidden>Пока нет заявок</div>
+      </div>
+    </section>
+
+    <section class="sect" id="sec-students">
+      <div class="head"><h2>Студенты</h2><span class="kpi" id="studentsKpi"></span></div>
+      <div class="toolbar">
+        <input type="search" id="studentsSearch" placeholder="Поиск по имени, email…">
+        <select id="studentsTeacherFilter"><option value="">Все преподаватели</option></select>
+        <select id="studentsStatusFilter">
+          <option value="">Все статусы</option>
+          <option value="accepted">Принят</option>
+          <option value="pending">Заявка</option>
+          <option value="declined">Отказ</option>
+        </select>
+        <button class="gh sm" id="studentsRefresh">Обновить</button>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Имя</th><th>Email</th><th>Преподаватель</th><th>Статус</th><th>Тариф</th><th>До</th><th>Первый визит</th><th>Последний визит</th></tr></thead>
+          <tbody id="studentsBody"></tbody>
+        </table>
+        <div class="empty" id="studentsEmpty" hidden>Пока нет студентов</div>
+      </div>
+    </section>
+
+    <section class="sect" id="sec-payments">
+      <div class="head"><h2>Платежи и подписки</h2><span class="kpi" id="paymentsKpi"></span></div>
+
+      <div class="grant">
+        <h3>Выдать доступ вручную (оплата мимо кода)</h3>
+        <div class="row">
+          <input id="grantEmail" type="email" placeholder="email ученика" style="width:220px">
+          <button class="gh sm" id="grantFind">Найти по email</button>
+          <select id="grantUid" style="min-width:160px"><option value="">— сначала найдите —</option></select>
+          <select id="grantPlan">
+            <option value="books">Книги</option>
+            <option value="personal">Личный учитель</option>
+          </select>
+          <input id="grantDays" type="number" value="30" min="1" max="3650" style="width:90px"> дней
+          <button id="grantBtn">Выдать / продлить</button>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <input type="search" id="paymentsSearch" placeholder="Поиск по email…">
+        <select id="paymentsStatusFilter">
+          <option value="">Все</option>
+          <option value="active">Активные</option>
+          <option value="inactive">Истёкшие</option>
+        </select>
+        <button class="gh sm" id="paymentsRefresh">Обновить</button>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Email</th><th>Тариф</th><th>Статус</th><th>До</th><th>Реферал</th><th></th></tr></thead>
+          <tbody id="paymentsBody"></tbody>
+        </table>
+        <div class="empty" id="paymentsEmpty" hidden>Пока нет подписок</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+var LS_SLUG="sz_admin_slug", LS_KEY="sz_admin_key";
+var PLAN_NAME={books:"Книги",personal:"Личный учитель"};
+var STATUS_NAME={new:"Новый",contacted:"Связались",trial:"Пробный урок",won:"Оплатил",lost:"Отказ"};
+var STU_STATUS_NAME={accepted:"Принят",pending:"Заявка",declined:"Отказ","":"—"};
+
+function apiBase(){return (window.SZ_API||"")}
+function toast(msg,isErr){
+  var t=document.getElementById("toast");
+  t.textContent=msg; t.className="toast on"+(isErr?" err":"");
+  clearTimeout(t._h); t._h=setTimeout(function(){t.className="toast"},2600);
+}
+function fmtDate(v){
+  if(!v) return "—";
+  var d=typeof v==="number"?new Date(v):new Date(v);
+  if(isNaN(d.getTime())) return "—";
+  return d.toLocaleString("ru-RU",{day:"2-digit",month:"2-digit",year:"2-digit",hour:"2-digit",minute:"2-digit"});
+}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+function call(what, body){
+  var slug=localStorage.getItem(LS_SLUG)||"", key=localStorage.getItem(LS_KEY)||"";
+  return fetch(apiBase()+"/api/admin/"+what,{
+    method:"POST",
+    headers:{"Content-Type":"application/json","X-Teacher":slug,"X-Teacher-Key":key},
+    body:JSON.stringify(body||{})
+  }).then(function(r){
+    return r.json().catch(function(){return {}}).then(function(j){
+      if(!r.ok){ var e=new Error(j.error||("http_"+r.status)); e.status=r.status; throw e; }
+      return j;
+    });
+  });
+}
+
+/* ---------- login ---------- */
+var loginEl=document.getElementById("login"), appEl=document.getElementById("app");
+function showApp(){
+  loginEl.style.display="none"; appEl.className="on";
+  document.getElementById("whoAmI").textContent=localStorage.getItem(LS_SLUG)||"";
+  loadLeads(); loadStudents(); loadPayments();
+}
+function tryLogin(slug,key,silent){
+  localStorage.setItem(LS_SLUG,slug); localStorage.setItem(LS_KEY,key);
+  return call("leads",{action:"list"}).then(function(){ showApp(); }).catch(function(e){
+    localStorage.removeItem(LS_SLUG); localStorage.removeItem(LS_KEY);
+    if(!silent) document.getElementById("loginErr").textContent = e.status===403 ? "Неверный ключ или нет прав администратора" : "Не удалось подключиться, попробуйте ещё раз";
+  });
+}
+document.getElementById("lBtn").addEventListener("click", function(){
+  var slug=document.getElementById("lSlug").value, key=document.getElementById("lKey").value.trim();
+  if(!key){ document.getElementById("loginErr").textContent="Введите ключ"; return; }
+  document.getElementById("loginErr").textContent="";
+  tryLogin(slug,key,false);
+});
+document.getElementById("lKey").addEventListener("keydown", function(e){ if(e.key==="Enter") document.getElementById("lBtn").click(); });
+document.getElementById("logoutBtn").addEventListener("click", function(e){
+  e.preventDefault();
+  localStorage.removeItem(LS_SLUG); localStorage.removeItem(LS_KEY);
+  location.reload();
+});
+
+/* ---------- nav ---------- */
+Array.prototype.forEach.call(document.querySelectorAll("aside a[data-sec]"), function(a){
+  a.addEventListener("click", function(e){
+    e.preventDefault();
+    Array.prototype.forEach.call(document.querySelectorAll("aside a[data-sec]"), function(x){x.classList.remove("on")});
+    a.classList.add("on");
+    Array.prototype.forEach.call(document.querySelectorAll(".sect"), function(s){s.classList.remove("on")});
+    document.getElementById("sec-"+a.dataset.sec).classList.add("on");
+  });
+});
+
+/* ---------- leads ---------- */
+var leadsData=[];
+function loadLeads(){
+  call("leads",{action:"list"}).then(function(j){
+    leadsData = j.leads||[];
+    renderLeads();
+  }).catch(function(e){ toast("Не удалось загрузить лиды: "+e.message, true); });
+}
+function renderLeads(){
+  var q=document.getElementById("leadsSearch").value.trim().toLowerCase();
+  var st=document.getElementById("leadsStatusFilter").value;
+  var rows=leadsData.filter(function(l){
+    if(st && l.status!==st) return false;
+    if(!q) return true;
+    return (l.name||"").toLowerCase().indexOf(q)>-1 || (l.contact||"").toLowerCase().indexOf(q)>-1 || (l.course||"").toLowerCase().indexOf(q)>-1;
+  });
+  var body=document.getElementById("leadsBody");
+  body.innerHTML="";
+  document.getElementById("leadsEmpty").hidden = rows.length>0;
+  var newCount=leadsData.filter(function(l){return l.status==="new"}).length;
+  document.getElementById("leadsKpi").innerHTML="всего <b>"+leadsData.length+"</b> · новых <b>"+newCount+"</b>";
+  rows.forEach(function(l){
+    var tr=document.createElement("tr");
+    tr.innerHTML =
+      "<td>"+fmtDate(l.createdAt)+"</td>"+
+      "<td>"+esc(l.name)+"</td>"+
+      "<td>"+esc(l.contact)+"</td>"+
+      "<td>"+esc(l.course)+"</td>"+
+      "<td class='msg'>"+esc(l.message)+"</td>"+
+      "<td></td>"+
+      "<td></td>"+
+      "<td><button class='gh sm' data-del='"+l.id+"'>Удалить</button></td>";
+    var statusTd=tr.children[5];
+    var sel=document.createElement("select");
+    ["new","contacted","trial","won","lost"].forEach(function(s){
+      var o=document.createElement("option"); o.value=s; o.textContent=STATUS_NAME[s]; if(s===l.status) o.selected=true; sel.appendChild(o);
+    });
+    sel.addEventListener("change", function(){
+      call("leads",{action:"update",id:l.id,status:sel.value}).then(function(){
+        l.status=sel.value; toast("Статус обновлён");
+      }).catch(function(e){ toast("Ошибка: "+e.message, true); });
+    });
+    statusTd.appendChild(sel);
+    var noteTd=tr.children[6];
+    var inp=document.createElement("input");
+    inp.className="note-inp"; inp.value=l.note||""; inp.placeholder="заметка…";
+    inp.addEventListener("change", function(){
+      call("leads",{action:"update",id:l.id,note:inp.value}).then(function(){
+        l.note=inp.value; toast("Заметка сохранена");
+      }).catch(function(e){ toast("Ошибка: "+e.message, true); });
+    });
+    noteTd.appendChild(inp);
+    body.appendChild(tr);
+  });
+  Array.prototype.forEach.call(body.querySelectorAll("[data-del]"), function(btn){
+    btn.addEventListener("click", function(){
+      if(!confirm("Удалить эту заявку?")) return;
+      call("leads",{action:"delete",id:btn.dataset.del}).then(function(){
+        leadsData = leadsData.filter(function(l){return l.id!==btn.dataset.del});
+        renderLeads(); toast("Заявка удалена");
+      }).catch(function(e){ toast("Ошибка: "+e.message, true); });
+    });
+  });
+}
+document.getElementById("leadsSearch").addEventListener("input", renderLeads);
+document.getElementById("leadsStatusFilter").addEventListener("change", renderLeads);
+document.getElementById("leadsRefresh").addEventListener("click", loadLeads);
+
+/* ---------- students ---------- */
+var studentsData=[];
+function loadStudents(){
+  call("students",{}).then(function(j){
+    studentsData = j.students||[];
+    var sel=document.getElementById("studentsTeacherFilter");
+    var have={}; Array.prototype.forEach.call(sel.options, function(o){have[o.value]=1});
+    studentsData.forEach(function(s){
+      if(s.teacher && !have[s.teacher]){ have[s.teacher]=1; var o=document.createElement("option"); o.value=s.teacher; o.textContent=s.teacher; sel.appendChild(o); }
+    });
+    renderStudents();
+  }).catch(function(e){ toast("Не удалось загрузить студентов: "+e.message, true); });
+}
+function renderStudents(){
+  var q=document.getElementById("studentsSearch").value.trim().toLowerCase();
+  var tf=document.getElementById("studentsTeacherFilter").value;
+  var sf=document.getElementById("studentsStatusFilter").value;
+  var rows=studentsData.filter(function(s){
+    if(tf && s.teacher!==tf) return false;
+    if(sf && s.status!==sf) return false;
+    if(!q) return true;
+    return (s.name||"").toLowerCase().indexOf(q)>-1 || (s.email||"").toLowerCase().indexOf(q)>-1;
+  });
+  var body=document.getElementById("studentsBody");
+  body.innerHTML="";
+  document.getElementById("studentsEmpty").hidden = rows.length>0;
+  var paid=studentsData.filter(function(s){return s.plan}).length;
+  document.getElementById("studentsKpi").innerHTML="всего <b>"+studentsData.length+"</b> · с подпиской <b>"+paid+"</b>";
+  rows.forEach(function(s){
+    var tr=document.createElement("tr");
+    var statusPill = s.status ? "<span class='pill "+esc(s.status)+"'>"+esc(STU_STATUS_NAME[s.status]||s.status)+"</span>" : "—";
+    var planTxt = s.plan ? esc(PLAN_NAME[s.plan]||s.plan) : "—";
+    tr.innerHTML =
+      "<td>"+esc(s.name||"—")+"</td>"+
+      "<td>"+esc(s.email||"—")+"</td>"+
+      "<td>"+esc(s.teacher||"—")+"</td>"+
+      "<td>"+statusPill+"</td>"+
+      "<td>"+planTxt+"</td>"+
+      "<td>"+(s.until?fmtDate(s.until):"—")+"</td>"+
+      "<td>"+fmtDate(s.firstAt)+"</td>"+
+      "<td>"+fmtDate(s.lastAt)+"</td>";
+    body.appendChild(tr);
+  });
+}
+document.getElementById("studentsSearch").addEventListener("input", renderStudents);
+document.getElementById("studentsTeacherFilter").addEventListener("change", renderStudents);
+document.getElementById("studentsStatusFilter").addEventListener("change", renderStudents);
+document.getElementById("studentsRefresh").addEventListener("click", loadStudents);
+
+/* ---------- payments ---------- */
+var paymentsData=[];
+function loadPayments(){
+  call("payments",{action:"list"}).then(function(j){
+    paymentsData = j.payments||[];
+    renderPayments();
+  }).catch(function(e){ toast("Не удалось загрузить платежи: "+e.message, true); });
+}
+function renderPayments(){
+  var q=document.getElementById("paymentsSearch").value.trim().toLowerCase();
+  var sf=document.getElementById("paymentsStatusFilter").value;
+  var rows=paymentsData.filter(function(p){
+    if(sf==="active" && !p.active) return false;
+    if(sf==="inactive" && p.active) return false;
+    if(!q) return true;
+    return (p.email||"").toLowerCase().indexOf(q)>-1;
+  });
+  var body=document.getElementById("paymentsBody");
+  body.innerHTML="";
+  document.getElementById("paymentsEmpty").hidden = rows.length>0;
+  var active=paymentsData.filter(function(p){return p.active}).length;
+  document.getElementById("paymentsKpi").innerHTML="всего <b>"+paymentsData.length+"</b> · активных <b>"+active+"</b>";
+  rows.forEach(function(p){
+    var tr=document.createElement("tr");
+    tr.innerHTML =
+      "<td>"+esc(p.email||"—")+"</td>"+
+      "<td>"+esc(PLAN_NAME[p.plan]||p.plan||"—")+"</td>"+
+      "<td><span class='pill "+(p.active?"active":"inactive")+"'>"+(p.active?"Активна":"Истекла")+"</span></td>"+
+      "<td>"+fmtDate(p.until)+"</td>"+
+      "<td>"+(p.refBy?"да":"—")+"</td>"+
+      "<td><button class='gh sm' data-rev='"+p.uid+"'>Отозвать</button></td>";
+    body.appendChild(tr);
+  });
+  Array.prototype.forEach.call(body.querySelectorAll("[data-rev]"), function(btn){
+    btn.addEventListener("click", function(){
+      if(!confirm("Отозвать подписку у этого ученика?")) return;
+      call("payments",{action:"revoke",uid:btn.dataset.rev}).then(function(){
+        loadPayments(); toast("Подписка отозвана");
+      }).catch(function(e){ toast("Ошибка: "+e.message, true); });
+    });
+  });
+}
+document.getElementById("paymentsSearch").addEventListener("input", renderPayments);
+document.getElementById("paymentsStatusFilter").addEventListener("change", renderPayments);
+document.getElementById("paymentsRefresh").addEventListener("click", loadPayments);
+
+document.getElementById("grantFind").addEventListener("click", function(){
+  var email=document.getElementById("grantEmail").value.trim().toLowerCase();
+  if(!email){ toast("Введите email",true); return; }
+  var sel=document.getElementById("grantUid");
+  sel.innerHTML="<option value=''>— поиск… —</option>";
+  call("payments",{action:"find",email:email}).then(function(j){
+    sel.innerHTML="";
+    if(!j.matches || !j.matches.length){
+      sel.innerHTML="<option value=''>не найден — ученик ещё не входил на сайт</option>";
+      return;
+    }
+    j.matches.forEach(function(m){
+      var o=document.createElement("option"); o.value=m.uid; o.textContent=m.email+" ("+m.uid.slice(0,8)+"…)"; sel.appendChild(o);
+    });
+  }).catch(function(e){ sel.innerHTML="<option value=''>ошибка поиска</option>"; toast("Ошибка: "+e.message, true); });
+});
+document.getElementById("grantBtn").addEventListener("click", function(){
+  var uid=document.getElementById("grantUid").value;
+  var plan=document.getElementById("grantPlan").value;
+  var days=Math.round(Number(document.getElementById("grantDays").value)||0);
+  if(!uid){ toast("Сначала найдите ученика по email", true); return; }
+  if(days<1){ toast("Укажите число дней", true); return; }
+  call("payments",{action:"extend",uid:uid,plan:plan,days:days}).then(function(){
+    toast("Доступ выдан"); loadPayments();
+  }).catch(function(e){ toast("Ошибка: "+e.message, true); });
+});
+
+/* ---------- boot ---------- */
+var savedSlug=localStorage.getItem(LS_SLUG), savedKey=localStorage.getItem(LS_KEY);
+if(savedSlug && savedKey){
+  document.getElementById("lSlug").value=savedSlug;
+  tryLogin(savedSlug, savedKey, true).then(function(){
+    if(!appEl.classList.contains("on")){ /* silent fail: stay on login */ }
+  });
+}
+})();
+</script>
+</body>
+</html>

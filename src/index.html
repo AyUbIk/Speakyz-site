@@ -681,6 +681,8 @@ body.mock-on #szt,body.mock-on #szk,body.mock-on #szb,body.mock-on #szl,body.moc
 .pfth-minimal .pfpane,.pfth-minimal .pfhd{background-image:none}
 .pfth-flowers .pfpane{border-radius:20px}
 </style>
+<style id="mobile-fix">#topics,#tbk{max-width:100%;min-width:0;overflow-x:clip}#tbk .tb-wrap,#tbk .tb-topic,#tbk .tb-box,#tbk .tb-tbl{min-width:0;max-width:100%}@media(max-width:600px){#tbk table{min-width:0;font-size:.82rem}#tbk th,#tbk td{padding:6px 6px;word-break:break-word}#tbk .tb-tab{padding:8px 12px}}@media(max-width:480px){.cbd{grid-template-columns:1fr;gap:2px 0}.cbd dt{margin-top:10px;font-weight:700}.cbd dd{padding-bottom:4px}}</style>
+<style id="shc-style">.shc{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:18px 0;padding:24px 28px;border-radius:28px;background:linear-gradient(145deg,#2A3CFF,#0B0B0E 75%);color:#fff;box-shadow:0 18px 40px -18px rgba(42,60,255,.6)}.shc .shl{margin:0;font:700 .85rem var(--b);text-transform:uppercase;letter-spacing:.08em;opacity:.8;color:#fff}.shc .shv{font:900 4.5rem/1 var(--d);color:#FFD60A}.shc .shs{margin:0;font:700 1rem var(--b);color:#fff}</style>
 </head>
 <body>
 <div id="szl" aria-hidden="true"><div class="szlc"><div class="szlg"></div><div class="szlt">Speakyz</div><div class="szlb"><b></b></div></div></div>
@@ -1226,7 +1228,9 @@ function render(){
     if(r.s>0&&tk!=="C")b.appendChild(el("p","",d.up));
     if(r.s<0)b.appendChild(el("p","",d.down));
     b.appendChild(el("p","",d.nt));
-    var ac=el("div","qacts");b.appendChild(ac);
+    var pv=el("div","shc");var pl=el("div");pl.appendChild(el("p","shl",SH[L].lv));pl.appendChild(el("div","shv",r.l));pv.appendChild(pl);pv.appendChild(el("p","shs",SH[L].sc+": "+sc+" / "+QS.length));b.appendChild(pv);
+     var ac=el("div","qacts");b.appendChild(ac);
+     var shb=el("button","btn y",SH[L].share);shb.type="button";shb.onclick=function(){shareCard(r.l,sc,QS.length)};ac.appendChild(shb);
     var c0=el("a","btn",d.prof);c0.href="#profile";ac.appendChild(c0);
     var c=el("a","btn y",d.cta);c.href="https://t.me/speakyz_lern_english_bot?start=test";ac.appendChild(c);
     var a2=el("button","btn g",d.again);a2.type="button";a2.onclick=function(){state="pick";render()};ac.appendChild(a2);
@@ -1234,6 +1238,34 @@ function render(){
 }
 function next(){i++;if(i>=QS.length)state="r";render();window.scrollTo(0,0)}
 [].forEach.call(document.querySelectorAll("[data-tl]"),function(x){x.addEventListener("click",function(){L=x.dataset.tl;try{localStorage.setItem("sz_lang",L)}catch(e){}render()})});
+var SH={
+ ru:{share:"Поделиться результатом",lv:"Мой уровень английского",sc:"Правильных ответов",ch:"Проверь свой уровень бесплатно"},
+ uz:{share:"Natijani ulashish",lv:"Mening ingliz tili darajam",sc:"To‘g‘ri javoblar",ch:"Darajangizni bepul tekshiring"},
+ en:{share:"Share my result",lv:"My English level",sc:"Correct answers",ch:"Check your level for free"}
+};
+function shareCanvas(lvl,scr,tot){
+  var c=document.createElement("canvas");c.width=1080;c.height=1080;var x=c.getContext("2d");
+  var g=x.createLinearGradient(0,0,1080,1080);g.addColorStop(0,"#2A3CFF");g.addColorStop(.6,"#0B0B0E");g.addColorStop(1,"#0B0B0E");
+  x.fillStyle=g;x.fillRect(0,0,1080,1080);
+  x.fillStyle="#FFD60A";x.beginPath();x.arc(930,150,120,0,Math.PI*2);x.fill();
+  x.fillStyle="#fff";x.font="800 64px system-ui,Arial";x.fillText("Speakyz",80,130);
+  x.fillStyle="rgba(255,255,255,.75)";x.font="600 40px system-ui,Arial";x.fillText(SH[L].lv,80,330);
+  x.fillStyle="#FFD60A";x.font="900 340px system-ui,Arial";x.fillText(lvl,80,640);
+  x.fillStyle="#fff";x.font="700 44px system-ui,Arial";x.fillText(SH[L].sc+": "+scr+" / "+tot,80,740);
+  x.fillStyle="rgba(255,255,255,.12)";x.fillRect(80,820,920,150);
+  x.fillStyle="#fff";x.font="800 46px system-ui,Arial";x.fillText(SH[L].ch,120,890);
+  x.fillStyle="#FFD60A";x.font="700 40px system-ui,Arial";x.fillText("speakyz.uz/#test",120,945);
+  return c;
+}
+function shareCard(lvl,scr,tot){
+  var c=shareCanvas(lvl,scr,tot);
+  c.toBlob(function(bl){
+    if(!bl)return;var f=new File([bl],"speakyz-level.png",{type:"image/png"});
+    var data={title:"Speakyz",text:SH[L].lv+": "+lvl+", speakyz.uz/#test",files:[f]};
+    if(navigator.canShare&&navigator.canShare({files:[f]})&&navigator.share){navigator.share(data).catch(function(){})}
+    else{var a=document.createElement("a");a.href=URL.createObjectURL(bl);a.download="speakyz-level.png";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)}
+  });
+}
 render();
 })();
 
@@ -6782,7 +6814,8 @@ window.szSync=sync;
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "edf770c3d9034475907106cb83a56f68"}'></script><!-- End Cloudflare Web Analytics -->
 <style>
-.glang,.slang,.mk,.pftabs,.subnav,.chips,.acT,[role=tablist],[role=group],[role=radiogroup]{touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.glang,.slang,.mk,.pftabs,.chips,.acT,[role=tablist],[role=group],[role=radiogroup]{touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.subnav{touch-action:pan-y}
 .glang{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.28);border-radius:99px;padding:3px;-webkit-backdrop-filter:blur(14px) saturate(1.6);backdrop-filter:blur(14px) saturate(1.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
 #szGlass{position:fixed;left:0;top:0;z-index:100001;pointer-events:none;opacity:0;border-radius:99px;
  background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.04) 55%,rgba(255,255,255,.14));
@@ -6824,7 +6857,7 @@ window.szSync=sync;
    if(r.left<cr.left+8)c.scrollLeft-=cr.left+8-r.left;else if(r.right>cr.right-8)c.scrollLeft+=r.right-(cr.right-8);
  }
  document.addEventListener("pointerdown",function(e){
-   if(e.pointerType==="mouse"&&e.button!==0)return;
+   if(e.pointerType!=="mouse"||e.button!==0)return;
    var grp=e.target.closest&&e.target.closest(GROUPS);if(!grp)return;
    var b=item(e.target,grp);if(!b)return;
    var row=items(grp).filter(function(x){return x!==b&&Math.abs((x.getBoundingClientRect().top+x.getBoundingClientRect().height/2)-(b.getBoundingClientRect().top+b.getBoundingClientRect().height/2))<40});
@@ -6895,6 +6928,39 @@ body.mock-on #szad{display:none!important}
  function boot(){setTimeout(show,6000)}
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot()
 }catch(e){}})();
+</script>
+<script>
+/* swipe for the section row (.subnav): horizontal drag scrolls the row, a tap still navigates */
+(function(){
+  var st=null;
+  document.addEventListener("touchstart",function(e){
+    var n=e.target&&e.target.closest?e.target.closest(".subnav"):null;
+    if(!n||e.touches.length!==1){st=null;return}
+    st={n:n,x:e.touches[0].clientX,y:e.touches[0].clientY,lock:null,moved:false};
+  },{passive:true});
+  document.addEventListener("touchmove",function(e){
+    if(!st||e.touches.length!==1)return;
+    var t=e.touches[0],dx=t.clientX-st.x,dy=t.clientY-st.y;
+    if(!st.lock){
+      if(Math.abs(dx)<6&&Math.abs(dy)<6)return;
+      st.lock=Math.abs(dx)>Math.abs(dy)?"x":"y";
+    }
+    if(st.lock!=="x")return;
+    e.preventDefault();
+    st.n.scrollLeft-=dx;
+    st.x=t.clientX;st.y=t.clientY;st.moved=true;
+  },{passive:false});
+  function end(){
+    if(st&&st.moved){
+      var sw=function(ev){ev.stopPropagation();ev.preventDefault()};
+      window.addEventListener("click",sw,{capture:true,once:true});
+      setTimeout(function(){window.removeEventListener("click",sw,{capture:true})},350);
+    }
+    st=null;
+  }
+  document.addEventListener("touchend",end,{passive:true});
+  document.addEventListener("touchcancel",end,{passive:true});
+})();
 </script>
 </body>
 </html>
