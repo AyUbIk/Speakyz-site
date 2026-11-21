@@ -153,7 +153,7 @@ def main():
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {site}/sitemap.xml\n", encoding="utf-8")
     (DIST / ".nojekyll").write_text("", encoding="utf-8")
 
-    for name in ("config.js", "og.png", "admin.html"):
+    for name in ("config.js", "og.png", "topics.js", "practice.js", "examiner.js"):
         shutil.copy(SRC / name, DIST / name)
 
     print(f"Готово: {len(PAGES)} страниц, адрес сайта {site}")
