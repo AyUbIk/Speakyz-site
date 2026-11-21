@@ -965,9 +965,15 @@ function toBand(n,t){var p=n/t;return p>=.95?8.5:p>=.85?7.5:p>=.75?7:p>=.65?6.5:
 function countdown(sec,out,done){stopT();var left=sec;out.textContent=fmt(left);out.classList.remove('low');tmr=setInterval(function(){left--;out.textContent=fmt(Math.max(left,0));out.classList.toggle('low',left<=10);if(left<=0){stopT();done&&done()}},1000)}
 function words(s){var m=s.trim().match(/\S+/g);return m?m.length:0}
 function post(payload,cb){
-  fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-  .then(function(r){return r.json().then(function(d){if(!r.ok)throw new Error(d.error||'x');return d})})
-  .then(function(d){cb(null,d.reply)}).catch(function(e){cb(e)})}
+  /* the teacher must always answer or fail within 25 s, otherwise the chat stays 'busy' and ignores new messages */
+  var done=false,ac=typeof AbortController!=='undefined'?new AbortController():null;
+  var timer=setTimeout(function(){if(ac)ac.abort();fin(new Error('timeout'))},25000);
+  function fin(e,v){if(done)return;done=true;clearTimeout(timer);cb(e,v)}
+  var opt={method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)};
+  if(ac)opt.signal=ac.signal;
+  fetch(API,opt)
+  .then(function(r){return r.json().catch(function(){return{}}).then(function(d){if(!r.ok)throw new Error(d.error||'x');return d})})
+  .then(function(d){fin(null,d.reply)}).catch(function(e){fin(e)})}
 function hintBox(item,d){var dt=el('details','hint');dt.appendChild(el('summary','',d.hints));
   dt.appendChild(el('b','',d.ideas));var ul=el('ul');item.ideas.forEach(function(x){ul.appendChild(el('li','',x))});dt.appendChild(ul);
   dt.appendChild(el('b','',d.vocab));var u2=el('ul');item.vocab.forEach(function(x){u2.appendChild(el('li','',x))});dt.appendChild(u2);return dt}
