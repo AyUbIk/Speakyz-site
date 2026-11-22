@@ -129,6 +129,7 @@ def main():
     if 'src="config.js"' not in html:
         sys.exit("В src/index.html нет подключения config.js")
     html = html.replace('src="config.js"', f'src="{base_path}/config.js"')
+    html = html.replace('src="voice.js', f'src="{base_path}/voice.js')
 
     if DIST.exists():
         shutil.rmtree(DIST)
@@ -153,7 +154,7 @@ def main():
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {site}/sitemap.xml\n", encoding="utf-8")
     (DIST / ".nojekyll").write_text("", encoding="utf-8")
 
-    for name in ("config.js", "og.png", "topics.js", "practice.js", "examiner.js"):
+    for name in ("config.js", "og.png", "voice.js", "topics.js", "practice.js", "examiner.js"):
         shutil.copy(SRC / name, DIST / name)
 
     admin_src = SRC / "admin"
