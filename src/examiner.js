@@ -297,7 +297,7 @@ function chooseVoice(){
   for(let i=0;i<pref.length&&!v;i++)v=vs.find(x=>pref[i].test(x.name)&&/en[-_]GB/i.test(x.lang));
   if(!v)v=vs.find(x=>/en[-_]GB/i.test(x.lang));if(!v)v=vs[0]}
  ST.voice=v||null;ST.caps.tts=!!(synth&&ST.voice)}
-function loadVoices(){if(U&&U.alLVoice)U.alLVoice.hidden=true;if(!synth)return;ST.voices=(synth.getVoices()||[]).filter(v=>/^en/i.test(v.lang));chooseVoice();if(U.alVoice)fillVoices();updCaps()}
+function loadVoices(){if(!synth)return;ST.voices=(synth.getVoices()||[]).filter(v=>/^en/i.test(v.lang));chooseVoice();if(U.alVoice)fillVoices();updCaps()}
 if(synth){loadVoices();if(synth.addEventListener)synth.addEventListener('voiceschanged',loadVoices);else synth.onvoiceschanged=loadVoices}
 function say(text){
  return new Promise(res=>{
@@ -829,6 +829,7 @@ function renderLobby(){
  if(!U.alH)return;const d=T[L];
  U.alH.textContent=d.h;U.alP.textContent=d.p;U.alMic.textContent=ST.meterOn?d.micStop:d.mic1;U.alFmtH.textContent=d.fmtH;U.alSetH.textContent=d.setH;
  U.alLVoice.textContent=d.voice;U.alLSpeed.textContent=d.speed;U.alLAuto.textContent=d.auto;U.alLSubs.textContent=d.subs;U.alLAi.textContent=d.ai;U.alTest.textContent=d.testV;
+['alLVoice','alVoice','alVoiceNote'].forEach(function(k){if(U[k]&&U[k].parentNode)U[k].parentNode.removeChild(U[k])});
  U.alGo.textContent=d.start;U.alHowH.textContent=d.howH;U.alPriv.textContent=d.priv;U.alHistH.textContent=d.histH;
  U.alInapp.textContent=d.inapp;U.alInapp.hidden=!/(Instagram|FBAN|FBAV|Telegram|Line\/|Snapchat|MiniApp|; wv\))/i.test(navigator.userAgent||'');
  U.alModes.textContent='';

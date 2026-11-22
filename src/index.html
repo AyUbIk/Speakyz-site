@@ -3668,7 +3668,7 @@ body.mock-on #szad{display:none!important}
   var MAP={topics:"topics.js",teacher:"practice.js",mock:"practice.js",practice:"practice.js",arena:"examiner.js"},done={};
   var c=document.querySelector('script[src$="config.js"]');
   var base=c?c.src.replace(/config\.js.*$/,""):"";
-  function load(h){var f=MAP[h];if(!f||done[f])return;done[f]=1;var s=document.createElement("script");s.src=base+f;document.body.appendChild(s)}
+  function load(h){var f=MAP[h];if(!f||done[f])return;done[f]=1;var s=document.createElement("script");s.src=base+f+"?v=3";document.body.appendChild(s)}
   function now(){load((location.hash||"").replace("#","").split("?")[0])}
   addEventListener("hashchange",now);
   now();
