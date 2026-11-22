@@ -156,6 +156,10 @@ def main():
     for name in ("config.js", "og.png", "topics.js", "practice.js", "examiner.js"):
         shutil.copy(SRC / name, DIST / name)
 
+    admin_src = SRC / "admin"
+    if admin_src.is_dir():
+        shutil.copytree(admin_src, DIST / "admin", dirs_exist_ok=True)
+
     print(f"Готово: {len(PAGES)} страниц, адрес сайта {site}")
 
 
