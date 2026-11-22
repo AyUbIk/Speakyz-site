@@ -297,7 +297,7 @@ function chooseVoice(){
   for(let i=0;i<pref.length&&!v;i++)v=vs.find(x=>pref[i].test(x.name)&&/en[-_]GB/i.test(x.lang));
   if(!v)v=vs.find(x=>/en[-_]GB/i.test(x.lang));if(!v)v=vs[0]}
  ST.voice=v||null;ST.caps.tts=!!(synth&&ST.voice)}
-function loadVoices(){if(!synth)return;ST.voices=(synth.getVoices()||[]).filter(v=>/^en/i.test(v.lang));chooseVoice();if(U.alVoice)fillVoices();updCaps()}
+function loadVoices(){if(U&&U.alLVoice)U.alLVoice.hidden=true;if(!synth)return;ST.voices=(synth.getVoices()||[]).filter(v=>/^en/i.test(v.lang));chooseVoice();if(U.alVoice)fillVoices();updCaps()}
 if(synth){loadVoices();if(synth.addEventListener)synth.addEventListener('voiceschanged',loadVoices);else synth.onvoiceschanged=loadVoices}
 function say(text){
  return new Promise(res=>{
@@ -306,13 +306,20 @@ function say(text){
   ST.sayCancel=fin;ST.talking=true;ST.sayText=String(text||"");
   const sp=+ST.set.speed||1,est=clamp(600+String(text).length*62,900,14000)/sp;
   if(!text){fin();return}
+  if(window.szSpeak){
+   const pi=setInterval(()=>{ST.pulse=1;ST.kick=1;ST.vow=Math.random()},220);
+   ST.sayCancel=function(){clearInterval(pi);window.szStop&&window.szStop();fin()};
+   wd=setTimeout(()=>{clearInterval(pi);fin()},est*2.2+8000);
+   window.szSpeak(text,{lang:'en-GB',rate:clamp(sp*0.97,0.6,1.5)}).then(()=>{clearInterval(pi);fin()});
+   return;
+  }
   if(!synth||!ST.voice){wd=setTimeout(fin,est);return}
   const u=new SpeechSynthesisUtterance(text);u.lang=String(ST.voice.lang||'en-GB').replace('_','-');try{u.voice=ST.voice}catch(e){}u.rate=clamp(sp*0.97,0.6,1.5);u.pitch=1;
   u.onboundary=()=>{ST.pulse=1;ST.kick=1;ST.vow=Math.random()};u.onend=fin;u.onerror=fin;
   wd=setTimeout(fin,est*2.2+3000);
   try{if(synth.speaking||synth.pending)synth.cancel()}catch(e){}
   setTimeout(()=>{if(done)return;try{synth.resume();synth.speak(u)}catch(e){fin()}},90)})}
-function unlockAudio(){try{if(synth){const u=new SpeechSynthesisUtterance(' ');u.volume=0;synth.speak(u)}}catch(e){}
+function unlockAudio(){if(window.szUnlock)szUnlock();try{if(synth){const u=new SpeechSynthesisUtterance(' ');u.volume=0;synth.speak(u)}}catch(e){}
  try{const AC=window.AudioContext||window.webkitAudioContext;if(AC){ST.actx=ST.actx||new AC();ST.actx.resume&&ST.actx.resume()}}catch(e){}}
 
 /* ---------- microphone and level analysis ---------- */
