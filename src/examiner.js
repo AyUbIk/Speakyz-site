@@ -313,13 +313,8 @@ function say(text){
    window.szSpeak(text,{lang:'en-GB',rate:clamp(sp*0.97,0.6,1.5)}).then(()=>{clearInterval(pi);fin()});
    return;
   }
-  if(!synth||!ST.voice){wd=setTimeout(fin,est);return}
-  const u=new SpeechSynthesisUtterance(text);u.lang=String(ST.voice.lang||'en-GB').replace('_','-');try{u.voice=ST.voice}catch(e){}u.rate=clamp(sp*0.97,0.6,1.5);u.pitch=1;
-  u.onboundary=()=>{ST.pulse=1;ST.kick=1;ST.vow=Math.random()};u.onend=fin;u.onerror=fin;
-  wd=setTimeout(fin,est*2.2+3000);
-  try{if(synth.speaking||synth.pending)synth.cancel()}catch(e){}
-  setTimeout(()=>{if(done)return;try{synth.resume();synth.speak(u)}catch(e){fin()}},90)})}
-function unlockAudio(){if(window.szUnlock)szUnlock();try{if(synth){const u=new SpeechSynthesisUtterance(' ');u.volume=0;synth.speak(u)}}catch(e){}
+  wd=setTimeout(fin,est);return})}
+function unlockAudio(){if(window.szUnlock)szUnlock();try{}catch(e){}
  try{const AC=window.AudioContext||window.webkitAudioContext;if(AC){ST.actx=ST.actx||new AC();ST.actx.resume&&ST.actx.resume()}}catch(e){}}
 
 /* ---------- microphone and level analysis ---------- */
@@ -712,12 +707,12 @@ async function runTalk(s){
   if(txt.split(/\s+/).length<12&&/\b(bye|goodbye|see you|i have to go|let's stop)\b/i.test(txt)){
    const m="Aw, it was really nice talking to you. Bye for now, see you soon!";ST.emoOv={k:'happy',until:Date.now()+4000};showQ(m);setState('say');await say(m);return}
   setState('think');setButtons({});showQ('');showHint('');
-  const raw=await aiAsk({mode:'talk',lang:'en',messages:hist.slice(-16)},14000);
+  const raw=await aiAsk({mode:'talk',lang:'en',messages:hist.slice(-16)},25000);
   if(s.abort)return;
   let r=raw||'',emo='';
   const mt=/^\s*\[(\w+)\]\s*/.exec(r);if(mt){emo=mt[1].toLowerCase();r=r.slice(mt[0].length)}
   r=r.replace(/\[\w+\]/g,'').replace(/\s+/g,' ').trim();
-  if(!r){r="Sorry, I lost you for a second. Could you say that again?";emo='worried'}
+  if(!r){const fb=["Interesting. Can you tell me more about that?","I see. What made you feel that way?","Thanks for sharing. What do you usually do in your free time?","That sounds nice. How often do you do that?"];r=fb[hist.length%fb.length];emo='friendly'}
   hist.push({role:'assistant',content:r});
   ST.emoOv={k:EMOMAP[emo]||'friendly',until:Date.now()+Math.min(7000,1800+r.length*60)};
   showQ(r);setState('say');await say(r)}}
