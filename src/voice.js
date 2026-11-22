@@ -3,19 +3,8 @@
 (function () {
   var cache = {}, cur = null, unlocked = false;
   function base() { return window.SZ_API || ""; }
-  function fallback(text, opts) {
-    return new Promise(function (res) {
-      try {
-        if (!window.speechSynthesis || !window.SpeechSynthesisUtterance) return res();
-        speechSynthesis.cancel();
-        var u = new SpeechSynthesisUtterance(text);
-        u.lang = (opts && opts.lang) || "en-GB";
-        u.rate = (opts && opts.rate) || 0.9;
-        u.onend = res; u.onerror = res;
-        speechSynthesis.speak(u);
-      } catch (e) { res(); }
-    });
-  }
+  /* one voice only: if the server voice is unavailable, nothing else is played */
+  function fallback(text, opts) { return Promise.resolve(); }
   function play(url, text, opts) {
     return new Promise(function (res) {
       var a = new Audio(url);

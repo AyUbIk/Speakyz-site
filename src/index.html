@@ -2319,7 +2319,7 @@ function openDelete(){var t=T[lg()],w=modal(),m=w.m;
  f.onsubmit=function(e){e.preventDefault();st.textContent="";if(!pw.value){st.textContent=t.eBad;return}go.disabled=true;var fresh="";
   idt("signInWithPassword",{email:S.email,password:pw.value,returnSecureToken:true}).then(function(j){fresh=j.idToken;return apiWith("account/delete",{},fresh)})
   .then(function(){return idt("delete",{idToken:fresh}).then(null,function(er){er.partial=true;throw er})})
-  .then(function(){try{localStorage.removeItem("sz_link")}catch(e){}signedOut();closeM();var d=modal();d.m.appendChild(el("p","cbst ok",T[lg()].delDone))})
+  .then(function(){var wipe=["sz_link","sz_profile","sz_profile_bak","sz_sub","sz_cid","sz_level","sz_progress","sz_streak","sz_wd","sz_hw","sz_uni_fav","sz_arena_set","sz_sync_meta","sz_sess_at","sz_tk"];wipe.forEach(function(k){try{localStorage.removeItem(k)}catch(e){}});try{sessionStorage.clear()}catch(e){}signedOut();closeM();var d=modal();d.m.appendChild(el("p","cbst ok",T[lg()].delDone));setTimeout(function(){location.reload()},2500)})
   .catch(function(er){go.disabled=false;st.textContent=er.partial?t.delPart:errText(er.code?er:fail("NET"))})}}
 
 /* ---------- кнопка в шапке и карточка аккаунта ---------- */
