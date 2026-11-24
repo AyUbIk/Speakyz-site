@@ -9,6 +9,24 @@
   A.preload = "auto";
   A.setAttribute("playsinline", "");
   function base() { return window.SZ_API || ""; }
+  /* запасной голос: если сервер не отдал аудио (нет адреса Worker, сеть, лимит), говорит встроенный голос браузера */
+  function browserSpeak(text) {
+    return new Promise(function (res) {
+      try {
+        var sy = window.speechSynthesis;
+        if (!sy || !window.SpeechSynthesisUtterance) { res(); return; }
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = "en-GB"; u.rate = 0.95;
+        var vs = (sy.getVoices() || []).filter(function (x) { return /^en/i.test(x.lang); });
+        var pick = vs.find(function (x) { return /en[-_]GB/i.test(x.lang); }) || vs[0];
+        if (pick) u.voice = pick;
+        var done = false, fin = function () { if (!done) { done = true; res(); } };
+        u.onend = fin; u.onerror = fin;
+        setTimeout(fin, Math.min(20000, text.length * 110 + 3000));
+        sy.cancel(); sy.speak(u);
+      } catch (e) { res(); }
+    });
+  }
   function playUrl(url) {
     return new Promise(function (res) {
       A.onended = res;
@@ -36,12 +54,13 @@
         var url = URL.createObjectURL(blob);
         cache[text] = url;
         return playUrl(url);
-      }).catch(function () { /* server voice unavailable: stay silent */ });
+      }).catch(function () { return browserSpeak(text); });
     });
     return queue;
   };
   window.szStop = function () {
     try { A.pause(); A.onended = null; A.onerror = null; } catch (e) {}
+    try { window.speechSynthesis && speechSynthesis.cancel(); } catch (e) {}
   };
   /* call inside a user tap (button click / tap handler): unlocks the audio element for the whole visit */
   window.szUnlock = function () {
