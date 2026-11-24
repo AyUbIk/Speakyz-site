@@ -687,6 +687,7 @@ body.mock-on #szt,body.mock-on #szk,body.mock-on #szb,body.mock-on #szl,body.moc
 <style id="mobile-input-fix">@media(max-width:600px){input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=color]),select,textarea{font-size:16px!important}}</style>
 <style id="ui-polish">.page.on.lt{min-height:calc(100vh - var(--h))}@media(max-width:600px){.subnav{-webkit-mask-image:linear-gradient(to right,#000 88%,transparent);mask-image:linear-gradient(to right,#000 88%,transparent);padding-right:24px}.subnav a{min-height:44px;display:inline-flex;align-items:center}}</style>
 <style id="header-phone">@media(max-width:440px){header .in{gap:6px}header .logo{font-size:1.02rem;white-space:nowrap;flex:0 0 auto}header .glang{flex:0 0 auto}header .glang button{padding:5px 7px;font-size:.72rem}header .hbtn,header .szth,header .szacc{width:38px;height:38px;flex:0 0 auto}}@media(max-width:380px){header .in{gap:4px}header .glang button{padding:4px 5px;font-size:.66rem}header .hbtn,header .szth,header .szacc{width:34px;height:34px}}</style>
+<style id="menu-groups">.menu-panel .mrow{display:flex;align-items:center;gap:6px}.menu-panel .mrow>a{flex:1;min-width:0}.menu-panel .mexp{flex:0 0 auto;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.14);background:transparent;display:grid;place-items:center;cursor:pointer;color:inherit;transition:background .25s,border-color .25s}.menu-panel .mexp:hover,.menu-panel .mexp.on{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28)}.menu-panel .mexp i{width:8px;height:8px;border-right:2px solid rgba(255,255,255,.75);border-bottom:2px solid rgba(255,255,255,.75);transform:translateY(-2px) rotate(45deg);transition:transform .4s var(--ease)}.menu-panel .mexp.on i{transform:translateY(2px) rotate(225deg)}.menu-panel .msub{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease);margin:0 0 6px 20px;border-left:1px solid rgba(255,255,255,.1)}.menu-panel .msub.open{grid-template-rows:1fr}.menu-panel .msub>div{overflow:hidden;min-height:0;display:flex;flex-direction:column;gap:2px;padding:4px 0 4px 10px}.menu-panel .msl{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;color:rgba(255,255,255,.66);font:600 .92rem var(--b);text-decoration:none;opacity:0;transform:translateX(-10px);transition:opacity .3s,transform .4s var(--ease),background .25s,color .25s}.menu-panel .msub.open .msl{opacity:1;transform:none;transition-delay:calc(var(--i,0)*45ms + 90ms),calc(var(--i,0)*45ms + 90ms),0s,0s}.menu-panel .msl::before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.28);flex:0 0 auto;transition:background .25s,transform .3s var(--ease)}.menu-panel .msl:hover{background:rgba(255,255,255,.06);color:#fff;transform:translateX(3px)}.menu-panel .msl:hover::before{background:var(--y);transform:scale(1.5)}.menu-panel .msl[aria-current="page"]{background:rgba(42,60,255,.24);color:#fff}.menu-panel .msl[aria-current="page"]::before{background:var(--y)}@media (prefers-reduced-motion:reduce){.menu-panel .msub,.menu-panel .msl,.menu-panel .mexp i{transition:none!important}}</style>
 </head>
 <body>
 <div id="szl" aria-hidden="true"><div class="szlc"><div class="szlg"></div><div class="szlt">Speakyz</div><div class="szlb"><b></b></div></div></div>
@@ -1783,12 +1784,30 @@ en:{home:["Home"],learn:["Courses and teachers","Courses, IELTS, teachers, sched
 function lang(){try{var v=localStorage.getItem("sz_lang");if(TX[v])return v}catch(e){}var n=(navigator.language||"ru").slice(0,2);return TX[n]?n:"ru"}
 var CTA={ru:"Бесплатный урок",uz:"Bepul dars",en:"Free lesson"};
 function paintMenu(){var l=lang();[].forEach.call(document.querySelectorAll(".hcta,.mcta"),function(a){a.textContent=CTA[l]});[].forEach.call(document.querySelectorAll("#menuPanel a[data-m]"),function(a){var t=M[l][a.dataset.m];a.querySelector("b").textContent=t[0];var s=a.querySelector("small");if(s)s.textContent=t[1]||""})}
-function paintSub(){var l=lang();[].forEach.call(document.querySelectorAll(".subnav a"),function(a){a.textContent=TX[l][a.dataset.p]})}
+function paintSub(){var l=lang();[].forEach.call(document.querySelectorAll(".subnav a"),function(a){a.textContent=TX[l][a.dataset.p]});if(typeof paintMenuSub==="function")paintMenuSub()}
 window.szSub=function(n){var hub=HUB[n];[].forEach.call(document.querySelectorAll(".subnav"),function(s){s.remove()});if(!hub)return;
   var pg=document.getElementById(n);if(!pg)return;var nav=document.createElement("nav");nav.className="subnav";nav.setAttribute("aria-label","Section");
   SUB[hub].forEach(function(p){var a=document.createElement("a");a.href="#"+p;a.dataset.p=p;if(p===n)a.setAttribute("aria-current","page");nav.appendChild(a)});
   pg.insertBefore(nav,pg.firstChild);paintSub()};
+function closeMenuSafe(){var P=document.getElementById("menuPanel"),B=document.getElementById("menuBackdrop"),M=document.getElementById("menuBtn");if(!P)return;P.inert=true;P.classList.remove("on");if(B)B.classList.remove("on");if(M)M.setAttribute("aria-expanded","false");document.body.style.overflow=""}
+function buildMenuSub(){
+  var P=document.getElementById("menuPanel");if(!P||P.dataset.grp)return;P.dataset.grp="1";
+  ["learn","practice","plan"].forEach(function(h){
+    var a=P.querySelector('a[data-hub="'+h+'"]');if(!a||!SUB[h])return;
+    var row=document.createElement("div");row.className="mrow";
+    a.parentNode.insertBefore(row,a);row.appendChild(a);
+    var btn=document.createElement("button");btn.type="button";btn.className="mexp";btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-controls","msub-"+h);btn.setAttribute("aria-label","Sections");btn.innerHTML="<i></i>";
+    row.appendChild(btn);
+    var box=document.createElement("div");box.className="msub";box.id="msub-"+h;box.setAttribute("aria-hidden","true");
+    var inner=document.createElement("div");
+    SUB[h].forEach(function(p,i){var s=document.createElement("a");s.href="#"+p;s.className="msl";s.dataset.p=p;s.style.setProperty("--i",i);s.addEventListener("click",closeMenuSafe);inner.appendChild(s)});
+    box.appendChild(inner);row.insertAdjacentElement("afterend",box);
+    btn.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();var open=!box.classList.contains("open");box.classList.toggle("open",open);btn.classList.toggle("on",open);btn.setAttribute("aria-expanded",String(open));box.setAttribute("aria-hidden",String(!open))});
+  });
+}
+function paintMenuSub(){var l=lang(),cur=(location.hash||"").replace("#","");[].forEach.call(document.querySelectorAll("#menuPanel .msl"),function(s){s.textContent=(TX[l]&&TX[l][s.dataset.p])||s.dataset.p;s.setAttribute("aria-current",s.dataset.p===cur?"page":"false")})}
 paintMenu();
+buildMenuSub();paintMenuSub();
 var g=document.getElementById("glang");if(g)g.addEventListener("click",function(){setTimeout(function(){paintMenu();paintSub()},0)});
 addEventListener("storage",function(){paintMenu();paintSub()});
 var n=(location.hash||"").replace("#","");if(HUB[n])szSub(n);
@@ -2638,7 +2657,7 @@ html.lite *{transition-duration:.15s!important}
 </style>
 <script>(function(){var d=document,r=d.documentElement;
 d.addEventListener("visibilitychange",function(){r.classList.toggle("szhid",d.hidden)});
-if("serviceWorker"in navigator&&location.protocol==="https:")addEventListener("load",function(){setTimeout(function(){navigator.serviceWorker.register("sw.js").catch(function(){})},2500)})})();
+})();
 </script>
 <style id="szauthcss">
 /* unified sign-in window, requests and cabinet details */
