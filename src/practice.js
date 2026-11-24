@@ -1199,7 +1199,7 @@ function renderTeacher(){
   TI.placeholder=d.tPh;$('#tcG').textContent=d.tSend;$('#tcMicT').textContent=d.tMic;$('#tcVT').textContent=d.tVoice;$('#tcClr').textContent=d.tClear;
   var md=$('#tcModes');md.textContent='';d.tModes.forEach(function(m){var b=el('button','',m[1]);b.type='button';b.setAttribute('aria-pressed',m[0]===tMode);b.onclick=function(){tMode=m[0];renderTeacher();tReset()};md.appendChild(b)});
   if(!tHist.length){TM.textContent='';bubble(d.tHi[tMode],'a')}tChips()}
-$('#tcF').addEventListener('submit',function(e){e.preventDefault();tSend(TI.value)});
+$('#tcF').addEventListener('submit',function(e){e.preventDefault();if(window.szUnlock)szUnlock();tSend(TI.value)});
 $('#tcV').addEventListener('change',function(e){tVoice=e.target.checked;if(!tVoice&&window.szStop)szStop()});
 $('#tcClr').addEventListener('click',tReset);
 $('#tcMic').addEventListener('click',function(){

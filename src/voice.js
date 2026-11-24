@@ -1,52 +1,56 @@
-/* One voice for the whole site: the server makes the audio (same voice on every device), the browser only plays it.
-   If the server is unavailable the browser voice is used as a fallback. */
+/* One voice for the whole site. The server makes the audio (same voice on every device) and the browser plays it.
+   Phones block audio that starts after a network request unless the element was unlocked by a tap, so the site
+   uses ONE persistent <audio> element: szUnlock() plays a silent clip inside a tap, and every later phrase reuses
+   that element. If the server voice is unavailable nothing else is played. */
 (function () {
-  var cache = {}, cur = null, unlocked = false;
+  var cache = {}, unlocked = false, queue = Promise.resolve();
+  var SILENT = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=";
+  var A = new Audio();
+  A.preload = "auto";
+  A.setAttribute("playsinline", "");
   function base() { return window.SZ_API || ""; }
-  /* one voice only: if the server voice is unavailable, nothing else is played */
-  function fallback(text, opts) { return Promise.resolve(); }
-  function play(url, text, opts) {
+  function playUrl(url) {
     return new Promise(function (res) {
-      var a = new Audio(url);
-      cur = a;
-      a.onended = res;
-      a.onerror = function () { res(); };
-      var p = a.play();
-      if (p && p.catch) p.catch(function () { fallback(text, opts).then(res); });
+      A.onended = res;
+      A.onerror = function () { res(); };
+      A.src = url;
+      var p = A.play();
+      if (p && p.catch) p.catch(function () { res(); });
     });
   }
   window.szSpeak = function (text, opts) {
-    opts = opts || {};
     text = String(text || "").trim().slice(0, 300);
     if (!text) return Promise.resolve();
     window.szStop();
-    if (cache[text]) return play(cache[text], text, opts);
-    return fetch(base() + "/api/tts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: text })
-    }).then(function (r) {
-      if (!r.ok) throw new Error("tts");
-      return r.blob();
-    }).then(function (blob) {
-      var url = URL.createObjectURL(blob);
-      cache[text] = url;
-      return play(url, text, opts);
-    }).catch(function () {
-      return fallback(text, opts);
+    /* phrases play one after another, never on top of each other */
+    queue = queue.then(function () {
+      if (cache[text]) return playUrl(cache[text]);
+      return fetch(base() + "/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: text })
+      }).then(function (r) {
+        if (!r.ok) throw new Error("tts");
+        return r.blob();
+      }).then(function (blob) {
+        var url = URL.createObjectURL(blob);
+        cache[text] = url;
+        return playUrl(url);
+      }).catch(function () { /* server voice unavailable: stay silent */ });
     });
+    return queue;
   };
   window.szStop = function () {
-    try { if (cur) { cur.pause(); cur = null; } } catch (e) {}
-    try { if (window.speechSynthesis) speechSynthesis.cancel(); } catch (e) {}
+    try { A.pause(); A.onended = null; A.onerror = null; } catch (e) {}
   };
-  /* call inside a user tap once: lets iOS play audio that starts later */
+  /* call inside a user tap (button click / tap handler): unlocks the audio element for the whole visit */
   window.szUnlock = function () {
     if (unlocked) return;
     unlocked = true;
     try {
-      var a = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=");
-      var p = a.play(); if (p && p.catch) p.catch(function () {});
-    } catch (e) {}
+      A.src = SILENT;
+      var p = A.play();
+      if (p && p.catch) p.catch(function () { unlocked = false; });
+    } catch (e) { unlocked = false; }
   };
 }());
