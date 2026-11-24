@@ -151,7 +151,7 @@ def main():
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "\n</urlset>\n",
         encoding="utf-8",
     )
-    (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {site}/sitemap.xml\n", encoding="utf-8")
+    (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: {site}/sitemap.xml\n", encoding="utf-8")
     (DIST / ".nojekyll").write_text("", encoding="utf-8")
 
     for name in ("config.js", "og.png", "voice.js", "topics.js", "practice.js", "examiner.js"):
