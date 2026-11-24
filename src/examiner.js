@@ -44,7 +44,7 @@ ru:{
  parts:['Знакомство','Part 1','Part 2','Part 3'],
  st:{say:'Экзаменатор говорит',listen:'Ваша очередь, говорите',think:'Экзаменатор думает',prep:'Подготовка к монологу',talk:'Говорите',wrap:'Тест завершён',type:'Напечатайте ответ'},
  done:'Закончить ответ',rep:'Повторить вопрос',skipPrep:'Начать говорить сейчас',notes:'Заметки',notesPH:'Ключевые слова для монолога…',typePH:'Напечатайте ответ…',
- hint1:'Начинайте отвечать. Если не расслышали, нажмите «Повторить вопрос».',hintNoVoice:'Не слышу голос. Проверьте микрофон или напечатайте ответ.',aiThink:'Экзаменатор формулирует вопрос…',
+ tryType:'Повторять не нужно: ответьте голосом или напишите ответ в поле ниже и нажмите «Завершить ответ».',hint1:'Начинайте отвечать. Если не расслышали, нажмите «Повторить вопрос».',hintNoVoice:'Не слышу голос. Проверьте микрофон или напечатайте ответ.',aiThink:'Экзаменатор формулирует вопрос…',
  cueTitle:'Тема для монолога',cueSay:'You should say:',
  exitH:'Выйти из теста?',exitBack:'Продолжить',exitRep:'Закончить и показать разбор',exitNo:'Выйти без сохранения',
  srLost:'Расшифровка остановилась. Продолжаю записывать звук.',audioLost:'На этом устройстве браузер не даёт одновременно слушать микрофон и расшифровывать речь. Паузы и записи ответов будут недоступны, текстовый разбор останется.',
@@ -96,7 +96,7 @@ uz:{
  parts:['Tanishuv','Part 1','Part 2','Part 3'],
  st:{say:'Imtihonchi gapiryapti',listen:'Navbat sizda, gapiring',think:'Imtihonchi oʻylayapti',prep:'Monologga tayyorgarlik',talk:'Gapiring',wrap:'Test tugadi',type:'Javobni yozing'},
  done:'Javobni tugatish',rep:'Savolni takrorlash',skipPrep:'Hozir gapira boshlash',notes:'Qaydlar',notesPH:'Monolog uchun kalit soʻzlar…',typePH:'Javobni yozing…',
- hint1:'Javob bera boshlang. Eshitmagan boʻlsangiz, «Savolni takrorlash» tugmasini bosing.',hintNoVoice:'Ovoz eshitilmayapti. Mikrofonni tekshiring yoki javobni yozing.',aiThink:'Imtihonchi savol tuzyapti…',
+ tryType:'Takrorlash shart emas: javobni ovoz bilan ayting yoki pastdagi maydonga yozing va «Javobni tugatish» ni bosing.',hint1:'Javob bera boshlang. Eshitmagan boʻlsangiz, «Savolni takrorlash» tugmasini bosing.',hintNoVoice:'Ovoz eshitilmayapti. Mikrofonni tekshiring yoki javobni yozing.',aiThink:'Imtihonchi savol tuzyapti…',
  cueTitle:'Monolog mavzusi',cueSay:'You should say:',
  exitH:'Testdan chiqasizmi?',exitBack:'Davom etish',exitRep:'Tugatib, tahlilni koʻrsatish',exitNo:'Saqlamasdan chiqish',
  srLost:'Matnga oʻgirish toʻxtadi. Faqat ovoz yozishda davom etaman.',audioLost:'Bu qurilmada brauzer mikrofonni bir vaqtda tinglash va nutqni matnga oʻgirishga ruxsat bermaydi. Pauzalar va javob yozuvlari boʻlmaydi, matn tahlili qoladi.',
@@ -148,7 +148,7 @@ en:{
  parts:['Introduction','Part 1','Part 2','Part 3'],
  st:{say:'The examiner is speaking',listen:'Your turn, speak now',think:'The examiner is thinking',prep:'Preparing your talk',talk:'Speak now',wrap:'Test complete',type:'Type your answer'},
  done:'Finish answer',rep:'Repeat question',skipPrep:'Start speaking now',notes:'Notes',notesPH:'Key words for your talk…',typePH:'Type your answer…',
- hint1:'Start answering. If you did not catch it, press “Repeat question”.',hintNoVoice:'I cannot hear you. Check your microphone or type your answer.',aiThink:'The examiner is forming a question…',
+ tryType:'No need to repeat: answer aloud, or type your answer in the box below and press Finish answer.',hint1:'Start answering. If you did not catch it, press “Repeat question”.',hintNoVoice:'I cannot hear you. Check your microphone or type your answer.',aiThink:'The examiner is forming a question…',
  cueTitle:'Your topic',cueSay:'You should say:',
  exitH:'Leave the test?',exitBack:'Keep going',exitRep:'Finish and show analysis',exitNo:'Leave without saving',
  srLost:'Speech to text stopped. I will keep recording the sound.',audioLost:'On this device the browser does not allow listening to the microphone and transcribing at the same time. Pauses and recordings will be unavailable, the text analysis will remain.',
@@ -583,6 +583,9 @@ async function finalize(A){
  A.pauses=[];for(let i=1;i<sg.length;i++){const g=sg[i][0]-sg[i-1][1];if(g>=1)A.pauses.push({at:sg[i-1][1],len:g})}
  showHint('');showAuto(0);setButtons({});ST.cur=null}
 function tok(s){return String(s).toLowerCase().replace(/[’‘]/g,"'").match(/[a-z]+(?:'[a-z]+)?/g)||[]}
+function switchToType(A){A.typedMode=true;A.srWanted=false;A.hold=false;try{if(A.rec&&A.rec.stop)A.rec.stop()}catch(e){}
+ setState('type');U.Type.hidden=false;U.Type.value='';showHint(T[L].tryType);setButtons({done:true,rep:false,skip:false});
+ setTimeout(()=>{try{U.Type.focus()}catch(e){}},50)}
 async function repeatQ(){
  const A=ST.cur,s=ST.sess;if(!s||!A||!A.listening||A.hold||ST.talking||!ST.curQ)return;if(A.part===2&&!A.round)return;
  A.hold=true;closeSeg(A);A.srWanted=false;const h0=now();
@@ -590,7 +593,8 @@ async function repeatQ(){
  setState('say');await say(ST.curQ);
  if(s.abort||!A.listening)return;await sleep(250);
  const d=now()-h0;A.holdT+=d;A.t0+=d;if(A.segs.length)A.lastV=now();
- A.hold=false;A.srWanted=true;setState(A.typedMode?'type':'listen');if(s.mode2==='voice')startSR(A)}
+ A.hold=false;A.reps=(A.reps||0)+1;if(A.reps>=2&&!A.typedMode){switchToType(A);return}
+ A.srWanted=true;setState(A.typedMode?'type':'listen');if(s.mode2==='voice')startSR(A)}
 function srWhy(){
  const W={
   ru:{nosr:'Этот браузер не умеет расшифровывать речь. Откройте сайт в Chrome, Edge или Safari.',file:'Страница открыта как файл с компьютера (file://). Расшифровка речи и оценка ИИ работают только на опубликованном сайте по https://.',network:'Браузер не достучался до сервиса расшифровки (интернет, VPN или блокировщик рекламы).',denied:'Расшифровка запрещена. Разрешите микрофон для сайта (значок замка в адресной строке) и откройте сайт по https://.',cap:'Браузер не нашёл микрофон.',nospeech:'Микрофон ничего не услышал. Проверьте, какой микрофон выбран в системе, и говорите громче.',other:'Расшифровка не вернула текст. Проверьте микрофон и повторите тест.',code:' Код: '},
@@ -883,6 +887,9 @@ function analyze(s){
  R.advN=Object.keys(R.adv).length;
  R.tips=makeTips(R);R.est=estimate(R);
  return R}
+const CEFR_STEPS=[[3.5,'A1'],[4.5,'A2'],[5,'B1'],[6.5,'B2'],[7.5,'C1'],[99,'C2']];
+function cefrOf(b){b=+b;if(!isFinite(b)||b<=0)return null;for(const x of CEFR_STEPS)if(b<=x[0])return x[1];return 'C2'}
+const LVL_NOTE={ru:'Речи пока мало для оценки. По объёму речи ориентир: {l}. Ответьте развёрнуто, минимум 40 слов, и появится оценка по шкале A1–C2.',uz:'Baho uchun nutq hali kam. Nutq hajmi boʻyicha moʻljal: {l}. Kamida 40 soʻzli batafsil javob bering, shunda A1–C2 boʻyicha baho chiqadi.',en:'Not enough speech for an estimate yet. Based on how much you said: {l}. Answer in more detail, at least 40 words, to get a CEFR A1–C2 estimate.'};
 function estimate(R){
  if(!R.hasText||R.words<40)return null;
  const q=x=>Math.max(3.5,Math.min(8.5,Math.round(x*2)/2));
@@ -963,7 +970,9 @@ function fillTiles(tiles){
  if(R.wpm!=null&&R.prev&&R.prev.wpm){const dv=R.wpm-R.prev.wpm,last=tiles.lastChild;last.appendChild(el('em','rdl',(dv>0?'▲ +':dv<0?'▼ ':'= ')+(dv===0?'':dv)+' '+d.dPrev))}
  tile(R.audioN?String(R.pauseN):'—',d.tPau);
  tile(R.conf!=null?Math.round(R.conf*100)+'%':'—',d.tConf);
- if(rep.ai&&rep.ai.overall!=null)tile(rep.ai.overall.toFixed(1),d.tAi);else if(R.est)tile(R.est.overall.toFixed(1),d.tEst)}
+ const lvBand=rep.ai&&rep.ai.overall!=null?rep.ai.overall:(R.est?R.est.overall:null);
+ if(rep.ai&&rep.ai.overall!=null)tile(rep.ai.overall.toFixed(1),d.tAi);else if(R.est)tile(R.est.overall.toFixed(1),d.tEst);
+ const lv=cefrOf(lvBand);if(lv)tile(lv,'CEFR');else if(R.words>0&&R.words<40)tile(R.words<15?'A1':'A2','CEFR ≈')}
 function renderReport(){
  const rep=lastRep;if(!rep)return;const R=rep.R,d=T[L],box=U.arReport;box.textContent='';
  /* header */
@@ -971,6 +980,7 @@ function renderReport(){
  box.appendChild(E('div','rhd',null,[el('h2','',d.rH),el('p','',fmt(d.rSub,{a:R.n,w:R.words,d:new Date(R.t).toLocaleDateString(locale(),{day:'numeric',month:'long'})})),tiles]));
  if(R.audioLost||(R.mode2!=='text'&&!R.audioN))box.appendChild(el('p','rwarn',d.noAudio));
  if(!R.hasText&&R.mode2!=='text')box.appendChild(el('p','rwarn',d.noText+' '+srWhy()));
+ if(!R.est&&R.words<40){const pv=R.words<15?'A1':'A2';box.appendChild(el('p','rwarn',LVL_NOTE[L].replace('{l}',pv)))}
  /* rhythm */
  if(R.audioN){
   const c=pass(d.rhH,d.rhP);

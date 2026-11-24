@@ -70,7 +70,7 @@ h3{font:800 clamp(1.8rem,3.4vw,2.6rem)/1 var(--d);letter-spacing:-.035em;margin:
 .words{height:300vh}.words p{font:800 clamp(1.8rem,5.2vw,4rem)/1.08 var(--d);letter-spacing:-.035em;max-width:19em;margin:0;text-align:left}
 .w{opacity:.14}
 .sfr{height:340vh;background:var(--y);color:#000}
-.sfr .big{font-size:clamp(4.5rem,21vw,17rem);line-height:.86;display:block;will-change:transform;opacity:0}
+.sfr .big{font-size:clamp(4.5rem,21vw,17rem);line-height:.86;display:block;will-change:transform;opacity:0;letter-spacing:-.055em}
 .badge{position:absolute!important;right:max(4vw,16px);top:max(4vh,16px);width:clamp(110px,18vw,190px)}
 .badge text{font:800 19px var(--d);letter-spacing:3px;fill:#000}
 .tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;padding:0 16px;max-width:1240px;margin:0 auto}
@@ -777,7 +777,6 @@ body.mock-on #szt,body.mock-on #szk,body.mock-on #szb,body.mock-on #szl,body.moc
   </div></section>
  <section class="sec"><div class="wrap"><h2>How you start.</h2>
   <ol class="steps"><li><b>Take the free lesson</b><span>Message the Telegram bot and pick a time.</span></li><li><b>Get your level and plan</b><span>The teacher checks your speaking and recommends a course.</span></li><li><b>Join your group</b><span>Study online, from anywhere.</span></li></ol></div></section>
- <section class="sec wd-sec" id="wotd"><div class="wrap"><div class="wd" id="wdCard" aria-live="polite"><span class="wd-dot" aria-hidden="true"></span><div class="wd-top"><span class="wd-tag" id="wdTag"></span><span class="wd-streak" id="wdStreak"></span></div><div class="wd-main"><h2 class="wd-w" id="wdW"></h2><span class="wd-pos" id="wdPos"></span></div><p class="wd-def" id="wdDef"></p><p class="wd-ex" id="wdEx"></p><p class="wd-tr" id="wdTr"></p><div class="wd-btns"><button type="button" class="btn y" id="wdSay"></button><button type="button" class="btn g" id="wdNext"></button><a class="btn g" id="wdTg" data-tg="manager" href="https://t.me/speakyz_lern_english_bot"></a></div></div></div></section>
  <section class="final"><h2>Ready to change how you speak?</h2><div class="cta"><a class="btn y" href="https://t.me/speakyz_lern_english_bot">Start your free lesson</a></div></section>
 </div>
 
@@ -1131,7 +1130,7 @@ function tick(){if(RM||document.documentElement.classList.contains('lite'))retur
  $$('[data-pin]',pg).forEach(function(el){var p=prog(el),k=el.dataset.pin;
   if(k==='hero'){hh.style.transform='scale('+(1-.45*cl(p*3))+')';gl.style.transform='translateY('+(-p*18)+'%) scale('+(1+p*.5)+')';bs.forEach(function(b,i){var o=cl((p-(.2+i*.17))/.1);b.style.opacity=o;b.style.transform='translateY('+((1-o)*28)+'px)'})}
   if(k==='words'){ws.forEach(function(w,i){w.style.opacity=.14+.86*cl((p*1.3-i/ws.length)*ws.length/6)})}
-  if(k==='sfr'){sw.forEach(function(s,i){var o=cl((p-i*.22)/.2);s.style.opacity=o;s.style.transform='translateX('+((1-o)*(i%2?-1:1)*60)+'vw) rotate('+(-4+i*2)+'deg)'});bd.style.transform='rotate('+(p*540)+'deg)'}
+  if(k==='sfr'){sw.forEach(function(s,i){var o=cl((p-i*.22)/.2);s.style.opacity=o;s.style.transform='translateY('+((1-o)*36)+'px)'});bd.style.transform='rotate('+(p*540)+'deg)'}
   if(k==='meter'){var v=4.5+3*p;mn.textContent=v.toFixed(1);mb.style.transform='scaleX('+(v/9)+')'}});
  $$('[data-zoom]',pg).forEach(function(c){var r=c.getBoundingClientRect(),t=cl((innerHeight-r.top)/(innerHeight*.6));c.style.transform='scale('+(.93+.07*t)+')';c.style.opacity=.3+.7*t})}
 var q=0;addEventListener('scroll',function(){if(!q){q=1;requestAnimationFrame(function(){q=0;tick()})}},{passive:true});
@@ -3006,81 +3005,124 @@ setInterval(tick,3000);setTimeout(tick,2500);
 @media(max-width:560px){.uvbar{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.uvbar .uvq:not(select){grid-column:1/-1}.uvbar select.uvq{min-width:0;width:100%}}
 </style>
 <style id="szsub">
-.szsubcode{margin-top:10px;background:none;border:0;color:inherit;opacity:.85;font:700 .9rem/1 var(--b);text-decoration:underline;text-underline-offset:3px;cursor:pointer;align-self:flex-start;padding:6px 0}
-.szsubcode:hover{opacity:1}
-.szsv{position:fixed;inset:0;z-index:10050;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:szsvF .25s both}
-.szsv>div{position:relative;width:100%;max-width:440px;max-height:calc(100dvh - 32px);overflow:auto;background:#fff;color:#1D1D1F;border-radius:28px;padding:26px 22px 22px;box-shadow:0 30px 80px rgba(0,0,0,.35);animation:szsvU .4s cubic-bezier(.22,1,.36,1) both}
+.szsv{position:fixed;inset:0;z-index:10050;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:szsvF .25s both}
+.szsv>div{position:relative;width:100%;max-width:440px;max-height:calc(100dvh - 32px);overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;box-sizing:border-box;background:#fff;color:#1D1D1F;border-radius:28px;padding:26px 22px 22px;box-shadow:0 30px 80px rgba(0,0,0,.35);animation:szsvU .4s cubic-bezier(.22,1,.36,1) both}
+.szsv>div.wide{max-width:880px}
 html[data-theme="dark"] .szsv>div{background:#1c1c1e;color:#f2f2f2}
 .szsv .szsx{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(127,127,127,.16);color:inherit;font-size:1.3rem;line-height:1;cursor:pointer;transition:transform .2s}
 .szsv .szsx:hover{transform:rotate(90deg)}
 .szsv .szsbd{display:inline-block;background:#FFD60A;color:#000;font:800 .72rem/1 var(--b);letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:99px}
-.szsv h3{margin:12px 0 4px;font:800 1.55rem/1.1 var(--d);letter-spacing:-.02em;padding-right:36px}
-.szsv .szsp{margin:0 0 14px;opacity:.7;font-size:.95rem;line-height:1.4}
-.szsv ul{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:8px}
-.szsv li{display:flex;gap:10px;align-items:flex-start;font-weight:600;font-size:.95rem;line-height:1.3;animation:szsvU .45s cubic-bezier(.22,1,.36,1) both}
-.szsv li:nth-child(2){animation-delay:.05s}.szsv li:nth-child(3){animation-delay:.1s}.szsv li:nth-child(4){animation-delay:.15s}.szsv li:nth-child(5){animation-delay:.2s}.szsv li:nth-child(6){animation-delay:.25s}
-.szsv li::before{content:"";flex:none;width:20px;height:20px;border-radius:50%;background:#2A3CFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;margin-top:1px}
-.szsv .szspr{display:flex;align-items:baseline;gap:8px;margin:0 0 14px}.szsv .szspr b{font:800 1.9rem/1 var(--d);letter-spacing:-.03em}.szsv .szspr span{opacity:.65;font-weight:600}
+.szsv h3{margin:14px 0 6px;font:800 1.55rem/1.1 var(--d);letter-spacing:-.02em;padding-right:36px}
+.szsv .szsp{margin:0 0 18px;opacity:.72;font-size:.95rem;line-height:1.45}
+
+/* тарифы */
+.szpl{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:0 0 18px}
+.szp{display:flex;flex-direction:column;min-width:0;padding:20px;border-radius:24px;background:rgba(127,127,127,.07);box-shadow:inset 0 0 0 1.5px rgba(127,127,127,.22);animation:szsvU .5s cubic-bezier(.22,1,.36,1) both;transition:box-shadow .25s}
+.szp:hover{box-shadow:inset 0 0 0 2px var(--c)}
+.szp.me{background:rgba(26,157,74,.1);box-shadow:inset 0 0 0 2px #1a9d4a}
+.szp-n{margin:0 0 8px;font:800 1.15rem/1.2 var(--d)}
+.szp-pr{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.szp-pr b{font:800 1.85rem/1 var(--d);letter-spacing:-.03em;white-space:nowrap}
+.szp-pr span{font-size:.82rem;font-weight:600;opacity:.65}
+.szp-d{margin:0 0 14px;font-size:.9rem;line-height:1.4;opacity:.8}
+.szp-f{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:9px;flex:1}
+.szp-f li{position:relative;padding-left:26px;font-size:.9rem;font-weight:600;line-height:1.3}
+.szp-f li::before{content:"";position:absolute;left:0;top:.05em;width:18px;height:18px;border-radius:50%;background:var(--c) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.4l2.6 2.6L13 6.2' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.szp-b{display:flex;align-items:center;justify-content:center;min-height:50px;padding:0 18px;border-radius:99px;background:var(--c);color:var(--ink);font:800 1rem/1 var(--b);text-decoration:none;transition:transform .2s,filter .2s}
+.szp-b:hover{filter:brightness(1.06)}
+.szp-b:active{transform:scale(.97)}
+.szp-b:focus-visible{outline:3px solid rgba(42,60,255,.5);outline-offset:3px}
+.szp-hint{margin:8px 2px 0;text-align:center;font-size:.76rem;line-height:1.35;opacity:.6}
+
+/* уже есть код */
+.szsep{display:flex;align-items:center;gap:12px;margin:4px 0 12px;font:700 .85rem/1.3 var(--b);opacity:.75}
+.szsep::before,.szsep::after{content:"";flex:1;height:1px;background:rgba(127,127,127,.3)}
 .szsf{display:flex;gap:8px;flex-wrap:wrap}
-.szsf input{flex:1 1 120px;min-width:0;box-sizing:border-box;height:46px;border-radius:99px;border:1.5px solid rgba(127,127,127,.35);background:transparent;color:inherit;padding:0 16px;font:700 1rem var(--b);letter-spacing:.08em;text-transform:uppercase;transition:border-color .2s,box-shadow .2s}
+.szsf input{flex:1 1 140px;min-width:0;box-sizing:border-box;height:48px;border-radius:99px;border:1.5px solid rgba(127,127,127,.35);background:transparent;color:inherit;padding:0 16px;font:700 1rem var(--b);letter-spacing:.08em;text-transform:uppercase;transition:border-color .2s,box-shadow .2s}
 .szsf input::placeholder{letter-spacing:.02em;text-transform:none;font-weight:500;opacity:.55}
 .szsf input:focus{outline:0;border-color:#2A3CFF;box-shadow:0 0 0 4px rgba(42,60,255,.18)}
 .szsf.er input{border-color:#FF4B2B;animation:szsvS .4s}
-.szsf button{flex:none;height:46px;border:0;border-radius:99px;background:#2A3CFF;color:#fff;padding:0 20px;font:800 .95rem var(--b);cursor:pointer;transition:transform .2s,opacity .2s}
-.szsf button:active{transform:scale(.96)}.szsf button:disabled{opacity:.55}
-.szsm{min-height:1.3em;margin:8px 2px 0;font-size:.88rem;font-weight:600}.szsm.er{color:#FF4B2B}.szsm.ok{color:#1a9d4a}
-.szsv .szsb{display:block;margin-top:12px;text-align:center;font-weight:700;color:#2A3CFF;text-decoration:none}
-html[data-theme="dark"] .szsv .szsb{color:#8FA0FF}
-.szsv.ok>div{animation:szsvP .5s}
+.szsf button{flex:none;height:48px;border:0;border-radius:99px;background:#2A3CFF;color:#fff;padding:0 22px;font:800 .95rem var(--b);cursor:pointer;transition:transform .2s,opacity .2s}
+.szsf button:active{transform:scale(.96)}
+.szsf button:disabled{opacity:.55;cursor:default}
+.szsm{min-height:1.3em;margin:8px 2px 0;font-size:.88rem;font-weight:600}
+.szsm.er{color:#FF4B2B}.szsm.ok{color:#1a9d4a}
+
+/* блок в личном кабинете */
 .szsubc{margin:12px 0;padding:14px;border-radius:20px;background:rgba(42,60,255,.08);box-shadow:inset 0 0 0 1px rgba(42,60,255,.2)}
-.szsubc h4{margin:0 0 4px;font:800 1rem var(--d)}.szsubc p{margin:0 0 10px;font-size:.9rem;opacity:.85}
+.szsubc h4{margin:0 0 4px;font:800 1rem var(--d)}
+.szsubc p{margin:0 0 10px;font-size:.9rem;opacity:.85}
 .szsubc.on{background:rgba(26,157,74,.1);box-shadow:inset 0 0 0 1px rgba(26,157,74,.35)}
-.szsv>div.wide{max-width:900px}
-.szpl{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 16px}
-.szp{position:relative;display:flex;flex-direction:column;padding:18px;border-radius:24px;background:rgba(127,127,127,.08);box-shadow:inset 0 0 0 1.5px rgba(127,127,127,.2);animation:szsvU .5s cubic-bezier(.22,1,.36,1) both;transition:transform .25s,box-shadow .25s}
-.szp:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 2px var(--c)}
-.szp.hot{box-shadow:inset 0 0 0 2px var(--c)}.szp.me{background:rgba(26,157,74,.1);box-shadow:inset 0 0 0 2px #1a9d4a}
-.szp h4{margin:0 0 6px;font:800 1.15rem var(--d)}.szp p{margin:6px 0 10px;font-size:.88rem;line-height:1.35;opacity:.8}
-.szpp{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}.szpp b{font:800 1.6rem/1 var(--d);letter-spacing:-.03em}.szpp span{font-size:.8rem;opacity:.65;font-weight:600}
-.szp ul{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:6px;flex:1}.szp li{font-size:.86rem;font-weight:600;padding-left:20px;position:relative;line-height:1.3}
-.szp li::before{content:"";position:absolute;left:0;top:2px;width:14px;height:14px;border-radius:50%;background:var(--c)}
-.szph{position:absolute;top:-10px;right:14px;background:var(--c);color:#fff;font:800 .68rem/1 var(--b);letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:99px}
-.szpb{display:block;text-align:center;text-decoration:none;padding:12px;border-radius:99px;background:var(--c);color:#fff;font:800 .95rem var(--b);transition:transform .2s}
-.szp:first-child .szpb{color:#000}.szpb:active{transform:scale(.97)}
-.szsc{margin:4px 0 8px;font:800 .9rem var(--d)}
+.szcmp{margin:14px 0 6px}.szcmp h4{margin:0 0 10px;font:800 1.05rem var(--d)}
+.szcg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.szcol{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:18px;font-size:.86rem;line-height:1.35}
+.szcol b{font:800 .9rem var(--d);margin-bottom:2px}
+.szcol span{position:relative;padding-left:18px}
+.szcol span::before{content:"";position:absolute;left:0;top:.42em;width:8px;height:8px;border-radius:50%}
+.szcol.no{background:rgba(127,127,127,.12)}.szcol.no span::before{background:#FF4B2B}
+.szcol.yes{background:rgba(42,60,255,.14)}.szcol.yes span::before{background:#FFD60A}
+@media(max-width:520px){.szcg{grid-template-columns:1fr}}
+
+/* таймер лимита */
 .szcd{font:800 clamp(2.6rem,12vw,3.6rem)/1 var(--d);letter-spacing:-.03em;margin:6px 0 18px;font-variant-numeric:tabular-nums;color:#2A3CFF}
 html[data-theme="dark"] .szcd{color:#8FA0FF}
-.szsb2{width:100%;height:48px;border:0;border-radius:99px;background:#2A3CFF;color:#fff;font:800 1rem var(--b);cursor:pointer;transition:transform .2s}.szsb2:active{transform:scale(.97)}
+.szsb2{width:100%;height:50px;border:0;border-radius:99px;background:#2A3CFF;color:#fff;font:800 1rem var(--b);cursor:pointer;transition:transform .2s}
+.szsb2:active{transform:scale(.97)}
+
+/* счётчик попыток */
 .szsn{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translate(-50%,24px);opacity:0;pointer-events:none;z-index:10040;background:#111;color:#fff;padding:10px 16px;border-radius:99px;font:700 .85rem var(--b);box-shadow:0 10px 30px rgba(0,0,0,.35);transition:opacity .3s,transform .4s cubic-bezier(.22,1,.36,1)}
 .szsn.on{opacity:1;transform:translate(-50%,0)}
-@keyframes szsvF{from{opacity:0}}@keyframes szsvU{from{opacity:0;transform:translateY(18px) scale(.97)}}
-@keyframes szsvS{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}@keyframes szsvP{50%{transform:scale(1.03)}}
-@media not all{.szsv,.szsv *{animation:none!important}}
+
+@keyframes szsvF{from{opacity:0}}
+@keyframes szsvU{from{opacity:0;transform:translateY(16px) scale(.98)}}
+@keyframes szsvS{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.szsv,.szsv>div,.szp{animation:none!important}}
 </style>
 <script>
-/* sub.js: тарифы и лимиты. Три тарифа на 30 дней, любой открывает весь сайт. Без подписки: 5 попыток на вид упражнения, обновление через 3 часа. Проверка только на сервере. */
+/* Подписки: тарифы, оплата через менеджера в Telegram, активация кода, лимиты. Проверка доступа только на сервере. */
 (function(){
-var KEY="sz_sub",TG="https://t.me/speakyz_lern_english_bot?start=";
-var PL=[{id:"books",p:"250 000",c:"#FFD60A"},{id:"personal",p:"2 000 000",c:"#2A3CFF"}];
+var KEY="sz_sub";
+var MANAGER="https://t.me/speakyz_admin";
+var PL=[
+ {id:"books",price:"250 000",c:"#FFD60A",ink:"#000"},
+ {id:"personal",price:"2 000 000",c:"#2A3CFF",ink:"#fff"}
+];
 var X={
-ru:{badge:"Подписка",t:"Откройте весь Speakyz",p:"Любой тариф на 30 дней открывает весь сайт без лимитов: ИИ, мок-тесты, практику и книги. Выберите тариф и введите код, который пришлёт бот.",
- pl:{books:{n:"Книги",d:"Библиотека книг Speakyz: читайте на сайте, папка целиком придёт в Telegram.",f:["Все книги в читалке","Папка с файлами в Telegram","Весь сайт без лимитов"]},personal:{n:"Личный учитель",d:"Месяц занятий 1:1 с преподавателем и план под вашу цель.",f:["Занятия 1:1 в течение месяца","Книги и весь сайт без лимитов","Разбор ваших работ"]},family:{n:"Семейный",d:"Личный учитель на месяц для семьи. Код работает на 3 аккаунтах.",f:["Всё из тарифа «Личный учитель»","Код на 3 аккаунта","Лучшая цена на двоих и больше"],hot:"Выгодно"}},
- sum:"сум",mo:"за 30 дней",order:"Заказать",ph:"Ваш код",go:"Активировать",bad:"Неверный код. Проверьте и попробуйте снова.",used:"Этот код уже активирован на трёх аккаунтах.",act:"Подписка уже активна. Продлить можно за 3 дня до конца.",rate:"Слишком много попыток. Подождите 10 минут.",net:"Нет связи. Попробуйте ещё раз.",ok:"Готово! Доступ открыт.",until:"Подписка активна до",cardP:"Введите код: откроется весь сайт без лимитов.",cardT:"Подписка Speakyz",close:"Закрыть",srv:"Сервер временно недоступен.",
+ru:{badge:"Подписка",t:"Откройте весь Speakyz",p:"Любой тариф на 30 дней открывает весь сайт без лимитов: ИИ, мок-тесты, практику и книги.",
+ pl:{books:{n:"Книги",d:"Библиотека книг Speakyz: читайте на сайте, папка целиком придёт в Telegram.",f:["Все книги в читалке","Папка с файлами в Telegram","Весь сайт без лимитов"]},
+     personal:{n:"Личный учитель",d:"Месяц занятий 1:1 с преподавателем и план под вашу цель.",f:["Занятия 1:1 в течение месяца","Книги и весь сайт без лимитов","Разбор ваших работ"]}},
+ sum:"сум",mo:"за 30 дней",pay:"Оплатить",hint:"Откроется чат с менеджером с готовым сообщением. Нажмите «Отправить».",
+ haveCode:"Уже оплатили? Введите код",ph:"Ваш код",go:"Активировать",
+ bad:"Неверный код. Проверьте и попробуйте снова.",used:"Этот код уже активирован на трёх аккаунтах.",act:"Подписка уже активна. Продлить можно за 3 дня до конца.",
+ rate:"Слишком много попыток. Подождите 10 минут.",net:"Нет связи. Попробуйте ещё раз.",srv:"Сервер временно недоступен.",auth:"Войдите в аккаунт, чтобы активировать код.",
+ ok:"Готово! Доступ открыт.",until:"Подписка активна до",cardP:"Введите код: откроется весь сайт без лимитов.",cardT:"Подписка Speakyz",close:"Закрыть",
  lt:"Попытки закончились",lp:"Бесплатно доступно 5 попыток на каждый вид упражнений. Лимит обновится через",lo:"Открыть без лимита",left:"Осталось попыток",of:"из",
  k:{speaking:"Speaking",writing:"Writing",teacher:"ИИ-учитель",examiner:"Voice examiner",talk:"Свободный разговор",arena:"Арена",stt:"Распознавание речи",other:"Упражнение"}},
-uz:{badge:"Obuna",t:"Butun Speakyz ochiladi",p:"Istalgan tarif 30 kunga butun saytni cheklovsiz ochadi: AI, mock testlar, mashq va kitoblar. Tarifni tanlang va bot yuborgan kodni kiriting.",
- pl:{books:{n:"Kitoblar",d:"Speakyz kitoblar kutubxonasi: saytda oʻqing, toʻliq papka Telegramga yuboriladi.",f:["Barcha kitoblar oʻqish rejimida","Telegramda fayllar papkasi","Butun sayt cheklovsiz"]},personal:{n:"Shaxsiy oʻqituvchi",d:"Oʻqituvchi bilan bir oy 1:1 darslar va maqsadingizga mos reja.",f:["Bir oy davomida 1:1 darslar","Kitoblar va butun sayt cheklovsiz","Ishlaringiz tahlili"]},family:{n:"Oilaviy",d:"Oila uchun bir oylik shaxsiy oʻqituvchi. Kod 3 ta akkauntda ishlaydi.",f:["«Shaxsiy oʻqituvchi» tarifidagi hammasi","3 ta akkaunt uchun kod","Ikki va undan koʻp kishiga qulay narx"],hot:"Foydali"}},
- sum:"soʻm",mo:"30 kun uchun",order:"Buyurtma",ph:"Kodingiz",go:"Faollashtirish",bad:"Kod notoʻgʻri. Tekshirib, qayta urining.",used:"Bu kod allaqachon uchta akkauntda faollashtirilgan.",act:"Obuna allaqachon faol. Uni tugashiga 3 kun qolganda uzaytirish mumkin.",rate:"Juda koʻp urinish. 10 daqiqa kuting.",net:"Aloqa yoʻq. Qayta urinib koʻring.",ok:"Tayyor! Kirish ochildi.",until:"Obuna amal qiladi:",cardP:"Kodni kiriting: butun sayt cheklovsiz ochiladi.",cardT:"Speakyz obunasi",close:"Yopish",srv:"Server vaqtincha mavjud emas.",
+uz:{badge:"Obuna",t:"Butun Speakyz ochiladi",p:"Istalgan tarif 30 kunga butun saytni cheklovsiz ochadi: AI, mock testlar, mashq va kitoblar.",
+ pl:{books:{n:"Kitoblar",d:"Speakyz kitoblar kutubxonasi: saytda oʻqing, toʻliq papka Telegramga yuboriladi.",f:["Barcha kitoblar oʻqish rejimida","Telegramda fayllar papkasi","Butun sayt cheklovsiz"]},
+     personal:{n:"Shaxsiy oʻqituvchi",d:"Oʻqituvchi bilan bir oy 1:1 darslar va maqsadingizga mos reja.",f:["Bir oy davomida 1:1 darslar","Kitoblar va butun sayt cheklovsiz","Ishlaringiz tahlili"]}},
+ sum:"soʻm",mo:"30 kun uchun",pay:"To‘lash",hint:"Menejer bilan chat tayyor xabar bilan ochiladi. «Yuborish» ni bosing.",
+ haveCode:"Allaqachon toʻladingizmi? Kodni kiriting",ph:"Kodingiz",go:"Faollashtirish",
+ bad:"Kod notoʻgʻri. Tekshirib, qayta urining.",used:"Bu kod allaqachon uchta akkauntda faollashtirilgan.",act:"Obuna allaqachon faol. Uni tugashiga 3 kun qolganda uzaytirish mumkin.",
+ rate:"Juda koʻp urinish. 10 daqiqa kuting.",net:"Aloqa yoʻq. Qayta urinib koʻring.",srv:"Server vaqtincha mavjud emas.",auth:"Kodni faollashtirish uchun hisobingizga kiring.",
+ ok:"Tayyor! Kirish ochildi.",until:"Obuna amal qiladi:",cardP:"Kodni kiriting: butun sayt cheklovsiz ochiladi.",cardT:"Speakyz obunasi",close:"Yopish",
  lt:"Urinishlar tugadi",lp:"Har bir mashq turi uchun 5 ta bepul urinish bor. Limit yangilanishiga",lo:"Cheklovsiz ochish",left:"Qolgan urinishlar",of:"/",
  k:{speaking:"Speaking",writing:"Writing",teacher:"AI-oʻqituvchi",examiner:"Voice examiner",talk:"Erkin suhbat",arena:"Arena",stt:"Nutqni aniqlash",other:"Mashq"}},
-en:{badge:"Subscription",t:"Unlock all of Speakyz",p:"Any plan opens the whole site for 30 days with no limits: AI, mock tests, practice and books. Pick a plan and enter the code the bot sends you.",
- pl:{books:{n:"Books",d:"The Speakyz book library: read on the site, the full folder is sent to Telegram.",f:["All books in the reader","Files folder in Telegram","The whole site, no limits"]},personal:{n:"Personal teacher",d:"A month of 1:1 lessons with a teacher and a plan for your goal.",f:["1:1 lessons for a month","Books and the whole site, no limits","Feedback on your work"]},family:{n:"Family",d:"A personal teacher for a month for a family. One code works on 3 accounts.",f:["Everything in Personal teacher","One code for 3 accounts","Best price for two or more"],hot:"Best value"}},
- sum:"UZS",mo:"for 30 days",order:"Order",ph:"Your code",go:"Activate",bad:"Wrong code. Check it and try again.",used:"This code is already active on three accounts.",act:"Your subscription is active. You can renew it 3 days before it ends.",rate:"Too many attempts. Wait 10 minutes.",net:"No connection. Try again.",ok:"Done! Access is open.",until:"Subscription active until",cardP:"Enter a code to unlock the whole site with no limits.",cardT:"Speakyz subscription",close:"Close",srv:"The server is temporarily unavailable.",
+en:{badge:"Subscription",t:"Unlock all of Speakyz",p:"Any plan opens the whole site for 30 days with no limits: AI, mock tests, practice and books.",
+ pl:{books:{n:"Books",d:"The Speakyz book library: read on the site, the full folder is sent to Telegram.",f:["All books in the reader","Files folder in Telegram","The whole site, no limits"]},
+     personal:{n:"Personal teacher",d:"A month of 1:1 lessons with a teacher and a plan for your goal.",f:["1:1 lessons for a month","Books and the whole site, no limits","Feedback on your work"]}},
+ sum:"UZS",mo:"for 30 days",pay:"Pay",hint:"Opens a chat with the manager with the message ready. Press Send.",
+ haveCode:"Already paid? Enter your code",ph:"Your code",go:"Activate",
+ bad:"Wrong code. Check it and try again.",used:"This code is already active on three accounts.",act:"Your subscription is active. You can renew it 3 days before it ends.",
+ rate:"Too many attempts. Wait 10 minutes.",net:"No connection. Try again.",srv:"The server is temporarily unavailable.",auth:"Sign in to activate a code.",
+ ok:"Done! Access is open.",until:"Subscription active until",cardP:"Enter a code to unlock the whole site with no limits.",cardT:"Speakyz subscription",close:"Close",
  lt:"You are out of attempts",lp:"You get 5 free attempts for each type of exercise. The limit resets in",lo:"Unlock with no limit",left:"Attempts left",of:"of",
  k:{speaking:"Speaking",writing:"Writing",teacher:"AI teacher",examiner:"Voice examiner",talk:"Free talk",arena:"Arena",stt:"Speech recognition",other:"Exercise"}}};
+
 function lg(){try{var v=localStorage.getItem("sz_lang");if(v==="ru"||v==="uz"||v==="en")return v}catch(e){}return"ru"}
 function T(){return X[lg()]}
 function uid(){return window.SZA&&SZA.uid?SZA.uid():""}
+function email(){try{return window.SZA&&SZA.email?(SZA.email()||""):""}catch(e){return""}}
 function tk(){try{var s=JSON.parse(sessionStorage.getItem("sz_tk")||"null");return s&&s.t&&s.k?s:null}catch(e){return null}}
 var st={until:0,plan:"",loaded:false};
 function rd(){st.until=0;st.plan="";try{var c=JSON.parse(localStorage.getItem(KEY)||"null");if(c&&c.uid&&c.uid===uid()){st.until=+c.until||0;st.plan=c.plan||""}}catch(e){}}
@@ -3091,43 +3133,93 @@ function dt(ms){try{return new Date(ms).toLocaleDateString(lg()==="uz"?"uz-UZ":l
 function api(p,o){return SZA.token().then(function(t){if(!t)return null;o=o||{};o.headers=Object.assign({Authorization:"Bearer "+t},o.headers||{});return fetch((window.SZ_API||"")+p,o)})}
 function load(){var u=uid();if(!u||!window.SZA)return Promise.resolve();
  return api("/api/subscription").then(function(r){return r&&r.ok?r.json():null}).then(function(d){if(d&&uid()===u){st.until=d.active?+d.until:0;st.plan=d.active?d.plan||"":"";st.loaded=true;sv();paint()}}).catch(function(){})}
-function redeem(code){return api("/api/redeem",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({code:code})}).then(function(r){if(!r)return{e:"auth"};return r.json().catch(function(){return{}}).then(function(d){if(r.ok&&d.active){st.until=+d.until;st.plan=d.plan||"";st.loaded=true;sv();return{ok:1}}return{e:r.status===429?"rate":r.status>=500?"srv":d.error==="code_used_up"?"used":d.error==="already_active"?"act":"bad"}})}).catch(function(){return{e:"net"}})}
+function redeem(code){return api("/api/redeem",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({code:code})}).then(function(r){
+  if(!r)return{e:"auth"};
+  return r.json().catch(function(){return{}}).then(function(d){
+   if(r.ok&&d.active){st.until=+d.until;st.plan=d.plan||"";st.loaded=true;sv();return{ok:1}}
+   var e=r.status===429?"rate":r.status>=500?"srv":d.error==="code_used_up"?"used":d.error==="already_active"?"act":"bad";
+   return{e:e}})}).catch(function(){return{e:"net"}})}
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
-function form(parent,done){var t=T(),f=el("div","szsf"),i=el("input");i.type="text";i.placeholder=t.ph;i.autocomplete="off";i.autocapitalize="characters";i.spellcheck=false;i.maxLength=40;i.setAttribute("aria-label",t.ph);
+function msg(l,plan,price,mail){
+ var m=mail?{ru:" Мой email на сайте: "+mail+".",uz:" Saytdagi emailim: "+mail+".",en:" My email on the site: "+mail+"."}[l]:"";
+ if(l==="uz")return"Assalomu alaykum! Speakyz obunasini «"+plan+"» 30 kunga sotib olmoqchiman — "+price+" soʻm."+m;
+ if(l==="en")return"Hello! I'd like to buy the Speakyz subscription «"+plan+"» for 30 days — "+price+" UZS."+m;
+ return"Здравствуйте! Хочу купить подписку «"+plan+"» на 30 дней за "+price+" сум."+m}
+function orderUrl(p){var l=lg(),base=(window.szTg&&szTg("manager"))||MANAGER;
+ var text=msg(l,X[l].pl[p.id].n,p.price,email());
+ return base+(base.indexOf("?")<0?"?":"&")+"text="+encodeURIComponent(text)}
+function form(parent,done){var t=T(),f=el("div","szsf"),i=el("input");
+ i.type="text";i.placeholder=t.ph;i.autocomplete="off";i.autocapitalize="characters";i.spellcheck=false;i.maxLength=40;i.setAttribute("aria-label",t.ph);
  var b=el("button","",t.go);b.type="button";var m=el("p","szsm");m.setAttribute("role","status");
  function go(){var v=i.value.trim();if(!v){i.focus();return}b.disabled=true;f.classList.remove("er");m.className="szsm";m.textContent="…";
-  redeem(v).then(function(r){b.disabled=false;if(r.ok){m.className="szsm ok";m.textContent=t.ok;try{navigator.vibrate&&navigator.vibrate(18)}catch(e){}try{window.szTrack&&szTrack("subscription_activate",{plan:st.plan})}catch(e){}paint();setTimeout(function(){done&&done()},650)}
+  redeem(v).then(function(r){b.disabled=false;
+   if(r.ok){m.className="szsm ok";m.textContent=t.ok;try{navigator.vibrate&&navigator.vibrate(18)}catch(e){}try{window.szTrack&&szTrack("subscription_activate",{plan:st.plan})}catch(e){}paint();setTimeout(function(){done&&done()},650)}
    else{f.classList.add("er");void f.offsetWidth;m.className="szsm er";m.textContent=t[r.e]||t.bad;i.select()}})}
  b.onclick=go;i.addEventListener("keydown",function(e){if(e.key==="Enter")go()});i.addEventListener("input",function(){f.classList.remove("er")});
  f.appendChild(i);f.appendChild(b);parent.appendChild(f);parent.appendChild(m);return i}
-var open=null,tick=0;
-function close(){if(open){open.remove();open=null}clearInterval(tick);document.removeEventListener("keydown",esc)}
+
+var open=null,tick=0,prevOverflow="";
+function close(){if(open){open.remove();open=null;document.body.style.overflow=prevOverflow}clearInterval(tick);document.removeEventListener("keydown",esc)}
 function esc(e){if(e.key==="Escape")close()}
-function shell(label){var o=el("div","szsv"),c=el("div"),x=el("button","szsx","×");o.setAttribute("role","dialog");o.setAttribute("aria-modal","true");o.setAttribute("aria-label",label);
+function shell(label){close();var o=el("div","szsv"),c=el("div"),x=el("button","szsx","×");o.setAttribute("role","dialog");o.setAttribute("aria-modal","true");o.setAttribute("aria-label",label);
  x.type="button";x.setAttribute("aria-label",T().close);x.onclick=close;c.appendChild(x);o.appendChild(c);
- o.addEventListener("click",function(e){if(e.target===o)close()});document.body.appendChild(o);open=o;document.addEventListener("keydown",esc);return c}
-function tiles(c){var t=T(),g=el("div","szpl");PL.forEach(function(p,n){var d=t.pl[p.id],a=el("div","szp"+(p.hot?" hot":"")+(st.plan===p.id&&ok()?" me":""));a.style.setProperty("--c",p.c);a.style.animationDelay=(n*70)+"ms";
- if(p.hot)a.appendChild(el("span","szph",d.hot));
- a.appendChild(el("h4","",d.n));var pr=el("div","szpp");pr.appendChild(el("b","",p.p));pr.appendChild(el("span","",t.sum+" "+t.mo));a.appendChild(pr);
- a.appendChild(el("p","",d.d));var u=el("ul");d.f.forEach(function(s){u.appendChild(el("li","",s))});a.appendChild(u);
- var l=el("a","szpb",t.order);l.href=TG+"sub_"+p.id;l.target="_blank";l.rel="noopener";l.addEventListener("click",function(){try{window.szTrack&&szTrack("subscription_order_click",{plan:p.id})}catch(e){}});a.appendChild(l);g.appendChild(a)});c.appendChild(g)}
-function paywall(){if(open)close();var t=T(),c=shell(t.t);
- c.classList.add("wide");c.appendChild(el("span","szsbd",t.badge));c.appendChild(el("h3","",t.t));c.appendChild(el("p","szsp",t.p));
- if(!uid()){close();if(window.SZA)SZA.open("choose");return}
- tiles(c);c.appendChild(el("h5","szsc",t.ph));var i=form(c,function(){close();location.reload&&0});
- setTimeout(function(){try{i.focus({preventScroll:true})}catch(e){}},350)}
+ o.addEventListener("click",function(e){if(e.target===o)close()});
+ prevOverflow=document.body.style.overflow;document.body.style.overflow="hidden";
+ document.body.appendChild(o);open=o;document.addEventListener("keydown",esc);return c}
+
+function tiles(c){var t=T(),g=el("div","szpl");
+ PL.forEach(function(p,n){var d=t.pl[p.id],a=el("article","szp"+(st.plan===p.id&&ok()?" me":""));
+  a.style.setProperty("--c",p.c);a.style.setProperty("--ink",p.ink);a.style.animationDelay=(n*70)+"ms";
+  a.appendChild(el("h4","szp-n",d.n));
+  var pr=el("div","szp-pr");pr.appendChild(el("b","",p.price));pr.appendChild(el("span","",t.sum+" "+t.mo));a.appendChild(pr);
+  a.appendChild(el("p","szp-d",d.d));
+  var u=el("ul","szp-f");d.f.forEach(function(s){u.appendChild(el("li","",s))});a.appendChild(u);
+  var l=el("a","szp-b",t.pay);l.href=orderUrl(p);l.target="_blank";l.rel="noopener";
+  l.addEventListener("click",function(){try{window.szTrack&&szTrack("subscription_order_click",{plan:p.id})}catch(e){}});
+  a.appendChild(l);a.appendChild(el("p","szp-hint",t.hint));
+  g.appendChild(a)});
+ c.appendChild(g)}
+
+var CMP_T={ru:{h:"Что вы упускаете без подписки",no:"Сейчас, бесплатно",yes:"С подпиской, 30 дней",
+ nol:["Первый урок бесплатно в Telegram","5 попыток на каждый тип практики, потом ждать обновления лимита","Экзаменатор и практика быстро упираются в лимит","Книги и полный сайт закрыты"],
+ yesl:["Без лимитов: AI-экзаменатор, практика и пробные тесты","Все книги в читалке и папка в Telegram","Весь сайт без ожидания и ограничений","С личным учителем: 1:1 занятия и разбор вашей работы"]},
+uz:{h:"Obunasiz nimalarni yoʻqotasiz",no:"Hozir, bepul",yes:"Obuna bilan, 30 kun",
+ nol:["Telegramda birinchi dars bepul","Har bir mashq turi uchun 5 ta urinish, keyin limit yangilanishini kutish","Imtihonchi va mashqlar tez limitga uchraydi","Kitoblar va butun sayt yopiq"],
+ yesl:["Limitsiz: AI-imtihonchi, mashqlar va sinov testlari","Barcha kitoblar oʻqish rejimida va Telegramdagi papka","Butun sayt kutishsiz va cheklovsiz","Shaxsiy oʻqituvchi bilan: 1:1 darslar va ishingiz tahlili"]},
+en:{h:"What you miss without a subscription",no:"Right now, free",yes:"With a subscription, 30 days",
+ nol:["The first lesson is free in Telegram","5 attempts per practice type, then you wait for the limit to reset","The examiner and practice hit the limit fast","Books and the full site are locked"],
+ yesl:["No limits: AI examiner, practice and mock tests","All books in the reader and the folder in Telegram","The whole site with no waiting or caps","With a personal teacher: 1:1 lessons and feedback on your work"]}};
+function cmp(c){var L=(function(){try{var v=localStorage.getItem("sz_lang");if(CMP_T[v])return v}catch(e){}return "ru"})(),t=CMP_T[L];
+ var box=el("div","szcmp");box.appendChild(el("h4","",t.h));
+ var g=el("div","szcg"),a=el("div","szcol no"),b=el("div","szcol yes");
+ a.appendChild(el("b","",t.no));t.nol.forEach(function(x){a.appendChild(el("span","",x))});
+ b.appendChild(el("b","",t.yes));t.yesl.forEach(function(x){b.appendChild(el("span","",x))});
+ g.appendChild(a);g.appendChild(b);box.appendChild(g);c.appendChild(box)}
+function paywall(){var t=T();
+ if(!uid()){if(window.SZA)SZA.open("choose");return}
+ var c=shell(t.t);c.classList.add("wide");
+ c.appendChild(el("span","szsbd",t.badge));c.appendChild(el("h3","",t.t));c.appendChild(el("p","szsp",t.p));
+ tiles(c);cmp(c);
+ var sep=el("div","szsep",t.haveCode);c.appendChild(sep);
+ form(c,function(){close()})}
+
 function pad(n){return n<10?"0"+n:""+n}
-function lim(info){if(open)close();var t=T(),c=shell(t.lt);c.appendChild(el("span","szsbd","3h"));c.appendChild(el("h3","",t.lt+": "+(t.k[info.kind]||t.k.other)));c.appendChild(el("p","szsp",t.lp));
- var cd=el("div","szcd");c.appendChild(cd);function paintT(){var s=Math.max(0,Math.round((info.resetAt-Date.now())/1000));cd.textContent=pad(Math.floor(s/3600))+":"+pad(Math.floor(s%3600/60))+":"+pad(s%60);if(!s){clearInterval(tick);setTimeout(close,900)}}
+function lim(info){var t=T(),c=shell(t.lt);c.appendChild(el("span","szsbd","3h"));c.appendChild(el("h3","",t.lt+": "+(t.k[info.kind]||t.k.other)));c.appendChild(el("p","szsp",t.lp));
+ var cd=el("div","szcd");c.appendChild(cd);
+ function paintT(){var s=Math.max(0,Math.round((info.resetAt-Date.now())/1000));cd.textContent=pad(Math.floor(s/3600))+":"+pad(Math.floor(s%3600/60))+":"+pad(s%60);if(!s){clearInterval(tick);setTimeout(close,900)}}
  paintT();tick=setInterval(paintT,1000);
- var b=el("button","szsb2",t.lo);b.type="button";b.onclick=function(){close();paywall()};c.appendChild(b)}
-var tt=0;function note(h){var p=String(h||"").split(":");if(p.length<4)return;var left=+p[1],max=+p[2];if(left>2||!max)return;var t=T(),n=document.querySelector(".szsn")||el("div","szsn");n.textContent=t.left+": "+left+" "+t.of+" "+max+" · "+(t.k[p[0]]||"");n.setAttribute("role","status");document.body.appendChild(n);n.classList.remove("on");void n.offsetWidth;n.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){n.classList.remove("on")},3500)}
+ var b=el("button","szsb2",t.lo);b.type="button";b.onclick=function(){paywall()};c.appendChild(b)}
+
+var tt=0;
+function note(h){var p=String(h||"").split(":");if(p.length<4)return;var left=+p[1],max=+p[2];if(left>2||!max)return;var t=T(),n=document.querySelector(".szsn")||el("div","szsn");n.textContent=t.left+": "+left+" "+t.of+" "+max+" · "+(t.k[p[0]]||"");n.setAttribute("role","status");document.body.appendChild(n);n.classList.remove("on");void n.offsetWidth;n.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){n.classList.remove("on")},3500)}
 function mount(c){var t=T(),b=el("div","szsubc"+(ok()?" on":""));b.appendChild(el("h4","",t.cardT));
  if(ok()&&st.until>Date.now())b.appendChild(el("p","",t.until+" "+dt(st.until)));else b.appendChild(el("p","",t.cardP));
  form(b,function(){document.dispatchEvent(new Event("szsubchange"))});c.appendChild(b)}
 function paint(){try{document.dispatchEvent(new Event("szsubchange"))}catch(e){}}
+
 window.SZS={ok:ok,paywall:paywall,limit:lim,mount:mount,load:load,until:function(){return st.until},plan:function(){return st.plan}};
 document.addEventListener("click",function(e){var b=e.target&&e.target.closest&&e.target.closest("[data-szsub]");if(b){e.preventDefault();paywall()}});
+
 /* заголовки доступа для ИИ: токен ученика или ключ преподавателя; 402 открывает окно тарифов или таймер лимита */
 var of=window.fetch;
 window.fetch=function(u,o){var s=typeof u==="string"?u:(u&&u.url)||"";if(!/\/api\/(chat|transcribe)(\?|$)/.test(s)||!of)return of.apply(this,arguments);
@@ -3137,6 +3229,7 @@ window.fetch=function(u,o){var s=typeof u==="string"?u:(u&&u.url)||"";if(!/\/api
    if(r&&r.status===402&&!tk()){r.clone().json().catch(function(){return{}}).then(function(d){if(d.error==="limit"&&d.resetAt)lim(d);else{st.until=0;sv();paywall()}})}
    else if(r&&r.headers&&r.headers.get){note(r.headers.get("X-Left"))}
    return r})};
+
 document.addEventListener("szsubchange",function(){document.querySelectorAll("#szAcct,#szAcct2").forEach(function(h){var n=h.querySelector(".szsubc");if(n&&window.SZA&&h.firstChild){var nb=el("div");mount(nb);if(nb.firstChild&&n.parentNode)n.parentNode.replaceChild(nb.firstChild,n)}})});
 addEventListener("szauth",function(){rd();load()});
 if(uid())setTimeout(load,1200);
@@ -3154,8 +3247,10 @@ if(uid())setTimeout(load,1200);
 .stkd{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:800 .62rem var(--b);background:rgba(255,255,255,.28);color:#fff}
 .stkd.on{background:#FFD60A;color:#7a3a00}.stkcard.off .stkd{background:rgba(127,127,127,.2)}.stkcard.off .stkd.on{background:#FFD60A}
 @media(max-width:520px){.stkcard{flex-wrap:wrap}.stkcard .wk{margin-left:0;width:100%;justify-content:space-between}.stkd{width:34px;height:34px}}
-.fl{overflow:visible}.fl .o{transform-origin:50% 90%;animation:stkF 1.6s ease-in-out infinite}.fl .i{transform-origin:50% 90%;animation:stkF 1.2s ease-in-out infinite reverse}
-@keyframes stkF{0%,100%{transform:scale(1,1) skewX(0)}30%{transform:scale(.96,1.05) skewX(2deg)}60%{transform:scale(1.03,.97) skewX(-2deg)}}
+.fl{overflow:visible}.fl .o{transform-origin:50% 95%;animation:stkF 1.8s ease-in-out infinite}.fl .i{transform-origin:50% 95%;animation:stkF 1.3s ease-in-out infinite reverse}.fl .gl{transform-origin:50% 60%;animation:stkGl 2.4s ease-in-out infinite}.fl .sp{transform-box:fill-box;transform-origin:center;animation:stkSp 2.2s ease-out infinite}.fl .sp.s2{animation-delay:.9s}
+@keyframes stkF{0%,100%{transform:scale(1,1) translateY(0)}25%{transform:scale(.97,1.04) translateY(-.6px)}50%{transform:scale(1.03,.98) translateY(0)}75%{transform:scale(.98,1.03) translateY(-.4px)}}
+@keyframes stkGl{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.07)}}
+@keyframes stkSp{0%{transform:translateY(0);opacity:0}30%{opacity:1}100%{transform:translateY(-16px);opacity:0}}
 .stkov{position:fixed;inset:0;z-index:10060;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:#FF4B2B;background:radial-gradient(circle at 50% 38%,#FF8A2B 0,#FF4B2B 55%,#C92A0E 100%);color:#fff;animation:stkIn .5s cubic-bezier(.22,1,.36,1) both;overflow:hidden}
 .stkov.out{animation:stkOut .35s ease forwards}
 @keyframes stkIn{from{opacity:0;transform:scale(1.06)}}@keyframes stkOut{to{opacity:0;transform:scale(.97)}}
@@ -3197,7 +3292,16 @@ function calc(s){var set={};s.days.forEach(function(k){set[k]=1});var today=dk()
  return{n:n,today:!!set[today]}}
 function week(s){var set={};s.days.forEach(function(k){set[k]=1});var d=new Date(),wd=(d.getDay()+6)%7,out=[];for(var i=0;i<7;i++){var t=new Date(d.getFullYear(),d.getMonth(),d.getDate()-wd+i);out.push({on:!!set[dk(t)],now:i===wd})}return out}
 var NS="http://www.w3.org/2000/svg";
-function flame(cls){return '<svg class="fl '+(cls||"")+'" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="stkg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF4B2B"/><stop offset="1" stop-color="#FFB020"/></linearGradient></defs><path class="o" d="M33 4c2 10 12 15 16 26 4 11-2 28-17 28S12 46 15 34c1.5-6 6-9 8-15 5 3 6 8 6 8 3-6 2-16 4-23Z" fill="url(#stkg)"/><path class="i" d="M32 30c1 6 8 9 8 17 0 6-4 9-8 9s-8-3-8-9c0-4 3-6 4-10 2 1 3 3 3 3 1-3 1-6 1-10Z" fill="#FFE27A"/></svg>'}
+var FLID=0;
+function flame(cls){var u="stkf"+(++FLID);return '<svg class="fl '+(cls||"")+'" viewBox="0 0 64 64" aria-hidden="true"><defs>'+
+'<radialGradient id="'+u+'h" cx="50%" cy="60%" r="55%"><stop offset="0" stop-color="#FFD60A" stop-opacity=".6"/><stop offset="1" stop-color="#FF4B2B" stop-opacity="0"/></radialGradient>'+
+'<linearGradient id="'+u+'o" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#D5260C"/><stop offset=".55" stop-color="#FF6A1A"/><stop offset="1" stop-color="#FFB833"/></linearGradient>'+
+'<linearGradient id="'+u+'i" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FFB020"/><stop offset="1" stop-color="#FFF6C2"/></linearGradient>'+
+'<filter id="'+u+'f" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation=".6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+
+'<circle class="gl" cx="32" cy="34" r="31" fill="url(#'+u+'h)"/>'+
+'<g filter="url(#'+u+'f)"><path class="o" d="M33 3c2 10 12 15 16 26 4 11-2 29-17 29S12 47 15 35c1.5-6 6-9 8-15 5 3 6 8 6 8 3-6 2-16 4-25Z" fill="url(#'+u+'o)"/>'+
+'<path class="i" d="M32 30c1 6 8 9 8 17 0 6-4 9-8 9s-8-3-8-9c0-4 3-6 4-10 2 1 3 3 3 3 1-3 1-6 1-10Z" fill="url(#'+u+'i)"/></g>'+
+'<circle class="sp" cx="20" cy="16" r="1.5" fill="#FFE27A"/><circle class="sp s2" cx="46" cy="12" r="1.2" fill="#FFE27A"/></svg>'}
 function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
 function fmt(n){var t=T();return n+" "+(lg()==="ru"?(n%10===1&&n%100!==11?"день подряд":(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?"дня подряд":"дней подряд")):(n===1&&lg()==="en"?t.one:t.many))}
 function card(){var box=document.getElementById("szStreakCard");if(!box)return;var s=load(),c=calc(s),t=T();box.className="stkcard"+(c.n?"":" off");
