@@ -3808,5 +3808,15 @@ header .hcta:hover{background:#FFE14D!important;box-shadow:none!important}
 function f(){tk=false;var p=Math.min(1,Math.max(0,scrollY/360));el.style.transform="translateY("+(-p*48).toFixed(1)+"px) scale("+(1-p*.12).toFixed(3)+")";el.style.opacity=(1-p*.7).toFixed(3)}
 function r(){if(!tk){tk=true;requestAnimationFrame(f)}}addEventListener("scroll",r,{passive:true});f()})();
 </script>
+<style id="stackfix">
+/* стопка IELTS: блочный поток, чтобы карточки залипали друг за другом (в grid sticky не выходит из своей строки) */
+.tiles.stack{display:block;padding:0 16px}
+.stack .tile{position:sticky;top:calc(var(--h) + 16px + var(--i)*14px);z-index:calc(var(--i) + 1);grid-column:auto;width:100%;min-height:42vh;margin:0 0 20px;transform-origin:50% 0}
+</style>
+<style id="welcome2">
+/* welcome: блок на всю высоту экрана, содержимое по центру */
+.h2hero{min-height:calc(100vh - 64px);min-height:calc(100svh - 64px);display:flex;align-items:center}
+.h2hero .h2wrap{width:100%}
+</style>
 </body>
 </html>
