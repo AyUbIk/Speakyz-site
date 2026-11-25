@@ -36,10 +36,31 @@
       if (p && p.catch) p.catch(function () { res(); });
     });
   }
+  /* длинный текст режется по предложениям: каждая часть короткая, и звучит весь текст, а не первые 300 знаков */
+  function chunkText(t, max) {
+    var out = [], s = String(t).replace(/\s+/g, " ").trim();
+    while (s.length > max) {
+      var cut = s.lastIndexOf(". ", max);
+      if (cut < max * 0.4) cut = s.lastIndexOf(" ", max);
+      if (cut <= 0) cut = max;
+      out.push(s.slice(0, cut + 1).trim());
+      s = s.slice(cut + 1).trim();
+    }
+    if (s) out.push(s);
+    return out;
+  }
   window.szSpeak = function (text, opts) {
+    text = String(text || "").trim();
+    if (!text) return Promise.resolve();
+    var parts = chunkText(text, 280), last = Promise.resolve();
+    window.szStop();
+    parts.forEach(function (part) { last = window.szSpeakOne(part, opts, true); });
+    return last;
+  };
+  window.szSpeakOne = function (text, opts, noStop) {
     text = String(text || "").trim().slice(0, 300);
     if (!text) return Promise.resolve();
-    window.szStop();
+    if (!noStop) window.szStop();
     /* phrases play one after another, never on top of each other */
     queue = queue.then(function () {
       if (cache[text]) return playUrl(cache[text]);

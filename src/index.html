@@ -3813,6 +3813,21 @@ function r(){if(!tk){tk=true;requestAnimationFrame(f)}}addEventListener("scroll"
 .tiles.stack{display:block;padding:0 16px}
 .stack .tile{position:sticky;top:calc(var(--h) + 16px + var(--i)*14px);z-index:calc(var(--i) + 1);grid-column:auto;width:100%;min-height:42vh;margin:0 0 20px;transform-origin:50% 0}
 </style>
+<style id="reviewfix">
+/* под welcome тоже чёрный фон (следующий блок был светлым) */
+.pin.words{background:#000!important;color:#fff!important}
+.pin.words .stick p,.pin.words p{color:#A1A1A6!important}
+/* таблица разбора пробника */
+table.rv{width:100%;border-collapse:collapse;margin:22px 0 10px;font-size:.92rem}
+table.rv th{text-align:left;font:700 .72rem/1.2 var(--b);letter-spacing:.08em;text-transform:uppercase;color:#6E6E73;padding:8px 10px;border-bottom:1px solid rgba(127,127,127,.3)}
+table.rv td{padding:10px;border-bottom:1px solid rgba(127,127,127,.15);vertical-align:top}
+table.rv .rv-mk{width:44px;text-align:center;font-weight:800;font-size:1.05rem}
+table.rv .rv-ok .rv-mk{color:#1FA463}
+table.rv .rv-bad .rv-mk{color:#FF4B2B}
+.chk-band{display:flex;align-items:baseline;gap:10px;margin:14px 0 4px}
+.chk-num{font:800 2.2rem/1 var(--d);color:var(--y)}
+.chk-fix{margin:14px 0 0;padding-left:18px;font-size:.92rem;line-height:1.5}
+</style>
 <style id="welcome2">
 /* welcome: блок на всю высоту экрана, содержимое по центру */
 .h2hero{min-height:calc(100vh - 64px);min-height:calc(100svh - 64px);display:flex;align-items:center}

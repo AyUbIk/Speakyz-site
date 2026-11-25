@@ -1039,20 +1039,51 @@ function quiz(cfg,pre,kind){
       else{var opts=q.t==='tf'?TFNG:q.o;g=[];opts.forEach(function(o,k){var lb=el('label');var r=el('input');r.type='radio';r.name='q'+i;r.value=k;lb.appendChild(r);lb.appendChild(document.createTextNode(' '+o));c.appendChild(lb);g.push(r)})}
       mBox.appendChild(c);return {c:c,g:g,q:q}});
     var finished=false;
-    function finish(){if(finished)return;finished=true;stopT();if(synth)synth.cancel();sub.disabled=true;var sc=0;
-      cards.forEach(function(o){var q=o.q,ok=false,mine='',ans='';
+    function finish(){if(finished)return;finished=true;stopT();try{if(window.speechSynthesis)speechSynthesis.cancel()}catch(e){};sub.disabled=true;var sc=0;
+      var rows=[];cards.forEach(function(o,ix){var q=o.q,ok=false,mine='',ans='';
         if(q.t==='fill'){mine=o.g.value;ok=q.a.indexOf(norm(mine))>=0;ans=q.a[0];o.g.disabled=true}
         else{var opts=q.t==='tf'?TFNG:q.o,pk=-1;o.g.forEach(function(r,k){if(r.checked)pk=k;r.disabled=true});mine=pk>=0?opts[pk]:'';ok=pk===q.a;ans=opts[q.a]}
         if(ok)sc++;o.c.classList.add(ok?'ok':'bad');
-        if(!ok)o.c.appendChild(el('small','',d.your+': '+(mine||'-')+' · '+d.corr+': '+ans))});
+        if(!ok)o.c.appendChild(el('small','',d.your+': '+(mine||'-')+' · '+d.corr+': '+ans));rows.push({n:ix+1,mine:mine,ans:ans,ok:ok})});
       var bandVal=toBand(sc,cfg.qs.length);
       if(kind)saveProgress(kind,cfg.title,sc,cfg.qs.length,bandVal);
       var res=el('div','pass');res.appendChild(el('h3','',d.score+': '+sc+' '+d.of+' '+cfg.qs.length));
       var bn=el('div','big',bandVal.toFixed(1));bn.appendChild(el('small','',d.band));res.appendChild(bn);res.appendChild(el('p','note',d.bandNote));
       if(cfg.text){res.appendChild(el('b','',d.transcript));res.appendChild(el('p','',cfg.text))}
+      res.appendChild(reviewTable(rows,d));
       var ag=el('button','btn g',d.again);ag.type='button';ag.style.color='#1D1D1F';ag.onclick=renderMock;res.appendChild(ag);
       mBox.appendChild(res);res.scrollIntoView({behavior:'smooth',block:'start'})}
     sub.onclick=finish;countdown(cfg.mins*60,tm,finish)}}
+
+/* ---------- оценка writing / speaking: текст + таблица критериев с ✓ и ✗ ---------- */
+function showCheck(out,e,r,d){
+  out.textContent='';
+  if(e){out.textContent=d.aiFail;return}
+  var m=/```json\s*([\s\S]*?)```/.exec(r||''),data=null;
+  if(m){try{data=JSON.parse(m[1])}catch(x){data=null}}
+  out.appendChild(el('p','',(m?String(r).replace(m[0],''):String(r||'')).trim()));
+  if(!data||!data.criteria)return;
+  var box=el('div','chk');
+  var hd=el('div','chk-band');hd.appendChild(el('small','',d.band));hd.appendChild(el('span','chk-num',String(data.band)));box.appendChild(hd);
+  var t=document.createElement('table');t.className='rv';
+  var th=el('thead','');var hr=el('tr','');['',d.band,''].forEach(function(x){hr.appendChild(el('th','',x))});th.appendChild(hr);t.appendChild(th);
+  var tb=el('tbody','');
+  data.criteria.forEach(function(c){var ok=!!c.ok;var tr=el('tr',ok?'rv-ok':'rv-bad');
+    tr.appendChild(el('td','',c.name));tr.appendChild(el('td','',String(c.band)));tr.appendChild(el('td','rv-mk',ok?'\u2713':'\u2717'));tb.appendChild(tr)});
+  t.appendChild(tb);box.appendChild(t);
+  if(data.fixes&&data.fixes.length){var ul=el('ul','chk-fix');data.fixes.forEach(function(f){ul.appendChild(el('li','',f.you+'  \u2192  '+f.better))});box.appendChild(ul)}
+  out.appendChild(box)}
+
+/* ---------- разбор пробника: таблица с галочками и крестиками ---------- */
+function reviewTable(rows,d){
+  var t=document.createElement('table');t.className='rv';
+  var hd=el('tr','');['#',d.your,d.corr,''].forEach(function(x){hd.appendChild(el('th','',x))});
+  var th=el('thead','');th.appendChild(hd);t.appendChild(th);
+  var tb=el('tbody','');
+  rows.forEach(function(r){var tr=el('tr',r.ok?'rv-ok':'rv-bad');
+    tr.appendChild(el('td','',String(r.n)));tr.appendChild(el('td','',r.mine||'-'));tr.appendChild(el('td','',r.ans));
+    tr.appendChild(el('td','rv-mk',r.ok?'\u2713':'\u2717'));tb.appendChild(tr)});
+  t.appendChild(tb);return t}
 
 /* ---------- best free system voice ---------- */
 function bestVoice(lang){
@@ -1146,7 +1177,7 @@ function speakingGen(){
       var fb=el('button','btn',d.aiFb);fb.type='button';fb.style.marginTop='14px';res.appendChild(fb);var out=el('div','fb');out.hidden=true;res.appendChild(out);
       fb.onclick=function(){if(words(ta.value)<20){out.hidden=false;out.textContent=d.aiShort;return}
         fb.disabled=true;out.hidden=false;out.textContent=d.aiBusy;
-        post({mode:'speaking',lang:L,messages:[{role:'user',content:'Question (Part '+spPart+'): '+(item.q.join?item.q.join(' '):item.q)+'\n\nTranscript of the answer:\n'+ta.value}]},function(e,r){fb.disabled=false;out.textContent=e?d.aiFail:r})};
+        post({mode:'speaking',lang:L,messages:[{role:'user',content:'Question (Part '+spPart+'): '+(item.q.join?item.q.join(' '):item.q)+'\n\nTranscript of the answer:\n'+ta.value}]},function(e,r){fb.disabled=false;showCheck(out,e,r,d)})};
       res.scrollIntoView({behavior:'smooth',block:'nearest'})})}
   function talkPhase(){
     lab.textContent=d.rec;stop.hidden=false;
@@ -1173,7 +1204,7 @@ function writingGen(){
   var fb=el('button','btn',d.aiFb);fb.type='button';fb.style.marginTop='14px';pBox.appendChild(fb);var out=el('div','fb');out.hidden=true;pBox.appendChild(out);
   fb.onclick=function(){if(words(ta.value)<50){out.hidden=false;out.textContent=d.aiShortW;return}
     fb.disabled=true;out.hidden=false;out.textContent=d.aiBusy;
-    post({mode:'writing',lang:L,messages:[{role:'user',content:'Task prompt: '+item.p+(item.tbl?'\nTable data: '+JSON.stringify(item.tbl):'')+'\n\nStudent essay:\n'+ta.value}]},function(e,r){fb.disabled=false;out.textContent=e?d.aiFail:r})}}
+    post({mode:'writing',lang:L,messages:[{role:'user',content:'Task prompt: '+item.p+(item.tbl?'\nTable data: '+JSON.stringify(item.tbl):'')+'\n\nStudent essay:\n'+ta.value}]},function(e,r){fb.disabled=false;showCheck(out,e,r,d)})}}
 function renderPractice(){
   stopT();killRec();var d=U[L];
   $('#pH').textContent=d.pH;$('#pP').textContent=d.pP;$('#pNote').textContent=d.pNote;
