@@ -1172,7 +1172,7 @@ function speakingGen(){
     if(!rec.ok()||!curRec){st.textContent=d.noMic;return}
     rec.stop(function(blob,text){curRec=null;st.textContent='';res.hidden=false;res.textContent='';
       if(blob&&blob.size){var box=el('div','pass');box.appendChild(el('h3','',d.listen));var au=el('audio');au.controls=true;au.src=URL.createObjectURL(blob);box.appendChild(au);
-        var a=el('a','btn g',d.dl);a.href=au.src;a.download='speakyz-speaking.'+((blob.type||'').indexOf('mp4')>=0?'m4a':'webm');a.style.cssText='color:#1D1D1F;margin-left:12px';box.appendChild(a);res.appendChild(box);setTimeout(function(){au.focus()},50)}
+        var a=el('a','btn dl',d.dl);a.href=au.src;a.download='speakyz-speaking.'+((blob.type||'').indexOf('mp4')>=0?'m4a':'webm');a.style.cssText='color:#1D1D1F;margin-left:12px';box.appendChild(a);res.appendChild(box);setTimeout(function(){au.focus()},50)}
       res.appendChild(el('p','qn',d.sTx));var ta=el('textarea','wa');ta.style.minHeight='120px';ta.value=text||'';ta.setAttribute('aria-label',d.sTx);res.appendChild(ta);
       var fb=el('button','btn',d.aiFb);fb.type='button';fb.style.marginTop='14px';res.appendChild(fb);var out=el('div','fb');out.hidden=true;res.appendChild(out);
       fb.onclick=function(){if(words(ta.value)<20){out.hidden=false;out.textContent=d.aiShort;return}

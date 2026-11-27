@@ -29,8 +29,11 @@
   }
   function playUrl(url) {
     return new Promise(function (res) {
-      A.onended = res;
-      A.onerror = function () { res(); };
+      /* таймаут: если событие ended не придёт, очередь озвучки не зависнет */
+      var t = setTimeout(function () { res(); }, 30000);
+      var done = function () { clearTimeout(t); res(); };
+      A.onended = done;
+      A.onerror = done;
       A.src = url;
       var p = A.play();
       if (p && p.catch) p.catch(function () { res(); });
